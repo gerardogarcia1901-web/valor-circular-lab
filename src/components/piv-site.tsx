@@ -225,35 +225,32 @@ function SiteHeader() {
 
 function SiteFooter() {
   return (
-    <footer className="border-t border-border/70 bg-ink py-16 text-ink-foreground">
-      <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-10 lg:grid-cols-[1.2fr_0.8fr_0.8fr]">
-        <div className="space-y-5">
-          <img src={logoAsset.url} alt="Logo de Parque Industrial Verde" className="h-16 w-auto object-contain" loading="lazy" />
-          <p className="max-w-xl text-sm leading-7 text-ink-muted">
-            Infraestructura, trazabilidad y recuperación de materiales para impulsar una economía circular tangible en El Salvador.
-          </p>
-          <div className="flex flex-wrap gap-3 text-sm text-ink-muted">
+    <footer className="border-t border-border/70 bg-ink py-14 text-ink-foreground">
+      <div className="mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-12 lg:grid-cols-[1fr_1fr_1fr] lg:items-start">
+        <div className="space-y-4">
+          <img src={logoAsset.url} alt="Logo de Parque Industrial Verde" className="h-20 w-auto object-contain" loading="lazy" />
+          <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-ink-muted">
             {phoneLinks.map((item) => (
               <a key={item.href} href={item.href} className="story-link">{item.label}</a>
             ))}
-            <a href={emailLink.href} className="story-link">{emailLink.label}</a>
           </div>
+          <a href={emailLink.href} className="story-link block text-sm text-ink-muted">{emailLink.label}</a>
         </div>
         <div className="space-y-4">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-ink-muted">Navegación</p>
-          <div className="grid gap-3 text-sm">
+          <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Navegación</p>
+          <div className="grid grid-cols-2 gap-2 text-[0.78rem]">
             {navigation.map((item) => (
-              <Link key={item.to} to={item.to} className="story-link w-fit text-ink-foreground">
+              <Link key={item.to} to={item.to} className="story-link w-fit font-bold uppercase tracking-[0.14em] text-ink-foreground">
                 {item.label}
               </Link>
             ))}
           </div>
         </div>
         <div className="space-y-4">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-ink-muted">Redes</p>
-          <div className="grid gap-3 text-sm">
+          <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Redes</p>
+          <div className="grid gap-2 text-[0.78rem]">
             {socialLinks.map((item) => (
-              <a key={item.href} href={item.href} target="_blank" rel="noreferrer" className="story-link w-fit text-ink-foreground">
+              <a key={item.href} href={item.href} target="_blank" rel="noreferrer" className="story-link w-fit font-bold uppercase tracking-[0.14em] text-ink-foreground">
                 {item.label}
               </a>
             ))}
