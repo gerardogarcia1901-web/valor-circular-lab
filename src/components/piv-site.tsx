@@ -802,17 +802,24 @@ export function AboutPage() {
         description="En 2025 superamos los 75 millones de libras recuperadas, equivalentes a múltiples campos de fútbol llenos de material reincorporado a la economía."
         className="bg-panel-subtle"
       >
-        <div className="mt-12 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <div data-reveal className="surface-panel overflow-hidden p-0">
-            <img src={impactGraphicAsset.url} alt="Visual de impacto con equivalencias de material recuperado" className="h-full w-full rounded-[1.75rem] object-cover" loading="lazy" />
-          </div>
-          <div className="grid gap-4">
-            {impactMetrics.map((metric) => (
-              <MetricCard key={metric.description} {...metric} />
-            ))}
-          </div>
+        <div className="mt-12 grid gap-4 md:grid-cols-3">
+          {impactMetrics.map((metric) => (
+            <MetricCard key={metric.description} {...metric} />
+          ))}
         </div>
       </Section>
+      <section className="bg-panel-subtle pb-20 md:pb-28">
+        <div data-reveal className="mx-auto w-[min(1280px,calc(100%-2rem))]">
+          <div className="overflow-hidden rounded-[1.75rem] bg-white shadow-[var(--shadow-elevated)]">
+            <img
+              src={impactGraphicAsset.url}
+              alt="Visual de impacto con equivalencias de material recuperado en 2025"
+              className="block h-auto w-full object-contain"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
       <Section
         eyebrow="Confianza"
         title="El liderazgo se construye con capacidad real de respuesta."
