@@ -263,7 +263,41 @@
 }
 
 .editorial-panel--accent {
-  background: linear-gradient(180deg, color-mix(in oklab, var(--color-secondary) 16%, white), oklch(1 0 0 / 0.9));
+  background: var(--gradient-sky);
+  border-color: rgba(39, 54, 85, 0.16);
+}
+
+.editorial-panel--teal {
+  background: var(--gradient-accent);
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.10);
+}
+
+.editorial-panel--teal .eyebrow {
+  color: var(--brand-lime);
+}
+
+.editorial-panel--teal .eyebrow::before {
+  background: var(--brand-sky);
+}
+
+.editorial-panel--teal .list-line {
+  color: rgba(255, 255, 255, 0.92);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.editorial-panel--lime {
+  background: var(--gradient-lime);
+  border-color: rgba(13, 13, 13, 0.08);
+  color: var(--brand-ink);
+}
+
+.editorial-panel--lime .eyebrow {
+  color: var(--brand-navy);
+}
+
+.editorial-panel--lime .eyebrow::before {
+  background: var(--brand-navy);
 }
 
 .list-line {
