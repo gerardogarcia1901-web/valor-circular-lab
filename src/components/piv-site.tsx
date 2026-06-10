@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import logoAsset from "@/assets/piv-logo.png.asset.json";
-import heroAsset from "@/assets/piv-hero.png.asset.json";
+import heroAsset from "@/assets/piv-hero.jpg.asset.json";
 import operationsAsset from "@/assets/piv-operations.jpg.asset.json";
 import metalsAsset from "@/assets/piv-metals.jpg.asset.json";
 import beachAsset from "@/assets/piv-beach.jpg.asset.json";
@@ -183,7 +183,7 @@ function SiteHeader() {
           )}
         />
         <Link to="/" className="shrink-0" aria-label="Parque Industrial Verde, ir al inicio">
-          <img src={logoAsset.url} alt="Logo de Parque Industrial Verde" className="h-10 w-auto md:h-12" loading="eager" />
+          <img src={logoAsset.url} alt="Logo de Parque Industrial Verde" className="h-14 w-auto object-contain md:h-16" loading="eager" />
         </Link>
         <nav className="hidden items-center gap-6 lg:flex">
           {navigation.map((item) => (
@@ -201,10 +201,10 @@ function SiteHeader() {
         </nav>
         <div className="flex items-center gap-2">
           <a href={whatsappHref} target="_blank" rel="noreferrer" className="hidden md:block">
-            <Button variant="headerCta" size="sm">Solicitar recolección</Button>
+            <Button variant="hero" size="sm">Solicitar recolección</Button>
           </a>
           <Link to="/contacto" className="lg:hidden">
-            <Button variant="headerCta" size="sm">Contacto</Button>
+            <Button variant="hero" size="sm">Contacto</Button>
           </Link>
         </div>
       </div>
@@ -217,7 +217,7 @@ function SiteFooter() {
     <footer className="border-t border-border/70 bg-ink py-16 text-ink-foreground">
       <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-10 lg:grid-cols-[1.2fr_0.8fr_0.8fr]">
         <div className="space-y-5">
-          <img src={logoAsset.url} alt="Logo de Parque Industrial Verde" className="h-12 w-auto" loading="lazy" />
+          <img src={logoAsset.url} alt="Logo de Parque Industrial Verde" className="h-16 w-auto object-contain" loading="lazy" />
           <p className="max-w-xl text-sm leading-7 text-ink-muted">
             Infraestructura, trazabilidad y recuperación de materiales para impulsar una economía circular tangible en El Salvador.
           </p>
@@ -297,11 +297,28 @@ function MetricCard({ value, prefix, suffix, description }: { value: number; pre
 }
 
 function AudienceStrip() {
+  const palette = [
+    { bg: "var(--brand-teal)", fg: "#FFFFFF" },
+    { bg: "var(--brand-lime)", fg: "var(--brand-ink)" },
+    { bg: "var(--brand-navy)", fg: "#FFFFFF" },
+    { bg: "var(--brand-sky)", fg: "var(--brand-navy)" },
+    { bg: "var(--brand-ink)", fg: "var(--brand-lime)" },
+  ];
   return (
     <div className="mt-10 grid gap-3 md:grid-cols-5">
-      {audience.map((item) => (
-        <div key={item} data-reveal className="audience-pill">{item}</div>
-      ))}
+      {audience.map((item, i) => {
+        const c = palette[i % palette.length];
+        return (
+          <div
+            key={item}
+            data-reveal
+            className="rounded-full px-5 py-4 text-center text-sm font-semibold uppercase tracking-[0.1em] shadow-[var(--shadow-elevated)] transition-transform duration-300 hover:-translate-y-1"
+            style={{ background: c.bg, color: c.fg }}
+          >
+            {item}
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -323,7 +340,7 @@ function EnterpriseCommunity() {
   return (
     <section className="border-y border-border/70 bg-panel-subtle py-20 md:py-28">
       <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-8 lg:grid-cols-2">
-        <article data-reveal className="editorial-panel">
+        <article data-reveal className="editorial-panel editorial-panel--teal">
           <p className="eyebrow">Empresas</p>
           <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-5xl">Soluciones ambientales para empresas.</h2>
           <div className="mt-8 grid gap-3">
@@ -331,15 +348,15 @@ function EnterpriseCommunity() {
               <div key={item} className="list-line">{item}</div>
             ))}
           </div>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap gap-2">
             {enterpriseBenefits.map((item) => (
-              <span key={item} className="benefit-pill">{item}</span>
+              <span key={item} className="rounded-full bg-[var(--brand-lime)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--brand-ink)]">{item}</span>
             ))}
           </div>
         </article>
         <article data-reveal className="editorial-panel editorial-panel--accent">
           <p className="eyebrow">Comunidad</p>
-          <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-5xl">Reciclar también transforma vidas.</h2>
+          <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-5xl" style={{ color: "var(--brand-navy)" }}>Reciclar también transforma vidas.</h2>
           <div className="mt-8 grid gap-3">
             {communityActions.map((item) => (
               <div key={item} className="list-line">{item}</div>
@@ -633,10 +650,58 @@ export function HomePage() {
       <TimelineRail />
       <FAQSection />
 
-      <section className="border-t border-border/70 bg-panel-subtle py-20 md:py-28">
-        <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-          <ContactFormCard />
-          <LocationsPanel />
+      <section className="relative overflow-hidden py-20 md:py-28" style={{ background: "var(--gradient-accent)" }}>
+        <div className="absolute inset-0 opacity-30" style={{ background: "radial-gradient(circle at 20% 20%, var(--brand-lime) 0%, transparent 45%), radial-gradient(circle at 80% 80%, var(--brand-sky) 0%, transparent 50%)" }} />
+        <div className="relative mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div data-reveal className="space-y-6 text-white">
+            <p className="eyebrow eyebrow--light">Hablemos</p>
+            <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl">
+              Diseñemos la ruta circular de tu operación.
+            </h2>
+            <p className="max-w-xl text-lg leading-8 text-white/85">
+              Conversemos sobre recolecciones, certificados de destrucción, campañas o trazabilidad. Te respondemos rápido.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <a href={whatsappHref} target="_blank" rel="noreferrer">
+                <Button variant="hero" size="xl">Escribir por WhatsApp</Button>
+              </a>
+              <Link to="/contacto">
+                <Button variant="heroSecondary" size="xl">Ir a contacto</Button>
+              </Link>
+            </div>
+          </div>
+          <div data-reveal className="grid gap-4">
+            <div className="rounded-3xl border border-white/15 bg-white/8 p-6 backdrop-blur-md">
+              <p className="eyebrow eyebrow--light">Sucursales</p>
+              <div className="mt-4 grid gap-3 text-white/90">
+                {locations.map((location) => (
+                  <div key={location.name} className="flex items-start gap-3 border-b border-white/10 pb-3 last:border-none last:pb-0">
+                    <MapPinned className="mt-1 h-4 w-4 text-[var(--brand-lime)]" />
+                    <div>
+                      <p className="text-base font-semibold">{location.name}</p>
+                      <p className="text-sm leading-6 text-white/70">{location.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div className="rounded-2xl bg-[var(--brand-lime)] p-5 text-[var(--brand-ink)]">
+                <Phone className="h-5 w-5" />
+                <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em]">Teléfonos</p>
+                <div className="mt-2 grid gap-1 text-sm font-semibold">
+                  {phoneLinks.map((item) => (
+                    <a key={item.href} href={item.href} className="story-link">{item.label}</a>
+                  ))}
+                </div>
+              </div>
+              <div className="rounded-2xl bg-[var(--brand-sky)] p-5 text-[var(--brand-navy)]">
+                <Clock3 className="h-5 w-5" />
+                <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em]">Horario</p>
+                <p className="mt-2 text-sm font-semibold leading-6">Lun a Vie · 8:00 a.m. – 5:00 p.m.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </PageShell>
