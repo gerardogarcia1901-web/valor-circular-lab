@@ -777,7 +777,7 @@ export function AboutPage() {
         </div>
       </section>
       <div data-reveal className="mx-auto -mt-10 w-[min(1280px,calc(100%-2rem))] md:-mt-14">
-        <img src={heroAboutAsset.url} alt="Operación real de Parque Industrial Verde, vista panorámica de planta" className="image-tile h-[260px] w-full object-cover md:h-[420px]" loading="eager" />
+        <img src={heroAboutAsset.url} alt="Operación real de Parque Industrial Verde, vista panorámica de planta" className="image-tile h-[260px] w-full object-cover object-[center_30%] md:h-[420px]" loading="eager" />
       </div>
       <TimelineRail />
       <Section
