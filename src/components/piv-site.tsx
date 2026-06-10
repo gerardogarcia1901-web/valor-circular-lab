@@ -230,24 +230,27 @@ function SiteHeader() {
 function SiteFooter() {
   return (
     <footer className="border-t border-border/70 bg-ink py-14 text-ink-foreground">
-      <div className="mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-12 lg:grid-cols-[1fr_1fr_1fr] lg:items-start">
+      <div className="mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-10 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1.2fr_1fr] lg:items-start">
         <div className="space-y-4">
           <img src={logoAsset.url} alt="Parque Industrial Verde" className="h-32 w-auto object-contain md:h-40 lg:h-44" loading="lazy" />
-          <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-ink-muted">
-            {phoneLinks.map((item) => (
-              <a key={item.href} href={item.href} className="story-link">{item.label}</a>
-            ))}
-          </div>
-          <a href={emailLink.href} className="story-link block text-sm text-ink-muted">{emailLink.label}</a>
         </div>
         <div className="space-y-4">
           <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Navegación</p>
-          <div className="grid grid-cols-2 gap-2 text-[0.78rem]">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-[0.78rem]">
             {navigation.map((item) => (
               <Link key={item.to} to={item.to} className="story-link w-fit font-bold uppercase tracking-[0.14em] text-ink-foreground">
                 {item.label}
               </Link>
             ))}
+          </div>
+        </div>
+        <div className="space-y-4">
+          <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Contacto</p>
+          <div className="flex flex-col gap-2 text-sm text-ink-muted">
+            {phoneLinks.map((item) => (
+              <a key={item.href} href={item.href} className="story-link w-fit">{item.label}</a>
+            ))}
+            <a href={emailLink.href} className="story-link w-fit break-all">{emailLink.label}</a>
           </div>
         </div>
         <div className="space-y-4">
