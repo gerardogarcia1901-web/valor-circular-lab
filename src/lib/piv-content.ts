@@ -20,16 +20,46 @@ export const audience = [
 ];
 
 export const featuredServices = [
-  "Recuperación de materiales",
-  "Educación ambiental",
-  "Gestión de residuos",
-  "Trazabilidad digital",
-  "Apoyo en campañas",
-  "Charlas ambientales",
-  "Recolección a domicilio",
-  "Certificados de destrucción",
-  "Desalojo de bodegas",
-  "Destrucción de maquinaria",
+  {
+    title: "Recuperación de materiales",
+    description: "Clasificamos, procesamos y valorizamos plásticos, metales, papel y RAEE para reincorporarlos a la cadena productiva.",
+  },
+  {
+    title: "Educación ambiental",
+    description: "Programas, talleres y contenidos para escuelas, empresas y comunidades que activan hábitos sostenibles.",
+  },
+  {
+    title: "Gestión integral de residuos",
+    description: "Diagnóstico, diseño de rutas, recolección, procesamiento y reportes para operaciones de cualquier escala.",
+  },
+  {
+    title: "Trazabilidad digital",
+    description: "Reportes auditables y evidencia documental por cada flujo de materiales recuperados.",
+  },
+  {
+    title: "Apoyo en campañas",
+    description: "Producción y operación de activaciones de marca, jornadas internas y campañas comunitarias de reciclaje.",
+  },
+  {
+    title: "Charlas ambientales",
+    description: "Sesiones para colaboradores, clientes y aliados sobre economía circular y manejo responsable.",
+  },
+  {
+    title: "Recolección a domicilio",
+    description: "Rutas programadas para empresas, condominios y comunidades según volumen y tipo de material.",
+  },
+  {
+    title: "Certificados de destrucción",
+    description: "Destrucción controlada con evidencia documental para auditorías y cumplimiento interno.",
+  },
+  {
+    title: "Desalojo de bodegas",
+    description: "Liberamos espacios industriales y comerciales con manejo responsable de cada material recuperado.",
+  },
+  {
+    title: "Destrucción de maquinaria",
+    description: "Procesamos equipos y maquinaria fuera de uso, con disposición segura de sus componentes.",
+  },
 ];
 
 export const enterpriseServices = [
