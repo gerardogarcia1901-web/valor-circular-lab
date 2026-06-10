@@ -741,8 +741,8 @@ export function AboutPage() {
     <PageShell>
       <section className="relative overflow-hidden pt-36 md:pt-44" style={{ background: "var(--gradient-accent)" }}>
         <div className="absolute inset-0 opacity-30" style={{ background: "radial-gradient(circle at 15% 25%, var(--brand-lime) 0%, transparent 45%), radial-gradient(circle at 85% 75%, var(--brand-sky) 0%, transparent 50%)" }} />
-        <div className="relative mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-10 pb-16 md:pb-24 lg:grid-cols-[1fr_1fr] lg:items-end">
-          <div data-reveal className="space-y-6 text-white">
+        <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] pb-16 md:pb-24">
+          <div data-reveal className="max-w-4xl space-y-6 text-white">
             <p className="eyebrow eyebrow--light">Sobre nosotros</p>
             <h1 className="text-balance text-5xl font-semibold tracking-tight md:text-7xl">
               <span className="text-[var(--brand-lime)]">+23 años</span> transformando residuos en oportunidades.
@@ -750,7 +750,7 @@ export function AboutPage() {
             <p className="max-w-2xl text-lg leading-8 text-white/85">
               Desde INSEMA y ZARTEX hasta Parque Industrial Verde, hemos construido la red de reciclaje más grande de El Salvador: economía circular con respaldo industrial.
             </p>
-            <div className="grid gap-3 sm:grid-cols-3 pt-4">
+            <div className="grid gap-3 sm:grid-cols-3 pt-4 max-w-2xl">
               {pivStats.map((s) => (
                 <div key={s.label} className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-md">
                   <p className="text-3xl font-bold text-[var(--brand-lime)]">{s.prefix}{formatMetric(s.value)}</p>
@@ -759,9 +759,11 @@ export function AboutPage() {
               ))}
             </div>
           </div>
-          <img data-reveal src={heroAboutAsset.url} alt="Operación real de Parque Industrial Verde" className="image-tile h-[360px] w-full object-cover md:h-[440px]" loading="eager" />
         </div>
       </section>
+      <div data-reveal className="mx-auto -mt-10 w-[min(1280px,calc(100%-2rem))] md:-mt-14">
+        <img src={heroAboutAsset.url} alt="Operación real de Parque Industrial Verde, vista panorámica de planta" className="image-tile h-[260px] w-full object-cover md:h-[420px]" loading="eager" />
+      </div>
       <TimelineRail />
       <Section
         eyebrow="Propósito"
