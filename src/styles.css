@@ -152,11 +152,30 @@
 }
 
 .eyebrow {
-  color: var(--color-primary);
+  color: var(--brand-teal);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 1.5rem;
+  height: 2px;
+  background: var(--brand-lime);
+  border-radius: 999px;
+}
+
+.eyebrow--light {
+  color: var(--brand-lime);
+}
+
+.eyebrow--light::before {
+  background: var(--brand-sky);
 }
 
 .nav-link {
