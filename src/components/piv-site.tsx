@@ -716,7 +716,7 @@ export function HomePage() {
       <TimelineRail />
 
       <section className="relative h-[380px] w-full overflow-hidden md:h-[460px]">
-        <img src={alliesAsset.url} alt="Equipo aliado de Parque Industrial Verde en una jornada operativa" className="h-full w-full object-cover" loading="lazy" />
+        <img src={alliesAsset.url} alt="Equipo aliado de Parque Industrial Verde en una jornada operativa" className="h-full w-full object-cover object-[center_25%]" loading="lazy" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(265deg, color-mix(in oklab, var(--brand-teal) 80%, transparent) 0%, color-mix(in oklab, var(--brand-ink) 40%, transparent) 70%, transparent 100%)" }} />
         <div className="absolute inset-0 mx-auto flex w-[min(1280px,calc(100%-2rem))] items-end justify-end pb-12 md:pb-16">
           <div className="max-w-md text-right">
