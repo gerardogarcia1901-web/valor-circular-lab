@@ -180,13 +180,13 @@ function SiteHeader() {
               : "bg-transparent",
           )}
         />
-        <Link to="/" className="shrink-0" aria-label="Parque Industrial Verde, ir al inicio">
+        <Link to="/" className="shrink-0 -my-6 md:-my-8 lg:-my-10" aria-label="Parque Industrial Verde, ir al inicio">
           <img
             src={logoAsset.url}
             alt="Parque Industrial Verde"
             className={cn(
-              "h-16 w-auto object-contain transition-all duration-500 md:h-20 lg:h-24",
-              scrolled ? "" : "drop-shadow-[0_2px_6px_rgba(0,0,0,0.55)]",
+              "h-24 w-auto object-contain transition-all duration-500 md:h-32 lg:h-40",
+              scrolled ? "" : "drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)]",
             )}
           />
         </Link>
