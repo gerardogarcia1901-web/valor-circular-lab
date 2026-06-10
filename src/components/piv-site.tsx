@@ -201,10 +201,10 @@ function SiteHeader() {
         </nav>
         <div className="flex items-center gap-2">
           <a href={whatsappHref} target="_blank" rel="noreferrer" className="hidden md:block">
-            <Button variant="headerCta" size="sm">Solicitar recolección</Button>
+            <Button variant="hero" size="sm">Solicitar recolección</Button>
           </a>
           <Link to="/contacto" className="lg:hidden">
-            <Button variant="headerCta" size="sm">Contacto</Button>
+            <Button variant="hero" size="sm">Contacto</Button>
           </Link>
         </div>
       </div>
