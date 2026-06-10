@@ -180,7 +180,7 @@ function SiteHeader() {
           )}
         />
         <Link to="/" className="shrink-0" aria-label="Parque Industrial Verde, ir al inicio">
-          <div className="flex flex-col leading-none">
+          <div className="flex flex-col leading-tight">
             <span
               className={cn(
                 "text-[0.72rem] font-extrabold uppercase tracking-[0.3em] transition-colors duration-500",
@@ -191,7 +191,7 @@ function SiteHeader() {
             </span>
             <span
               className={cn(
-                "text-xl font-black uppercase tracking-[0.12em] transition-colors duration-500 md:text-2xl",
+                "text-xl font-black uppercase tracking-[0.14em] transition-colors duration-500 md:text-2xl",
                 scrolled ? "text-[var(--brand-navy)]" : "text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.55)]",
               )}
             >
