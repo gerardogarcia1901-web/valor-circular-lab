@@ -1015,7 +1015,25 @@ export function RsePage() {
 export function ContactPage() {
   return (
     <PageShell>
-      <section className="pt-36 md:pt-44">
+      <section className="relative overflow-hidden pt-36 md:pt-44" style={{ background: "var(--gradient-accent)" }}>
+        <div className="absolute inset-0 opacity-30" style={{ background: "radial-gradient(circle at 20% 20%, var(--brand-lime) 0%, transparent 45%), radial-gradient(circle at 80% 80%, var(--brand-sky) 0%, transparent 50%)" }} />
+        <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] pb-12 md:pb-16">
+          <div data-reveal className="max-w-3xl space-y-5 text-white">
+            <p className="eyebrow eyebrow--light">Contacto</p>
+            <h1 className="text-balance text-5xl font-semibold tracking-tight md:text-7xl">
+              Hablemos de tu <span className="text-[var(--brand-lime)]">próxima ruta circular.</span>
+            </h1>
+            <p className="max-w-2xl text-lg leading-8 text-white/85">
+              Cotizaciones, recolecciones, campañas y alianzas. Te respondemos con una propuesta clara y operativa.
+            </p>
+            <div className="flex flex-wrap gap-3 pt-2">
+              <a href={whatsappHref} target="_blank" rel="noreferrer"><Button variant="hero" size="xl">WhatsApp</Button></a>
+              <a href={emailLink.href}><Button variant="heroSecondary" size="xl">Escribir correo</Button></a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="relative overflow-hidden py-16 md:py-24" style={{ background: "linear-gradient(180deg, var(--brand-sky) 0%, color-mix(in oklab, var(--brand-sky) 35%, white) 60%, white 100%)" }}>
         <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-8 lg:grid-cols-[0.95fr_1.05fr]">
           <ContactFormCard />
           <LocationsPanel />
@@ -1025,3 +1043,4 @@ export function ContactPage() {
     </PageShell>
   );
 }
+
