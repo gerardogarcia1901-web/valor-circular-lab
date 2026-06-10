@@ -655,28 +655,6 @@ export function HomePage() {
         </div>
       </Section>
 
-      <Section
-        eyebrow="Por qué confiar"
-        title="Confianza que se respalda con infraestructura, trazabilidad y permanencia."
-        description="Más de dos décadas de operación, procesos transparentes y liderazgo nacional convierten a PIV en un socio ambiental con capacidad de ejecución real."
-        className="bg-panel-subtle"
-      >
-        <div className="mt-14 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="grid gap-6">
-            {trustPillars.map((item) => (
-              <div key={item} data-reveal className="surface-panel flex items-start gap-4">
-                <ShieldCheck className="mt-1 h-5 w-5 text-primary" />
-                <p className="text-base leading-7 text-foreground">{item}</p>
-              </div>
-            ))}
-          </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {impactMetrics.map((metric) => (
-              <MetricCard key={metric.description} {...metric} />
-            ))}
-          </div>
-        </div>
-      </Section>
 
       <Section
         eyebrow="Servicios destacados"
