@@ -171,17 +171,22 @@ function SiteHeader() {
         scrolled ? "py-2" : "py-3",
       )}
     >
-      <div className="mx-auto flex w-[min(1280px,calc(100%-2rem))] items-center justify-between gap-4 rounded-full border border-white/10 px-4 py-2 md:px-6">
+      <div className="relative mx-auto flex w-[min(1280px,calc(100%-2rem))] items-center justify-between gap-4 rounded-2xl px-3 py-1.5 md:px-5">
         <div
           className={cn(
-            "absolute inset-0 -z-10 rounded-full transition-all duration-500",
+            "absolute inset-0 -z-10 rounded-2xl transition-all duration-500",
             scrolled
-              ? "bg-white/95 backdrop-blur-md shadow-[var(--shadow-elevated)]"
-              : "bg-black/25 backdrop-blur-md",
+              ? "bg-white/80 backdrop-blur-xl shadow-[var(--shadow-elevated)] border border-white/40"
+              : "bg-transparent",
           )}
         />
         <Link to="/" className="shrink-0" aria-label="Parque Industrial Verde, ir al inicio">
-          <img src={logoAsset.url} alt="Logo de Parque Industrial Verde" className="h-28 w-auto object-contain md:h-40" loading="eager" />
+          <img
+            src={logoAsset.url}
+            alt="Logo de Parque Industrial Verde"
+            className="h-12 w-auto object-contain md:h-16"
+            loading="eager"
+          />
         </Link>
         <nav className="hidden items-center gap-1 lg:flex">
           {navigation.map((item) => {
@@ -191,14 +196,14 @@ function SiteHeader() {
                 key={item.to}
                 to={item.to}
                 className={cn(
-                  "relative rounded-full px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.16em] transition-colors",
+                  "relative rounded-full px-3.5 py-2 text-[0.7rem] font-bold uppercase tracking-[0.16em] transition-colors",
                   scrolled
                     ? isActive
                       ? "bg-[var(--brand-navy)] text-white"
                       : "text-[var(--brand-navy)] hover:bg-[var(--brand-sky)]/50"
                     : isActive
                       ? "bg-[var(--brand-lime)] text-[var(--brand-ink)]"
-                      : "text-white hover:bg-white/15",
+                      : "text-white hover:bg-white/15 drop-shadow-[0_1px_2px_rgba(0,0,0,0.55)]",
                 )}
               >
                 {item.label}
