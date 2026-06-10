@@ -15,6 +15,7 @@ import communityAsset from "@/assets/piv-community.jpg.asset.json";
 import alliesAsset from "@/assets/piv-allies.jpg.asset.json";
 import kidsAsset from "@/assets/piv-kids.jpg.asset.json";
 import impactGraphicAsset from "@/assets/piv-impact-graphic.jpg.asset.json";
+import teamAsset from "@/assets/piv-team.png.asset.json";
 import {
   activeCampaigns,
   audience,
@@ -231,7 +232,7 @@ function SiteFooter() {
     <footer className="border-t border-border/70 bg-ink py-14 text-ink-foreground">
       <div className="mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-12 lg:grid-cols-[1fr_1fr_1fr] lg:items-start">
         <div className="space-y-4">
-          <img src={logoAsset.url} alt="Parque Industrial Verde" className="h-20 w-auto object-contain md:h-24" loading="lazy" />
+          <img src={logoAsset.url} alt="Parque Industrial Verde" className="h-32 w-auto object-contain md:h-40 lg:h-44" loading="lazy" />
           <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-ink-muted">
             {phoneLinks.map((item) => (
               <a key={item.href} href={item.href} className="story-link">{item.label}</a>
@@ -650,32 +651,10 @@ export function HomePage() {
       >
         <AudienceStrip />
         <div data-reveal className="mt-12">
-          <img src={communityAsset.url} alt="Familia y comunidad junto a materiales recuperados" className="image-tile h-80 w-full object-cover object-[center_55%] md:h-[28rem]" loading="lazy" />
+          <img src={communityAsset.url} alt="Familia y comunidad junto a materiales recuperados" className="image-tile h-auto max-h-[640px] w-full object-contain bg-[var(--brand-ink)]" loading="lazy" />
         </div>
       </Section>
 
-      <Section
-        eyebrow="Por qué confiar"
-        title="Confianza que se respalda con infraestructura, trazabilidad y permanencia."
-        description="Más de dos décadas de operación, procesos transparentes y liderazgo nacional convierten a PIV en un socio ambiental con capacidad de ejecución real."
-        className="bg-panel-subtle"
-      >
-        <div className="mt-14 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="grid gap-6">
-            {trustPillars.map((item) => (
-              <div key={item} data-reveal className="surface-panel flex items-start gap-4">
-                <ShieldCheck className="mt-1 h-5 w-5 text-primary" />
-                <p className="text-base leading-7 text-foreground">{item}</p>
-              </div>
-            ))}
-          </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {impactMetrics.map((metric) => (
-              <MetricCard key={metric.description} {...metric} />
-            ))}
-          </div>
-        </div>
-      </Section>
 
       <Section
         eyebrow="Servicios destacados"
@@ -694,7 +673,8 @@ export function HomePage() {
         </div>
       </section>
 
-      <EnterpriseCommunity />
+
+
 
 
       <Section
@@ -724,7 +704,7 @@ export function HomePage() {
       <TimelineRail />
 
       <section className="relative h-[380px] w-full overflow-hidden md:h-[460px]">
-        <img src={alliesAsset.url} alt="Equipo aliado de Parque Industrial Verde en una jornada operativa" className="h-full w-full object-cover object-[center_25%]" loading="lazy" />
+        <img src={teamAsset.url} alt="Equipo de Parque Industrial Verde en planta" className="h-full w-full object-cover object-[center_35%]" loading="lazy" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(265deg, color-mix(in oklab, var(--brand-teal) 80%, transparent) 0%, color-mix(in oklab, var(--brand-ink) 40%, transparent) 70%, transparent 100%)" }} />
         <div className="absolute inset-0 mx-auto flex w-[min(1280px,calc(100%-2rem))] items-end justify-end pb-12 md:pb-16">
           <div className="max-w-md text-right">
@@ -937,10 +917,31 @@ export function MaterialsPage() {
         <div className="mt-14 grid gap-5 md:grid-cols-3">
           {preparationSteps.map((step, i) => {
             const tones = ["bg-[var(--brand-teal)] text-white", "bg-[var(--brand-lime)] text-[var(--brand-ink)]", "bg-[var(--brand-navy)] text-white"];
+            const details = [
+              {
+                desc: "Enjuaga envases, latas y empaques para retirar restos de alimentos, bebidas o residuos orgánicos.",
+                tips: ["Sin residuos líquidos", "Sin restos de comida", "Sin grasa ni aceites"],
+              },
+              {
+                desc: "Deja escurrir y secar los materiales antes de almacenarlos para evitar contaminación y malos olores.",
+                tips: ["Bien escurridos", "Libres de humedad", "Listos para almacenar"],
+              },
+              {
+                desc: "Clasifica por tipo de material: plásticos, metales, papel y RAEE en bolsas o cajas independientes.",
+                tips: ["Por categoría", "Sin mezclar tipos", "Identificados"],
+              },
+            ];
+            const d = details[i];
             return (
               <article key={step} data-reveal className={cn("flex flex-col gap-4 rounded-3xl p-8 shadow-[var(--shadow-elevated)]", tones[i % tones.length])}>
                 <span className="text-xs font-bold uppercase tracking-[0.18em] opacity-75">Paso {i + 1}</span>
                 <p className="text-5xl font-bold tracking-tight">{step}</p>
+                <p className="text-sm leading-6 opacity-90">{d.desc}</p>
+                <ul className="mt-2 space-y-1.5 text-sm font-medium">
+                  {d.tips.map((t) => (
+                    <li key={t} className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-current opacity-80" />{t}</li>
+                  ))}
+                </ul>
               </article>
             );
           })}
@@ -1014,7 +1015,25 @@ export function RsePage() {
 export function ContactPage() {
   return (
     <PageShell>
-      <section className="pt-36 md:pt-44">
+      <section className="relative overflow-hidden pt-36 md:pt-44" style={{ background: "var(--gradient-accent)" }}>
+        <div className="absolute inset-0 opacity-30" style={{ background: "radial-gradient(circle at 20% 20%, var(--brand-lime) 0%, transparent 45%), radial-gradient(circle at 80% 80%, var(--brand-sky) 0%, transparent 50%)" }} />
+        <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] pb-12 md:pb-16">
+          <div data-reveal className="max-w-3xl space-y-5 text-white">
+            <p className="eyebrow eyebrow--light">Contacto</p>
+            <h1 className="text-balance text-5xl font-semibold tracking-tight md:text-7xl">
+              Hablemos de tu <span className="text-[var(--brand-lime)]">próxima ruta circular.</span>
+            </h1>
+            <p className="max-w-2xl text-lg leading-8 text-white/85">
+              Cotizaciones, recolecciones, campañas y alianzas. Te respondemos con una propuesta clara y operativa.
+            </p>
+            <div className="flex flex-wrap gap-3 pt-2">
+              <a href={whatsappHref} target="_blank" rel="noreferrer"><Button variant="hero" size="xl">WhatsApp</Button></a>
+              <a href={emailLink.href}><Button variant="heroSecondary" size="xl">Escribir correo</Button></a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="relative overflow-hidden py-16 md:py-24" style={{ background: "linear-gradient(180deg, var(--brand-sky) 0%, color-mix(in oklab, var(--brand-sky) 35%, white) 60%, white 100%)" }}>
         <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-8 lg:grid-cols-[0.95fr_1.05fr]">
           <ContactFormCard />
           <LocationsPanel />
@@ -1024,3 +1043,4 @@ export function ContactPage() {
     </PageShell>
   );
 }
+
