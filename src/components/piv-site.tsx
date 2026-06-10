@@ -180,12 +180,12 @@ function SiteHeader() {
               : "bg-transparent",
           )}
         />
-        <Link to="/" className="shrink-0 -my-6 md:-my-8 lg:-my-10" aria-label="Parque Industrial Verde, ir al inicio">
+        <Link to="/" className="shrink-0 -my-8 md:-my-10 lg:-my-12" aria-label="Parque Industrial Verde, ir al inicio">
           <img
             src={logoAsset.url}
             alt="Parque Industrial Verde"
             className={cn(
-              "h-24 w-auto object-contain transition-all duration-500 md:h-32 lg:h-40",
+              "h-28 w-auto object-contain transition-all duration-500 md:h-36 lg:h-44",
               scrolled ? "" : "drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)]",
             )}
           />
@@ -297,10 +297,16 @@ function MetricCard({ value, prefix, suffix, description }: { value: number; pre
   const { ref, value: liveValue } = useCountUp(value);
   return (
     <article ref={ref} data-reveal className="metric-card">
-      <div className="text-4xl font-semibold tracking-tight text-foreground md:text-6xl">
-        {prefix}
-        {formatMetric(liveValue)}
-        {suffix}
+      <div className="flex flex-col gap-1">
+        <span className="text-4xl font-semibold leading-none tracking-tight text-foreground md:text-5xl">
+          {prefix}
+          {formatMetric(liveValue)}
+        </span>
+        {suffix && (
+          <span className="text-base font-medium leading-tight tracking-tight text-foreground/80 md:text-lg">
+            {suffix.trim()}
+          </span>
+        )}
       </div>
       <p className="max-w-sm text-sm leading-7 text-muted-foreground">{description}</p>
     </article>
@@ -574,7 +580,7 @@ export function HomePage() {
           <img
             src={heroAsset.url}
             alt="Operación real de Parque Industrial Verde dentro de una planta de reciclaje"
-            className="h-full w-full object-cover object-[center_70%]"
+            className="h-full w-full object-cover object-[center_40%]"
             loading="eager"
           />
           <div className="hero-overlay" />
@@ -644,7 +650,7 @@ export function HomePage() {
       >
         <AudienceStrip />
         <div data-reveal className="mt-12">
-          <img src={communityAsset.url} alt="Familia y comunidad junto a materiales recuperados" className="image-tile h-72 w-full object-cover object-[center_30%] md:h-96" loading="lazy" />
+          <img src={communityAsset.url} alt="Familia y comunidad junto a materiales recuperados" className="image-tile h-80 w-full object-cover object-[center_55%] md:h-[28rem]" loading="lazy" />
         </div>
       </Section>
 
