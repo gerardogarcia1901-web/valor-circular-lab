@@ -377,7 +377,9 @@ function EnterpriseCommunity() {
         <article data-reveal className="editorial-panel editorial-panel--accent">
           <p className="eyebrow">Comunidad</p>
           <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl" style={{ color: "var(--brand-navy)" }}>Reciclar también transforma vidas.</h2>
-          <img src={kidsAsset.url} alt="Niños y comunidad participando en campañas de reciclaje" className="mt-6 h-56 w-full rounded-2xl object-cover shadow-[var(--shadow-elevated)]" loading="lazy" />
+          <p className="mt-4 text-base leading-7 text-[var(--brand-navy)]/80">
+            Activamos campañas, espacios y rutas para que comunidades, familias y empresas participen en una economía circular real.
+          </p>
           <div className="mt-6 grid gap-2 sm:grid-cols-2">
             {communityActions.map((item) => (
               <div key={item} className="list-line">{item}</div>
@@ -386,6 +388,14 @@ function EnterpriseCommunity() {
           <div className="mt-6 flex flex-wrap gap-2">
             {activeCampaigns.map((c) => (
               <span key={c} className="rounded-full bg-[var(--brand-navy)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-white">{c}</span>
+            ))}
+          </div>
+          <div className="mt-8 grid grid-cols-3 gap-3 border-t border-[var(--brand-navy)]/15 pt-6">
+            {["+50", "100%", "23"].map((v, i) => (
+              <div key={i} className="text-center">
+                <p className="text-2xl font-bold text-[var(--brand-navy)] md:text-3xl">{v}</p>
+                <p className="mt-1 text-[0.65rem] font-bold uppercase tracking-[0.14em] text-[var(--brand-navy)]/70">{["campañas activas", "trazabilidad", "años"][i]}</p>
+              </div>
             ))}
           </div>
         </article>
