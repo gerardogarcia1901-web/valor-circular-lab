@@ -651,7 +651,7 @@ export function HomePage() {
       >
         <AudienceStrip />
         <div data-reveal className="mt-12">
-          <img src={communityAsset.url} alt="Familia y comunidad junto a materiales recuperados" className="image-tile h-80 w-full object-cover object-[center_55%] md:h-[28rem]" loading="lazy" />
+          <img src={communityAsset.url} alt="Familia y comunidad junto a materiales recuperados" className="image-tile h-auto max-h-[640px] w-full object-contain bg-[var(--brand-ink)]" loading="lazy" />
         </div>
       </Section>
 
