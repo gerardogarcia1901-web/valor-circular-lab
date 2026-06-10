@@ -917,10 +917,31 @@ export function MaterialsPage() {
         <div className="mt-14 grid gap-5 md:grid-cols-3">
           {preparationSteps.map((step, i) => {
             const tones = ["bg-[var(--brand-teal)] text-white", "bg-[var(--brand-lime)] text-[var(--brand-ink)]", "bg-[var(--brand-navy)] text-white"];
+            const details = [
+              {
+                desc: "Enjuaga envases, latas y empaques para retirar restos de alimentos, bebidas o residuos orgánicos.",
+                tips: ["Sin residuos líquidos", "Sin restos de comida", "Sin grasa ni aceites"],
+              },
+              {
+                desc: "Deja escurrir y secar los materiales antes de almacenarlos para evitar contaminación y malos olores.",
+                tips: ["Bien escurridos", "Libres de humedad", "Listos para almacenar"],
+              },
+              {
+                desc: "Clasifica por tipo de material: plásticos, metales, papel y RAEE en bolsas o cajas independientes.",
+                tips: ["Por categoría", "Sin mezclar tipos", "Identificados"],
+              },
+            ];
+            const d = details[i];
             return (
               <article key={step} data-reveal className={cn("flex flex-col gap-4 rounded-3xl p-8 shadow-[var(--shadow-elevated)]", tones[i % tones.length])}>
                 <span className="text-xs font-bold uppercase tracking-[0.18em] opacity-75">Paso {i + 1}</span>
                 <p className="text-5xl font-bold tracking-tight">{step}</p>
+                <p className="text-sm leading-6 opacity-90">{d.desc}</p>
+                <ul className="mt-2 space-y-1.5 text-sm font-medium">
+                  {d.tips.map((t) => (
+                    <li key={t} className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-current opacity-80" />{t}</li>
+                  ))}
+                </ul>
               </article>
             );
           })}
