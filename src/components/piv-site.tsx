@@ -230,24 +230,27 @@ function SiteHeader() {
 function SiteFooter() {
   return (
     <footer className="border-t border-border/70 bg-ink py-14 text-ink-foreground">
-      <div className="mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-12 lg:grid-cols-[1fr_1fr_1fr] lg:items-start">
+      <div className="mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-10 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1.2fr_1fr] lg:items-start">
         <div className="space-y-4">
           <img src={logoAsset.url} alt="Parque Industrial Verde" className="h-32 w-auto object-contain md:h-40 lg:h-44" loading="lazy" />
-          <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-ink-muted">
-            {phoneLinks.map((item) => (
-              <a key={item.href} href={item.href} className="story-link">{item.label}</a>
-            ))}
-          </div>
-          <a href={emailLink.href} className="story-link block text-sm text-ink-muted">{emailLink.label}</a>
         </div>
         <div className="space-y-4">
           <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Navegación</p>
-          <div className="grid grid-cols-2 gap-2 text-[0.78rem]">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-[0.78rem]">
             {navigation.map((item) => (
               <Link key={item.to} to={item.to} className="story-link w-fit font-bold uppercase tracking-[0.14em] text-ink-foreground">
                 {item.label}
               </Link>
             ))}
+          </div>
+        </div>
+        <div className="space-y-4">
+          <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Contacto</p>
+          <div className="flex flex-col gap-2 text-sm text-ink-muted">
+            {phoneLinks.map((item) => (
+              <a key={item.href} href={item.href} className="story-link w-fit">{item.label}</a>
+            ))}
+            <a href={emailLink.href} className="story-link w-fit break-all">{emailLink.label}</a>
           </div>
         </div>
         <div className="space-y-4">
@@ -665,7 +668,7 @@ export function HomePage() {
       </Section>
 
       <section className="relative h-[420px] w-full overflow-hidden md:h-[520px]">
-        <img src={beachAsset.url} alt="Jornada de recuperación de materiales en zona costera de El Salvador" className="h-full w-full object-cover object-[center_35%]" loading="lazy" />
+        <img src={beachAsset.url} alt="Jornada de recuperación de materiales en zona costera de El Salvador" className="h-full w-full object-cover object-[center_65%]" loading="lazy" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(110deg, color-mix(in oklab, var(--brand-navy) 80%, transparent) 0%, color-mix(in oklab, var(--brand-navy) 20%, transparent) 60%, transparent 100%)" }} />
         <div className="absolute inset-0 mx-auto flex w-[min(1280px,calc(100%-2rem))] flex-col justify-end pb-12 md:pb-16">
           <p className="eyebrow eyebrow--light">Territorio</p>
@@ -704,7 +707,7 @@ export function HomePage() {
       <TimelineRail />
 
       <section className="relative h-[380px] w-full overflow-hidden md:h-[460px]">
-        <img src={teamAsset.url} alt="Equipo de Parque Industrial Verde en planta" className="h-full w-full object-cover object-[center_35%]" loading="lazy" />
+        <img src={teamAsset.url} alt="Equipo de Parque Industrial Verde en planta" className="h-full w-full object-cover object-[center_top]" loading="lazy" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(265deg, color-mix(in oklab, var(--brand-teal) 80%, transparent) 0%, color-mix(in oklab, var(--brand-ink) 40%, transparent) 70%, transparent 100%)" }} />
         <div className="absolute inset-0 mx-auto flex w-[min(1280px,calc(100%-2rem))] items-end justify-end pb-12 md:pb-16">
           <div className="max-w-md text-right">
