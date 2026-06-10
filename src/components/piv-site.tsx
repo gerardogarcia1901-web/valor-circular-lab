@@ -633,10 +633,58 @@ export function HomePage() {
       <TimelineRail />
       <FAQSection />
 
-      <section className="border-t border-border/70 bg-panel-subtle py-20 md:py-28">
-        <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-          <ContactFormCard />
-          <LocationsPanel />
+      <section className="relative overflow-hidden py-20 md:py-28" style={{ background: "var(--gradient-accent)" }}>
+        <div className="absolute inset-0 opacity-30" style={{ background: "radial-gradient(circle at 20% 20%, var(--brand-lime) 0%, transparent 45%), radial-gradient(circle at 80% 80%, var(--brand-sky) 0%, transparent 50%)" }} />
+        <div className="relative mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div data-reveal className="space-y-6 text-white">
+            <p className="eyebrow eyebrow--light">Hablemos</p>
+            <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl">
+              Diseñemos la ruta circular de tu operación.
+            </h2>
+            <p className="max-w-xl text-lg leading-8 text-white/85">
+              Conversemos sobre recolecciones, certificados de destrucción, campañas o trazabilidad. Te respondemos rápido.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <a href={whatsappHref} target="_blank" rel="noreferrer">
+                <Button variant="hero" size="xl">Escribir por WhatsApp</Button>
+              </a>
+              <Link to="/contacto">
+                <Button variant="heroSecondary" size="xl">Ir a contacto</Button>
+              </Link>
+            </div>
+          </div>
+          <div data-reveal className="grid gap-4">
+            <div className="rounded-3xl border border-white/15 bg-white/8 p-6 backdrop-blur-md">
+              <p className="eyebrow eyebrow--light">Sucursales</p>
+              <div className="mt-4 grid gap-3 text-white/90">
+                {locations.map((location) => (
+                  <div key={location.name} className="flex items-start gap-3 border-b border-white/10 pb-3 last:border-none last:pb-0">
+                    <MapPinned className="mt-1 h-4 w-4 text-[var(--brand-lime)]" />
+                    <div>
+                      <p className="text-base font-semibold">{location.name}</p>
+                      <p className="text-sm leading-6 text-white/70">{location.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div className="rounded-2xl bg-[var(--brand-lime)] p-5 text-[var(--brand-ink)]">
+                <Phone className="h-5 w-5" />
+                <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em]">Teléfonos</p>
+                <div className="mt-2 grid gap-1 text-sm font-semibold">
+                  {phoneLinks.map((item) => (
+                    <a key={item.href} href={item.href} className="story-link">{item.label}</a>
+                  ))}
+                </div>
+              </div>
+              <div className="rounded-2xl bg-[var(--brand-sky)] p-5 text-[var(--brand-navy)]">
+                <Clock3 className="h-5 w-5" />
+                <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em]">Horario</p>
+                <p className="mt-2 text-sm font-semibold leading-6">Lun a Vie · 8:00 a.m. – 5:00 p.m.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </PageShell>
