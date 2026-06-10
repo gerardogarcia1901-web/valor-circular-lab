@@ -332,12 +332,28 @@ function AudienceStrip() {
 }
 
 function ServicesGrid() {
+  const palette = [
+    "bg-gradient-to-br from-[var(--brand-teal)] to-[var(--brand-navy)] text-white",
+    "bg-[var(--brand-lime)] text-[var(--brand-ink)]",
+    "bg-[var(--brand-sky)] text-[var(--brand-navy)]",
+    "bg-white text-[var(--brand-ink)] border border-[var(--brand-navy)]/15",
+  ];
   return (
-    <div className="mt-14 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
-      {featuredServices.map((service) => (
-        <article key={service} data-reveal className="service-card">
-          <p className="text-base font-medium text-foreground">{service}</p>
-          <MoveRight className="h-4 w-4 text-primary" />
+    <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+      {featuredServices.map((service, i) => (
+        <article
+          key={service.title}
+          data-reveal
+          className={cn(
+            "group flex flex-col justify-between gap-6 rounded-3xl p-6 shadow-[var(--shadow-elevated)] transition-transform duration-300 hover:-translate-y-1",
+            palette[i % palette.length],
+          )}
+        >
+          <div className="space-y-3">
+            <p className="text-lg font-bold tracking-tight md:text-xl">{service.title}</p>
+            <p className="text-sm leading-6 opacity-85">{service.description}</p>
+          </div>
+          <MoveRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
         </article>
       ))}
     </div>
@@ -369,10 +385,6 @@ function EnterpriseCommunity() {
             {communityActions.map((item) => (
               <div key={item} className="list-line">{item}</div>
             ))}
-          </div>
-          <div className="mt-10 grid gap-4 md:grid-cols-2">
-            <img src={communityAsset.url} alt="Familia y comunidad junto a materiales recuperados durante una jornada de reciclaje" className="image-tile" loading="lazy" />
-            <img src={kidsAsset.url} alt="Niños participando en recuperación de plásticos dentro de un programa comunitario" className="image-tile" loading="lazy" />
           </div>
         </article>
       </div>
