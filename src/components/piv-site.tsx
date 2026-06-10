@@ -171,17 +171,22 @@ function SiteHeader() {
         scrolled ? "py-2" : "py-3",
       )}
     >
-      <div className="mx-auto flex w-[min(1280px,calc(100%-2rem))] items-center justify-between gap-4 rounded-full border border-white/10 px-4 py-2 md:px-6">
+      <div className="relative mx-auto flex w-[min(1280px,calc(100%-2rem))] items-center justify-between gap-4 rounded-2xl px-3 py-1.5 md:px-5">
         <div
           className={cn(
-            "absolute inset-0 -z-10 rounded-full transition-all duration-500",
+            "absolute inset-0 -z-10 rounded-2xl transition-all duration-500",
             scrolled
-              ? "bg-white/95 backdrop-blur-md shadow-[var(--shadow-elevated)]"
-              : "bg-black/25 backdrop-blur-md",
+              ? "bg-white/80 backdrop-blur-xl shadow-[var(--shadow-elevated)] border border-white/40"
+              : "bg-transparent",
           )}
         />
         <Link to="/" className="shrink-0" aria-label="Parque Industrial Verde, ir al inicio">
-          <img src={logoAsset.url} alt="Logo de Parque Industrial Verde" className="h-28 w-auto object-contain md:h-40" loading="eager" />
+          <img
+            src={logoAsset.url}
+            alt="Logo de Parque Industrial Verde"
+            className="h-12 w-auto object-contain md:h-16"
+            loading="eager"
+          />
         </Link>
         <nav className="hidden items-center gap-1 lg:flex">
           {navigation.map((item) => {
@@ -191,14 +196,14 @@ function SiteHeader() {
                 key={item.to}
                 to={item.to}
                 className={cn(
-                  "relative rounded-full px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.16em] transition-colors",
+                  "relative rounded-full px-3.5 py-2 text-[0.7rem] font-bold uppercase tracking-[0.16em] transition-colors",
                   scrolled
                     ? isActive
                       ? "bg-[var(--brand-navy)] text-white"
                       : "text-[var(--brand-navy)] hover:bg-[var(--brand-sky)]/50"
                     : isActive
                       ? "bg-[var(--brand-lime)] text-[var(--brand-ink)]"
-                      : "text-white hover:bg-white/15",
+                      : "text-white hover:bg-white/15 drop-shadow-[0_1px_2px_rgba(0,0,0,0.55)]",
                 )}
               >
                 {item.label}
@@ -564,8 +569,18 @@ export function HomePage() {
     <PageShell>
       <section className="relative min-h-screen overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroAsset.url} alt="Operación real de Parque Industrial Verde dentro de una planta de reciclaje" className="h-full w-full object-cover object-center" loading="eager" />
+          <img
+            src={heroAsset.url}
+            alt="Operación real de Parque Industrial Verde dentro de una planta de reciclaje"
+            className="h-full w-full object-cover object-[center_70%]"
+            loading="eager"
+          />
           <div className="hero-overlay" />
+          <div
+            aria-hidden
+            className="absolute inset-x-0 top-0 h-44 md:h-56"
+            style={{ background: "linear-gradient(to bottom, rgba(13,13,13,0.75) 0%, rgba(13,13,13,0.35) 55%, transparent 100%)" }}
+          />
         </div>
         <div className="relative mx-auto flex min-h-screen w-[min(1280px,calc(100%-2rem))] items-end pb-12 pt-32 md:pb-20">
           <div className="grid w-full gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
@@ -627,7 +642,7 @@ export function HomePage() {
       >
         <AudienceStrip />
         <div data-reveal className="mt-12">
-          <img src={communityAsset.url} alt="Familia y comunidad junto a materiales recuperados" className="image-tile h-72 w-full object-cover md:h-96" loading="lazy" />
+          <img src={communityAsset.url} alt="Familia y comunidad junto a materiales recuperados" className="image-tile h-72 w-full object-cover object-[center_30%] md:h-96" loading="lazy" />
         </div>
       </Section>
 
@@ -663,7 +678,7 @@ export function HomePage() {
       </Section>
 
       <section className="relative h-[420px] w-full overflow-hidden md:h-[520px]">
-        <img src={beachAsset.url} alt="Jornada de recuperación de materiales en zona costera de El Salvador" className="h-full w-full object-cover" loading="lazy" />
+        <img src={beachAsset.url} alt="Jornada de recuperación de materiales en zona costera de El Salvador" className="h-full w-full object-cover object-[center_35%]" loading="lazy" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(110deg, color-mix(in oklab, var(--brand-navy) 80%, transparent) 0%, color-mix(in oklab, var(--brand-navy) 20%, transparent) 60%, transparent 100%)" }} />
         <div className="absolute inset-0 mx-auto flex w-[min(1280px,calc(100%-2rem))] flex-col justify-end pb-12 md:pb-16">
           <p className="eyebrow eyebrow--light">Territorio</p>
@@ -701,7 +716,7 @@ export function HomePage() {
       <TimelineRail />
 
       <section className="relative h-[380px] w-full overflow-hidden md:h-[460px]">
-        <img src={alliesAsset.url} alt="Equipo aliado de Parque Industrial Verde en una jornada operativa" className="h-full w-full object-cover" loading="lazy" />
+        <img src={alliesAsset.url} alt="Equipo aliado de Parque Industrial Verde en una jornada operativa" className="h-full w-full object-cover object-[center_25%]" loading="lazy" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(265deg, color-mix(in oklab, var(--brand-teal) 80%, transparent) 0%, color-mix(in oklab, var(--brand-ink) 40%, transparent) 70%, transparent 100%)" }} />
         <div className="absolute inset-0 mx-auto flex w-[min(1280px,calc(100%-2rem))] items-end justify-end pb-12 md:pb-16">
           <div className="max-w-md text-right">
@@ -762,7 +777,7 @@ export function AboutPage() {
         </div>
       </section>
       <div data-reveal className="mx-auto -mt-10 w-[min(1280px,calc(100%-2rem))] md:-mt-14">
-        <img src={heroAboutAsset.url} alt="Operación real de Parque Industrial Verde, vista panorámica de planta" className="image-tile h-[260px] w-full object-cover md:h-[420px]" loading="eager" />
+        <img src={heroAboutAsset.url} alt="Operación real de Parque Industrial Verde, vista panorámica de planta" className="image-tile h-[260px] w-full object-cover object-[center_30%] md:h-[420px]" loading="eager" />
       </div>
       <TimelineRail />
       <Section
@@ -787,17 +802,24 @@ export function AboutPage() {
         description="En 2025 superamos los 75 millones de libras recuperadas, equivalentes a múltiples campos de fútbol llenos de material reincorporado a la economía."
         className="bg-panel-subtle"
       >
-        <div className="mt-12 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <div data-reveal className="surface-panel overflow-hidden p-0">
-            <img src={impactGraphicAsset.url} alt="Visual de impacto con equivalencias de material recuperado" className="h-full w-full rounded-[1.75rem] object-cover" loading="lazy" />
-          </div>
-          <div className="grid gap-4">
-            {impactMetrics.map((metric) => (
-              <MetricCard key={metric.description} {...metric} />
-            ))}
-          </div>
+        <div className="mt-12 grid gap-4 md:grid-cols-3">
+          {impactMetrics.map((metric) => (
+            <MetricCard key={metric.description} {...metric} />
+          ))}
         </div>
       </Section>
+      <section className="bg-panel-subtle pb-20 md:pb-28">
+        <div data-reveal className="mx-auto w-[min(1280px,calc(100%-2rem))]">
+          <div className="overflow-hidden rounded-[1.75rem] bg-white shadow-[var(--shadow-elevated)]">
+            <img
+              src={impactGraphicAsset.url}
+              alt="Visual de impacto con equivalencias de material recuperado en 2025"
+              className="block h-auto w-full object-contain"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
       <Section
         eyebrow="Confianza"
         title="El liderazgo se construye con capacidad real de respuesta."
