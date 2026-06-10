@@ -5,7 +5,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import logoAsset from "@/assets/piv-logo.png.asset.json";
-import heroAsset from "@/assets/piv-hero.jpg.asset.json";
+import heroAsset from "@/assets/piv-hero-v2.png.asset.json";
+import kidsHeroAsset from "@/assets/piv-kids-v2.png.asset.json";
 import operationsAsset from "@/assets/piv-operations.jpg.asset.json";
 import metalsAsset from "@/assets/piv-metals.jpg.asset.json";
 import beachAsset from "@/assets/piv-beach.jpg.asset.json";
