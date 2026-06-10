@@ -172,38 +172,47 @@ function SiteHeader() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
-        scrolled ? "py-3" : "py-5",
+        scrolled ? "py-2" : "py-3",
       )}
     >
-      <div className="mx-auto flex w-[min(1280px,calc(100%-2rem))] items-center justify-between gap-4 rounded-full border border-white/10 px-4 py-3 md:px-6">
+      <div className="mx-auto flex w-[min(1280px,calc(100%-2rem))] items-center justify-between gap-4 rounded-full border border-white/10 px-4 py-2 md:px-6">
         <div
           className={cn(
             "absolute inset-0 -z-10 rounded-full transition-all duration-500",
             scrolled
-              ? "bg-panel/80 backdrop-blur-md shadow-[var(--shadow-elevated)]"
-              : "bg-transparent backdrop-blur-0",
+              ? "bg-white/95 backdrop-blur-md shadow-[var(--shadow-elevated)]"
+              : "bg-black/25 backdrop-blur-md",
           )}
         />
         <Link to="/" className="shrink-0" aria-label="Parque Industrial Verde, ir al inicio">
-          <img src={logoAsset.url} alt="Logo de Parque Industrial Verde" className="h-14 w-auto object-contain md:h-16" loading="eager" />
+          <img src={logoAsset.url} alt="Logo de Parque Industrial Verde" className="h-20 w-auto object-contain md:h-28" loading="eager" />
         </Link>
-        <nav className="hidden items-center gap-6 lg:flex">
-          {navigation.map((item) => (
-            <Link
-              key={item.to}
-              to={item.to}
-              className={cn(
-                "nav-link",
-                pathname === item.to && "text-foreground",
-              )}
-            >
-              {item.label}
-            </Link>
-          ))}
+        <nav className="hidden items-center gap-1 lg:flex">
+          {navigation.map((item) => {
+            const isActive = pathname === item.to;
+            return (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={cn(
+                  "relative rounded-full px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.16em] transition-colors",
+                  scrolled
+                    ? isActive
+                      ? "bg-[var(--brand-navy)] text-white"
+                      : "text-[var(--brand-navy)] hover:bg-[var(--brand-sky)]/50"
+                    : isActive
+                      ? "bg-[var(--brand-lime)] text-[var(--brand-ink)]"
+                      : "text-white hover:bg-white/15",
+                )}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
         <div className="flex items-center gap-2">
           <a href={whatsappHref} target="_blank" rel="noreferrer" className="hidden md:block">
-            <Button variant="hero" size="sm">Solicitar recolección</Button>
+            <Button variant="hero" size="sm">Cotizar</Button>
           </a>
           <Link to="/contacto" className="lg:hidden">
             <Button variant="hero" size="sm">Contacto</Button>
