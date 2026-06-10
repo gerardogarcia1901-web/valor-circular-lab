@@ -817,18 +817,30 @@ export function ServicesPage() {
 }
 
 export function MaterialsPage() {
+  const groupTones = [
+    { card: "bg-gradient-to-br from-[var(--brand-teal)] to-[var(--brand-navy)] text-white", pill: "bg-white/15 text-white border border-white/20" },
+    { card: "bg-[var(--brand-lime)] text-[var(--brand-ink)]", pill: "bg-[var(--brand-ink)] text-[var(--brand-lime)]" },
+    { card: "bg-[var(--brand-sky)] text-[var(--brand-navy)]", pill: "bg-[var(--brand-navy)] text-white" },
+    { card: "bg-[var(--brand-ink)] text-white", pill: "bg-[var(--brand-lime)] text-[var(--brand-ink)]" },
+  ];
   return (
     <PageShell>
-      <section className="pt-36 md:pt-44">
-        <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <div data-reveal className="space-y-6">
-            <p className="eyebrow">Materiales</p>
-            <h1 className="text-balance text-5xl font-semibold tracking-tight md:text-7xl">Cada material recuperado representa un recurso que vuelve a la economía.</h1>
-            <p className="max-w-2xl text-lg leading-8 text-muted-foreground">
-              Clasificamos materiales según tipología, condición y ruta de valorización. Cuando corresponde, también gestionamos disposición responsable por cobro.
+      <section className="relative overflow-hidden pt-36 md:pt-44" style={{ background: "var(--gradient-accent)" }}>
+        <div className="absolute inset-0 opacity-30" style={{ background: "radial-gradient(circle at 80% 20%, var(--brand-lime) 0%, transparent 45%), radial-gradient(circle at 20% 80%, var(--brand-sky) 0%, transparent 50%)" }} />
+        <div className="relative mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-10 pb-16 md:pb-24 lg:grid-cols-[1fr_1fr] lg:items-end">
+          <div data-reveal className="space-y-6 text-white">
+            <p className="eyebrow eyebrow--light">Materiales</p>
+            <h1 className="text-balance text-5xl font-semibold tracking-tight md:text-7xl">
+              Cada material recuperado <span className="text-[var(--brand-lime)]">vuelve a la economía.</span>
+            </h1>
+            <p className="max-w-xl text-base leading-7 text-white/85">
+              Clasificamos materiales según tipología, condición y ruta de valorización. Cuando corresponde, gestionamos disposición responsable por cobro.
             </p>
+            <div className="flex flex-wrap gap-3 pt-2">
+              <a href={whatsappHref} target="_blank" rel="noreferrer"><Button variant="hero" size="xl">Cotizar</Button></a>
+            </div>
           </div>
-          <img data-reveal src={metalsAsset.url} alt="Clasificación de latas y materiales metálicos dentro de un proceso industrial" className="image-tile h-[520px]" loading="eager" />
+          <img data-reveal src={metalsAsset.url} alt="Clasificación de latas y materiales metálicos" className="image-tile h-[460px] md:h-[520px]" loading="eager" />
         </div>
       </section>
       <Section
@@ -837,16 +849,19 @@ export function MaterialsPage() {
         description="Agrupamos materiales para facilitar su recolección, clasificación y reincorporación a la cadena productiva."
       >
         <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {materialGroups.map((group) => (
-            <article key={group.title} data-reveal className="surface-panel">
-              <h2 className="text-2xl font-semibold tracking-tight">{group.title}</h2>
-              <div className="mt-6 flex flex-wrap gap-2">
-                {group.items.map((item) => (
-                  <span key={item} className="material-pill">{item}</span>
-                ))}
-              </div>
-            </article>
-          ))}
+          {materialGroups.map((group, i) => {
+            const t = groupTones[i % groupTones.length];
+            return (
+              <article key={group.title} data-reveal className={cn("rounded-3xl p-7 shadow-[var(--shadow-elevated)] transition-transform duration-300 hover:-translate-y-1", t.card)}>
+                <h2 className="text-3xl font-bold tracking-tight">{group.title}</h2>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <span key={item} className={cn("rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-[0.08em]", t.pill)}>{item}</span>
+                  ))}
+                </div>
+              </article>
+            );
+          })}
         </div>
       </Section>
       <Section
@@ -855,18 +870,22 @@ export function MaterialsPage() {
         description="Preparar correctamente los materiales mejora la clasificación, reduce rechazos y acelera el aprovechamiento."
         className="bg-panel-subtle"
       >
-        <div className="mt-14 grid gap-4 md:grid-cols-3">
-          {preparationSteps.map((step) => (
-            <article key={step} data-reveal className="editorial-panel">
-              <p className="text-3xl font-semibold tracking-tight">{step}</p>
-            </article>
-          ))}
+        <div className="mt-14 grid gap-5 md:grid-cols-3">
+          {preparationSteps.map((step, i) => {
+            const tones = ["bg-[var(--brand-teal)] text-white", "bg-[var(--brand-lime)] text-[var(--brand-ink)]", "bg-[var(--brand-navy)] text-white"];
+            return (
+              <article key={step} data-reveal className={cn("flex flex-col gap-4 rounded-3xl p-8 shadow-[var(--shadow-elevated)]", tones[i % tones.length])}>
+                <span className="text-xs font-bold uppercase tracking-[0.18em] opacity-75">Paso {i + 1}</span>
+                <p className="text-5xl font-bold tracking-tight">{step}</p>
+              </article>
+            );
+          })}
         </div>
-        <div className="mt-8 surface-panel" data-reveal>
-          <p className="eyebrow">Disposición responsable por cobro</p>
-          <div className="mt-5 grid gap-3">
+        <div className="mt-10 rounded-3xl bg-[var(--brand-ink)] p-8 text-white shadow-[var(--shadow-elevated)]" data-reveal>
+          <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Disposición responsable por cobro</p>
+          <div className="mt-5 grid gap-3 md:grid-cols-3">
             {disposalMaterials.map((item) => (
-              <div key={item} className="list-line">{item}</div>
+              <div key={item} className="rounded-2xl bg-white/5 p-4 text-sm leading-6 text-white/90">{item}</div>
             ))}
           </div>
         </div>
