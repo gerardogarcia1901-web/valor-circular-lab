@@ -181,12 +181,24 @@ function SiteHeader() {
           )}
         />
         <Link to="/" className="shrink-0" aria-label="Parque Industrial Verde, ir al inicio">
-          <img
-            src={logoAsset.url}
-            alt="Logo de Parque Industrial Verde"
-            className="h-12 w-auto object-contain md:h-16"
-            loading="eager"
-          />
+          <div className="flex flex-col leading-none">
+            <span
+              className={cn(
+                "text-[0.72rem] font-extrabold uppercase tracking-[0.3em] transition-colors duration-500",
+                scrolled ? "text-[var(--brand-navy)]" : "text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.55)]",
+              )}
+            >
+              Parque Industrial
+            </span>
+            <span
+              className={cn(
+                "text-xl font-black uppercase tracking-[0.12em] transition-colors duration-500 md:text-2xl",
+                scrolled ? "text-[var(--brand-navy)]" : "text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.55)]",
+              )}
+            >
+              Verde
+            </span>
+          </div>
         </Link>
         <nav className="hidden items-center gap-1 lg:flex">
           {navigation.map((item) => {
