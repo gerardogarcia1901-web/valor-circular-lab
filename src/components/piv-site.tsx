@@ -115,7 +115,8 @@ function useCountUp(target: number) {
   useEffect(() => {
     if (!ref.current || typeof window === "undefined") return;
     const state = { value: 0 };
-    const tween = gsap.to(state, {
+    let tween: gsap.core.Tween;
+    tween = gsap.to(state, {
       value: target,
       duration: 1.8,
       ease: "power2.out",
@@ -125,7 +126,7 @@ function useCountUp(target: number) {
         trigger: ref.current,
         start: "top 85%",
         once: true,
-        onEnter: () => tween.play(),
+        onEnter: () => tween && tween.play(),
       },
     });
 
