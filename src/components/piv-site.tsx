@@ -297,10 +297,16 @@ function MetricCard({ value, prefix, suffix, description }: { value: number; pre
   const { ref, value: liveValue } = useCountUp(value);
   return (
     <article ref={ref} data-reveal className="metric-card">
-      <div className="text-4xl font-semibold tracking-tight text-foreground md:text-6xl">
-        {prefix}
-        {formatMetric(liveValue)}
-        {suffix}
+      <div className="flex flex-col gap-1">
+        <span className="text-4xl font-semibold leading-none tracking-tight text-foreground md:text-5xl">
+          {prefix}
+          {formatMetric(liveValue)}
+        </span>
+        {suffix && (
+          <span className="text-base font-medium leading-tight tracking-tight text-foreground/80 md:text-lg">
+            {suffix.trim()}
+          </span>
+        )}
       </div>
       <p className="max-w-sm text-sm leading-7 text-muted-foreground">{description}</p>
     </article>
