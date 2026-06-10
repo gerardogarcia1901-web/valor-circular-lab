@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import heroAsset from "@/assets/piv-hero-v3.png.asset.json";
 import heroAboutAsset from "@/assets/piv-hero-v2.png.asset.json";
+import logoAsset from "@/assets/piv-logo.png.asset.json";
 
 import operationsAsset from "@/assets/piv-operations.jpg.asset.json";
 import metalsAsset from "@/assets/piv-metals.jpg.asset.json";
@@ -180,24 +181,14 @@ function SiteHeader() {
           )}
         />
         <Link to="/" className="shrink-0" aria-label="Parque Industrial Verde, ir al inicio">
-          <div className="flex flex-col leading-tight">
-            <span
-              className={cn(
-                "text-[0.72rem] font-extrabold uppercase tracking-[0.3em] transition-colors duration-500",
-                scrolled ? "text-[var(--brand-navy)]" : "text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.55)]",
-              )}
-            >
-              Parque Industrial
-            </span>
-            <span
-              className={cn(
-                "text-xl font-black uppercase tracking-[0.14em] transition-colors duration-500 md:text-2xl",
-                scrolled ? "text-[var(--brand-navy)]" : "text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.55)]",
-              )}
-            >
-              Verde
-            </span>
-          </div>
+          <img
+            src={logoAsset.url}
+            alt="Parque Industrial Verde"
+            className={cn(
+              "h-12 w-auto object-contain transition-all duration-500 md:h-14",
+              scrolled ? "" : "drop-shadow-[0_2px_6px_rgba(0,0,0,0.55)]",
+            )}
+          />
         </Link>
         <nav className="hidden items-center gap-1 lg:flex">
           {navigation.map((item) => {
@@ -240,10 +231,7 @@ function SiteFooter() {
     <footer className="border-t border-border/70 bg-ink py-14 text-ink-foreground">
       <div className="mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-12 lg:grid-cols-[1fr_1fr_1fr] lg:items-start">
         <div className="space-y-4">
-          <div className="flex flex-col leading-none">
-            <span className="text-[0.7rem] font-extrabold uppercase tracking-[0.3em] text-white/80">Parque Industrial</span>
-            <span className="text-2xl font-black uppercase tracking-[0.12em] text-white">Verde</span>
-          </div>
+          <img src={logoAsset.url} alt="Parque Industrial Verde" className="h-20 w-auto object-contain md:h-24" loading="lazy" />
           <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-ink-muted">
             {phoneLinks.map((item) => (
               <a key={item.href} href={item.href} className="story-link">{item.label}</a>
