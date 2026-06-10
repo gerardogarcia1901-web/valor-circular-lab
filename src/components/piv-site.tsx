@@ -53,11 +53,6 @@ const navigation = [
   { label: "Contacto", to: "/contacto" },
 ] as const;
 
-const heroStats = [
-  "+23 años",
-  "+1,000 millones de libras recuperadas",
-  "3 sucursales",
-];
 
 function usePremiumMotion(scopeRef: React.RefObject<HTMLElement | null>) {
   useEffect(() => {
