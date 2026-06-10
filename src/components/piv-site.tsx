@@ -5,7 +5,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import logoAsset from "@/assets/piv-logo.png.asset.json";
-import heroAsset from "@/assets/piv-hero-v2.png.asset.json";
+import heroAsset from "@/assets/piv-hero-v3.png.asset.json";
+import heroAboutAsset from "@/assets/piv-hero-v2.png.asset.json";
 
 import operationsAsset from "@/assets/piv-operations.jpg.asset.json";
 import metalsAsset from "@/assets/piv-metals.jpg.asset.json";
@@ -180,7 +181,7 @@ function SiteHeader() {
           )}
         />
         <Link to="/" className="shrink-0" aria-label="Parque Industrial Verde, ir al inicio">
-          <img src={logoAsset.url} alt="Logo de Parque Industrial Verde" className="h-20 w-auto object-contain md:h-28" loading="eager" />
+          <img src={logoAsset.url} alt="Logo de Parque Industrial Verde" className="h-10 w-auto object-contain md:h-14" loading="eager" />
         </Link>
         <nav className="hidden items-center gap-1 lg:flex">
           {navigation.map((item) => {
@@ -223,7 +224,7 @@ function SiteFooter() {
     <footer className="border-t border-border/70 bg-ink py-14 text-ink-foreground">
       <div className="mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-12 lg:grid-cols-[1fr_1fr_1fr] lg:items-start">
         <div className="space-y-4">
-          <img src={logoAsset.url} alt="Logo de Parque Industrial Verde" className="h-20 w-auto object-contain" loading="lazy" />
+          <img src={logoAsset.url} alt="Logo de Parque Industrial Verde" className="h-12 w-auto object-contain" loading="lazy" />
           <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-ink-muted">
             {phoneLinks.map((item) => (
               <a key={item.href} href={item.href} className="story-link">{item.label}</a>
@@ -375,10 +376,16 @@ function EnterpriseCommunity() {
         </article>
         <article data-reveal className="editorial-panel editorial-panel--accent">
           <p className="eyebrow">Comunidad</p>
-          <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-5xl" style={{ color: "var(--brand-navy)" }}>Reciclar también transforma vidas.</h2>
-          <div className="mt-8 grid gap-3">
+          <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl" style={{ color: "var(--brand-navy)" }}>Reciclar también transforma vidas.</h2>
+          <img src={kidsAsset.url} alt="Niños y comunidad participando en campañas de reciclaje" className="mt-6 h-56 w-full rounded-2xl object-cover shadow-[var(--shadow-elevated)]" loading="lazy" />
+          <div className="mt-6 grid gap-2 sm:grid-cols-2">
             {communityActions.map((item) => (
               <div key={item} className="list-line">{item}</div>
+            ))}
+          </div>
+          <div className="mt-6 flex flex-wrap gap-2">
+            {activeCampaigns.map((c) => (
+              <span key={c} className="rounded-full bg-[var(--brand-navy)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-white">{c}</span>
             ))}
           </div>
         </article>
@@ -610,9 +617,9 @@ export function HomePage() {
       >
         <AudienceStrip />
         <div className="mt-12 grid gap-5 md:grid-cols-3">
-          <img data-reveal src={communityAsset.url} alt="Familia y comunidad junto a materiales recuperados" className="image-tile h-64" loading="lazy" />
-          <img data-reveal src={kidsAsset.url} alt="Niños participando en programa comunitario" className="image-tile h-64 md:translate-y-6" loading="lazy" />
-          <img data-reveal src={alliesAsset.url} alt="Equipo aliado en una jornada de PIV" className="image-tile h-64" loading="lazy" />
+          <img data-reveal src={communityAsset.url} alt="Familia y comunidad junto a materiales recuperados" className="image-tile h-64 w-full object-cover" loading="lazy" />
+          <img data-reveal src={beachAsset.url} alt="Jornada de recuperación de materiales en zona costera" className="image-tile h-64 w-full object-cover md:translate-y-6" loading="lazy" />
+          <img data-reveal src={alliesAsset.url} alt="Equipo aliado en una jornada de PIV" className="image-tile h-64 w-full object-cover" loading="lazy" />
         </div>
       </Section>
 
@@ -722,7 +729,7 @@ export function AboutPage() {
               ))}
             </div>
           </div>
-          <img data-reveal src={heroAsset.url} alt="Operación real de Parque Industrial Verde" className="image-tile h-[480px] md:h-[560px]" loading="eager" />
+          <img data-reveal src={heroAboutAsset.url} alt="Operación real de Parque Industrial Verde" className="image-tile h-[360px] w-full object-cover md:h-[440px]" loading="eager" />
         </div>
       </section>
       <TimelineRail />
