@@ -797,7 +797,7 @@ export function ServicesPage() {
               Diseñamos operaciones para recuperar valor, asegurar trazabilidad y facilitar decisiones ambientales con respaldo documental y capacidad industrial.
             </p>
             <div className="flex flex-wrap gap-3">
-              <a href={whatsappHref} target="_blank" rel="noreferrer"><Button variant="primary" size="lg">Solicitar recolección</Button></a>
+              <a href={whatsappHref} target="_blank" rel="noreferrer"><Button variant="primary" size="lg">Cotizar</Button></a>
               <Link to="/contacto"><Button variant="outline" size="lg">Hablar con un asesor</Button></Link>
             </div>
           </div>
