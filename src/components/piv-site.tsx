@@ -231,10 +231,7 @@ function SiteFooter() {
     <footer className="border-t border-border/70 bg-ink py-14 text-ink-foreground">
       <div className="mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-12 lg:grid-cols-[1fr_1fr_1fr] lg:items-start">
         <div className="space-y-4">
-          <div className="flex flex-col leading-none">
-            <span className="text-[0.7rem] font-extrabold uppercase tracking-[0.3em] text-white/80">Parque Industrial</span>
-            <span className="text-2xl font-black uppercase tracking-[0.12em] text-white">Verde</span>
-          </div>
+          <img src={logoAsset.url} alt="Parque Industrial Verde" className="h-20 w-auto object-contain md:h-24" loading="lazy" />
           <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-ink-muted">
             {phoneLinks.map((item) => (
               <a key={item.href} href={item.href} className="story-link">{item.label}</a>
