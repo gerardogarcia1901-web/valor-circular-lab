@@ -168,10 +168,10 @@ function SiteHeader() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
-        scrolled ? "py-2" : "py-3",
+        scrolled ? "py-2" : "py-4",
       )}
     >
-      <div className="relative mx-auto flex w-[min(1280px,calc(100%-2rem))] items-center justify-between gap-4 rounded-2xl px-3 py-1.5 md:px-5">
+      <div className="relative mx-auto flex w-[min(1280px,calc(100%-2rem))] items-center justify-between gap-4 rounded-2xl px-3 py-2 md:px-5 md:py-3">
         <div
           className={cn(
             "absolute inset-0 -z-10 rounded-2xl transition-all duration-500",
@@ -185,7 +185,7 @@ function SiteHeader() {
             src={logoAsset.url}
             alt="Parque Industrial Verde"
             className={cn(
-              "h-12 w-auto object-contain transition-all duration-500 md:h-14",
+              "h-16 w-auto object-contain transition-all duration-500 md:h-20 lg:h-24",
               scrolled ? "" : "drop-shadow-[0_2px_6px_rgba(0,0,0,0.55)]",
             )}
           />
