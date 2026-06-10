@@ -376,10 +376,16 @@ function EnterpriseCommunity() {
         </article>
         <article data-reveal className="editorial-panel editorial-panel--accent">
           <p className="eyebrow">Comunidad</p>
-          <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-5xl" style={{ color: "var(--brand-navy)" }}>Reciclar también transforma vidas.</h2>
-          <div className="mt-8 grid gap-3">
+          <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl" style={{ color: "var(--brand-navy)" }}>Reciclar también transforma vidas.</h2>
+          <img src={kidsAsset.url} alt="Niños y comunidad participando en campañas de reciclaje" className="mt-6 h-56 w-full rounded-2xl object-cover shadow-[var(--shadow-elevated)]" loading="lazy" />
+          <div className="mt-6 grid gap-2 sm:grid-cols-2">
             {communityActions.map((item) => (
               <div key={item} className="list-line">{item}</div>
+            ))}
+          </div>
+          <div className="mt-6 flex flex-wrap gap-2">
+            {activeCampaigns.map((c) => (
+              <span key={c} className="rounded-full bg-[var(--brand-navy)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-white">{c}</span>
             ))}
           </div>
         </article>
