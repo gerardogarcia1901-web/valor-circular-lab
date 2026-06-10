@@ -4,7 +4,6 @@ import { ArrowUpRight, Clock3, MapPinned, MessageCircle, MoveRight, Phone, Shiel
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import logoAsset from "@/assets/piv-logo.png.asset.json";
 import heroAsset from "@/assets/piv-hero-v3.png.asset.json";
 import heroAboutAsset from "@/assets/piv-hero-v2.png.asset.json";
 
