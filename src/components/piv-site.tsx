@@ -554,7 +554,7 @@ export function HomePage() {
     <PageShell>
       <section className="relative min-h-screen overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroAsset.url} alt="Operación real de Parque Industrial Verde dentro de una planta de reciclaje" className="h-full w-full object-cover" loading="eager" />
+          <img src={heroAsset.url} alt="Operación real de Parque Industrial Verde dentro de una planta de reciclaje" className="h-full w-full object-cover object-center" loading="eager" />
           <div className="hero-overlay" />
         </div>
         <div className="relative mx-auto flex min-h-screen w-[min(1280px,calc(100%-2rem))] items-end pb-12 pt-32 md:pb-20">
