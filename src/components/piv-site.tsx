@@ -555,24 +555,27 @@ export function HomePage() {
           <img src={heroAsset.url} alt="Operación real de Parque Industrial Verde dentro de una planta de reciclaje" className="h-full w-full object-cover" loading="eager" />
           <div className="hero-overlay" />
         </div>
-        <div className="relative mx-auto flex min-h-screen w-[min(1280px,calc(100%-2rem))] items-end py-18 md:py-24">
-          <div className="grid w-full gap-10 pb-8 pt-28 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
-            <div className="space-y-7">
-              <p data-hero-kicker className="eyebrow text-white/88">Economía circular con escala industrial</p>
-              <h1 data-hero-title className="max-w-4xl text-balance text-5xl font-semibold tracking-tight text-white md:text-7xl lg:text-[5.6rem]">
+        <div className="relative mx-auto flex min-h-screen w-[min(1280px,calc(100%-2rem))] items-end pb-12 pt-32 md:pb-20">
+          <div className="grid w-full gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+            <div className="space-y-6">
+              <p data-hero-kicker className="eyebrow eyebrow--light">Economía circular con escala industrial</p>
+              <h1 data-hero-title className="max-w-4xl text-balance text-5xl font-semibold tracking-tight text-white md:text-7xl lg:text-[5.2rem]">
                 Transformamos residuos en oportunidades.
               </h1>
-              <p data-hero-copy className="max-w-2xl text-lg leading-8 text-white/80 md:text-xl">
-                Gestionamos materiales reciclables para darles una nueva vida, reduciendo el impacto ambiental y generando valor económico para empresas y comunidades.
-              </p>
-              <div data-hero-actions className="flex flex-wrap gap-3">
-                <Link to="/servicios"><Button variant="hero" size="xl">Soy empresa</Button></Link>
+              <div data-hero-actions className="flex flex-wrap gap-3 pt-2">
+                <a href={whatsappHref} target="_blank" rel="noreferrer"><Button variant="hero" size="xl">Cotizar</Button></a>
                 <Link to="/materiales"><Button variant="heroSecondary" size="xl">Quiero reciclar</Button></Link>
               </div>
             </div>
-            <div className="grid gap-3 self-end lg:justify-self-end">
-              {heroStats.map((item) => (
-                <div key={item} data-hero-stat className="hero-stat">{item}</div>
+            <div className="grid gap-4 sm:grid-cols-3 lg:self-end">
+              {pivStats.map((item) => (
+                <div key={item.label} data-hero-stat className="rounded-2xl border border-white/15 bg-white/10 p-5 backdrop-blur-md">
+                  <p className="text-4xl font-bold tracking-tight text-[var(--brand-lime)] md:text-5xl">
+                    {item.prefix}{formatMetric(item.value)}
+                  </p>
+                  <p className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-white/85">{item.suffix}</p>
+                  <p className="mt-3 text-xs leading-5 text-white/75">{item.label}</p>
+                </div>
               ))}
             </div>
           </div>
