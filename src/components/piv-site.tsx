@@ -217,7 +217,7 @@ function SiteFooter() {
     <footer className="border-t border-border/70 bg-ink py-16 text-ink-foreground">
       <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-10 lg:grid-cols-[1.2fr_0.8fr_0.8fr]">
         <div className="space-y-5">
-          <img src={logoAsset.url} alt="Logo de Parque Industrial Verde" className="h-12 w-auto" loading="lazy" />
+          <img src={logoAsset.url} alt="Logo de Parque Industrial Verde" className="h-16 w-auto object-contain" loading="lazy" />
           <p className="max-w-xl text-sm leading-7 text-ink-muted">
             Infraestructura, trazabilidad y recuperación de materiales para impulsar una economía circular tangible en El Salvador.
           </p>
