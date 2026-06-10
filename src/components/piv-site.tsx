@@ -323,7 +323,7 @@ function EnterpriseCommunity() {
   return (
     <section className="border-y border-border/70 bg-panel-subtle py-20 md:py-28">
       <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-8 lg:grid-cols-2">
-        <article data-reveal className="editorial-panel">
+        <article data-reveal className="editorial-panel editorial-panel--teal">
           <p className="eyebrow">Empresas</p>
           <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-5xl">Soluciones ambientales para empresas.</h2>
           <div className="mt-8 grid gap-3">
@@ -331,15 +331,15 @@ function EnterpriseCommunity() {
               <div key={item} className="list-line">{item}</div>
             ))}
           </div>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap gap-2">
             {enterpriseBenefits.map((item) => (
-              <span key={item} className="benefit-pill">{item}</span>
+              <span key={item} className="rounded-full bg-[var(--brand-lime)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--brand-ink)]">{item}</span>
             ))}
           </div>
         </article>
         <article data-reveal className="editorial-panel editorial-panel--accent">
           <p className="eyebrow">Comunidad</p>
-          <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-5xl">Reciclar también transforma vidas.</h2>
+          <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-5xl" style={{ color: "var(--brand-navy)" }}>Reciclar también transforma vidas.</h2>
           <div className="mt-8 grid gap-3">
             {communityActions.map((item) => (
               <div key={item} className="list-line">{item}</div>
