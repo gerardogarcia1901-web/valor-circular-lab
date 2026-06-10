@@ -181,7 +181,7 @@ function SiteHeader() {
           )}
         />
         <Link to="/" className="shrink-0" aria-label="Parque Industrial Verde, ir al inicio">
-          <img src={logoAsset.url} alt="Logo de Parque Industrial Verde" className="h-10 w-auto object-contain md:h-14" loading="eager" />
+          <img src={logoAsset.url} alt="Logo de Parque Industrial Verde" className="h-28 w-auto object-contain md:h-40" loading="eager" />
         </Link>
         <nav className="hidden items-center gap-1 lg:flex">
           {navigation.map((item) => {
