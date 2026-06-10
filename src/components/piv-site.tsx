@@ -297,11 +297,28 @@ function MetricCard({ value, prefix, suffix, description }: { value: number; pre
 }
 
 function AudienceStrip() {
+  const palette = [
+    { bg: "var(--brand-teal)", fg: "#FFFFFF" },
+    { bg: "var(--brand-lime)", fg: "var(--brand-ink)" },
+    { bg: "var(--brand-navy)", fg: "#FFFFFF" },
+    { bg: "var(--brand-sky)", fg: "var(--brand-navy)" },
+    { bg: "var(--brand-ink)", fg: "var(--brand-lime)" },
+  ];
   return (
     <div className="mt-10 grid gap-3 md:grid-cols-5">
-      {audience.map((item) => (
-        <div key={item} data-reveal className="audience-pill">{item}</div>
-      ))}
+      {audience.map((item, i) => {
+        const c = palette[i % palette.length];
+        return (
+          <div
+            key={item}
+            data-reveal
+            className="rounded-full px-5 py-4 text-center text-sm font-semibold uppercase tracking-[0.1em] shadow-[var(--shadow-elevated)] transition-transform duration-300 hover:-translate-y-1"
+            style={{ background: c.bg, color: c.fg }}
+          >
+            {item}
+          </div>
+        );
+      })}
     </div>
   );
 }
