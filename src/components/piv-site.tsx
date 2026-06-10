@@ -5,7 +5,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import logoAsset from "@/assets/piv-logo.png.asset.json";
-import heroAsset from "@/assets/piv-hero-v2.png.asset.json";
+import heroAsset from "@/assets/piv-hero-v3.png.asset.json";
+import heroAboutAsset from "@/assets/piv-hero-v2.png.asset.json";
 
 import operationsAsset from "@/assets/piv-operations.jpg.asset.json";
 import metalsAsset from "@/assets/piv-metals.jpg.asset.json";
@@ -180,7 +181,7 @@ function SiteHeader() {
           )}
         />
         <Link to="/" className="shrink-0" aria-label="Parque Industrial Verde, ir al inicio">
-          <img src={logoAsset.url} alt="Logo de Parque Industrial Verde" className="h-20 w-auto object-contain md:h-28" loading="eager" />
+          <img src={logoAsset.url} alt="Logo de Parque Industrial Verde" className="h-10 w-auto object-contain md:h-14" loading="eager" />
         </Link>
         <nav className="hidden items-center gap-1 lg:flex">
           {navigation.map((item) => {
@@ -223,7 +224,7 @@ function SiteFooter() {
     <footer className="border-t border-border/70 bg-ink py-14 text-ink-foreground">
       <div className="mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-12 lg:grid-cols-[1fr_1fr_1fr] lg:items-start">
         <div className="space-y-4">
-          <img src={logoAsset.url} alt="Logo de Parque Industrial Verde" className="h-20 w-auto object-contain" loading="lazy" />
+          <img src={logoAsset.url} alt="Logo de Parque Industrial Verde" className="h-12 w-auto object-contain" loading="lazy" />
           <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-ink-muted">
             {phoneLinks.map((item) => (
               <a key={item.href} href={item.href} className="story-link">{item.label}</a>
@@ -722,7 +723,7 @@ export function AboutPage() {
               ))}
             </div>
           </div>
-          <img data-reveal src={heroAsset.url} alt="Operación real de Parque Industrial Verde" className="image-tile h-[480px] md:h-[560px]" loading="eager" />
+          <img data-reveal src={heroAboutAsset.url} alt="Operación real de Parque Industrial Verde" className="image-tile h-[360px] w-full object-cover md:h-[440px]" loading="eager" />
         </div>
       </section>
       <TimelineRail />
