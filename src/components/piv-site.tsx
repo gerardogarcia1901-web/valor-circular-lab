@@ -614,6 +614,11 @@ export function HomePage() {
         description="Recolectores base, empresas, corporaciones, industrias y centros comerciales encuentran en PIV una red con capacidad para acompañar desde la recolección hasta la valorización final."
       >
         <AudienceStrip />
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
+          <img data-reveal src={communityAsset.url} alt="Familia y comunidad junto a materiales recuperados" className="image-tile h-64" loading="lazy" />
+          <img data-reveal src={kidsAsset.url} alt="Niños participando en programa comunitario" className="image-tile h-64 md:translate-y-6" loading="lazy" />
+          <img data-reveal src={alliesAsset.url} alt="Equipo aliado en una jornada de PIV" className="image-tile h-64" loading="lazy" />
+        </div>
       </Section>
 
       <Section
