@@ -15,6 +15,7 @@ import communityAsset from "@/assets/piv-community.jpg.asset.json";
 import alliesAsset from "@/assets/piv-allies.jpg.asset.json";
 import kidsAsset from "@/assets/piv-kids.jpg.asset.json";
 import impactGraphicAsset from "@/assets/piv-impact-graphic.jpg.asset.json";
+import teamAsset from "@/assets/piv-team.png.asset.json";
 import {
   activeCampaigns,
   audience,
