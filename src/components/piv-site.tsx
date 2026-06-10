@@ -673,7 +673,8 @@ export function HomePage() {
         </div>
       </section>
 
-      <EnterpriseCommunity />
+
+
 
 
       <Section
