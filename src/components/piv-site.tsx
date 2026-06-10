@@ -181,7 +181,7 @@ function SiteHeader() {
           )}
         />
         <Link to="/" className="shrink-0" aria-label="Parque Industrial Verde, ir al inicio">
-          <img src={logoAsset.url} alt="Logo de Parque Industrial Verde" className="h-10 w-auto object-contain md:h-14" loading="eager" />
+          <img src={logoAsset.url} alt="Logo de Parque Industrial Verde" className="h-28 w-auto object-contain md:h-40" loading="eager" />
         </Link>
         <nav className="hidden items-center gap-1 lg:flex">
           {navigation.map((item) => {
@@ -224,7 +224,7 @@ function SiteFooter() {
     <footer className="border-t border-border/70 bg-ink py-14 text-ink-foreground">
       <div className="mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-12 lg:grid-cols-[1fr_1fr_1fr] lg:items-start">
         <div className="space-y-4">
-          <img src={logoAsset.url} alt="Logo de Parque Industrial Verde" className="h-12 w-auto object-contain" loading="lazy" />
+          <img src={logoAsset.url} alt="Logo de Parque Industrial Verde" className="h-36 w-auto object-contain" loading="lazy" />
           <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-ink-muted">
             {phoneLinks.map((item) => (
               <a key={item.href} href={item.href} className="story-link">{item.label}</a>
@@ -377,7 +377,9 @@ function EnterpriseCommunity() {
         <article data-reveal className="editorial-panel editorial-panel--accent">
           <p className="eyebrow">Comunidad</p>
           <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl" style={{ color: "var(--brand-navy)" }}>Reciclar también transforma vidas.</h2>
-          <img src={kidsAsset.url} alt="Niños y comunidad participando en campañas de reciclaje" className="mt-6 h-56 w-full rounded-2xl object-cover shadow-[var(--shadow-elevated)]" loading="lazy" />
+          <p className="mt-4 text-base leading-7 text-[var(--brand-navy)]/80">
+            Activamos campañas, espacios y rutas para que comunidades, familias y empresas participen en una economía circular real.
+          </p>
           <div className="mt-6 grid gap-2 sm:grid-cols-2">
             {communityActions.map((item) => (
               <div key={item} className="list-line">{item}</div>
@@ -386,6 +388,14 @@ function EnterpriseCommunity() {
           <div className="mt-6 flex flex-wrap gap-2">
             {activeCampaigns.map((c) => (
               <span key={c} className="rounded-full bg-[var(--brand-navy)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-white">{c}</span>
+            ))}
+          </div>
+          <div className="mt-8 grid grid-cols-3 gap-3 border-t border-[var(--brand-navy)]/15 pt-6">
+            {["+50", "100%", "23"].map((v, i) => (
+              <div key={i} className="text-center">
+                <p className="text-2xl font-bold text-[var(--brand-navy)] md:text-3xl">{v}</p>
+                <p className="mt-1 text-[0.65rem] font-bold uppercase tracking-[0.14em] text-[var(--brand-navy)]/70">{["campañas activas", "trazabilidad", "años"][i]}</p>
+              </div>
             ))}
           </div>
         </article>
@@ -554,7 +564,7 @@ export function HomePage() {
     <PageShell>
       <section className="relative min-h-screen overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroAsset.url} alt="Operación real de Parque Industrial Verde dentro de una planta de reciclaje" className="h-full w-full object-cover" loading="eager" />
+          <img src={heroAsset.url} alt="Operación real de Parque Industrial Verde dentro de una planta de reciclaje" className="h-full w-full object-cover object-center" loading="eager" />
           <div className="hero-overlay" />
         </div>
         <div className="relative mx-auto flex min-h-screen w-[min(1280px,calc(100%-2rem))] items-end pb-12 pt-32 md:pb-20">
@@ -616,10 +626,8 @@ export function HomePage() {
         description="Recolectores base, empresas, corporaciones, industrias y centros comerciales encuentran en PIV una red con capacidad para acompañar desde la recolección hasta la valorización final."
       >
         <AudienceStrip />
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
-          <img data-reveal src={communityAsset.url} alt="Familia y comunidad junto a materiales recuperados" className="image-tile h-64 w-full object-cover" loading="lazy" />
-          <img data-reveal src={beachAsset.url} alt="Jornada de recuperación de materiales en zona costera" className="image-tile h-64 w-full object-cover md:translate-y-6" loading="lazy" />
-          <img data-reveal src={alliesAsset.url} alt="Equipo aliado en una jornada de PIV" className="image-tile h-64 w-full object-cover" loading="lazy" />
+        <div data-reveal className="mt-12">
+          <img src={communityAsset.url} alt="Familia y comunidad junto a materiales recuperados" className="image-tile h-72 w-full object-cover md:h-96" loading="lazy" />
         </div>
       </Section>
 
@@ -654,7 +662,17 @@ export function HomePage() {
         <ServicesGrid />
       </Section>
 
+      <section className="relative h-[420px] w-full overflow-hidden md:h-[520px]">
+        <img src={beachAsset.url} alt="Jornada de recuperación de materiales en zona costera de El Salvador" className="h-full w-full object-cover" loading="lazy" />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(110deg, color-mix(in oklab, var(--brand-navy) 80%, transparent) 0%, color-mix(in oklab, var(--brand-navy) 20%, transparent) 60%, transparent 100%)" }} />
+        <div className="absolute inset-0 mx-auto flex w-[min(1280px,calc(100%-2rem))] flex-col justify-end pb-12 md:pb-16">
+          <p className="eyebrow eyebrow--light">Territorio</p>
+          <h3 className="mt-3 max-w-2xl text-balance text-3xl font-semibold tracking-tight text-white md:text-5xl">Operamos desde la ciudad hasta la costa.</h3>
+        </div>
+      </section>
+
       <EnterpriseCommunity />
+
 
       <Section
         eyebrow="Alcance"
@@ -681,6 +699,18 @@ export function HomePage() {
       </Section>
 
       <TimelineRail />
+
+      <section className="relative h-[380px] w-full overflow-hidden md:h-[460px]">
+        <img src={alliesAsset.url} alt="Equipo aliado de Parque Industrial Verde en una jornada operativa" className="h-full w-full object-cover" loading="lazy" />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(265deg, color-mix(in oklab, var(--brand-teal) 80%, transparent) 0%, color-mix(in oklab, var(--brand-ink) 40%, transparent) 70%, transparent 100%)" }} />
+        <div className="absolute inset-0 mx-auto flex w-[min(1280px,calc(100%-2rem))] items-end justify-end pb-12 md:pb-16">
+          <div className="max-w-md text-right">
+            <p className="eyebrow eyebrow--light justify-end">Aliados</p>
+            <h3 className="mt-3 text-balance text-3xl font-semibold tracking-tight text-white md:text-4xl">Una red que convierte voluntad en infraestructura.</h3>
+          </div>
+        </div>
+      </section>
+
       <FAQSection />
 
       <section className="relative overflow-hidden py-20 md:py-28" style={{ background: "var(--gradient-accent)" }}>
@@ -711,8 +741,8 @@ export function AboutPage() {
     <PageShell>
       <section className="relative overflow-hidden pt-36 md:pt-44" style={{ background: "var(--gradient-accent)" }}>
         <div className="absolute inset-0 opacity-30" style={{ background: "radial-gradient(circle at 15% 25%, var(--brand-lime) 0%, transparent 45%), radial-gradient(circle at 85% 75%, var(--brand-sky) 0%, transparent 50%)" }} />
-        <div className="relative mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-10 pb-16 md:pb-24 lg:grid-cols-[1fr_1fr] lg:items-end">
-          <div data-reveal className="space-y-6 text-white">
+        <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] pb-16 md:pb-24">
+          <div data-reveal className="max-w-4xl space-y-6 text-white">
             <p className="eyebrow eyebrow--light">Sobre nosotros</p>
             <h1 className="text-balance text-5xl font-semibold tracking-tight md:text-7xl">
               <span className="text-[var(--brand-lime)]">+23 años</span> transformando residuos en oportunidades.
@@ -720,7 +750,7 @@ export function AboutPage() {
             <p className="max-w-2xl text-lg leading-8 text-white/85">
               Desde INSEMA y ZARTEX hasta Parque Industrial Verde, hemos construido la red de reciclaje más grande de El Salvador: economía circular con respaldo industrial.
             </p>
-            <div className="grid gap-3 sm:grid-cols-3 pt-4">
+            <div className="grid gap-3 sm:grid-cols-3 pt-4 max-w-2xl">
               {pivStats.map((s) => (
                 <div key={s.label} className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-md">
                   <p className="text-3xl font-bold text-[var(--brand-lime)]">{s.prefix}{formatMetric(s.value)}</p>
@@ -729,9 +759,11 @@ export function AboutPage() {
               ))}
             </div>
           </div>
-          <img data-reveal src={heroAboutAsset.url} alt="Operación real de Parque Industrial Verde" className="image-tile h-[360px] w-full object-cover md:h-[440px]" loading="eager" />
         </div>
       </section>
+      <div data-reveal className="mx-auto -mt-10 w-[min(1280px,calc(100%-2rem))] md:-mt-14">
+        <img src={heroAboutAsset.url} alt="Operación real de Parque Industrial Verde, vista panorámica de planta" className="image-tile h-[260px] w-full object-cover md:h-[420px]" loading="eager" />
+      </div>
       <TimelineRail />
       <Section
         eyebrow="Propósito"
