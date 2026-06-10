@@ -707,16 +707,27 @@ export function HomePage() {
 export function AboutPage() {
   return (
     <PageShell>
-      <section className="pt-36 md:pt-44">
-        <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-          <div data-reveal className="space-y-6 pb-8">
-            <p className="eyebrow">Sobre nosotros</p>
-            <h1 className="text-balance text-5xl font-semibold tracking-tight md:text-7xl">Transformando residuos en oportunidades desde hace más de dos décadas.</h1>
-            <p className="max-w-2xl text-lg leading-8 text-muted-foreground">
-              Más de 23 años liderando el reciclaje en El Salvador. Desde nuestros inicios con INSEMA y ZARTEX hasta la creación de Parque Industrial Verde, hemos trabajado para transformar residuos en oportunidades, impulsando una economía circular que beneficia al medio ambiente, las empresas y las comunidades.
+      <section className="relative overflow-hidden pt-36 md:pt-44" style={{ background: "var(--gradient-accent)" }}>
+        <div className="absolute inset-0 opacity-30" style={{ background: "radial-gradient(circle at 15% 25%, var(--brand-lime) 0%, transparent 45%), radial-gradient(circle at 85% 75%, var(--brand-sky) 0%, transparent 50%)" }} />
+        <div className="relative mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-10 pb-16 md:pb-24 lg:grid-cols-[1fr_1fr] lg:items-end">
+          <div data-reveal className="space-y-6 text-white">
+            <p className="eyebrow eyebrow--light">Sobre nosotros</p>
+            <h1 className="text-balance text-5xl font-semibold tracking-tight md:text-7xl">
+              <span className="text-[var(--brand-lime)]">+23 años</span> transformando residuos en oportunidades.
+            </h1>
+            <p className="max-w-2xl text-lg leading-8 text-white/85">
+              Desde INSEMA y ZARTEX hasta Parque Industrial Verde, hemos construido la red de reciclaje más grande de El Salvador: economía circular con respaldo industrial.
             </p>
+            <div className="grid gap-3 sm:grid-cols-3 pt-4">
+              {pivStats.map((s) => (
+                <div key={s.label} className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-md">
+                  <p className="text-3xl font-bold text-[var(--brand-lime)]">{s.prefix}{formatMetric(s.value)}</p>
+                  <p className="text-[0.65rem] font-bold uppercase tracking-[0.16em] text-white/85">{s.suffix}</p>
+                </div>
+              ))}
+            </div>
           </div>
-          <img data-reveal src={heroAsset.url} alt="Persona dentro de la planta de Parque Industrial Verde mostrando el entorno real de operación" className="image-tile h-[520px]" loading="eager" />
+          <img data-reveal src={heroAsset.url} alt="Operación real de Parque Industrial Verde" className="image-tile h-[480px] md:h-[560px]" loading="eager" />
         </div>
       </section>
       <TimelineRail />
@@ -726,28 +737,48 @@ export function AboutPage() {
         description="PIV articula tecnología, experiencia y una red de recuperación para convertir desechos en valor verificable."
       >
         <div className="mt-14 grid gap-6 lg:grid-cols-2">
-          <article data-reveal className="editorial-panel">
+          <article data-reveal className="editorial-panel editorial-panel--teal">
             <p className="eyebrow">Misión</p>
-            <p className="mt-6 text-xl leading-9 text-foreground">Ser una empresa líder en el mercado nacional del reciclaje de materiales, haciendo de los desechos una fuente de protección ambiental e incentivando prácticas responsables.</p>
+            <p className="mt-6 text-xl leading-9">Ser una empresa líder en el mercado nacional del reciclaje de materiales, haciendo de los desechos una fuente de protección ambiental e incentivando prácticas responsables.</p>
           </article>
-          <article data-reveal className="editorial-panel editorial-panel--accent">
+          <article data-reveal className="editorial-panel editorial-panel--lime">
             <p className="eyebrow">Visión</p>
-            <p className="mt-6 text-xl leading-9 text-foreground">Ser reconocidos como la empresa de reciclaje más grande y confiable de El Salvador.</p>
+            <p className="mt-6 text-xl leading-9">Ser reconocidos como la empresa de reciclaje más grande y confiable de El Salvador.</p>
           </article>
+        </div>
+      </Section>
+      <Section
+        eyebrow="Escala"
+        title="Recuperación con impacto medible."
+        description="En 2025 superamos los 75 millones de libras recuperadas, equivalentes a múltiples campos de fútbol llenos de material reincorporado a la economía."
+        className="bg-panel-subtle"
+      >
+        <div className="mt-12 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <div data-reveal className="surface-panel overflow-hidden p-0">
+            <img src={impactGraphicAsset.url} alt="Visual de impacto con equivalencias de material recuperado" className="h-full w-full rounded-[1.75rem] object-cover" loading="lazy" />
+          </div>
+          <div className="grid gap-4">
+            {impactMetrics.map((metric) => (
+              <MetricCard key={metric.description} {...metric} />
+            ))}
+          </div>
         </div>
       </Section>
       <Section
         eyebrow="Confianza"
         title="El liderazgo se construye con capacidad real de respuesta."
-        description="Procesos transparentes, cobertura nacional e infraestructura hacen posible una ejecución constante para aliados corporativos y comunidades."
-        className="bg-panel-subtle"
+        description="Procesos transparentes, cobertura nacional e infraestructura hacen posible una ejecución constante."
       >
         <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {trustPillars.map((item) => (
-            <article key={item} data-reveal className="surface-panel">
-              <p className="text-base leading-7 text-foreground">{item}</p>
-            </article>
-          ))}
+          {trustPillars.map((item, i) => {
+            const tones = ["bg-[var(--brand-teal)] text-white", "bg-[var(--brand-lime)] text-[var(--brand-ink)]", "bg-[var(--brand-navy)] text-white", "bg-[var(--brand-sky)] text-[var(--brand-navy)]"];
+            return (
+              <article key={item} data-reveal className={cn("rounded-3xl p-6 shadow-[var(--shadow-elevated)]", tones[i % tones.length])}>
+                <ShieldCheck className="h-6 w-6" />
+                <p className="mt-6 text-base font-semibold leading-7">{item}</p>
+              </article>
+            );
+          })}
         </div>
       </Section>
     </PageShell>
