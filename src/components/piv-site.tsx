@@ -634,7 +634,7 @@ export function HomePage() {
             src={heroAsset.url}
             alt="Operación real de Parque Industrial Verde dentro de una planta de reciclaje"
             className="h-full w-full object-cover md:hidden"
-            style={{ objectPosition: "82% center" }}
+            style={{ objectPosition: "100% center" }}
             loading="eager"
           />
           <img
