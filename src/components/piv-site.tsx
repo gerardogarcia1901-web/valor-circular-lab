@@ -633,17 +633,17 @@ export function HomePage() {
           <img
             src={heroAsset.url}
             alt="Operación real de Parque Industrial Verde dentro de una planta de reciclaje"
-            className="h-full w-full object-cover object-[center_40%]"
+            className="h-full w-full object-cover object-[center_30%]"
             loading="eager"
           />
           <div className="hero-overlay" />
           <div
             aria-hidden
-            className="absolute inset-x-0 top-0 h-44 md:h-56"
-            style={{ background: "linear-gradient(to bottom, rgba(13,13,13,0.75) 0%, rgba(13,13,13,0.35) 55%, transparent 100%)" }}
+            className="absolute inset-x-0 top-0 hidden h-44 md:block md:h-56"
+            style={{ background: "linear-gradient(to bottom, rgba(13,13,13,0.65) 0%, rgba(13,13,13,0.25) 55%, transparent 100%)" }}
           />
         </div>
-        <div className="relative mx-auto flex min-h-screen w-[min(1280px,calc(100%-2rem))] items-end pb-12 pt-32 md:pb-20">
+        <div className="relative mx-auto flex min-h-screen w-[min(1280px,calc(100%-2rem))] items-end pb-12 pt-28 md:pb-20 md:pt-32">
           <div className="grid w-full gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
             <div className="space-y-6">
               <p data-hero-kicker className="eyebrow eyebrow--light">Economía circular con escala industrial</p>
