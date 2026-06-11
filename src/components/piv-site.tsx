@@ -628,81 +628,43 @@ function LocationsPanel() {
 export function HomePage() {
   return (
     <PageShell>
-      <section className="relative overflow-hidden bg-[var(--brand-ink)] md:min-h-screen">
-        {/* Mobile: stacked image + content so kids are fully visible */}
-        <div className="md:hidden">
-          <div className="relative w-full pt-20">
-            <img
-              src={heroAsset.url}
-              alt="Operación real de Parque Industrial Verde dentro de una planta de reciclaje"
-              className="block h-auto w-full object-contain"
-              loading="eager"
-            />
-          </div>
-          <div className="relative px-4 pb-12 pt-8">
+      <section className="relative min-h-screen overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src={heroAsset.url}
+            alt="Operación real de Parque Industrial Verde dentro de una planta de reciclaje"
+            className="h-full w-full object-cover object-center md:object-[center_30%]"
+            loading="eager"
+          />
+          <div className="hero-overlay" />
+          <div
+            aria-hidden
+            className="absolute inset-x-0 top-0 h-44 md:h-56"
+            style={{ background: "linear-gradient(to bottom, rgba(13,13,13,0.7) 0%, rgba(13,13,13,0.3) 55%, transparent 100%)" }}
+          />
+        </div>
+        <div className="relative mx-auto flex min-h-screen w-[min(1280px,calc(100%-2rem))] items-end pb-12 pt-28 md:pb-20 md:pt-32">
+          <div className="grid w-full gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
             <div className="space-y-6">
-              <p className="eyebrow eyebrow--light">Economía circular con escala industrial</p>
-              <h1 className="text-balance text-4xl font-semibold tracking-tight text-white">
+              <p data-hero-kicker className="eyebrow eyebrow--light">Economía circular con escala industrial</p>
+              <h1 data-hero-title className="max-w-4xl text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-7xl lg:text-[5.2rem]">
                 Transformamos residuos en oportunidades.
               </h1>
-              <div className="flex flex-wrap gap-3 pt-2">
-                <a href={whatsappHref} target="_blank" rel="noreferrer"><Button variant="hero" size="lg">Cotizar</Button></a>
-                <Link to="/materiales"><Button variant="heroSecondary" size="lg">Quiero reciclar</Button></Link>
-              </div>
-              <div className="grid gap-3 pt-4 sm:grid-cols-3">
-                {pivStats.map((item) => (
-                  <div key={item.label} className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-md">
-                    <p className="text-3xl font-bold tracking-tight text-[var(--brand-lime)]">
-                      {item.prefix}{formatMetric(item.value)}
-                    </p>
-                    <p className="mt-1 text-[0.65rem] font-bold uppercase tracking-[0.14em] text-white/85">{item.suffix}</p>
-                    <p className="mt-2 text-xs leading-5 text-white/75">{item.label}</p>
-                  </div>
-                ))}
+              <div data-hero-actions className="flex flex-wrap gap-3 pt-2">
+                <a href={whatsappHref} target="_blank" rel="noreferrer"><Button variant="hero" size="xl">Cotizar</Button></a>
+                <Link to="/materiales"><Button variant="heroSecondary" size="xl">Quiero reciclar</Button></Link>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Desktop / tablet: full-bleed hero with overlay */}
-        <div className="hidden md:block">
-          <div className="absolute inset-0">
-            <img
-              src={heroAsset.url}
-              alt="Operación real de Parque Industrial Verde dentro de una planta de reciclaje"
-              className="h-full w-full object-cover object-[center_30%]"
-              loading="eager"
-            />
-            <div className="hero-overlay" />
-            <div
-              aria-hidden
-              className="absolute inset-x-0 top-0 h-56"
-              style={{ background: "linear-gradient(to bottom, rgba(13,13,13,0.65) 0%, rgba(13,13,13,0.25) 55%, transparent 100%)" }}
-            />
-          </div>
-          <div className="relative mx-auto flex min-h-screen w-[min(1280px,calc(100%-2rem))] items-end pb-20 pt-32">
-            <div className="grid w-full gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
-              <div className="space-y-6">
-                <p data-hero-kicker className="eyebrow eyebrow--light">Economía circular con escala industrial</p>
-                <h1 data-hero-title className="max-w-4xl text-balance text-5xl font-semibold tracking-tight text-white md:text-7xl lg:text-[5.2rem]">
-                  Transformamos residuos en oportunidades.
-                </h1>
-                <div data-hero-actions className="flex flex-wrap gap-3 pt-2">
-                  <a href={whatsappHref} target="_blank" rel="noreferrer"><Button variant="hero" size="xl">Cotizar</Button></a>
-                  <Link to="/materiales"><Button variant="heroSecondary" size="xl">Quiero reciclar</Button></Link>
+            <div className="grid gap-4 sm:grid-cols-3 lg:self-end">
+              {pivStats.map((item) => (
+                <div key={item.label} data-hero-stat className="rounded-2xl border border-white/15 bg-white/10 p-5 backdrop-blur-md">
+                  <p className="text-4xl font-bold tracking-tight text-[var(--brand-lime)] md:text-5xl">
+                    {item.prefix}{formatMetric(item.value)}
+                  </p>
+                  <p className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-white/85">{item.suffix}</p>
+                  <p className="mt-3 text-xs leading-5 text-white/75">{item.label}</p>
                 </div>
-              </div>
-              <div className="grid gap-4 sm:grid-cols-3 lg:self-end">
-                {pivStats.map((item) => (
-                  <div key={item.label} data-hero-stat className="rounded-2xl border border-white/15 bg-white/10 p-5 backdrop-blur-md">
-                    <p className="text-4xl font-bold tracking-tight text-[var(--brand-lime)] md:text-5xl">
-                      {item.prefix}{formatMetric(item.value)}
-                    </p>
-                    <p className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-white/85">{item.suffix}</p>
-                    <p className="mt-3 text-xs leading-5 text-white/75">{item.label}</p>
-                  </div>
-                ))}
-              </div>
+              ))}
             </div>
           </div>
         </div>
