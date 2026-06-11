@@ -157,6 +157,7 @@ function PageShell({ children }: { children: ReactNode }) {
 function SiteHeader() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -165,6 +166,10 @@ function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
   return (
     <header
       className={cn(
@@ -172,22 +177,22 @@ function SiteHeader() {
         scrolled ? "py-2" : "py-4",
       )}
     >
-      <div className="relative mx-auto flex w-[min(1280px,calc(100%-2rem))] items-center justify-between gap-4 rounded-2xl px-3 py-2 md:px-5 md:py-3">
+      <div className="relative mx-auto flex w-[min(1280px,calc(100%-2rem))] items-center justify-between gap-3 rounded-2xl px-3 py-2 md:px-5 md:py-3">
         <div
           className={cn(
             "absolute inset-0 -z-10 rounded-2xl transition-all duration-500",
-            scrolled
-              ? "bg-white/80 backdrop-blur-xl shadow-[var(--shadow-elevated)] border border-white/40"
+            scrolled || mobileOpen
+              ? "bg-white/90 backdrop-blur-xl shadow-[var(--shadow-elevated)] border border-white/40"
               : "bg-transparent",
           )}
         />
-        <Link to="/" className="shrink-0 -my-8 md:-my-10 lg:-my-12" aria-label="Parque Industrial Verde, ir al inicio">
+        <Link to="/" className="shrink-0 -my-4 md:-my-10 lg:-my-12" aria-label="Parque Industrial Verde, ir al inicio">
           <img
             src={logoAsset.url}
             alt="Parque Industrial Verde"
             className={cn(
-              "h-28 w-auto object-contain transition-all duration-500 md:h-36 lg:h-44",
-              scrolled ? "" : "drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)]",
+              "h-16 w-auto object-contain transition-all duration-500 md:h-36 lg:h-44",
+              scrolled || mobileOpen ? "" : "drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)]",
             )}
           />
         </Link>
@@ -218,10 +223,54 @@ function SiteHeader() {
           <a href={whatsappHref} target="_blank" rel="noreferrer" className="hidden md:block">
             <Button variant="hero" size="sm">Cotizar</Button>
           </a>
-          <Link to="/contacto" className="lg:hidden">
-            <Button variant="hero" size="sm">Contacto</Button>
-          </Link>
+          <button
+            type="button"
+            onClick={() => setMobileOpen((v) => !v)}
+            aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={mobileOpen}
+            className={cn(
+              "lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border transition-colors",
+              scrolled || mobileOpen
+                ? "border-[var(--brand-navy)]/20 bg-white text-[var(--brand-navy)]"
+                : "border-white/30 bg-white/15 text-white backdrop-blur",
+            )}
+          >
+            {mobileOpen ? <X className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
+          </button>
         </div>
+        {mobileOpen && (
+          <div className="absolute left-0 right-0 top-full mt-2 rounded-2xl border border-white/50 bg-white/95 p-3 shadow-[var(--shadow-elevated)] backdrop-blur-xl lg:hidden">
+            <nav className="flex flex-col">
+              {navigation.map((item) => {
+                const isActive = pathname === item.to;
+                return (
+                  <Link
+                    key={item.to}
+                    to={item.to}
+                    onClick={() => setMobileOpen(false)}
+                    className={cn(
+                      "rounded-xl px-4 py-3 text-sm font-bold uppercase tracking-[0.14em] transition-colors",
+                      isActive
+                        ? "bg-[var(--brand-navy)] text-white"
+                        : "text-[var(--brand-navy)] hover:bg-[var(--brand-sky)]/40",
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-2"
+                onClick={() => setMobileOpen(false)}
+              >
+                <Button variant="hero" size="lg" className="w-full">Cotizar por WhatsApp</Button>
+              </a>
+            </nav>
+          </div>
+        )}
       </div>
     </header>
   );
