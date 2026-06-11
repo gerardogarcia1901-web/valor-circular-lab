@@ -633,7 +633,14 @@ export function HomePage() {
           <img
             src={heroAsset.url}
             alt="Operación real de Parque Industrial Verde dentro de una planta de reciclaje"
-            className="h-full w-full object-cover object-[82%_center] md:object-[center_30%]"
+            className="h-full w-full object-cover md:hidden"
+            style={{ objectPosition: "82% center" }}
+            loading="eager"
+          />
+          <img
+            src={heroAsset.url}
+            alt="Operación real de Parque Industrial Verde dentro de una planta de reciclaje"
+            className="hidden h-full w-full object-cover object-[center_30%] md:block"
             loading="eager"
           />
           <div className="hero-overlay" />
