@@ -1295,7 +1295,7 @@ export function MaterialsPage() {
               <a href={whatsappHref} target="_blank" rel="noreferrer"><Button variant="hero" size="xl">Cotizar</Button></a>
             </div>
           </div>
-          <img data-reveal src={metalsAsset.url} alt="Clasificación de latas y materiales metálicos" className="image-tile h-[460px] md:h-[520px]" loading="eager" />
+          <img data-reveal src={materialsHeroAsset.url} alt="Persona recibiendo caja con discos duros para disposición responsable en Parque Industrial Verde" className="image-tile h-[460px] md:h-[520px]" loading="eager" />
         </div>
       </section>
       <Section
