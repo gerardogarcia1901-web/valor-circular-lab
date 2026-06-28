@@ -1277,12 +1277,6 @@ export function ServicesPage() {
 }
 
 export function MaterialsPage() {
-  const groupTones = [
-    { card: "bg-gradient-to-br from-[var(--brand-teal)] to-[var(--brand-navy)] text-white", pill: "bg-white/15 text-white border border-white/20" },
-    { card: "bg-[var(--brand-lime)] text-[var(--brand-ink)]", pill: "bg-[var(--brand-ink)] text-[var(--brand-lime)]" },
-    { card: "bg-[var(--brand-sky)] text-[var(--brand-navy)]", pill: "bg-[var(--brand-navy)] text-white" },
-    { card: "bg-[var(--brand-ink)] text-white", pill: "bg-[var(--brand-lime)] text-[var(--brand-ink)]" },
-  ];
   return (
     <PageShell>
       <section className="relative overflow-hidden pt-36 md:pt-44" style={{ background: "var(--gradient-accent)" }}>
@@ -1310,14 +1304,40 @@ export function MaterialsPage() {
       >
         <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {materialGroups.map((group, i) => {
-            const t = groupTones[i % groupTones.length];
+            const visual = materialVisuals[group.title];
             return (
-              <article key={group.title} data-reveal className={cn("rounded-3xl p-7 shadow-[var(--shadow-elevated)] transition-transform duration-300 hover:-translate-y-1", t.card)}>
-                <h2 className="text-3xl font-bold tracking-tight">{group.title}</h2>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {group.items.map((item) => (
-                    <span key={item} className={cn("rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-[0.08em]", t.pill)}>{item}</span>
-                  ))}
+              <article
+                key={group.title}
+                data-reveal
+                className="group relative min-h-[26rem] overflow-hidden rounded-3xl bg-[var(--brand-ink)] shadow-[var(--shadow-elevated)] transition-transform duration-500 hover:-translate-y-2"
+              >
+                <img
+                  src={visual.image}
+                  alt={visual.alt}
+                  width={1280}
+                  height={960}
+                  loading={i === 0 ? "eager" : "lazy"}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-ink)] via-[var(--brand-ink)]/45 to-transparent" />
+                <div className="relative flex h-full min-h-[26rem] flex-col justify-end p-5 text-white">
+                  <span className="mb-auto w-fit rounded-full bg-[var(--brand-lime)] px-3 py-1 text-[0.65rem] font-black uppercase tracking-[0.16em] text-[var(--brand-ink)]">
+                    0{i + 1}
+                  </span>
+                  <h2 className="text-3xl font-bold tracking-tight">{group.title}</h2>
+                  <p className="mt-2 text-sm font-medium leading-6 text-white/82">{visual.summary}</p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {group.items.slice(0, 6).map((item) => (
+                      <span key={item} className="rounded-full border border-white/18 bg-white/12 px-3 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.08em] backdrop-blur">
+                        {item}
+                      </span>
+                    ))}
+                    {group.items.length > 6 ? (
+                      <span className="rounded-full bg-[var(--brand-lime)] px-3 py-1.5 text-[0.68rem] font-black uppercase tracking-[0.08em] text-[var(--brand-ink)]">
+                        +{group.items.length - 6}
+                      </span>
+                    ) : null}
+                  </div>
                 </div>
               </article>
             );
