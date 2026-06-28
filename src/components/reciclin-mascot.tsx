@@ -12,10 +12,11 @@ type ReciclinMascotProps = {
 };
 
 const sizeMap = {
-  sm: "h-24 md:h-28",
-  md: "h-36 md:h-44",
-  lg: "h-48 md:h-60",
+  sm: "h-20 md:h-28",
+  md: "h-24 md:h-44",
+  lg: "h-32 md:h-60",
 };
+
 
 const toneMap = {
   lime: "bg-[var(--brand-lime)] text-[var(--brand-ink)] border-[var(--brand-ink)]/10",
