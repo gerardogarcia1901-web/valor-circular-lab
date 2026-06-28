@@ -1269,6 +1269,48 @@ export function ServicesPage() {
       >
         <ServicesGrid />
       </Section>
+      <section className="relative overflow-hidden bg-[var(--brand-ink)] py-20 md:py-28">
+        <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div data-reveal className="relative overflow-hidden rounded-[2rem] shadow-[var(--shadow-elevated)]">
+            <img
+              src={campanasEmpresarialesServiciosAsset.url}
+              alt="Jornada empresarial de recolección de residuos electrónicos con Parque Industrial Verde"
+              loading="lazy"
+              className="block h-[420px] w-full object-cover md:h-[560px]"
+            />
+            <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[var(--brand-ink)]/55 via-transparent to-transparent" />
+            <div className="absolute bottom-5 left-5 flex flex-wrap gap-2">
+              <span className="rounded-full bg-[var(--brand-lime)] px-3 py-1.5 text-[0.65rem] font-black uppercase tracking-[0.18em] text-[var(--brand-ink)]">RAEE</span>
+              <span className="rounded-full bg-white/90 px-3 py-1.5 text-[0.65rem] font-black uppercase tracking-[0.18em] text-[var(--brand-navy)]">Jornada in-situ</span>
+            </div>
+          </div>
+          <div data-reveal className="text-white">
+            <p className="text-[0.7rem] font-black uppercase tracking-[0.22em] text-[var(--brand-lime)]">Campañas empresariales</p>
+            <h2 className="mt-4 text-balance text-4xl font-semibold tracking-tight md:text-5xl">
+              Jornadas que <span className="text-[var(--brand-lime)]">activan a tu equipo</span> y dan disposición responsable a equipos en desuso.
+            </h2>
+            <p className="mt-6 text-base leading-7 text-white/80">
+              Coordinamos la logística, el montaje y la trazabilidad para que tu empresa recolecte RAEE, equipos y materiales reciclables con respaldo documental y participación real de colaboradores.
+            </p>
+            <div className="mt-8 grid gap-3 sm:grid-cols-3">
+              {[
+                { k: "Montaje", v: "Activación completa" },
+                { k: "Cobertura", v: "Nacional" },
+                { k: "Evidencia", v: "Certificada" },
+              ].map((b) => (
+                <div key={b.k} className="rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur">
+                  <p className="text-[0.62rem] font-black uppercase tracking-[0.18em] text-[var(--brand-lime)]">{b.k}</p>
+                  <p className="mt-1 text-sm font-semibold">{b.v}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a href={whatsappHref} target="_blank" rel="noreferrer"><Button variant="hero" size="lg">Coordinar jornada</Button></a>
+              <Link to="/rse"><Button variant="heroSecondary" size="lg">Ver campañas RSE</Button></Link>
+            </div>
+          </div>
+        </div>
+      </section>
       <EnterpriseCommunity />
       <PartnersStrip
         variant="dark"
