@@ -1187,13 +1187,13 @@ export function AboutPage() {
         title="Reciclaje con escala industrial y propósito real."
         description="Una operación pensada para que cada material recuperado vuelva a generar valor — local, regional y globalmente."
       >
-        <div className="mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {[
             {
               Icon: Recycle,
               kicker: "¿Qué hacemos?",
               title: "Transformamos materiales en oportunidades.",
-              body: "Procesos especializados de recuperación y gestión que reducen el impacto ambiental y fortalecen la economía circular en El Salvador.",
+              body: "Procesos especializados de recuperación y gestión que fortalecen la economía circular.",
               tone: "bg-[var(--brand-navy)] text-white",
               chip: "bg-[var(--brand-lime)] text-[var(--brand-ink)]",
             },
@@ -1201,7 +1201,7 @@ export function AboutPage() {
               Icon: Users,
               kicker: "¿Para quién?",
               title: "Empresas, industrias, comercios y recolectores.",
-              body: "Acompañamos a instituciones y aliados que buscan implementar prácticas responsables en el manejo de materiales reciclables.",
+              body: "Acompañamos a instituciones y aliados con prácticas responsables de materiales reciclables.",
               tone: "bg-[var(--brand-lime)] text-[var(--brand-ink)]",
               chip: "bg-[var(--brand-ink)] text-[var(--brand-lime)]",
             },
@@ -1209,7 +1209,7 @@ export function AboutPage() {
               Icon: Globe2,
               kicker: "Alcance",
               title: "Cobertura nacional con destino internacional.",
-              body: "Nuestros materiales reciclables llegan a destinos internacionales y se incorporan a cadenas globales de valor.",
+              body: "Nuestros materiales se incorporan a cadenas globales de valor.",
               tone: "bg-[var(--brand-teal)] text-white",
               chip: "bg-white text-[var(--brand-teal)]",
             },
@@ -1217,7 +1217,7 @@ export function AboutPage() {
               Icon: TrendingUp,
               kicker: "Evolución",
               title: "La recicladora más grande de El Salvador.",
-              body: "Hemos consolidado un crecimiento constante, mayor capacidad operativa y una operación más organizada y eficiente.",
+              body: "Crecimiento constante, mayor capacidad operativa y una operación más eficiente.",
               tone: "bg-[var(--brand-ink)] text-white",
               chip: "bg-[var(--brand-lime)] text-[var(--brand-ink)]",
             },
@@ -1227,18 +1227,18 @@ export function AboutPage() {
               <article
                 key={card.kicker}
                 data-reveal
-                className={cn("group relative isolate flex aspect-[4/5] flex-col justify-between overflow-hidden rounded-[1.75rem] p-7 shadow-[var(--shadow-elevated)] transition-transform duration-500 hover:-translate-y-2", card.tone)}
+                className={cn("group relative isolate flex flex-col gap-4 overflow-hidden rounded-2xl p-5 shadow-[var(--shadow-elevated)] transition-transform duration-500 hover:-translate-y-1.5", card.tone)}
               >
-                <span aria-hidden className="pointer-events-none absolute -bottom-4 -right-2 text-[7rem] font-black leading-none tracking-tighter opacity-[0.08]">0{i + 1}</span>
-                <div className="flex items-start justify-between">
-                  <span className={cn("grid h-14 w-14 place-items-center rounded-2xl shadow-lg transition-transform duration-500 group-hover:-rotate-6", card.chip)}>
-                    <Icon className="h-7 w-7" />
+                <span aria-hidden className="pointer-events-none absolute -bottom-3 -right-1 text-[5rem] font-black leading-none tracking-tighter opacity-[0.08]">0{i + 1}</span>
+                <div className="flex items-center justify-between">
+                  <span className={cn("grid h-11 w-11 place-items-center rounded-xl shadow-md transition-transform duration-500 group-hover:-rotate-6", card.chip)}>
+                    <Icon className="h-5 w-5" />
                   </span>
-                  <span className="text-[0.62rem] font-black uppercase tracking-[0.2em] opacity-80">{card.kicker}</span>
+                  <span className="text-[0.58rem] font-black uppercase tracking-[0.2em] opacity-80">{card.kicker}</span>
                 </div>
                 <div>
-                  <h3 className="text-balance text-2xl font-bold leading-tight tracking-tight">{card.title}</h3>
-                  <p className="mt-3 text-sm leading-6 opacity-85">{card.body}</p>
+                  <h3 className="text-balance text-base font-bold leading-snug tracking-tight md:text-lg">{card.title}</h3>
+                  <p className="mt-2 text-[0.82rem] leading-5 opacity-85">{card.body}</p>
                 </div>
               </article>
             );
