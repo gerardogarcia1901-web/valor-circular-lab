@@ -48,7 +48,7 @@ export function ReciclinHelper() {
     return () => window.clearTimeout(t);
   }, []);
 
-  // Show bubble once per route per session
+  // Show bubble once per route per session and keep it visible until the user closes it.
   useEffect(() => {
     if (!open) return;
     const key = SHOWN_KEY_PREFIX + pathname;
@@ -61,8 +61,6 @@ export function ReciclinHelper() {
     try {
       sessionStorage.setItem(key, "1");
     } catch {}
-    const t = window.setTimeout(() => setBubble(false), 9000);
-    return () => window.clearTimeout(t);
   }, [pathname, open]);
 
   if (!open) return null;
