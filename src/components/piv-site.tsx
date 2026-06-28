@@ -1361,34 +1361,46 @@ export function MaterialsPage() {
               {
                 tone: "bg-[var(--brand-teal)] text-white",
                 Icon: Droplets,
+                bg: prepLimpiosAsset.url,
                 desc: "Enjuaga envases, latas y empaques para retirar restos de alimentos, bebidas o residuos orgánicos.",
                 tips: ["Sin residuos líquidos", "Sin restos de comida", "Sin grasa ni aceites"],
               },
               {
                 tone: "bg-[var(--brand-lime)] text-[var(--brand-ink)]",
                 Icon: Sun,
+                bg: prepSecosAsset.url,
                 desc: "Deja escurrir y secar los materiales antes de almacenarlos para evitar contaminación y malos olores.",
                 tips: ["Bien escurridos", "Libres de humedad", "Listos para almacenar"],
               },
               {
                 tone: "bg-[var(--brand-navy)] text-white",
                 Icon: Layers3,
+                bg: prepSeparadosAsset.url,
                 desc: "Clasifica por tipo de material: plásticos, metales, papel y RAEE en bolsas o cajas independientes.",
                 tips: ["Por categoría", "Sin mezclar tipos", "Identificados"],
               },
             ];
             const d = config[i];
             const Icon = d.Icon;
+            const isDark = !d.tone.includes("brand-lime");
             return (
-              <article key={step} data-reveal className={cn("relative flex flex-col gap-4 overflow-hidden rounded-3xl p-8 shadow-[var(--shadow-elevated)]", d.tone)}>
-                <span aria-hidden className="absolute -right-6 -top-6 text-[8rem] font-black leading-none opacity-10">0{i + 1}</span>
-                <div className="grid h-14 w-14 place-items-center rounded-2xl bg-white/15 ring-1 ring-white/25 backdrop-blur">
+              <article key={step} data-reveal className={cn("group relative isolate flex min-h-[28rem] flex-col gap-4 overflow-hidden rounded-3xl p-8 shadow-[var(--shadow-elevated)]", d.tone)}>
+                <img
+                  src={d.bg}
+                  alt=""
+                  aria-hidden
+                  loading="lazy"
+                  className="absolute inset-0 -z-10 h-full w-full object-cover opacity-40 transition-transform duration-700 group-hover:scale-105"
+                />
+                <span aria-hidden className={cn("absolute inset-0 -z-10", isDark ? "bg-gradient-to-t from-black/85 via-black/55 to-black/25" : "bg-gradient-to-t from-[var(--brand-lime)]/95 via-[var(--brand-lime)]/70 to-[var(--brand-lime)]/30")} />
+                <span aria-hidden className="absolute -right-6 -top-6 text-[8rem] font-black leading-none opacity-15">0{i + 1}</span>
+                <div className="relative grid h-14 w-14 place-items-center rounded-2xl bg-white/15 ring-1 ring-white/25 backdrop-blur">
                   <Icon className="h-7 w-7" />
                 </div>
-                <span className="text-xs font-bold uppercase tracking-[0.18em] opacity-75">Paso {i + 1}</span>
-                <p className="text-4xl font-bold tracking-tight">{step}</p>
-                <p className="text-sm leading-6 opacity-90">{d.desc}</p>
-                <ul className="mt-2 space-y-1.5 text-sm font-medium">
+                <span className="relative text-xs font-bold uppercase tracking-[0.18em] opacity-80">Paso {i + 1}</span>
+                <p className="relative text-4xl font-bold tracking-tight">{step}</p>
+                <p className="relative text-sm leading-6 opacity-90">{d.desc}</p>
+                <ul className="relative mt-2 space-y-1.5 text-sm font-medium">
                   {d.tips.map((t) => (
                     <li key={t} className="flex items-center gap-2"><Sparkles className="h-3.5 w-3.5 opacity-80" />{t}</li>
                   ))}
