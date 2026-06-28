@@ -1431,8 +1431,8 @@ export function MaterialsPage() {
 }
 
 export function RsePage() {
-  const [activeSection, setActiveSection] = useState<(typeof rseCampaignSections)[number]["id"]>("recicla-y-gana");
-  const selectedSection = rseCampaignSections.find((section) => section.id === activeSection) ?? rseCampaignSections[0];
+  const [activeSection, setActiveSection] = useState<(typeof rseCampaignSections)[number]["id"] | null>(null);
+  const selectedSection = rseCampaignSections.find((section) => section.id === activeSection) ?? null;
 
   return (
     <PageShell>
