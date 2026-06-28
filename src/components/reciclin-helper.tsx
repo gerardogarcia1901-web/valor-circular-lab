@@ -66,7 +66,10 @@ export function ReciclinHelper() {
   if (!open) return null;
 
   return (
-    <div className="pointer-events-none fixed bottom-5 left-5 z-40 flex items-end gap-2 md:bottom-6 md:left-6">
+    <div
+      className="pointer-events-none fixed left-5 z-40 flex items-center gap-2 md:left-6"
+      style={{ top: "45vh" }}
+    >
       <a
         href={whatsappHref}
         target="_blank"
@@ -92,7 +95,7 @@ export function ReciclinHelper() {
           href={whatsappHref}
           target="_blank"
           rel="noreferrer"
-          className="pointer-events-auto relative block max-w-[17rem] rounded-2xl border border-[var(--brand-navy)]/10 bg-white px-4 py-3 text-sm leading-6 text-[var(--brand-navy)] shadow-xl transition-transform hover:-translate-y-0.5 animate-fade-in"
+          className="pointer-events-auto relative block max-w-[17rem] rounded-2xl border border-[var(--brand-navy)]/10 bg-white px-4 py-3 text-sm leading-6 text-[var(--brand-navy)] shadow-xl transition-transform hover:-translate-y-0.5 animate-fade-in md:max-w-[18rem]"
         >
           <button
             type="button"
