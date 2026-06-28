@@ -50,7 +50,7 @@ export function ReciclinMascot({
       />
       <div
         className={cn(
-          "relative min-w-0 flex-1 max-w-xs rounded-2xl border px-4 py-3 text-sm font-medium leading-6 shadow-lg",
+          "relative min-w-0 flex-1 max-w-xs break-words [overflow-wrap:anywhere] rounded-2xl border px-4 py-3 text-sm font-medium leading-6 shadow-lg",
           toneMap[tone],
         )}
       >
