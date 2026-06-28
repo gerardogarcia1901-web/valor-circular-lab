@@ -411,7 +411,7 @@ function HeroStats() {
         aria-hidden
         className="pointer-events-none absolute -top-32 right-0 z-10 hidden h-44 w-auto drop-shadow-[0_14px_30px_rgba(0,0,0,0.5)] animate-[reciclin-float_4s_ease-in-out_infinite] md:block lg:-top-40 lg:h-56"
       />
-      <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-3">
         {pivStats.map((item, i) => {
           const Icon = icons[i % icons.length];
           return (
@@ -445,7 +445,7 @@ function HeroStatCard({
     <div
       ref={ref}
       data-hero-stat
-      className="group relative isolate min-h-[13.5rem] overflow-hidden rounded-[1.35rem] border p-5 opacity-100 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] md:p-6 xl:min-h-[16rem]"
+      className="group relative isolate min-h-[12rem] overflow-hidden rounded-[1.35rem] border p-5 opacity-100 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] md:p-6 xl:min-h-[13rem] 2xl:min-h-[16rem]"
       style={{
         background: tone.bg,
         color: tone.fg,
@@ -487,7 +487,7 @@ function HeroStatCard({
           {item.prefix}
         </span>
         <span
-          className="tabular-nums text-6xl leading-none md:text-7xl xl:text-8xl"
+          className="whitespace-nowrap tabular-nums text-5xl leading-none md:text-6xl xl:text-7xl 2xl:text-8xl"
           style={{ color: tone.fg }}
         >
           {formatMetric(value)}
@@ -506,7 +506,7 @@ function HeroStatCard({
         style={{ background: tone.accent }}
       />
       <p
-        className="relative mt-4 text-sm font-bold leading-6 md:text-[0.95rem]"
+        className="relative mt-4 text-sm font-bold leading-6 md:text-[0.95rem] 2xl:text-base"
         style={{ color: tone.fg }}
       >
         {item.label}
@@ -883,7 +883,7 @@ export function HomePage() {
           />
         </div>
         <div className="relative mx-auto flex min-h-screen w-[min(1280px,calc(100%-2rem))] items-end pb-12 pt-28 md:pb-20 md:pt-32">
-          <div className="grid w-full gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+          <div className="grid w-full gap-8 2xl:grid-cols-[1.05fr_0.95fr] 2xl:items-end">
             <div className="space-y-6">
               <p data-hero-kicker className="eyebrow eyebrow--light">Economía circular con escala industrial</p>
               <h1 data-hero-title className="max-w-4xl text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-7xl lg:text-[5.2rem]">
