@@ -369,7 +369,66 @@ function MetricCard({ value, prefix, suffix, description }: { value: number; pre
   );
 }
 
-function AudienceStrip() {
+function HeroStats() {
+  const icons = [Award, Recycle, Globe2];
+  return (
+    <div className="relative lg:self-end">
+      <img
+        src={reciclinAsset.url}
+        alt="Reciclin, mascota de Parque Industrial Verde"
+        aria-hidden
+        className="pointer-events-none absolute -top-28 right-2 z-10 hidden h-40 w-auto drop-shadow-[0_10px_24px_rgba(0,0,0,0.45)] animate-[reciclin-float_4s_ease-in-out_infinite] md:block lg:-top-36 lg:h-52"
+      />
+      <div className="grid gap-4 sm:grid-cols-3">
+        {pivStats.map((item, i) => {
+          const Icon = icons[i % icons.length];
+          return <HeroStatCard key={item.label} item={item} Icon={Icon} index={i} />;
+        })}
+      </div>
+    </div>
+  );
+}
+
+function HeroStatCard({
+  item,
+  Icon,
+  index,
+}: {
+  item: (typeof pivStats)[number];
+  Icon: React.ComponentType<{ className?: string }>;
+  index: number;
+}) {
+  const { ref, value } = useCountUp(item.value);
+  return (
+    <div
+      ref={ref}
+      data-hero-stat
+      className="group relative overflow-hidden rounded-2xl border border-white/20 bg-white/10 p-5 backdrop-blur-md transition-all duration-500 hover:-translate-y-1.5 hover:scale-[1.03] hover:border-[var(--brand-lime)]/60 hover:bg-white/15 hover:shadow-[0_20px_50px_-12px_color-mix(in_oklab,var(--brand-lime)_45%,transparent)]"
+      style={{ animationDelay: `${index * 120}ms` }}
+    >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-60"
+        style={{ background: "var(--brand-lime)" }}
+      />
+      <div className="flex items-center justify-between">
+        <span className="grid h-9 w-9 place-items-center rounded-full bg-[var(--brand-lime)]/20 text-[var(--brand-lime)] ring-1 ring-[var(--brand-lime)]/40 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110">
+          <Icon className="h-4 w-4" />
+        </span>
+        <span className="text-[0.6rem] font-bold uppercase tracking-[0.16em] text-white/60">0{index + 1}</span>
+      </div>
+      <p className="mt-4 flex items-baseline gap-1 text-4xl font-bold tracking-tight text-[var(--brand-lime)] md:text-5xl">
+        <span>{item.prefix}</span>
+        <span className="tabular-nums">{formatMetric(value)}</span>
+      </p>
+      <p className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-white/90">{item.suffix}</p>
+      <div className="mt-3 h-px w-10 bg-[var(--brand-lime)]/60 transition-all duration-500 group-hover:w-full" />
+      <p className="mt-3 text-xs leading-5 text-white/80">{item.label}</p>
+    </div>
+  );
+}
+
+
   const palette = [
     { bg: "var(--brand-teal)", fg: "#FFFFFF" },
     { bg: "var(--brand-lime)", fg: "var(--brand-ink)" },
