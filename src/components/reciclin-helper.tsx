@@ -66,7 +66,10 @@ export function ReciclinHelper() {
   if (!open) return null;
 
   return (
-    <div className="pointer-events-none fixed left-5 top-[45vh] z-40 flex items-center gap-2 md:left-6">
+    <div
+      className="pointer-events-none fixed left-5 z-40 flex items-center gap-2 md:left-6"
+      style={{ top: "45vh" }}
+    >
       <a
         href={whatsappHref}
         target="_blank"
