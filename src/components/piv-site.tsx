@@ -428,7 +428,7 @@ function HeroStatCard({
   );
 }
 
-
+function AudienceStrip() {
   const palette = [
     { bg: "var(--brand-teal)", fg: "#FFFFFF" },
     { bg: "var(--brand-lime)", fg: "var(--brand-ink)" },
