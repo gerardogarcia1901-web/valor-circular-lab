@@ -8,6 +8,7 @@ import heroAsset from "@/assets/piv-hero-v3.png.asset.json";
 import heroAboutAsset from "@/assets/piv-hero-v2.png.asset.json";
 import logoAsset from "@/assets/piv-logo.png.asset.json";
 import reciclinAsset from "@/assets/reciclin.png.asset.json";
+import { ReciclinMascot } from "@/components/reciclin-mascot";
 import { ConversionPopup } from "@/components/conversion-popup";
 
 import operationsAsset from "@/assets/piv-operations.jpg.asset.json";
