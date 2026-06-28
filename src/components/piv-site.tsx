@@ -699,17 +699,35 @@ function ServicesGrid() {
     { bg: "#ffffff", fg: "var(--brand-navy)", chip: "var(--brand-navy)", chipFg: "#ffffff", glow: "var(--brand-sky)" },
     { bg: "var(--brand-ink)", fg: "#ffffff", chip: "var(--brand-lime)", chipFg: "var(--brand-ink)", glow: "var(--brand-lime)" },
   ];
+  // bento spans: vary card sizes so the grid breathes and feels editorial
+  const spans = [
+    "sm:col-span-2 lg:col-span-2 xl:col-span-2 xl:row-span-2",
+    "",
+    "",
+    "lg:col-span-2 xl:col-span-2",
+    "",
+    "",
+    "lg:col-span-2 xl:col-span-2",
+    "",
+    "",
+    "sm:col-span-2 lg:col-span-3 xl:col-span-2",
+  ];
   return (
-    <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+    <div className="mt-14 grid auto-rows-[15rem] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {featuredServices.map((service, i) => {
         const Icon = SERVICE_ICON_MAP[service.title] ?? Recycle;
         const tagline = SERVICE_TAGLINES[service.title] ?? "";
         const tone = tones[i % tones.length];
+        const span = spans[i] ?? "";
+        const isFeature = i === 0;
         return (
           <article
             key={service.title}
             data-reveal
-            className="group relative isolate flex aspect-[4/5] flex-col justify-between overflow-hidden rounded-[1.75rem] p-6 shadow-[var(--shadow-elevated)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02]"
+            className={cn(
+              "group relative isolate flex flex-col justify-between overflow-hidden rounded-[1.5rem] p-6 shadow-[var(--shadow-elevated)] transition-all duration-500 hover:-translate-y-1.5 hover:scale-[1.015]",
+              span,
+            )}
             style={{
               background: tone.bg,
               color: tone.fg,
@@ -719,16 +737,34 @@ function ServicesGrid() {
                   : undefined,
             }}
           >
+            {/* dot pattern */}
+            <span
+              aria-hidden
+              className="pointer-events-none absolute inset-0 opacity-[0.06] transition-opacity duration-500 group-hover:opacity-[0.12]"
+              style={{
+                backgroundImage: `radial-gradient(circle, ${tone.fg} 1px, transparent 1.2px)`,
+                backgroundSize: "14px 14px",
+              }}
+            />
             {/* glow */}
             <span
               aria-hidden
-              className="pointer-events-none absolute -right-10 -top-10 h-44 w-44 rounded-full opacity-25 blur-3xl transition-opacity duration-500 group-hover:opacity-60"
+              className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full opacity-25 blur-3xl transition-all duration-700 group-hover:opacity-70 group-hover:scale-125"
               style={{ background: tone.glow }}
+            />
+            {/* diagonal stripe */}
+            <span
+              aria-hidden
+              className="pointer-events-none absolute -left-10 bottom-0 h-1 w-32 rotate-[-35deg] origin-left transition-all duration-500 group-hover:w-64"
+              style={{ background: tone.chip, opacity: 0.4 }}
             />
             {/* index number */}
             <span
               aria-hidden
-              className="pointer-events-none absolute -bottom-4 -right-2 text-[6rem] font-black leading-none tracking-tighter opacity-[0.08]"
+              className={cn(
+                "pointer-events-none absolute -bottom-6 -right-3 font-black leading-none tracking-tighter opacity-[0.08] transition-transform duration-700 group-hover:scale-110 group-hover:opacity-[0.14]",
+                isFeature ? "text-[12rem]" : "text-[7rem]",
+              )}
               style={{ color: tone.fg }}
             >
               {String(i + 1).padStart(2, "0")}
@@ -736,30 +772,52 @@ function ServicesGrid() {
 
             <div className="relative flex items-start justify-between">
               <span
-                className="grid h-14 w-14 place-items-center rounded-2xl shadow-lg transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110"
+                className={cn(
+                  "grid place-items-center rounded-2xl shadow-lg transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110",
+                  isFeature ? "h-16 w-16" : "h-12 w-12",
+                )}
                 style={{ background: tone.chip, color: tone.chipFg }}
               >
-                <Icon className="h-7 w-7" />
+                <Icon className={isFeature ? "h-8 w-8" : "h-6 w-6"} />
               </span>
-              <ArrowUpRight
-                className="h-5 w-5 opacity-70 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100"
-              />
+              <span
+                className="rounded-full px-2.5 py-1 text-[0.58rem] font-black uppercase tracking-[0.18em] opacity-80"
+                style={{ background: `color-mix(in oklab, ${tone.fg} 10%, transparent)` }}
+              >
+                Servicio · {String(i + 1).padStart(2, "0")}
+              </span>
             </div>
 
             <div className="relative">
-              <h3 className="text-balance text-xl font-bold leading-tight tracking-tight md:text-2xl">
+              <h3
+                className={cn(
+                  "text-balance font-bold leading-tight tracking-tight",
+                  isFeature ? "text-3xl md:text-4xl" : "text-lg md:text-xl",
+                )}
+              >
                 {service.title}
               </h3>
               {tagline ? (
-                <p className="mt-2 text-[0.78rem] font-semibold uppercase tracking-[0.12em] opacity-80">
+                <p
+                  className={cn(
+                    "mt-2 font-semibold opacity-85",
+                    isFeature ? "text-sm leading-6" : "text-[0.74rem] uppercase tracking-[0.12em]",
+                  )}
+                >
                   {tagline}
                 </p>
               ) : null}
-              <span
-                aria-hidden
-                className="mt-4 block h-[2px] w-10 origin-left rounded-full transition-all duration-500 group-hover:w-full"
-                style={{ background: tone.chip }}
-              />
+              <div className="mt-4 flex items-center gap-2">
+                <span
+                  aria-hidden
+                  className="block h-[2px] w-8 origin-left rounded-full transition-all duration-500 group-hover:w-20"
+                  style={{ background: tone.chip }}
+                />
+                <span className="flex items-center gap-1 text-[0.65rem] font-black uppercase tracking-[0.18em] opacity-0 transition-all duration-500 group-hover:opacity-90">
+                  Ver más
+                  <ArrowUpRight className="h-3 w-3" />
+                </span>
+              </div>
             </div>
           </article>
         );
