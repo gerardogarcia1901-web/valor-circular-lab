@@ -524,7 +524,7 @@ function HeroStats() {
         aria-hidden
         className="pointer-events-none absolute -top-32 right-0 z-10 hidden h-44 w-auto drop-shadow-[0_14px_30px_rgba(0,0,0,0.5)] animate-[reciclin-float_4s_ease-in-out_infinite] md:block lg:-top-40 lg:h-56"
       />
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid gap-3 sm:grid-cols-3 md:gap-4">
         {pivStats.map((item, i) => {
           const Icon = icons[i % icons.length];
           return (
@@ -558,7 +558,7 @@ function HeroStatCard({
     <div
       ref={ref}
       data-hero-stat
-      className="group relative isolate min-h-[11rem] overflow-hidden rounded-[1.35rem] border p-4 opacity-100 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] md:min-h-[11.5rem] md:p-5 xl:min-h-[12rem] 2xl:min-h-[16rem] 2xl:p-6"
+      className="group relative isolate grid min-h-[10.5rem] content-between overflow-hidden rounded-[1.35rem] border p-4 opacity-100 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] md:min-h-[11rem] xl:min-h-[11.5rem]"
       style={{
         background: tone.bg,
         color: tone.fg,
@@ -570,7 +570,7 @@ function HeroStatCard({
     >
       <span
         aria-hidden
-        className="pointer-events-none absolute -right-8 -top-10 -z-10 text-[7rem] font-black leading-none text-current opacity-[0.09] transition-transform duration-500 group-hover:scale-110 xl:text-[8rem]"
+        className="pointer-events-none absolute -right-5 -top-8 -z-10 text-[6rem] font-black leading-none text-current opacity-[0.14] transition-transform duration-500 group-hover:scale-110"
       >
         {String(index + 1).padStart(2, "0")}
       </span>
@@ -582,10 +582,10 @@ function HeroStatCard({
 
       <div className="relative flex items-center justify-between">
         <span
-          className="grid h-11 w-11 place-items-center rounded-2xl shadow-lg transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110"
+          className="grid h-10 w-10 place-items-center rounded-2xl shadow-lg transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110"
           style={{ background: tone.chip, color: tone.chipFg }}
         >
-          <Icon className="h-5 w-5" />
+          <Icon className="h-4 w-4" />
         </span>
         <span
           className="rounded-full px-3 py-1.5 text-[0.62rem] font-black uppercase tracking-[0.18em] shadow-sm"
@@ -595,19 +595,20 @@ function HeroStatCard({
         </span>
       </div>
 
-      <p className="relative mt-6 flex items-baseline gap-1 font-black tracking-tight">
-        <span className="text-3xl md:text-4xl xl:text-5xl" style={{ color: tone.accent }}>
+      <div>
+      <p className="relative mt-4 flex items-baseline gap-1 font-black tracking-tight">
+        <span className="text-2xl md:text-3xl" style={{ color: tone.accent }}>
           {item.prefix}
         </span>
         <span
-          className="whitespace-nowrap tabular-nums text-5xl leading-none md:text-6xl 2xl:text-8xl"
+          className="whitespace-nowrap tabular-nums text-4xl leading-none md:text-5xl xl:text-6xl"
           style={{ color: tone.fg }}
         >
           {formatMetric(value)}
         </span>
       </p>
       <p
-        className="relative mt-2 text-sm font-black uppercase tracking-[0.24em]"
+        className="relative mt-1 text-xs font-black uppercase tracking-[0.14em] md:text-sm"
         style={{ color: tone.accent }}
       >
         {item.suffix}
@@ -615,15 +616,16 @@ function HeroStatCard({
 
       <span
         aria-hidden
-        className="relative mt-4 block h-[3px] w-14 origin-left rounded-full transition-all duration-500 group-hover:w-24"
+        className="relative mt-3 block h-[3px] w-14 origin-left rounded-full transition-all duration-500 group-hover:w-24"
         style={{ background: tone.accent }}
       />
       <p
-        className="relative mt-4 text-sm font-bold leading-6 md:text-[0.95rem] 2xl:text-base"
+        className="relative mt-3 text-xs font-bold leading-5 md:text-[0.82rem] xl:text-sm"
         style={{ color: tone.fg }}
       >
         {item.label}
       </p>
+      </div>
     </div>
   );
 }
