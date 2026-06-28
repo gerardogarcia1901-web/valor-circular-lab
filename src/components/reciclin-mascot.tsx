@@ -34,7 +34,7 @@ export function ReciclinMascot({
   return (
     <div
       className={cn(
-        "flex items-end gap-3 md:gap-4",
+        "flex w-full min-w-0 items-end gap-3 md:gap-4",
         side === "right" && "flex-row-reverse",
         className,
       )}
@@ -50,7 +50,7 @@ export function ReciclinMascot({
       />
       <div
         className={cn(
-          "relative max-w-xs rounded-2xl border px-4 py-3 text-sm font-medium leading-6 shadow-lg",
+          "relative min-w-0 flex-1 max-w-xs rounded-2xl border px-4 py-3 text-sm font-medium leading-6 shadow-lg",
           toneMap[tone],
         )}
       >
