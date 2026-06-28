@@ -408,6 +408,22 @@
   100% { transform: scale(1); opacity: 1; }
 }
 
+@keyframes marquee-x {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee-x 40s linear infinite;
+}
+.marquee-pause:hover .marquee-track { animation-play-state: paused; }
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  80%, 100% { transform: scale(1.6); opacity: 0; }
+}
+
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
