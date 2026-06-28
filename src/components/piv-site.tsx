@@ -1486,36 +1486,41 @@ export function RsePage() {
             );
           })}
         </div>
-        <div id={`panel-${selectedSection.id}`} role="tabpanel" className="mt-8 grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
-          <article data-reveal className="rounded-3xl bg-[var(--brand-ink)] p-7 text-white shadow-[var(--shadow-elevated)]">
-            <p className="text-[0.7rem] font-black uppercase tracking-[0.2em] text-[var(--brand-lime)]">{selectedSection.kicker}</p>
-            <h3 className="mt-5 text-balance text-4xl font-semibold tracking-tight">{selectedSection.title}</h3>
-            <p className="mt-4 text-base leading-7 text-white/78">{selectedSection.description}</p>
-            <div className="mt-8 flex flex-wrap gap-2">
+        {selectedSection ? (
+          <div id={`panel-${selectedSection.id}`} role="tabpanel" className="mt-8 grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+            <article data-reveal className="rounded-3xl bg-[var(--brand-ink)] p-7 text-white shadow-[var(--shadow-elevated)]">
+              <p className="text-[0.7rem] font-black uppercase tracking-[0.2em] text-[var(--brand-lime)]">{selectedSection.kicker}</p>
+              <h3 className="mt-5 text-balance text-4xl font-semibold tracking-tight">{selectedSection.title}</h3>
+              <p className="mt-4 text-base leading-7 text-white/78">{selectedSection.description}</p>
+              <button
+                type="button"
+                onClick={() => setActiveSection(null)}
+                className="mt-8 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-white transition-colors hover:bg-[var(--brand-lime)] hover:text-[var(--brand-ink)]"
+              >
+                <X className="h-3.5 w-3.5" /> Cerrar
+              </button>
+            </article>
+            <div data-reveal className="grid auto-rows-[15rem] gap-4 md:grid-cols-2">
               {selectedSection.photos.map((photo, index) => (
-                <a key={photo.url} href={`#${selectedSection.id}-foto-${index + 1}`} className="rounded-full bg-white/10 px-3 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-white transition-colors hover:bg-[var(--brand-lime)] hover:text-[var(--brand-ink)]">
-                  Foto {index + 1}
-                </a>
+                <img
+                  key={photo.url}
+                  src={photo.url}
+                  alt={photo.alt}
+                  loading="lazy"
+                  className={cn(
+                    "h-full w-full rounded-3xl object-cover shadow-[var(--shadow-elevated)]",
+                    index === 0 && "md:row-span-2",
+                    selectedSection.photos.length === 2 && index === 1 && "md:row-span-2",
+                  )}
+                />
               ))}
             </div>
-          </article>
-          <div data-reveal className="grid auto-rows-[15rem] gap-4 md:grid-cols-2">
-            {selectedSection.photos.map((photo, index) => (
-              <img
-                key={photo.url}
-                id={`${selectedSection.id}-foto-${index + 1}`}
-                src={photo.url}
-                alt={photo.alt}
-                loading="lazy"
-                className={cn(
-                  "h-full w-full rounded-3xl object-cover shadow-[var(--shadow-elevated)]",
-                  index === 0 && "md:row-span-2",
-                  selectedSection.photos.length === 2 && index === 1 && "md:row-span-2",
-                )}
-              />
-            ))}
           </div>
-        </div>
+        ) : (
+          <p data-reveal className="mt-8 rounded-3xl border border-dashed border-[var(--brand-navy)]/15 bg-white/60 px-6 py-8 text-center text-sm font-medium text-[var(--brand-navy)]/70">
+            Selecciona una campaña arriba para ver fotos y detalles.
+          </p>
+        )}
       </Section>
       <Section
         eyebrow="Impacto social"
