@@ -10,6 +10,9 @@ import logoAsset from "@/assets/piv-logo.png.asset.json";
 import reciclinAsset from "@/assets/reciclin.png.asset.json";
 import { ReciclinMascot } from "@/components/reciclin-mascot";
 import { ConversionPopup } from "@/components/conversion-popup";
+import { ReciclinHelper } from "@/components/reciclin-helper";
+import { PartnersStrip } from "@/components/partners-strip";
+
 
 import operationsAsset from "@/assets/piv-operations.jpg.asset.json";
 import metalsAsset from "@/assets/piv-metals.jpg.asset.json";
@@ -153,10 +156,12 @@ function PageShell({ children }: { children: ReactNode }) {
       <main ref={pageRef}>{children}</main>
       <SiteFooter />
       <WhatsAppBubble />
+      <ReciclinHelper />
       <ConversionPopup />
     </div>
   );
 }
+
 
 function SiteHeader() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
@@ -372,6 +377,29 @@ function MetricCard({ value, prefix, suffix, description }: { value: number; pre
 
 function HeroStats() {
   const icons = [Award, Recycle, Globe2];
+  const tones = [
+    {
+      bg: "linear-gradient(150deg, var(--brand-lime) 0%, color-mix(in oklab, var(--brand-lime) 80%, var(--brand-teal)) 100%)",
+      fg: "var(--brand-ink)",
+      sub: "var(--brand-navy)",
+      chip: "var(--brand-ink)",
+      chipFg: "var(--brand-lime)",
+    },
+    {
+      bg: "linear-gradient(150deg, #ffffff 0%, color-mix(in oklab, var(--brand-sky) 55%, white) 100%)",
+      fg: "var(--brand-navy)",
+      sub: "var(--brand-teal)",
+      chip: "var(--brand-teal)",
+      chipFg: "#ffffff",
+    },
+    {
+      bg: "linear-gradient(150deg, var(--brand-teal) 0%, var(--brand-navy) 100%)",
+      fg: "#ffffff",
+      sub: "var(--brand-lime)",
+      chip: "var(--brand-lime)",
+      chipFg: "var(--brand-ink)",
+    },
+  ];
   return (
     <div className="relative lg:self-end">
       <img
@@ -383,7 +411,15 @@ function HeroStats() {
       <div className="grid gap-4 sm:grid-cols-3">
         {pivStats.map((item, i) => {
           const Icon = icons[i % icons.length];
-          return <HeroStatCard key={item.label} item={item} Icon={Icon} index={i} />;
+          return (
+            <HeroStatCard
+              key={item.label}
+              item={item}
+              Icon={Icon}
+              index={i}
+              tone={tones[i % tones.length]}
+            />
+          );
         })}
       </div>
     </div>
@@ -394,61 +430,78 @@ function HeroStatCard({
   item,
   Icon,
   index,
+  tone,
 }: {
   item: (typeof pivStats)[number];
   Icon: React.ComponentType<{ className?: string }>;
   index: number;
+  tone: { bg: string; fg: string; sub: string; chip: string; chipFg: string };
 }) {
   const { ref, value } = useCountUp(item.value);
   return (
     <div
       ref={ref}
       data-hero-stat
-      className="group relative overflow-hidden rounded-3xl p-6 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.04]"
+      className="group relative overflow-hidden rounded-[1.75rem] p-6 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.03]"
       style={{
-        background:
-          "linear-gradient(155deg, color-mix(in oklab, var(--brand-navy) 92%, transparent) 0%, color-mix(in oklab, var(--brand-ink) 88%, transparent) 100%)",
+        background: tone.bg,
+        color: tone.fg,
         boxShadow:
-          "0 18px 50px -18px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08)",
+          "0 22px 50px -18px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.35)",
       }}
     >
-      {/* Lime accent bar */}
+      {/* Decorative oversized number */}
       <span
         aria-hidden
-        className="absolute left-0 top-0 h-full w-1.5 bg-[var(--brand-lime)] transition-all duration-500 group-hover:w-2"
-      />
-      {/* Glow */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full opacity-30 blur-3xl transition-opacity duration-500 group-hover:opacity-70"
-        style={{ background: "var(--brand-lime)" }}
-      />
-      {/* Decorative corner number */}
-      <span
-        aria-hidden
-        className="absolute right-3 top-2 text-[3.2rem] font-black leading-none text-white/[0.06] tracking-tighter transition-all duration-500 group-hover:text-[var(--brand-lime)]/20"
+        className="pointer-events-none absolute -right-2 -top-6 select-none text-[7rem] font-black leading-none tracking-tighter transition-all duration-500 group-hover:scale-105"
+        style={{ color: tone.sub, opacity: 0.12 }}
       >
         0{index + 1}
       </span>
 
-      <div className="relative flex items-center gap-2">
-        <span className="grid h-10 w-10 place-items-center rounded-xl bg-[var(--brand-lime)] text-[var(--brand-ink)] shadow-[0_8px_20px_-6px_color-mix(in_oklab,var(--brand-lime)_70%,transparent)] transition-transform duration-500 group-hover:rotate-[-8deg] group-hover:scale-110">
-          <Icon className="h-5 w-5" />
+      {/* Top row: icon + chip */}
+      <div className="relative flex items-center justify-between">
+        <span
+          className="grid h-12 w-12 place-items-center rounded-2xl shadow-lg transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110"
+          style={{ background: tone.chip, color: tone.chipFg }}
+        >
+          <Icon className="h-6 w-6" />
         </span>
-        <span className="h-px flex-1 bg-gradient-to-r from-[var(--brand-lime)]/60 to-transparent" />
+        <span
+          className="rounded-full px-2.5 py-1 text-[0.6rem] font-black uppercase tracking-[0.2em]"
+          style={{ background: tone.chip, color: tone.chipFg }}
+        >
+          0{index + 1} / 03
+        </span>
       </div>
 
-      <p className="relative mt-5 flex items-baseline gap-1 font-black tracking-tight text-white">
-        <span className="text-2xl text-[var(--brand-lime)] md:text-3xl">{item.prefix}</span>
-        <span className="tabular-nums text-5xl md:text-6xl bg-gradient-to-b from-white to-white/70 bg-clip-text text-transparent">
+      {/* Big value */}
+      <p className="relative mt-6 flex items-baseline gap-1 font-black tracking-tight">
+        <span className="text-3xl md:text-4xl" style={{ color: tone.sub }}>
+          {item.prefix}
+        </span>
+        <span className="tabular-nums text-6xl leading-none md:text-7xl">
           {formatMetric(value)}
         </span>
       </p>
-      <p className="relative mt-1 text-sm font-bold uppercase tracking-[0.16em] text-[var(--brand-lime)]">
+      <p
+        className="relative mt-2 text-sm font-black uppercase tracking-[0.2em]"
+        style={{ color: tone.sub }}
+      >
         {item.suffix}
       </p>
-      <div className="relative mt-4 h-px w-12 bg-[var(--brand-lime)]/60 transition-all duration-500 group-hover:w-full" />
-      <p className="relative mt-3 text-xs leading-5 text-white/75">{item.label}</p>
+
+      <span
+        aria-hidden
+        className="relative mt-5 block h-[2px] w-14 origin-left rounded-full transition-all duration-500 group-hover:w-full"
+        style={{ background: tone.sub }}
+      />
+      <p
+        className="relative mt-4 text-sm font-medium leading-6"
+        style={{ color: tone.fg }}
+      >
+        {item.label}
+      </p>
     </div>
   );
 }
@@ -482,34 +535,109 @@ function AudienceStrip() {
   );
 }
 
+const SERVICE_ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
+  "Recuperación de materiales": Recycle,
+  "Educación ambiental": Award,
+  "Gestión integral de residuos": ShieldCheck,
+  "Trazabilidad digital": Globe2,
+  "Apoyo en campañas": MessageCircle,
+  "Charlas ambientales": Award,
+  "Recolección a domicilio": MapPinned,
+  "Certificados de destrucción": ShieldCheck,
+  "Desalojo de bodegas": MoveRight,
+  "Destrucción de maquinaria": Clock3,
+};
+
+const SERVICE_TAGLINES: Record<string, string> = {
+  "Recuperación de materiales": "Plásticos, metales, papel y RAEE.",
+  "Educación ambiental": "Programas y talleres a medida.",
+  "Gestión integral de residuos": "Diagnóstico, rutas y reportes.",
+  "Trazabilidad digital": "Evidencia auditable end-to-end.",
+  "Apoyo en campañas": "Activaciones y jornadas operativas.",
+  "Charlas ambientales": "Sesiones para equipos y aliados.",
+  "Recolección a domicilio": "Rutas programadas a tu medida.",
+  "Certificados de destrucción": "Cumplimiento y auditoría.",
+  "Desalojo de bodegas": "Liberación responsable de espacios.",
+  "Destrucción de maquinaria": "Disposición segura de equipos.",
+};
+
 function ServicesGrid() {
-  const palette = [
-    "bg-gradient-to-br from-[var(--brand-teal)] to-[var(--brand-navy)] text-white",
-    "bg-[var(--brand-lime)] text-[var(--brand-ink)]",
-    "bg-[var(--brand-sky)] text-[var(--brand-navy)]",
-    "bg-white text-[var(--brand-ink)] border border-[var(--brand-navy)]/15",
+  const tones = [
+    { bg: "var(--brand-navy)", fg: "#ffffff", chip: "var(--brand-lime)", chipFg: "var(--brand-ink)", glow: "var(--brand-teal)" },
+    { bg: "var(--brand-lime)", fg: "var(--brand-ink)", chip: "var(--brand-ink)", chipFg: "var(--brand-lime)", glow: "var(--brand-lime)" },
+    { bg: "var(--brand-teal)", fg: "#ffffff", chip: "#ffffff", chipFg: "var(--brand-teal)", glow: "var(--brand-sky)" },
+    { bg: "#ffffff", fg: "var(--brand-navy)", chip: "var(--brand-navy)", chipFg: "#ffffff", glow: "var(--brand-sky)" },
+    { bg: "var(--brand-ink)", fg: "#ffffff", chip: "var(--brand-lime)", chipFg: "var(--brand-ink)", glow: "var(--brand-lime)" },
   ];
   return (
-    <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-      {featuredServices.map((service, i) => (
-        <article
-          key={service.title}
-          data-reveal
-          className={cn(
-            "group flex flex-col justify-between gap-6 rounded-3xl p-6 shadow-[var(--shadow-elevated)] transition-transform duration-300 hover:-translate-y-1",
-            palette[i % palette.length],
-          )}
-        >
-          <div className="space-y-3">
-            <p className="text-lg font-bold tracking-tight md:text-xl">{service.title}</p>
-            <p className="text-sm leading-6 opacity-85">{service.description}</p>
-          </div>
-          <MoveRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-        </article>
-      ))}
+    <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+      {featuredServices.map((service, i) => {
+        const Icon = SERVICE_ICON_MAP[service.title] ?? Recycle;
+        const tagline = SERVICE_TAGLINES[service.title] ?? "";
+        const tone = tones[i % tones.length];
+        return (
+          <article
+            key={service.title}
+            data-reveal
+            className="group relative isolate flex aspect-[4/5] flex-col justify-between overflow-hidden rounded-[1.75rem] p-6 shadow-[var(--shadow-elevated)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02]"
+            style={{
+              background: tone.bg,
+              color: tone.fg,
+              border:
+                tone.bg === "#ffffff"
+                  ? "1px solid color-mix(in oklab, var(--brand-navy) 12%, white)"
+                  : undefined,
+            }}
+          >
+            {/* glow */}
+            <span
+              aria-hidden
+              className="pointer-events-none absolute -right-10 -top-10 h-44 w-44 rounded-full opacity-25 blur-3xl transition-opacity duration-500 group-hover:opacity-60"
+              style={{ background: tone.glow }}
+            />
+            {/* index number */}
+            <span
+              aria-hidden
+              className="pointer-events-none absolute -bottom-4 -right-2 text-[6rem] font-black leading-none tracking-tighter opacity-[0.08]"
+              style={{ color: tone.fg }}
+            >
+              {String(i + 1).padStart(2, "0")}
+            </span>
+
+            <div className="relative flex items-start justify-between">
+              <span
+                className="grid h-14 w-14 place-items-center rounded-2xl shadow-lg transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110"
+                style={{ background: tone.chip, color: tone.chipFg }}
+              >
+                <Icon className="h-7 w-7" />
+              </span>
+              <ArrowUpRight
+                className="h-5 w-5 opacity-70 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100"
+              />
+            </div>
+
+            <div className="relative">
+              <h3 className="text-balance text-xl font-bold leading-tight tracking-tight md:text-2xl">
+                {service.title}
+              </h3>
+              {tagline ? (
+                <p className="mt-2 text-[0.78rem] font-semibold uppercase tracking-[0.12em] opacity-80">
+                  {tagline}
+                </p>
+              ) : null}
+              <span
+                aria-hidden
+                className="mt-4 block h-[2px] w-10 origin-left rounded-full transition-all duration-500 group-hover:w-full"
+                style={{ background: tone.chip }}
+              />
+            </div>
+          </article>
+        );
+      })}
     </div>
   );
 }
+
 
 function EnterpriseCommunity() {
   return (
@@ -861,7 +989,10 @@ export function HomePage() {
         </div>
       </section>
 
+      <PartnersStrip variant="light" />
+
       <FAQSection />
+
 
       <section className="relative overflow-hidden py-20 md:py-28" style={{ background: "var(--gradient-accent)" }}>
         <img
@@ -1009,6 +1140,13 @@ export function ServicesPage() {
         <ServicesGrid />
       </Section>
       <EnterpriseCommunity />
+      <PartnersStrip
+        variant="dark"
+        eyebrow="Quienes confían"
+        title="Marcas líderes que ya operan con PIV."
+        description="Industrias, retail, banca, energía y consumo masivo eligen nuestra infraestructura para gestionar sus residuos con trazabilidad."
+      />
+
     </PageShell>
   );
 }
