@@ -379,25 +379,28 @@ function HeroStats() {
   const icons = [Award, Recycle, Globe2];
   const tones = [
     {
-      bg: "linear-gradient(150deg, var(--brand-lime) 0%, color-mix(in oklab, var(--brand-lime) 80%, var(--brand-teal)) 100%)",
+      bg: "var(--brand-lime)",
       fg: "var(--brand-ink)",
       sub: "var(--brand-navy)",
       chip: "var(--brand-ink)",
       chipFg: "var(--brand-lime)",
+      accent: "var(--brand-ink)",
     },
     {
-      bg: "linear-gradient(150deg, #ffffff 0%, color-mix(in oklab, var(--brand-sky) 55%, white) 100%)",
+      bg: "#ffffff",
       fg: "var(--brand-navy)",
       sub: "var(--brand-teal)",
       chip: "var(--brand-teal)",
       chipFg: "#ffffff",
+      accent: "var(--brand-teal)",
     },
     {
-      bg: "linear-gradient(150deg, var(--brand-teal) 0%, var(--brand-navy) 100%)",
+      bg: "var(--brand-navy)",
       fg: "#ffffff",
       sub: "var(--brand-lime)",
       chip: "var(--brand-lime)",
       chipFg: "var(--brand-ink)",
+      accent: "var(--brand-lime)",
     },
   ];
   return (
@@ -435,7 +438,7 @@ function HeroStatCard({
   item: (typeof pivStats)[number];
   Icon: React.ComponentType<{ className?: string }>;
   index: number;
-  tone: { bg: string; fg: string; sub: string; chip: string; chipFg: string };
+  tone: { bg: string; fg: string; sub: string; chip: string; chipFg: string; accent: string };
 }) {
   const { ref, value } = useCountUp(item.value);
   return (
@@ -450,15 +453,6 @@ function HeroStatCard({
           "0 22px 50px -18px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.35)",
       }}
     >
-      {/* Decorative oversized number */}
-      <span
-        aria-hidden
-        className="pointer-events-none absolute -right-2 -top-6 select-none text-[7rem] font-black leading-none tracking-tighter transition-all duration-500 group-hover:scale-105"
-        style={{ color: tone.sub, opacity: 0.12 }}
-      >
-        0{index + 1}
-      </span>
-
       {/* Top row: icon + chip */}
       <div className="relative flex items-center justify-between">
         <span
@@ -477,34 +471,38 @@ function HeroStatCard({
 
       {/* Big value */}
       <p className="relative mt-6 flex items-baseline gap-1 font-black tracking-tight">
-        <span className="text-3xl md:text-4xl" style={{ color: tone.sub }}>
+        <span className="text-3xl md:text-4xl" style={{ color: tone.accent }}>
           {item.prefix}
         </span>
-        <span className="tabular-nums text-6xl leading-none md:text-7xl">
+        <span
+          className="tabular-nums text-6xl leading-none md:text-7xl"
+          style={{ color: tone.fg }}
+        >
           {formatMetric(value)}
         </span>
       </p>
       <p
         className="relative mt-2 text-sm font-black uppercase tracking-[0.2em]"
-        style={{ color: tone.sub }}
+        style={{ color: tone.accent }}
       >
         {item.suffix}
       </p>
 
       <span
         aria-hidden
-        className="relative mt-5 block h-[2px] w-14 origin-left rounded-full transition-all duration-500 group-hover:w-full"
-        style={{ background: tone.sub }}
+        className="relative mt-5 block h-[3px] w-14 origin-left rounded-full transition-all duration-500 group-hover:w-full"
+        style={{ background: tone.accent }}
       />
       <p
-        className="relative mt-4 text-sm font-medium leading-6"
-        style={{ color: tone.fg }}
+        className="relative mt-4 text-sm font-semibold leading-6"
+        style={{ color: tone.fg, opacity: 0.92 }}
       >
         {item.label}
       </p>
     </div>
   );
 }
+
 
 
 
