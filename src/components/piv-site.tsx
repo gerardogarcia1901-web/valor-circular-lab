@@ -989,7 +989,10 @@ export function HomePage() {
         </div>
       </section>
 
+      <PartnersStrip variant="light" />
+
       <FAQSection />
+
 
       <section className="relative overflow-hidden py-20 md:py-28" style={{ background: "var(--gradient-accent)" }}>
         <img
