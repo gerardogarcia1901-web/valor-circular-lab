@@ -73,11 +73,11 @@ function usePremiumMotion(scopeRef: React.RefObject<HTMLElement | null>) {
       gsap.from("[data-hero-copy]", { y: 32, opacity: 0, duration: 1, delay: 0.22, ease: "power2.out" });
       gsap.from("[data-hero-actions]", { y: 28, opacity: 0, duration: 0.9, delay: 0.3, ease: "power2.out" });
       gsap.from("[data-hero-stat]", {
-        y: 20,
-        opacity: 0,
-        stagger: 0.08,
-        duration: 0.7,
-        delay: 0.45,
+        y: 18,
+        scale: 0.98,
+        stagger: 0.06,
+        duration: 0.65,
+        delay: 0.3,
         ease: "power2.out",
       });
 
@@ -379,28 +379,28 @@ function HeroStats() {
   const icons = [Award, Recycle, Globe2];
   const tones = [
     {
-      bg: "var(--brand-lime)",
+      bg: "linear-gradient(145deg, #C3EB57 0%, #DCF97D 100%)",
       fg: "var(--brand-ink)",
-      sub: "var(--brand-navy)",
       chip: "var(--brand-ink)",
       chipFg: "var(--brand-lime)",
-      accent: "var(--brand-ink)",
+      accent: "var(--brand-teal)",
+      border: "rgba(195,235,87,0.9)",
     },
     {
-      bg: "#ffffff",
+      bg: "linear-gradient(145deg, #FFFFFF 0%, #ECF3FF 100%)",
       fg: "var(--brand-navy)",
-      sub: "var(--brand-teal)",
       chip: "var(--brand-teal)",
       chipFg: "#ffffff",
       accent: "var(--brand-teal)",
+      border: "rgba(255,255,255,0.92)",
     },
     {
-      bg: "var(--brand-navy)",
+      bg: "linear-gradient(145deg, #273655 0%, #12526A 100%)",
       fg: "#ffffff",
-      sub: "var(--brand-lime)",
       chip: "var(--brand-lime)",
       chipFg: "var(--brand-ink)",
       accent: "var(--brand-lime)",
+      border: "rgba(195,235,87,0.4)",
     },
   ];
   return (
@@ -411,7 +411,7 @@ function HeroStats() {
         aria-hidden
         className="pointer-events-none absolute -top-32 right-0 z-10 hidden h-44 w-auto drop-shadow-[0_14px_30px_rgba(0,0,0,0.5)] animate-[reciclin-float_4s_ease-in-out_infinite] md:block lg:-top-40 lg:h-56"
       />
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
         {pivStats.map((item, i) => {
           const Icon = icons[i % icons.length];
           return (
@@ -438,51 +438,63 @@ function HeroStatCard({
   item: (typeof pivStats)[number];
   Icon: React.ComponentType<{ className?: string }>;
   index: number;
-  tone: { bg: string; fg: string; sub: string; chip: string; chipFg: string; accent: string };
+  tone: { bg: string; fg: string; chip: string; chipFg: string; accent: string; border: string };
 }) {
   const { ref, value } = useCountUp(item.value);
   return (
     <div
       ref={ref}
       data-hero-stat
-      className="group relative overflow-hidden rounded-[1.75rem] p-6 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.03]"
+      className="group relative isolate min-h-[13.5rem] overflow-hidden rounded-[1.35rem] border p-5 opacity-100 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] md:p-6 xl:min-h-[16rem]"
       style={{
         background: tone.bg,
         color: tone.fg,
+        borderColor: tone.border,
+        opacity: 1,
         boxShadow:
-          "0 22px 50px -18px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.35)",
+          "0 28px 70px -22px rgba(0,0,0,0.68), 0 0 0 1px rgba(255,255,255,0.28) inset, inset 0 1px 0 rgba(255,255,255,0.55)",
       }}
     >
-      {/* Top row: icon + chip */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute -right-8 -top-10 -z-10 text-[7rem] font-black leading-none text-current opacity-[0.09] transition-transform duration-500 group-hover:scale-110 xl:text-[8rem]"
+      >
+        {String(index + 1).padStart(2, "0")}
+      </span>
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-1.5 origin-left scale-x-75 rounded-full transition-transform duration-500 group-hover:scale-x-100"
+        style={{ background: tone.accent }}
+      />
+
       <div className="relative flex items-center justify-between">
         <span
-          className="grid h-12 w-12 place-items-center rounded-2xl shadow-lg transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110"
+          className="grid h-11 w-11 place-items-center rounded-2xl shadow-lg transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110"
           style={{ background: tone.chip, color: tone.chipFg }}
         >
-          <Icon className="h-6 w-6" />
+          <Icon className="h-5 w-5" />
         </span>
         <span
-          className="rounded-full px-2.5 py-1 text-[0.6rem] font-black uppercase tracking-[0.2em]"
+          className="rounded-full px-3 py-1.5 text-[0.62rem] font-black uppercase tracking-[0.18em] shadow-sm"
           style={{ background: tone.chip, color: tone.chipFg }}
         >
-          0{index + 1} / 03
+          {String(index + 1).padStart(2, "0")}
         </span>
       </div>
 
-      {/* Big value */}
       <p className="relative mt-6 flex items-baseline gap-1 font-black tracking-tight">
-        <span className="text-3xl md:text-4xl" style={{ color: tone.accent }}>
+        <span className="text-3xl md:text-4xl xl:text-5xl" style={{ color: tone.accent }}>
           {item.prefix}
         </span>
         <span
-          className="tabular-nums text-6xl leading-none md:text-7xl"
+          className="tabular-nums text-6xl leading-none md:text-7xl xl:text-8xl"
           style={{ color: tone.fg }}
         >
           {formatMetric(value)}
         </span>
       </p>
       <p
-        className="relative mt-2 text-sm font-black uppercase tracking-[0.2em]"
+        className="relative mt-2 text-sm font-black uppercase tracking-[0.24em]"
         style={{ color: tone.accent }}
       >
         {item.suffix}
@@ -490,12 +502,12 @@ function HeroStatCard({
 
       <span
         aria-hidden
-        className="relative mt-5 block h-[3px] w-14 origin-left rounded-full transition-all duration-500 group-hover:w-full"
+        className="relative mt-4 block h-[3px] w-14 origin-left rounded-full transition-all duration-500 group-hover:w-24"
         style={{ background: tone.accent }}
       />
       <p
-        className="relative mt-4 text-sm font-semibold leading-6"
-        style={{ color: tone.fg, opacity: 0.92 }}
+        className="relative mt-4 text-sm font-bold leading-6 md:text-[0.95rem]"
+        style={{ color: tone.fg }}
       >
         {item.label}
       </p>
