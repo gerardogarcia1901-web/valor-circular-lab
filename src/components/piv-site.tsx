@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { ArrowUpRight, Clock3, MapPinned, Menu as MenuIcon, MessageCircle, MoveRight, Phone, ShieldCheck, X } from "lucide-react";
+import { ArrowUpRight, Award, Clock3, Globe2, MapPinned, Menu as MenuIcon, MessageCircle, MoveRight, Phone, Recycle, ShieldCheck, X } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
