@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { ArrowUpRight, Award, Clock3, Globe2, MapPinned, Menu as MenuIcon, MessageCircle, MoveRight, Phone, Recycle, ShieldCheck, X } from "lucide-react";
+import { ArrowUpRight, Award, Clock3, Globe2, Mail, MapPinned, Menu as MenuIcon, MessageCircle, MoveRight, Phone, Recycle, ShieldCheck, X } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -22,6 +22,20 @@ import alliesAsset from "@/assets/piv-allies.jpg.asset.json";
 import kidsAsset from "@/assets/piv-kids.jpg.asset.json";
 import impactGraphicAsset from "@/assets/piv-impact-graphic.jpg.asset.json";
 import teamAsset from "@/assets/piv-team.png.asset.json";
+import materialPlasticImg from "@/assets/materiales-plasticos.jpg";
+import materialMetalImg from "@/assets/materiales-metales.jpg";
+import materialPaperImg from "@/assets/materiales-papel-carton.jpg";
+import materialRaeeImg from "@/assets/materiales-raee.jpg";
+import reciclaGana1 from "@/assets/rse/recicla-y-gana-1.jpg.asset.json";
+import reciclaGana2 from "@/assets/rse/recicla-y-gana-2.jpg.asset.json";
+import reciclaGana3 from "@/assets/rse/recicla-y-gana-3.jpg.asset.json";
+import campanasEmpresariales1 from "@/assets/rse/campanas-empresariales-1.jpg.asset.json";
+import campanasEmpresariales2 from "@/assets/rse/campanas-empresariales-2.jpg.asset.json";
+import campanasEmpresariales3 from "@/assets/rse/campanas-empresariales-3.jpg.asset.json";
+import campanasEmpresariales4 from "@/assets/rse/campanas-empresariales-4.png.asset.json";
+import campanasEmpresariales5 from "@/assets/rse/campanas-empresariales-5.png.asset.json";
+import campanasEducativas1 from "@/assets/rse/campanas-educativas-1.jpg.asset.json";
+import campanasEducativas2 from "@/assets/rse/campanas-educativas-2.jpg.asset.json";
 import {
   activeCampaigns,
   audience,
@@ -59,6 +73,66 @@ const navigation = [
   { label: "Materiales", to: "/materiales" },
   { label: "RSE", to: "/rse" },
   { label: "Contacto", to: "/contacto" },
+] as const;
+
+const materialVisuals: Record<string, { image: string; alt: string; summary: string }> = {
+  Plásticos: {
+    image: materialPlasticImg,
+    alt: "Plásticos PET y HDPE clasificados para reciclaje industrial",
+    summary: "Envases y resinas listas para clasificación.",
+  },
+  Metales: {
+    image: materialMetalImg,
+    alt: "Metales y latas de aluminio separados en planta de reciclaje",
+    summary: "Aluminio, cobre y ferrosos con ruta de valorización.",
+  },
+  Papel: {
+    image: materialPaperImg,
+    alt: "Papel y cartón limpio agrupado para recuperación",
+    summary: "Cartón y papel limpio para reincorporar a la cadena.",
+  },
+  RAEE: {
+    image: materialRaeeImg,
+    alt: "Residuos electrónicos organizados para disposición responsable",
+    summary: "Electrónicos y componentes con manejo especializado.",
+  },
+};
+
+const rseCampaignSections = [
+  {
+    id: "recicla-y-gana",
+    title: "Recicla y Gana",
+    kicker: "Participación comunitaria",
+    description: "Jornadas donde cada entrega de material se convierte en acción visible.",
+    photos: [
+      { url: reciclaGana1.url, alt: "Participante entregando latas en campaña Recicla y Gana" },
+      { url: reciclaGana2.url, alt: "Participante con materiales plásticos durante Recicla y Gana" },
+      { url: reciclaGana3.url, alt: "Materiales recuperados en sacos durante Recicla y Gana" },
+    ],
+  },
+  {
+    id: "campanas-empresariales",
+    title: "Campañas Empresariales",
+    kicker: "Activaciones corporativas",
+    description: "Operación, marca y trazabilidad para que las empresas movilicen a sus equipos.",
+    photos: [
+      { url: campanasEmpresariales5.url, alt: "Campaña empresarial con materiales electrónicos recolectados" },
+      { url: campanasEmpresariales3.url, alt: "Equipo empresarial en punto de recolección de Parque Industrial Verde" },
+      { url: campanasEmpresariales2.url, alt: "Mesa informativa de Parque Industrial Verde en campaña empresarial" },
+      { url: campanasEmpresariales1.url, alt: "Entrega de residuos electrónicos en campaña empresarial" },
+      { url: campanasEmpresariales4.url, alt: "Entrega de plantas en campaña empresarial" },
+    ],
+  },
+  {
+    id: "campanas-educativas",
+    title: "Campañas Educativas",
+    kicker: "Aprendizaje ambiental",
+    description: "Experiencias simples y memorables para convertir información en hábitos reales.",
+    photos: [
+      { url: campanasEducativas1.url, alt: "Persona participando en campaña educativa ambiental" },
+      { url: campanasEducativas2.url, alt: "Participante con residuos electrónicos en campaña educativa" },
+    ],
+  },
 ] as const;
 
 
@@ -154,11 +228,50 @@ function PageShell({ children }: { children: ReactNode }) {
     <div className="bg-background text-foreground">
       <SiteHeader />
       <main ref={pageRef}>{children}</main>
+      <NewsletterSection />
       <SiteFooter />
       <WhatsAppBubble />
       <ReciclinHelper />
       <ConversionPopup />
     </div>
+  );
+}
+
+function NewsletterSection() {
+  const [email, setEmail] = useState("");
+
+  const newsletterHref = `mailto:${emailLink.label}?subject=${encodeURIComponent("Suscripción al Newsletter")}&body=${encodeURIComponent(
+    `Hola Parque Industrial Verde, quiero suscribirme al newsletter con este correo: ${email || "-"}`,
+  )}`;
+
+  return (
+    <section className="relative overflow-hidden border-t border-[var(--brand-navy)]/10 bg-white py-14 md:py-20">
+      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[var(--brand-teal)] via-[var(--brand-lime)] to-[var(--brand-sky)]" />
+      <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+        <div data-reveal className="space-y-3">
+          <p className="eyebrow">Suscríbete a nuestro Newsletter</p>
+          <h2 className="text-balance text-3xl font-semibold tracking-tight text-[var(--brand-navy)] md:text-5xl">
+            Y mantente al tanto
+          </h2>
+        </div>
+        <form data-reveal className="flex flex-col gap-3 rounded-3xl border border-[var(--brand-navy)]/10 bg-[var(--brand-sky)]/25 p-3 shadow-[var(--shadow-elevated)] sm:flex-row">
+          <Input
+            type="email"
+            required
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            placeholder="Tu correo electrónico"
+            aria-label="Correo para newsletter"
+            className="h-12 flex-1 rounded-2xl border-[var(--brand-navy)]/15 bg-white px-5 text-[var(--brand-navy)]"
+          />
+          <a href={newsletterHref} className="shrink-0">
+            <Button variant="hero" size="lg" className="h-12 w-full sm:w-auto">
+              <Mail className="h-4 w-4" /> Suscribirme
+            </Button>
+          </a>
+        </form>
+      </div>
+    </section>
   );
 }
 
@@ -411,7 +524,7 @@ function HeroStats() {
         aria-hidden
         className="pointer-events-none absolute -top-32 right-0 z-10 hidden h-44 w-auto drop-shadow-[0_14px_30px_rgba(0,0,0,0.5)] animate-[reciclin-float_4s_ease-in-out_infinite] md:block lg:-top-40 lg:h-56"
       />
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid gap-3 sm:grid-cols-3 md:gap-4">
         {pivStats.map((item, i) => {
           const Icon = icons[i % icons.length];
           return (
@@ -445,7 +558,7 @@ function HeroStatCard({
     <div
       ref={ref}
       data-hero-stat
-      className="group relative isolate min-h-[11rem] overflow-hidden rounded-[1.35rem] border p-4 opacity-100 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] md:min-h-[11.5rem] md:p-5 xl:min-h-[12rem] 2xl:min-h-[16rem] 2xl:p-6"
+      className="group relative isolate grid min-h-[10.5rem] content-between overflow-hidden rounded-[1.35rem] border p-4 opacity-100 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] md:min-h-[11rem] xl:min-h-[11.5rem]"
       style={{
         background: tone.bg,
         color: tone.fg,
@@ -457,7 +570,7 @@ function HeroStatCard({
     >
       <span
         aria-hidden
-        className="pointer-events-none absolute -right-8 -top-10 -z-10 text-[7rem] font-black leading-none text-current opacity-[0.09] transition-transform duration-500 group-hover:scale-110 xl:text-[8rem]"
+        className="pointer-events-none absolute -right-5 -top-8 -z-10 text-[6rem] font-black leading-none text-current opacity-[0.14] transition-transform duration-500 group-hover:scale-110"
       >
         {String(index + 1).padStart(2, "0")}
       </span>
@@ -469,10 +582,10 @@ function HeroStatCard({
 
       <div className="relative flex items-center justify-between">
         <span
-          className="grid h-11 w-11 place-items-center rounded-2xl shadow-lg transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110"
+          className="grid h-10 w-10 place-items-center rounded-2xl shadow-lg transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110"
           style={{ background: tone.chip, color: tone.chipFg }}
         >
-          <Icon className="h-5 w-5" />
+          <Icon className="h-4 w-4" />
         </span>
         <span
           className="rounded-full px-3 py-1.5 text-[0.62rem] font-black uppercase tracking-[0.18em] shadow-sm"
@@ -482,19 +595,20 @@ function HeroStatCard({
         </span>
       </div>
 
-      <p className="relative mt-6 flex items-baseline gap-1 font-black tracking-tight">
-        <span className="text-3xl md:text-4xl xl:text-5xl" style={{ color: tone.accent }}>
+      <div>
+      <p className="relative mt-4 flex items-baseline gap-1 font-black tracking-tight">
+        <span className="text-2xl md:text-3xl" style={{ color: tone.accent }}>
           {item.prefix}
         </span>
         <span
-          className="whitespace-nowrap tabular-nums text-5xl leading-none md:text-6xl 2xl:text-8xl"
+          className="whitespace-nowrap tabular-nums text-4xl leading-none md:text-5xl xl:text-6xl"
           style={{ color: tone.fg }}
         >
           {formatMetric(value)}
         </span>
       </p>
       <p
-        className="relative mt-2 text-sm font-black uppercase tracking-[0.24em]"
+        className="relative mt-1 text-xs font-black uppercase tracking-[0.14em] md:text-sm"
         style={{ color: tone.accent }}
       >
         {item.suffix}
@@ -502,15 +616,16 @@ function HeroStatCard({
 
       <span
         aria-hidden
-        className="relative mt-4 block h-[3px] w-14 origin-left rounded-full transition-all duration-500 group-hover:w-24"
+        className="relative mt-3 block h-[3px] w-14 origin-left rounded-full transition-all duration-500 group-hover:w-24"
         style={{ background: tone.accent }}
       />
       <p
-        className="relative mt-4 text-sm font-bold leading-6 md:text-[0.95rem] 2xl:text-base"
+        className="relative mt-3 text-xs font-bold leading-5 md:text-[0.82rem] xl:text-sm"
         style={{ color: tone.fg }}
       >
         {item.label}
       </p>
+      </div>
     </div>
   );
 }
@@ -1162,12 +1277,6 @@ export function ServicesPage() {
 }
 
 export function MaterialsPage() {
-  const groupTones = [
-    { card: "bg-gradient-to-br from-[var(--brand-teal)] to-[var(--brand-navy)] text-white", pill: "bg-white/15 text-white border border-white/20" },
-    { card: "bg-[var(--brand-lime)] text-[var(--brand-ink)]", pill: "bg-[var(--brand-ink)] text-[var(--brand-lime)]" },
-    { card: "bg-[var(--brand-sky)] text-[var(--brand-navy)]", pill: "bg-[var(--brand-navy)] text-white" },
-    { card: "bg-[var(--brand-ink)] text-white", pill: "bg-[var(--brand-lime)] text-[var(--brand-ink)]" },
-  ];
   return (
     <PageShell>
       <section className="relative overflow-hidden pt-36 md:pt-44" style={{ background: "var(--gradient-accent)" }}>
@@ -1195,14 +1304,40 @@ export function MaterialsPage() {
       >
         <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {materialGroups.map((group, i) => {
-            const t = groupTones[i % groupTones.length];
+            const visual = materialVisuals[group.title];
             return (
-              <article key={group.title} data-reveal className={cn("rounded-3xl p-7 shadow-[var(--shadow-elevated)] transition-transform duration-300 hover:-translate-y-1", t.card)}>
-                <h2 className="text-3xl font-bold tracking-tight">{group.title}</h2>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {group.items.map((item) => (
-                    <span key={item} className={cn("rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-[0.08em]", t.pill)}>{item}</span>
-                  ))}
+              <article
+                key={group.title}
+                data-reveal
+                className="group relative min-h-[26rem] overflow-hidden rounded-3xl bg-[var(--brand-ink)] shadow-[var(--shadow-elevated)] transition-transform duration-500 hover:-translate-y-2"
+              >
+                <img
+                  src={visual.image}
+                  alt={visual.alt}
+                  width={1280}
+                  height={960}
+                  loading={i === 0 ? "eager" : "lazy"}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-ink)] via-[var(--brand-ink)]/45 to-transparent" />
+                <div className="relative flex h-full min-h-[26rem] flex-col justify-end p-5 text-white">
+                  <span className="mb-auto w-fit rounded-full bg-[var(--brand-lime)] px-3 py-1 text-[0.65rem] font-black uppercase tracking-[0.16em] text-[var(--brand-ink)]">
+                    0{i + 1}
+                  </span>
+                  <h2 className="text-3xl font-bold tracking-tight">{group.title}</h2>
+                  <p className="mt-2 text-sm font-medium leading-6 text-white/82">{visual.summary}</p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {group.items.slice(0, 6).map((item) => (
+                      <span key={item} className="rounded-full border border-white/18 bg-white/12 px-3 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.08em] backdrop-blur">
+                        {item}
+                      </span>
+                    ))}
+                    {group.items.length > 6 ? (
+                      <span className="rounded-full bg-[var(--brand-lime)] px-3 py-1.5 text-[0.68rem] font-black uppercase tracking-[0.08em] text-[var(--brand-ink)]">
+                        +{group.items.length - 6}
+                      </span>
+                    ) : null}
+                  </div>
                 </div>
               </article>
             );
@@ -1261,6 +1396,9 @@ export function MaterialsPage() {
 }
 
 export function RsePage() {
+  const [activeSection, setActiveSection] = useState<(typeof rseCampaignSections)[number]["id"]>("recicla-y-gana");
+  const selectedSection = rseCampaignSections.find((section) => section.id === activeSection) ?? rseCampaignSections[0];
+
   return (
     <PageShell>
       <section className="pt-36 md:pt-44">
@@ -1280,16 +1418,68 @@ export function RsePage() {
         title="Activaciones que conectan marca, territorio y cultura ambiental."
         description="Desde jornadas educativas hasta campañas empresariales, cada acción busca convertir la sostenibilidad en participación y resultados medibles."
       >
-        <div className="mt-14 grid gap-4 md:grid-cols-3">
-          {activeCampaigns.map((campaign) => (
-            <article key={campaign} data-reveal className="editorial-panel editorial-panel--accent">
-              <p className="text-2xl font-semibold tracking-tight">{campaign}</p>
-            </article>
-          ))}
+        <div className="mt-14 grid gap-4 md:grid-cols-3" role="tablist" aria-label="Seleccionar campaña RSE">
+          {rseCampaignSections.map((campaign) => {
+            const selected = campaign.id === activeSection;
+            return (
+              <button
+                key={campaign.id}
+                type="button"
+                role="tab"
+                aria-selected={selected}
+                aria-controls={`panel-${campaign.id}`}
+                onClick={() => setActiveSection(campaign.id)}
+                data-reveal
+                className={cn(
+                  "group overflow-hidden rounded-3xl border p-0 text-left shadow-[var(--shadow-elevated)] transition-all duration-500 hover:-translate-y-1",
+                  selected
+                    ? "border-[var(--brand-lime)] bg-[var(--brand-navy)] text-white"
+                    : "border-[var(--brand-navy)]/10 bg-white text-[var(--brand-navy)] hover:border-[var(--brand-teal)]/35",
+                )}
+              >
+                <img
+                  src={campaign.photos[0].url}
+                  alt={campaign.photos[0].alt}
+                  loading="lazy"
+                  className="h-40 w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <span className="block p-5">
+                  <span className={cn("text-[0.65rem] font-black uppercase tracking-[0.18em]", selected ? "text-[var(--brand-lime)]" : "text-[var(--brand-teal)]")}>{campaign.kicker}</span>
+                  <span className="mt-2 block text-2xl font-semibold tracking-tight">{campaign.title}</span>
+                </span>
+              </button>
+            );
+          })}
         </div>
-        <div className="mt-8 grid gap-4 md:grid-cols-2">
-          <img src={kidsAsset.url} alt="Niños y comunidad participando en un programa educativo de reciclaje" className="image-tile h-[360px]" loading="lazy" />
-          <img src={beachAsset.url} alt="Jornada de limpieza y recuperación de residuos en la playa" className="image-tile h-[360px]" loading="lazy" />
+        <div id={`panel-${selectedSection.id}`} role="tabpanel" className="mt-8 grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+          <article data-reveal className="rounded-3xl bg-[var(--brand-ink)] p-7 text-white shadow-[var(--shadow-elevated)]">
+            <p className="text-[0.7rem] font-black uppercase tracking-[0.2em] text-[var(--brand-lime)]">{selectedSection.kicker}</p>
+            <h3 className="mt-5 text-balance text-4xl font-semibold tracking-tight">{selectedSection.title}</h3>
+            <p className="mt-4 text-base leading-7 text-white/78">{selectedSection.description}</p>
+            <div className="mt-8 flex flex-wrap gap-2">
+              {selectedSection.photos.map((photo, index) => (
+                <a key={photo.url} href={`#${selectedSection.id}-foto-${index + 1}`} className="rounded-full bg-white/10 px-3 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-white transition-colors hover:bg-[var(--brand-lime)] hover:text-[var(--brand-ink)]">
+                  Foto {index + 1}
+                </a>
+              ))}
+            </div>
+          </article>
+          <div data-reveal className="grid auto-rows-[15rem] gap-4 md:grid-cols-2">
+            {selectedSection.photos.map((photo, index) => (
+              <img
+                key={photo.url}
+                id={`${selectedSection.id}-foto-${index + 1}`}
+                src={photo.url}
+                alt={photo.alt}
+                loading="lazy"
+                className={cn(
+                  "h-full w-full rounded-3xl object-cover shadow-[var(--shadow-elevated)]",
+                  index === 0 && "md:row-span-2",
+                  selectedSection.photos.length === 2 && index === 1 && "md:row-span-2",
+                )}
+              />
+            ))}
+          </div>
         </div>
       </Section>
       <Section

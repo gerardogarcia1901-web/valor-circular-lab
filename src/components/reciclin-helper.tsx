@@ -4,8 +4,6 @@ import { useRouterState } from "@tanstack/react-router";
 import reciclinAsset from "@/assets/reciclin.png.asset.json";
 import { whatsappHref } from "@/lib/piv-content";
 
-const SHOWN_KEY_PREFIX = "piv_reciclin_helper_shown:";
-
 const messagesByRoute: Record<string, { title: string; body: string }> = {
   "/": {
     title: "¡Hola! Soy Reciclin",
@@ -35,8 +33,7 @@ const messagesByRoute: Record<string, { title: string; body: string }> = {
 
 export function ReciclinHelper() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const [open, setOpen] = useState(false);
-  const [bubble, setBubble] = useState(false);
+  const [bubble, setBubble] = useState(true);
 
   const msg = useMemo(
     () => messagesByRoute[pathname] ?? messagesByRoute["/"],
@@ -44,26 +41,8 @@ export function ReciclinHelper() {
   );
 
   useEffect(() => {
-    const t = window.setTimeout(() => setOpen(true), 2500);
-    return () => window.clearTimeout(t);
-  }, []);
-
-  // Show bubble once per route per session and keep it visible until the user closes it.
-  useEffect(() => {
-    if (!open) return;
-    const key = SHOWN_KEY_PREFIX + pathname;
-    let alreadyShown = false;
-    try {
-      alreadyShown = sessionStorage.getItem(key) === "1";
-    } catch {}
-    if (alreadyShown) return;
     setBubble(true);
-    try {
-      sessionStorage.setItem(key, "1");
-    } catch {}
-  }, [pathname, open]);
-
-  if (!open) return null;
+  }, [pathname]);
 
   return (
     <div
