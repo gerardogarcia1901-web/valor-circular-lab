@@ -37,6 +37,10 @@ import campanasEmpresariales4 from "@/assets/rse/campanas-empresariales-4.png.as
 import campanasEmpresariales5 from "@/assets/rse/campanas-empresariales-5.png.asset.json";
 import campanasEducativas1 from "@/assets/rse/campanas-educativas-1.jpg.asset.json";
 import campanasEducativas2 from "@/assets/rse/campanas-educativas-2.jpg.asset.json";
+import campanasEmpresarialesServiciosAsset from "@/assets/campanas-empresariales-servicios.png.asset.json";
+import prepLimpiosAsset from "@/assets/preparacion/preparacion-limpios.jpg.asset.json";
+import prepSecosAsset from "@/assets/preparacion/preparacion-secos.jpg.asset.json";
+import prepSeparadosAsset from "@/assets/preparacion/preparacion-separados.jpg.asset.json";
 import {
   activeCampaigns,
   audience,
