@@ -1,12 +1,14 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { ArrowUpRight, Clock3, MapPinned, Menu as MenuIcon, MessageCircle, MoveRight, Phone, ShieldCheck, X } from "lucide-react";
+import { ArrowUpRight, Award, Clock3, Globe2, MapPinned, Menu as MenuIcon, MessageCircle, MoveRight, Phone, Recycle, ShieldCheck, X } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import heroAsset from "@/assets/piv-hero-v3.png.asset.json";
 import heroAboutAsset from "@/assets/piv-hero-v2.png.asset.json";
 import logoAsset from "@/assets/piv-logo.png.asset.json";
+import reciclinAsset from "@/assets/reciclin.png.asset.json";
+import { ConversionPopup } from "@/components/conversion-popup";
 
 import operationsAsset from "@/assets/piv-operations.jpg.asset.json";
 import metalsAsset from "@/assets/piv-metals.jpg.asset.json";
@@ -150,6 +152,7 @@ function PageShell({ children }: { children: ReactNode }) {
       <main ref={pageRef}>{children}</main>
       <SiteFooter />
       <WhatsAppBubble />
+      <ConversionPopup />
     </div>
   );
 }
@@ -363,6 +366,65 @@ function MetricCard({ value, prefix, suffix, description }: { value: number; pre
       </div>
       <p className="max-w-sm text-sm leading-7 text-muted-foreground">{description}</p>
     </article>
+  );
+}
+
+function HeroStats() {
+  const icons = [Award, Recycle, Globe2];
+  return (
+    <div className="relative lg:self-end">
+      <img
+        src={reciclinAsset.url}
+        alt="Reciclin, mascota de Parque Industrial Verde"
+        aria-hidden
+        className="pointer-events-none absolute -top-28 right-2 z-10 hidden h-40 w-auto drop-shadow-[0_10px_24px_rgba(0,0,0,0.45)] animate-[reciclin-float_4s_ease-in-out_infinite] md:block lg:-top-36 lg:h-52"
+      />
+      <div className="grid gap-4 sm:grid-cols-3">
+        {pivStats.map((item, i) => {
+          const Icon = icons[i % icons.length];
+          return <HeroStatCard key={item.label} item={item} Icon={Icon} index={i} />;
+        })}
+      </div>
+    </div>
+  );
+}
+
+function HeroStatCard({
+  item,
+  Icon,
+  index,
+}: {
+  item: (typeof pivStats)[number];
+  Icon: React.ComponentType<{ className?: string }>;
+  index: number;
+}) {
+  const { ref, value } = useCountUp(item.value);
+  return (
+    <div
+      ref={ref}
+      data-hero-stat
+      className="group relative overflow-hidden rounded-2xl border border-white/20 bg-white/10 p-5 backdrop-blur-md transition-all duration-500 hover:-translate-y-1.5 hover:scale-[1.03] hover:border-[var(--brand-lime)]/60 hover:bg-white/15 hover:shadow-[0_20px_50px_-12px_color-mix(in_oklab,var(--brand-lime)_45%,transparent)]"
+      style={{ animationDelay: `${index * 120}ms` }}
+    >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-60"
+        style={{ background: "var(--brand-lime)" }}
+      />
+      <div className="flex items-center justify-between">
+        <span className="grid h-9 w-9 place-items-center rounded-full bg-[var(--brand-lime)]/20 text-[var(--brand-lime)] ring-1 ring-[var(--brand-lime)]/40 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110">
+          <Icon className="h-4 w-4" />
+        </span>
+        <span className="text-[0.6rem] font-bold uppercase tracking-[0.16em] text-white/60">0{index + 1}</span>
+      </div>
+      <p className="mt-4 flex items-baseline gap-1 text-4xl font-bold tracking-tight text-[var(--brand-lime)] md:text-5xl">
+        <span>{item.prefix}</span>
+        <span className="tabular-nums">{formatMetric(value)}</span>
+      </p>
+      <p className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-white/90">{item.suffix}</p>
+      <div className="mt-3 h-px w-10 bg-[var(--brand-lime)]/60 transition-all duration-500 group-hover:w-full" />
+      <p className="mt-3 text-xs leading-5 text-white/80">{item.label}</p>
+    </div>
   );
 }
 
@@ -651,31 +713,18 @@ export function HomePage() {
           />
         </div>
         <div className="relative mx-auto flex min-h-screen w-[min(1280px,calc(100%-2rem))] items-end pb-12 pt-28 md:pb-20 md:pt-32">
-          <div className="grid w-full gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+          <div className="grid w-full gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
             <div className="space-y-6">
               <p data-hero-kicker className="eyebrow eyebrow--light">Economía circular con escala industrial</p>
               <h1 data-hero-title className="max-w-4xl text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-7xl lg:text-[5.2rem]">
                 Transformamos residuos en oportunidades.
               </h1>
-              <div data-hero-actions className="flex flex-wrap gap-3 pt-2">
-                <a href={whatsappHref} target="_blank" rel="noreferrer"><Button variant="hero" size="xl">Cotizar</Button></a>
-                <Link to="/materiales"><Button variant="heroSecondary" size="xl">Quiero reciclar</Button></Link>
-              </div>
             </div>
-            <div className="grid gap-4 sm:grid-cols-3 lg:self-end">
-              {pivStats.map((item) => (
-                <div key={item.label} data-hero-stat className="rounded-2xl border border-white/15 bg-white/10 p-5 backdrop-blur-md">
-                  <p className="text-4xl font-bold tracking-tight text-[var(--brand-lime)] md:text-5xl">
-                    {item.prefix}{formatMetric(item.value)}
-                  </p>
-                  <p className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-white/85">{item.suffix}</p>
-                  <p className="mt-3 text-xs leading-5 text-white/75">{item.label}</p>
-                </div>
-              ))}
-            </div>
+            <HeroStats />
           </div>
         </div>
       </section>
+
 
       <Section
         eyebrow="Qué hacemos"
