@@ -414,9 +414,14 @@
 }
 
 .marquee-track {
-  animation: marquee-x 40s linear infinite;
+  animation: marquee-x 60s linear infinite;
 }
-.marquee-pause:hover .marquee-track { animation-play-state: paused; }
+.marquee-track-reverse {
+  animation: marquee-x 70s linear infinite reverse;
+}
+.marquee-pause:hover .marquee-track,
+.marquee-pause:hover .marquee-track-reverse { animation-play-state: paused; }
+
 
 @keyframes pulse-ring {
   0% { transform: scale(0.9); opacity: 0.7; }
