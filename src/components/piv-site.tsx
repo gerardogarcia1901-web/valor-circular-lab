@@ -790,6 +790,13 @@ export function HomePage() {
         description="Recolectores base, empresas, corporaciones, industrias y centros comerciales encuentran en PIV una red con capacidad para acompañar desde la recolección hasta la valorización final."
       >
         <AudienceStrip />
+        <div data-reveal className="mt-10 flex justify-center md:justify-start">
+          <ReciclinMascot
+            size="md"
+            tone="white"
+            message={<>¿No sabés en qué grupo entrás? <strong>Yo te oriento</strong> en segundos.</>}
+          />
+        </div>
         <div data-reveal className="mt-12">
           <img src={communityAsset.url} alt="Familia y comunidad junto a materiales recuperados" className="image-tile h-auto max-h-[640px] w-full object-contain bg-[var(--brand-ink)]" loading="lazy" />
         </div>
