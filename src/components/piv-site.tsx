@@ -83,8 +83,8 @@ const materialVisuals: Record<string, { image: string; alt: string; summary: str
     summary: "Envases y resinas listas para clasificación.",
   },
   Metales: {
-    image: materialMetalImg,
-    alt: "Metales y latas de aluminio separados en planta de reciclaje",
+    image: materialsMetalsPhotoAsset.url,
+    alt: "Latas y metales clasificados en planta de reciclaje de Parque Industrial Verde",
     summary: "Aluminio, cobre y ferrosos con ruta de valorización.",
   },
   Papel: {
