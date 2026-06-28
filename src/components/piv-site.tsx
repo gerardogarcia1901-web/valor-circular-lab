@@ -377,7 +377,7 @@ function HeroStats() {
         src={reciclinAsset.url}
         alt="Reciclin, mascota de Parque Industrial Verde"
         aria-hidden
-        className="pointer-events-none absolute -top-28 right-2 z-10 hidden h-40 w-auto drop-shadow-[0_10px_24px_rgba(0,0,0,0.45)] animate-[reciclin-float_4s_ease-in-out_infinite] md:block lg:-top-36 lg:h-52"
+        className="pointer-events-none absolute -top-32 right-0 z-10 hidden h-44 w-auto drop-shadow-[0_14px_30px_rgba(0,0,0,0.5)] animate-[reciclin-float_4s_ease-in-out_infinite] md:block lg:-top-40 lg:h-56"
       />
       <div className="grid gap-4 sm:grid-cols-3">
         {pivStats.map((item, i) => {
@@ -403,30 +403,56 @@ function HeroStatCard({
     <div
       ref={ref}
       data-hero-stat
-      className="group relative overflow-hidden rounded-2xl border border-white/20 bg-white/10 p-5 backdrop-blur-md transition-all duration-500 hover:-translate-y-1.5 hover:scale-[1.03] hover:border-[var(--brand-lime)]/60 hover:bg-white/15 hover:shadow-[0_20px_50px_-12px_color-mix(in_oklab,var(--brand-lime)_45%,transparent)]"
-      style={{ animationDelay: `${index * 120}ms` }}
+      className="group relative overflow-hidden rounded-3xl p-6 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.04]"
+      style={{
+        background:
+          "linear-gradient(155deg, color-mix(in oklab, var(--brand-navy) 92%, transparent) 0%, color-mix(in oklab, var(--brand-ink) 88%, transparent) 100%)",
+        boxShadow:
+          "0 18px 50px -18px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08)",
+      }}
     >
+      {/* Lime accent bar */}
+      <span
+        aria-hidden
+        className="absolute left-0 top-0 h-full w-1.5 bg-[var(--brand-lime)] transition-all duration-500 group-hover:w-2"
+      />
+      {/* Glow */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-60"
+        className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full opacity-30 blur-3xl transition-opacity duration-500 group-hover:opacity-70"
         style={{ background: "var(--brand-lime)" }}
       />
-      <div className="flex items-center justify-between">
-        <span className="grid h-9 w-9 place-items-center rounded-full bg-[var(--brand-lime)]/20 text-[var(--brand-lime)] ring-1 ring-[var(--brand-lime)]/40 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110">
-          <Icon className="h-4 w-4" />
+      {/* Decorative corner number */}
+      <span
+        aria-hidden
+        className="absolute right-3 top-2 text-[3.2rem] font-black leading-none text-white/[0.06] tracking-tighter transition-all duration-500 group-hover:text-[var(--brand-lime)]/20"
+      >
+        0{index + 1}
+      </span>
+
+      <div className="relative flex items-center gap-2">
+        <span className="grid h-10 w-10 place-items-center rounded-xl bg-[var(--brand-lime)] text-[var(--brand-ink)] shadow-[0_8px_20px_-6px_color-mix(in_oklab,var(--brand-lime)_70%,transparent)] transition-transform duration-500 group-hover:rotate-[-8deg] group-hover:scale-110">
+          <Icon className="h-5 w-5" />
         </span>
-        <span className="text-[0.6rem] font-bold uppercase tracking-[0.16em] text-white/60">0{index + 1}</span>
+        <span className="h-px flex-1 bg-gradient-to-r from-[var(--brand-lime)]/60 to-transparent" />
       </div>
-      <p className="mt-4 flex items-baseline gap-1 text-4xl font-bold tracking-tight text-[var(--brand-lime)] md:text-5xl">
-        <span>{item.prefix}</span>
-        <span className="tabular-nums">{formatMetric(value)}</span>
+
+      <p className="relative mt-5 flex items-baseline gap-1 font-black tracking-tight text-white">
+        <span className="text-2xl text-[var(--brand-lime)] md:text-3xl">{item.prefix}</span>
+        <span className="tabular-nums text-5xl md:text-6xl bg-gradient-to-b from-white to-white/70 bg-clip-text text-transparent">
+          {formatMetric(value)}
+        </span>
       </p>
-      <p className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-white/90">{item.suffix}</p>
-      <div className="mt-3 h-px w-10 bg-[var(--brand-lime)]/60 transition-all duration-500 group-hover:w-full" />
-      <p className="mt-3 text-xs leading-5 text-white/80">{item.label}</p>
+      <p className="relative mt-1 text-sm font-bold uppercase tracking-[0.16em] text-[var(--brand-lime)]">
+        {item.suffix}
+      </p>
+      <div className="relative mt-4 h-px w-12 bg-[var(--brand-lime)]/60 transition-all duration-500 group-hover:w-full" />
+      <p className="relative mt-3 text-xs leading-5 text-white/75">{item.label}</p>
     </div>
   );
 }
+
+
 
 function AudienceStrip() {
   const palette = [
