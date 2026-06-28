@@ -864,6 +864,12 @@ export function HomePage() {
       <FAQSection />
 
       <section className="relative overflow-hidden py-20 md:py-28" style={{ background: "var(--gradient-accent)" }}>
+        <img
+          src={reciclinAsset.url}
+          alt=""
+          aria-hidden
+          className="pointer-events-none absolute -bottom-6 left-4 z-10 hidden h-48 w-auto drop-shadow-[0_12px_28px_rgba(0,0,0,0.35)] animate-[reciclin-float_4.5s_ease-in-out_infinite] md:block lg:left-10 lg:h-64"
+        />
         <div className="absolute inset-0 opacity-30" style={{ background: "radial-gradient(circle at 20% 20%, var(--brand-lime) 0%, transparent 45%), radial-gradient(circle at 80% 80%, var(--brand-sky) 0%, transparent 50%)" }} />
         <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] text-center">
           <div data-reveal className="mx-auto max-w-3xl space-y-6 text-white">
