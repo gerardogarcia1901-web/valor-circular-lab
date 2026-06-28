@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { ArrowUpRight, Award, Clock3, Globe2, MapPinned, Menu as MenuIcon, MessageCircle, MoveRight, Phone, Recycle, ShieldCheck, X } from "lucide-react";
+import { ArrowUpRight, Award, Clock3, Globe2, Mail, MapPinned, Menu as MenuIcon, MessageCircle, MoveRight, Phone, Recycle, ShieldCheck, X } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -22,6 +22,20 @@ import alliesAsset from "@/assets/piv-allies.jpg.asset.json";
 import kidsAsset from "@/assets/piv-kids.jpg.asset.json";
 import impactGraphicAsset from "@/assets/piv-impact-graphic.jpg.asset.json";
 import teamAsset from "@/assets/piv-team.png.asset.json";
+import materialPlasticImg from "@/assets/materiales-plasticos.jpg";
+import materialMetalImg from "@/assets/materiales-metales.jpg";
+import materialPaperImg from "@/assets/materiales-papel-carton.jpg";
+import materialRaeeImg from "@/assets/materiales-raee.jpg";
+import reciclaGana1 from "@/assets/rse/recicla-y-gana-1.jpg.asset.json";
+import reciclaGana2 from "@/assets/rse/recicla-y-gana-2.jpg.asset.json";
+import reciclaGana3 from "@/assets/rse/recicla-y-gana-3.jpg.asset.json";
+import campanasEmpresariales1 from "@/assets/rse/campanas-empresariales-1.jpg.asset.json";
+import campanasEmpresariales2 from "@/assets/rse/campanas-empresariales-2.jpg.asset.json";
+import campanasEmpresariales3 from "@/assets/rse/campanas-empresariales-3.jpg.asset.json";
+import campanasEmpresariales4 from "@/assets/rse/campanas-empresariales-4.png.asset.json";
+import campanasEmpresariales5 from "@/assets/rse/campanas-empresariales-5.png.asset.json";
+import campanasEducativas1 from "@/assets/rse/campanas-educativas-1.jpg.asset.json";
+import campanasEducativas2 from "@/assets/rse/campanas-educativas-2.jpg.asset.json";
 import {
   activeCampaigns,
   audience,
@@ -59,6 +73,66 @@ const navigation = [
   { label: "Materiales", to: "/materiales" },
   { label: "RSE", to: "/rse" },
   { label: "Contacto", to: "/contacto" },
+] as const;
+
+const materialVisuals: Record<string, { image: string; alt: string; summary: string }> = {
+  Plásticos: {
+    image: materialPlasticImg,
+    alt: "Plásticos PET y HDPE clasificados para reciclaje industrial",
+    summary: "Envases y resinas listas para clasificación.",
+  },
+  Metales: {
+    image: materialMetalImg,
+    alt: "Metales y latas de aluminio separados en planta de reciclaje",
+    summary: "Aluminio, cobre y ferrosos con ruta de valorización.",
+  },
+  Papel: {
+    image: materialPaperImg,
+    alt: "Papel y cartón limpio agrupado para recuperación",
+    summary: "Cartón y papel limpio para reincorporar a la cadena.",
+  },
+  RAEE: {
+    image: materialRaeeImg,
+    alt: "Residuos electrónicos organizados para disposición responsable",
+    summary: "Electrónicos y componentes con manejo especializado.",
+  },
+};
+
+const rseCampaignSections = [
+  {
+    id: "recicla-y-gana",
+    title: "Recicla y Gana",
+    kicker: "Participación comunitaria",
+    description: "Jornadas donde cada entrega de material se convierte en acción visible.",
+    photos: [
+      { url: reciclaGana1.url, alt: "Participante entregando latas en campaña Recicla y Gana" },
+      { url: reciclaGana2.url, alt: "Participante con materiales plásticos durante Recicla y Gana" },
+      { url: reciclaGana3.url, alt: "Materiales recuperados en sacos durante Recicla y Gana" },
+    ],
+  },
+  {
+    id: "campanas-empresariales",
+    title: "Campañas Empresariales",
+    kicker: "Activaciones corporativas",
+    description: "Operación, marca y trazabilidad para que las empresas movilicen a sus equipos.",
+    photos: [
+      { url: campanasEmpresariales5.url, alt: "Campaña empresarial con materiales electrónicos recolectados" },
+      { url: campanasEmpresariales3.url, alt: "Equipo empresarial en punto de recolección de Parque Industrial Verde" },
+      { url: campanasEmpresariales2.url, alt: "Mesa informativa de Parque Industrial Verde en campaña empresarial" },
+      { url: campanasEmpresariales1.url, alt: "Entrega de residuos electrónicos en campaña empresarial" },
+      { url: campanasEmpresariales4.url, alt: "Entrega de plantas en campaña empresarial" },
+    ],
+  },
+  {
+    id: "campanas-educativas",
+    title: "Campañas Educativas",
+    kicker: "Aprendizaje ambiental",
+    description: "Experiencias simples y memorables para convertir información en hábitos reales.",
+    photos: [
+      { url: campanasEducativas1.url, alt: "Persona participando en campaña educativa ambiental" },
+      { url: campanasEducativas2.url, alt: "Participante con residuos electrónicos en campaña educativa" },
+    ],
+  },
 ] as const;
 
 
