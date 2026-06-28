@@ -17,6 +17,13 @@ import n16 from "@/assets/partners/partner-new-16.png.asset.json";
 import n17 from "@/assets/partners/partner-new-17.png.asset.json";
 import n18 from "@/assets/partners/partner-new-18.png.asset.json";
 import n19 from "@/assets/partners/partner-new-19.png.asset.json";
+import n20 from "@/assets/partners/partner-new-20.png.asset.json";
+import n21 from "@/assets/partners/partner-new-21.png.asset.json";
+import n22 from "@/assets/partners/partner-new-22.png.asset.json";
+import n23 from "@/assets/partners/partner-new-23.png.asset.json";
+import n24 from "@/assets/partners/partner-new-24.png.asset.json";
+import n25 from "@/assets/partners/partner-new-25.png.asset.json";
+import n26 from "@/assets/partners/partner-new-26.png.asset.json";
 
 export const partners = [
   { name: "Walmart", url: n12.url },
@@ -24,6 +31,13 @@ export const partners = [
   { name: "PNUD", url: n11.url },
   { name: "Puma Energy", url: n13.url },
   { name: "Metrocentro", url: n19.url },
+  { name: "Banco Agrícola", url: n20.url },
+  { name: "St. Jack's", url: n21.url },
+  { name: "Plan International", url: n22.url },
+  { name: "BFA", url: n23.url },
+  { name: "Intradesa", url: n24.url },
+  { name: "Applaudo", url: n25.url },
+  { name: "C807 Xpress", url: n26.url },
   { name: "Grupo Unicomer", url: p3.url },
   { name: "Crowley", url: p2.url },
   { name: "INCO", url: p1.url },

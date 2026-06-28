@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { ArrowUpRight, Award, Clock3, Globe2, Mail, MapPinned, Menu as MenuIcon, MessageCircle, MoveRight, Phone, Recycle, ShieldCheck, X } from "lucide-react";
+import { AlertTriangle, ArrowUpRight, Award, Clock3, Droplets, Globe2, Layers3, Mail, MapPinned, Menu as MenuIcon, MessageCircle, MoveRight, Phone, Recycle, ShieldCheck, Sparkles, Sun, X } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -16,6 +16,8 @@ import { PartnersStrip } from "@/components/partners-strip";
 
 import operationsAsset from "@/assets/piv-operations.jpg.asset.json";
 import metalsAsset from "@/assets/piv-metals.jpg.asset.json";
+import materialsHeroAsset from "@/assets/materiales-hero.jpg.asset.json";
+import materialsMetalsPhotoAsset from "@/assets/materiales-metales-photo.png.asset.json";
 import beachAsset from "@/assets/piv-beach.jpg.asset.json";
 import communityAsset from "@/assets/piv-community.jpg.asset.json";
 import alliesAsset from "@/assets/piv-allies.jpg.asset.json";
@@ -23,7 +25,6 @@ import kidsAsset from "@/assets/piv-kids.jpg.asset.json";
 import impactGraphicAsset from "@/assets/piv-impact-graphic.jpg.asset.json";
 import teamAsset from "@/assets/piv-team.png.asset.json";
 import materialPlasticImg from "@/assets/materiales-plasticos.jpg";
-import materialMetalImg from "@/assets/materiales-metales.jpg";
 import materialPaperImg from "@/assets/materiales-papel-carton.jpg";
 import materialRaeeImg from "@/assets/materiales-raee.jpg";
 import reciclaGana1 from "@/assets/rse/recicla-y-gana-1.jpg.asset.json";
@@ -82,8 +83,8 @@ const materialVisuals: Record<string, { image: string; alt: string; summary: str
     summary: "Envases y resinas listas para clasificación.",
   },
   Metales: {
-    image: materialMetalImg,
-    alt: "Metales y latas de aluminio separados en planta de reciclaje",
+    image: materialsMetalsPhotoAsset.url,
+    alt: "Latas y metales clasificados en planta de reciclaje de Parque Industrial Verde",
     summary: "Aluminio, cobre y ferrosos con ruta de valorización.",
   },
   Papel: {
@@ -1294,7 +1295,7 @@ export function MaterialsPage() {
               <a href={whatsappHref} target="_blank" rel="noreferrer"><Button variant="hero" size="xl">Cotizar</Button></a>
             </div>
           </div>
-          <img data-reveal src={metalsAsset.url} alt="Clasificación de latas y materiales metálicos" className="image-tile h-[460px] md:h-[520px]" loading="eager" />
+          <img data-reveal src={materialsHeroAsset.url} alt="Persona recibiendo caja con discos duros para disposición responsable en Parque Industrial Verde" className="image-tile h-[460px] md:h-[520px]" loading="eager" />
         </div>
       </section>
       <Section
@@ -1352,42 +1353,76 @@ export function MaterialsPage() {
       >
         <div className="mt-14 grid gap-5 md:grid-cols-3">
           {preparationSteps.map((step, i) => {
-            const tones = ["bg-[var(--brand-teal)] text-white", "bg-[var(--brand-lime)] text-[var(--brand-ink)]", "bg-[var(--brand-navy)] text-white"];
-            const details = [
+            const config = [
               {
+                tone: "bg-[var(--brand-teal)] text-white",
+                Icon: Droplets,
                 desc: "Enjuaga envases, latas y empaques para retirar restos de alimentos, bebidas o residuos orgánicos.",
                 tips: ["Sin residuos líquidos", "Sin restos de comida", "Sin grasa ni aceites"],
               },
               {
+                tone: "bg-[var(--brand-lime)] text-[var(--brand-ink)]",
+                Icon: Sun,
                 desc: "Deja escurrir y secar los materiales antes de almacenarlos para evitar contaminación y malos olores.",
                 tips: ["Bien escurridos", "Libres de humedad", "Listos para almacenar"],
               },
               {
+                tone: "bg-[var(--brand-navy)] text-white",
+                Icon: Layers3,
                 desc: "Clasifica por tipo de material: plásticos, metales, papel y RAEE en bolsas o cajas independientes.",
                 tips: ["Por categoría", "Sin mezclar tipos", "Identificados"],
               },
             ];
-            const d = details[i];
+            const d = config[i];
+            const Icon = d.Icon;
             return (
-              <article key={step} data-reveal className={cn("flex flex-col gap-4 rounded-3xl p-8 shadow-[var(--shadow-elevated)]", tones[i % tones.length])}>
+              <article key={step} data-reveal className={cn("relative flex flex-col gap-4 overflow-hidden rounded-3xl p-8 shadow-[var(--shadow-elevated)]", d.tone)}>
+                <span aria-hidden className="absolute -right-6 -top-6 text-[8rem] font-black leading-none opacity-10">0{i + 1}</span>
+                <div className="grid h-14 w-14 place-items-center rounded-2xl bg-white/15 ring-1 ring-white/25 backdrop-blur">
+                  <Icon className="h-7 w-7" />
+                </div>
                 <span className="text-xs font-bold uppercase tracking-[0.18em] opacity-75">Paso {i + 1}</span>
-                <p className="text-5xl font-bold tracking-tight">{step}</p>
+                <p className="text-4xl font-bold tracking-tight">{step}</p>
                 <p className="text-sm leading-6 opacity-90">{d.desc}</p>
                 <ul className="mt-2 space-y-1.5 text-sm font-medium">
                   {d.tips.map((t) => (
-                    <li key={t} className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-current opacity-80" />{t}</li>
+                    <li key={t} className="flex items-center gap-2"><Sparkles className="h-3.5 w-3.5 opacity-80" />{t}</li>
                   ))}
                 </ul>
               </article>
             );
           })}
         </div>
-        <div className="mt-10 rounded-3xl bg-[var(--brand-ink)] p-8 text-white shadow-[var(--shadow-elevated)]" data-reveal>
-          <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Disposición responsable por cobro</p>
-          <div className="mt-5 grid gap-3 md:grid-cols-3">
-            {disposalMaterials.map((item) => (
-              <div key={item} className="rounded-2xl bg-white/5 p-4 text-sm leading-6 text-white/90">{item}</div>
-            ))}
+        <div className="mt-10 overflow-hidden rounded-3xl bg-[var(--brand-ink)] shadow-[var(--shadow-elevated)]" data-reveal>
+          <div className="grid gap-0 md:grid-cols-[0.9fr_1.1fr]">
+            <div className="relative flex flex-col justify-between gap-6 p-8 text-white">
+              <div className="flex items-center gap-3">
+                <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[var(--brand-lime)] text-[var(--brand-ink)]">
+                  <AlertTriangle className="h-6 w-6" />
+                </div>
+                <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Disposición responsable por cobro</p>
+              </div>
+              <h3 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
+                Materiales delicados que requieren <span className="text-[var(--brand-lime)]">manejo especializado.</span>
+              </h3>
+              <a href={whatsappHref} target="_blank" rel="noreferrer" className="w-fit">
+                <Button variant="hero" size="lg">Cotizar disposición</Button>
+              </a>
+            </div>
+            <div className="grid gap-3 bg-white/[0.04] p-6 sm:grid-cols-1">
+              {disposalMaterials.map((item, idx) => {
+                const Icons = [AlertTriangle, ShieldCheck, Recycle];
+                const Icon = Icons[idx % Icons.length];
+                return (
+                  <div key={item} className="flex items-start gap-4 rounded-2xl bg-white/5 p-4 text-white/90 ring-1 ring-white/10">
+                    <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[var(--brand-lime)]/15 text-[var(--brand-lime)]">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <p className="text-sm leading-6">{item}</p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </Section>
@@ -1396,8 +1431,8 @@ export function MaterialsPage() {
 }
 
 export function RsePage() {
-  const [activeSection, setActiveSection] = useState<(typeof rseCampaignSections)[number]["id"]>("recicla-y-gana");
-  const selectedSection = rseCampaignSections.find((section) => section.id === activeSection) ?? rseCampaignSections[0];
+  const [activeSection, setActiveSection] = useState<(typeof rseCampaignSections)[number]["id"] | null>(null);
+  const selectedSection = rseCampaignSections.find((section) => section.id === activeSection) ?? null;
 
   return (
     <PageShell>
@@ -1451,36 +1486,41 @@ export function RsePage() {
             );
           })}
         </div>
-        <div id={`panel-${selectedSection.id}`} role="tabpanel" className="mt-8 grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
-          <article data-reveal className="rounded-3xl bg-[var(--brand-ink)] p-7 text-white shadow-[var(--shadow-elevated)]">
-            <p className="text-[0.7rem] font-black uppercase tracking-[0.2em] text-[var(--brand-lime)]">{selectedSection.kicker}</p>
-            <h3 className="mt-5 text-balance text-4xl font-semibold tracking-tight">{selectedSection.title}</h3>
-            <p className="mt-4 text-base leading-7 text-white/78">{selectedSection.description}</p>
-            <div className="mt-8 flex flex-wrap gap-2">
+        {selectedSection ? (
+          <div id={`panel-${selectedSection.id}`} role="tabpanel" className="mt-8 grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+            <article data-reveal className="rounded-3xl bg-[var(--brand-ink)] p-7 text-white shadow-[var(--shadow-elevated)]">
+              <p className="text-[0.7rem] font-black uppercase tracking-[0.2em] text-[var(--brand-lime)]">{selectedSection.kicker}</p>
+              <h3 className="mt-5 text-balance text-4xl font-semibold tracking-tight">{selectedSection.title}</h3>
+              <p className="mt-4 text-base leading-7 text-white/78">{selectedSection.description}</p>
+              <button
+                type="button"
+                onClick={() => setActiveSection(null)}
+                className="mt-8 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-white transition-colors hover:bg-[var(--brand-lime)] hover:text-[var(--brand-ink)]"
+              >
+                <X className="h-3.5 w-3.5" /> Cerrar
+              </button>
+            </article>
+            <div data-reveal className="grid auto-rows-[15rem] gap-4 md:grid-cols-2">
               {selectedSection.photos.map((photo, index) => (
-                <a key={photo.url} href={`#${selectedSection.id}-foto-${index + 1}`} className="rounded-full bg-white/10 px-3 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-white transition-colors hover:bg-[var(--brand-lime)] hover:text-[var(--brand-ink)]">
-                  Foto {index + 1}
-                </a>
+                <img
+                  key={photo.url}
+                  src={photo.url}
+                  alt={photo.alt}
+                  loading="lazy"
+                  className={cn(
+                    "h-full w-full rounded-3xl object-cover shadow-[var(--shadow-elevated)]",
+                    index === 0 && "md:row-span-2",
+                    selectedSection.photos.length === 2 && index === 1 && "md:row-span-2",
+                  )}
+                />
               ))}
             </div>
-          </article>
-          <div data-reveal className="grid auto-rows-[15rem] gap-4 md:grid-cols-2">
-            {selectedSection.photos.map((photo, index) => (
-              <img
-                key={photo.url}
-                id={`${selectedSection.id}-foto-${index + 1}`}
-                src={photo.url}
-                alt={photo.alt}
-                loading="lazy"
-                className={cn(
-                  "h-full w-full rounded-3xl object-cover shadow-[var(--shadow-elevated)]",
-                  index === 0 && "md:row-span-2",
-                  selectedSection.photos.length === 2 && index === 1 && "md:row-span-2",
-                )}
-              />
-            ))}
           </div>
-        </div>
+        ) : (
+          <p data-reveal className="mt-8 rounded-3xl border border-dashed border-[var(--brand-navy)]/15 bg-white/60 px-6 py-8 text-center text-sm font-medium text-[var(--brand-navy)]/70">
+            Selecciona una campaña arriba para ver fotos y detalles.
+          </p>
+        )}
       </Section>
       <Section
         eyebrow="Impacto social"
