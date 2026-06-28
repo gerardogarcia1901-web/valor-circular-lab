@@ -654,31 +654,18 @@ export function HomePage() {
           />
         </div>
         <div className="relative mx-auto flex min-h-screen w-[min(1280px,calc(100%-2rem))] items-end pb-12 pt-28 md:pb-20 md:pt-32">
-          <div className="grid w-full gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+          <div className="grid w-full gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
             <div className="space-y-6">
               <p data-hero-kicker className="eyebrow eyebrow--light">Economía circular con escala industrial</p>
               <h1 data-hero-title className="max-w-4xl text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-7xl lg:text-[5.2rem]">
                 Transformamos residuos en oportunidades.
               </h1>
-              <div data-hero-actions className="flex flex-wrap gap-3 pt-2">
-                <a href={whatsappHref} target="_blank" rel="noreferrer"><Button variant="hero" size="xl">Cotizar</Button></a>
-                <Link to="/materiales"><Button variant="heroSecondary" size="xl">Quiero reciclar</Button></Link>
-              </div>
             </div>
-            <div className="grid gap-4 sm:grid-cols-3 lg:self-end">
-              {pivStats.map((item) => (
-                <div key={item.label} data-hero-stat className="rounded-2xl border border-white/15 bg-white/10 p-5 backdrop-blur-md">
-                  <p className="text-4xl font-bold tracking-tight text-[var(--brand-lime)] md:text-5xl">
-                    {item.prefix}{formatMetric(item.value)}
-                  </p>
-                  <p className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-white/85">{item.suffix}</p>
-                  <p className="mt-3 text-xs leading-5 text-white/75">{item.label}</p>
-                </div>
-              ))}
-            </div>
+            <HeroStats />
           </div>
         </div>
       </section>
+
 
       <Section
         eyebrow="Qué hacemos"
