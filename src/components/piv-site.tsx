@@ -1396,6 +1396,9 @@ export function MaterialsPage() {
 }
 
 export function RsePage() {
+  const [activeSection, setActiveSection] = useState<(typeof rseCampaignSections)[number]["id"]>("recicla-y-gana");
+  const selectedSection = rseCampaignSections.find((section) => section.id === activeSection) ?? rseCampaignSections[0];
+
   return (
     <PageShell>
       <section className="pt-36 md:pt-44">
@@ -1415,16 +1418,68 @@ export function RsePage() {
         title="Activaciones que conectan marca, territorio y cultura ambiental."
         description="Desde jornadas educativas hasta campañas empresariales, cada acción busca convertir la sostenibilidad en participación y resultados medibles."
       >
-        <div className="mt-14 grid gap-4 md:grid-cols-3">
-          {activeCampaigns.map((campaign) => (
-            <article key={campaign} data-reveal className="editorial-panel editorial-panel--accent">
-              <p className="text-2xl font-semibold tracking-tight">{campaign}</p>
-            </article>
-          ))}
+        <div className="mt-14 grid gap-4 md:grid-cols-3" role="tablist" aria-label="Seleccionar campaña RSE">
+          {rseCampaignSections.map((campaign) => {
+            const selected = campaign.id === activeSection;
+            return (
+              <button
+                key={campaign.id}
+                type="button"
+                role="tab"
+                aria-selected={selected}
+                aria-controls={`panel-${campaign.id}`}
+                onClick={() => setActiveSection(campaign.id)}
+                data-reveal
+                className={cn(
+                  "group overflow-hidden rounded-3xl border p-0 text-left shadow-[var(--shadow-elevated)] transition-all duration-500 hover:-translate-y-1",
+                  selected
+                    ? "border-[var(--brand-lime)] bg-[var(--brand-navy)] text-white"
+                    : "border-[var(--brand-navy)]/10 bg-white text-[var(--brand-navy)] hover:border-[var(--brand-teal)]/35",
+                )}
+              >
+                <img
+                  src={campaign.photos[0].url}
+                  alt={campaign.photos[0].alt}
+                  loading="lazy"
+                  className="h-40 w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <span className="block p-5">
+                  <span className={cn("text-[0.65rem] font-black uppercase tracking-[0.18em]", selected ? "text-[var(--brand-lime)]" : "text-[var(--brand-teal)]")}>{campaign.kicker}</span>
+                  <span className="mt-2 block text-2xl font-semibold tracking-tight">{campaign.title}</span>
+                </span>
+              </button>
+            );
+          })}
         </div>
-        <div className="mt-8 grid gap-4 md:grid-cols-2">
-          <img src={kidsAsset.url} alt="Niños y comunidad participando en un programa educativo de reciclaje" className="image-tile h-[360px]" loading="lazy" />
-          <img src={beachAsset.url} alt="Jornada de limpieza y recuperación de residuos en la playa" className="image-tile h-[360px]" loading="lazy" />
+        <div id={`panel-${selectedSection.id}`} role="tabpanel" className="mt-8 grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+          <article data-reveal className="rounded-3xl bg-[var(--brand-ink)] p-7 text-white shadow-[var(--shadow-elevated)]">
+            <p className="text-[0.7rem] font-black uppercase tracking-[0.2em] text-[var(--brand-lime)]">{selectedSection.kicker}</p>
+            <h3 className="mt-5 text-balance text-4xl font-semibold tracking-tight">{selectedSection.title}</h3>
+            <p className="mt-4 text-base leading-7 text-white/78">{selectedSection.description}</p>
+            <div className="mt-8 flex flex-wrap gap-2">
+              {selectedSection.photos.map((photo, index) => (
+                <a key={photo.url} href={`#${selectedSection.id}-foto-${index + 1}`} className="rounded-full bg-white/10 px-3 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-white transition-colors hover:bg-[var(--brand-lime)] hover:text-[var(--brand-ink)]">
+                  Foto {index + 1}
+                </a>
+              ))}
+            </div>
+          </article>
+          <div data-reveal className="grid auto-rows-[15rem] gap-4 md:grid-cols-2">
+            {selectedSection.photos.map((photo, index) => (
+              <img
+                key={photo.url}
+                id={`${selectedSection.id}-foto-${index + 1}`}
+                src={photo.url}
+                alt={photo.alt}
+                loading="lazy"
+                className={cn(
+                  "h-full w-full rounded-3xl object-cover shadow-[var(--shadow-elevated)]",
+                  index === 0 && "md:row-span-2",
+                  selectedSection.photos.length === 2 && index === 1 && "md:row-span-2",
+                )}
+              />
+            ))}
+          </div>
         </div>
       </Section>
       <Section
