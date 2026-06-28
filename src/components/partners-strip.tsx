@@ -162,14 +162,8 @@ function LogoTile({
         src={url}
         alt={`Logo ${name}`}
         loading="lazy"
-        className="max-h-[72%] max-w-[78%] object-contain transition-transform duration-500 group-hover:scale-[1.08]"
+        className="max-h-[92%] max-w-[92%] object-contain transition-transform duration-500 group-hover:scale-[1.08]"
       />
-      <span
-        aria-hidden
-        className="pointer-events-none absolute bottom-3 left-5 text-[0.6rem] font-bold uppercase tracking-[0.18em] text-[var(--brand-navy)]/45"
-      >
-        {name}
-      </span>
     </div>
   );
 }

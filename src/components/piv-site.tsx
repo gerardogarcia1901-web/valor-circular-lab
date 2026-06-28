@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { AlertTriangle, ArrowUpRight, Award, Clock3, Droplets, Globe2, Layers3, Mail, MapPinned, Menu as MenuIcon, MessageCircle, MoveRight, Phone, Recycle, ShieldCheck, Sparkles, Sun, X } from "lucide-react";
+import { AlertTriangle, ArrowUpRight, Award, Clock3, Droplets, Factory, Globe2, Layers3, Mail, MapPinned, Menu as MenuIcon, MessageCircle, MoveRight, Phone, Recycle, ShieldCheck, Sparkles, Sun, TrendingUp, Users, X } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -37,6 +37,10 @@ import campanasEmpresariales4 from "@/assets/rse/campanas-empresariales-4.png.as
 import campanasEmpresariales5 from "@/assets/rse/campanas-empresariales-5.png.asset.json";
 import campanasEducativas1 from "@/assets/rse/campanas-educativas-1.jpg.asset.json";
 import campanasEducativas2 from "@/assets/rse/campanas-educativas-2.jpg.asset.json";
+import campanasEmpresarialesServiciosAsset from "@/assets/campanas-empresariales-servicios.png.asset.json";
+import prepLimpiosAsset from "@/assets/preparacion/preparacion-limpios.jpg.asset.json";
+import prepSecosAsset from "@/assets/preparacion/preparacion-secos.jpg.asset.json";
+import prepSeparadosAsset from "@/assets/preparacion/preparacion-separados.jpg.asset.json";
 import {
   activeCampaigns,
   audience,
@@ -1179,6 +1183,77 @@ export function AboutPage() {
       </div>
       <TimelineRail />
       <Section
+        eyebrow="Nuestra identidad"
+        title="Reciclaje con escala industrial y propósito real."
+        description="Una operación pensada para que cada material recuperado vuelva a generar valor — local, regional y globalmente."
+      >
+        <div className="mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          {[
+            {
+              Icon: Recycle,
+              kicker: "¿Qué hacemos?",
+              title: "Transformamos materiales en oportunidades.",
+              body: "Procesos especializados de recuperación y gestión que reducen el impacto ambiental y fortalecen la economía circular en El Salvador.",
+              tone: "bg-[var(--brand-navy)] text-white",
+              chip: "bg-[var(--brand-lime)] text-[var(--brand-ink)]",
+            },
+            {
+              Icon: Users,
+              kicker: "¿Para quién?",
+              title: "Empresas, industrias, comercios y recolectores.",
+              body: "Acompañamos a instituciones y aliados que buscan implementar prácticas responsables en el manejo de materiales reciclables.",
+              tone: "bg-[var(--brand-lime)] text-[var(--brand-ink)]",
+              chip: "bg-[var(--brand-ink)] text-[var(--brand-lime)]",
+            },
+            {
+              Icon: Globe2,
+              kicker: "Alcance",
+              title: "Cobertura nacional con destino internacional.",
+              body: "Nuestros materiales reciclables llegan a destinos internacionales y se incorporan a cadenas globales de valor.",
+              tone: "bg-[var(--brand-teal)] text-white",
+              chip: "bg-white text-[var(--brand-teal)]",
+            },
+            {
+              Icon: TrendingUp,
+              kicker: "Evolución",
+              title: "La recicladora más grande de El Salvador.",
+              body: "Hemos consolidado un crecimiento constante, mayor capacidad operativa y una operación más organizada y eficiente.",
+              tone: "bg-[var(--brand-ink)] text-white",
+              chip: "bg-[var(--brand-lime)] text-[var(--brand-ink)]",
+            },
+          ].map((card, i) => {
+            const Icon = card.Icon;
+            return (
+              <article
+                key={card.kicker}
+                data-reveal
+                className={cn("group relative isolate flex aspect-[4/5] flex-col justify-between overflow-hidden rounded-[1.75rem] p-7 shadow-[var(--shadow-elevated)] transition-transform duration-500 hover:-translate-y-2", card.tone)}
+              >
+                <span aria-hidden className="pointer-events-none absolute -bottom-4 -right-2 text-[7rem] font-black leading-none tracking-tighter opacity-[0.08]">0{i + 1}</span>
+                <div className="flex items-start justify-between">
+                  <span className={cn("grid h-14 w-14 place-items-center rounded-2xl shadow-lg transition-transform duration-500 group-hover:-rotate-6", card.chip)}>
+                    <Icon className="h-7 w-7" />
+                  </span>
+                  <span className="text-[0.62rem] font-black uppercase tracking-[0.2em] opacity-80">{card.kicker}</span>
+                </div>
+                <div>
+                  <h3 className="text-balance text-2xl font-bold leading-tight tracking-tight">{card.title}</h3>
+                  <p className="mt-3 text-sm leading-6 opacity-85">{card.body}</p>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+        <div data-reveal className="mt-10 overflow-hidden rounded-[1.75rem] bg-gradient-to-r from-[var(--brand-navy)] via-[var(--brand-teal)] to-[var(--brand-lime)] p-[1px] shadow-[var(--shadow-elevated)]">
+          <div className="flex flex-col items-center gap-3 rounded-[1.65rem] bg-white px-8 py-10 text-center">
+            <Sparkles className="h-6 w-6 text-[var(--brand-teal)]" />
+            <p className="text-balance text-2xl font-semibold tracking-tight text-[var(--brand-navy)] md:text-3xl">
+              El reciclaje se construye desde pequeñas acciones que, juntas, generan un <span className="text-[var(--brand-teal)]">impacto positivo.</span>
+            </p>
+          </div>
+        </div>
+      </Section>
+      <Section
         eyebrow="Propósito"
         title="Operar con escala industrial y convicción ambiental no son caminos separados."
         description="PIV articula tecnología, experiencia y una red de recuperación para convertir desechos en valor verificable."
@@ -1265,6 +1340,48 @@ export function ServicesPage() {
       >
         <ServicesGrid />
       </Section>
+      <section className="relative overflow-hidden bg-[var(--brand-ink)] py-20 md:py-28">
+        <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div data-reveal className="relative overflow-hidden rounded-[2rem] shadow-[var(--shadow-elevated)]">
+            <img
+              src={campanasEmpresarialesServiciosAsset.url}
+              alt="Jornada empresarial de recolección de residuos electrónicos con Parque Industrial Verde"
+              loading="lazy"
+              className="block h-[420px] w-full object-cover md:h-[560px]"
+            />
+            <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[var(--brand-ink)]/55 via-transparent to-transparent" />
+            <div className="absolute bottom-5 left-5 flex flex-wrap gap-2">
+              <span className="rounded-full bg-[var(--brand-lime)] px-3 py-1.5 text-[0.65rem] font-black uppercase tracking-[0.18em] text-[var(--brand-ink)]">RAEE</span>
+              <span className="rounded-full bg-white/90 px-3 py-1.5 text-[0.65rem] font-black uppercase tracking-[0.18em] text-[var(--brand-navy)]">Jornada in-situ</span>
+            </div>
+          </div>
+          <div data-reveal className="text-white">
+            <p className="text-[0.7rem] font-black uppercase tracking-[0.22em] text-[var(--brand-lime)]">Campañas empresariales</p>
+            <h2 className="mt-4 text-balance text-4xl font-semibold tracking-tight md:text-5xl">
+              Jornadas que <span className="text-[var(--brand-lime)]">activan a tu equipo</span> y dan disposición responsable a equipos en desuso.
+            </h2>
+            <p className="mt-6 text-base leading-7 text-white/80">
+              Coordinamos la logística, el montaje y la trazabilidad para que tu empresa recolecte RAEE, equipos y materiales reciclables con respaldo documental y participación real de colaboradores.
+            </p>
+            <div className="mt-8 grid gap-3 sm:grid-cols-3">
+              {[
+                { k: "Montaje", v: "Activación completa" },
+                { k: "Cobertura", v: "Nacional" },
+                { k: "Evidencia", v: "Certificada" },
+              ].map((b) => (
+                <div key={b.k} className="rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur">
+                  <p className="text-[0.62rem] font-black uppercase tracking-[0.18em] text-[var(--brand-lime)]">{b.k}</p>
+                  <p className="mt-1 text-sm font-semibold">{b.v}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a href={whatsappHref} target="_blank" rel="noreferrer"><Button variant="hero" size="lg">Coordinar jornada</Button></a>
+              <Link to="/rse"><Button variant="heroSecondary" size="lg">Ver campañas RSE</Button></Link>
+            </div>
+          </div>
+        </div>
+      </section>
       <EnterpriseCommunity />
       <PartnersStrip
         variant="dark"
@@ -1357,34 +1474,46 @@ export function MaterialsPage() {
               {
                 tone: "bg-[var(--brand-teal)] text-white",
                 Icon: Droplets,
+                bg: prepLimpiosAsset.url,
                 desc: "Enjuaga envases, latas y empaques para retirar restos de alimentos, bebidas o residuos orgánicos.",
                 tips: ["Sin residuos líquidos", "Sin restos de comida", "Sin grasa ni aceites"],
               },
               {
                 tone: "bg-[var(--brand-lime)] text-[var(--brand-ink)]",
                 Icon: Sun,
+                bg: prepSecosAsset.url,
                 desc: "Deja escurrir y secar los materiales antes de almacenarlos para evitar contaminación y malos olores.",
                 tips: ["Bien escurridos", "Libres de humedad", "Listos para almacenar"],
               },
               {
                 tone: "bg-[var(--brand-navy)] text-white",
                 Icon: Layers3,
+                bg: prepSeparadosAsset.url,
                 desc: "Clasifica por tipo de material: plásticos, metales, papel y RAEE en bolsas o cajas independientes.",
                 tips: ["Por categoría", "Sin mezclar tipos", "Identificados"],
               },
             ];
             const d = config[i];
             const Icon = d.Icon;
+            const isDark = !d.tone.includes("brand-lime");
             return (
-              <article key={step} data-reveal className={cn("relative flex flex-col gap-4 overflow-hidden rounded-3xl p-8 shadow-[var(--shadow-elevated)]", d.tone)}>
-                <span aria-hidden className="absolute -right-6 -top-6 text-[8rem] font-black leading-none opacity-10">0{i + 1}</span>
-                <div className="grid h-14 w-14 place-items-center rounded-2xl bg-white/15 ring-1 ring-white/25 backdrop-blur">
+              <article key={step} data-reveal className={cn("group relative isolate flex min-h-[28rem] flex-col gap-4 overflow-hidden rounded-3xl p-8 shadow-[var(--shadow-elevated)]", d.tone)}>
+                <img
+                  src={d.bg}
+                  alt=""
+                  aria-hidden
+                  loading="lazy"
+                  className="absolute inset-0 -z-10 h-full w-full object-cover opacity-40 transition-transform duration-700 group-hover:scale-105"
+                />
+                <span aria-hidden className={cn("absolute inset-0 -z-10", isDark ? "bg-gradient-to-t from-black/85 via-black/55 to-black/25" : "bg-gradient-to-t from-[var(--brand-lime)]/95 via-[var(--brand-lime)]/70 to-[var(--brand-lime)]/30")} />
+                <span aria-hidden className="absolute -right-6 -top-6 text-[8rem] font-black leading-none opacity-15">0{i + 1}</span>
+                <div className="relative grid h-14 w-14 place-items-center rounded-2xl bg-white/15 ring-1 ring-white/25 backdrop-blur">
                   <Icon className="h-7 w-7" />
                 </div>
-                <span className="text-xs font-bold uppercase tracking-[0.18em] opacity-75">Paso {i + 1}</span>
-                <p className="text-4xl font-bold tracking-tight">{step}</p>
-                <p className="text-sm leading-6 opacity-90">{d.desc}</p>
-                <ul className="mt-2 space-y-1.5 text-sm font-medium">
+                <span className="relative text-xs font-bold uppercase tracking-[0.18em] opacity-80">Paso {i + 1}</span>
+                <p className="relative text-4xl font-bold tracking-tight">{step}</p>
+                <p className="relative text-sm leading-6 opacity-90">{d.desc}</p>
+                <ul className="relative mt-2 space-y-1.5 text-sm font-medium">
                   {d.tips.map((t) => (
                     <li key={t} className="flex items-center gap-2"><Sparkles className="h-3.5 w-3.5 opacity-80" />{t}</li>
                   ))}
