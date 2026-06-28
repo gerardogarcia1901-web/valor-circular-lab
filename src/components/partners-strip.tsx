@@ -1,7 +1,7 @@
 import { partners } from "@/lib/piv-partners";
 
 export function PartnersStrip({
-  eyebrow = "Aliados",
+  eyebrow = "Aliados estratégicos",
   title = "Empresas que confían en Parque Industrial Verde",
   description = "Más de dos décadas operando junto a marcas líderes que han elegido la trazabilidad, la escala industrial y la economía circular real.",
   variant = "light",
@@ -12,24 +12,37 @@ export function PartnersStrip({
   variant?: "light" | "dark";
 }) {
   const isDark = variant === "dark";
-  const loop = [...partners, ...partners];
+  const loopA = [...partners, ...partners];
+  const loopB = [...partners.slice().reverse(), ...partners.slice().reverse()];
 
   return (
     <section
-      className="relative overflow-hidden py-20 md:py-28"
+      className="relative overflow-hidden py-24 md:py-32"
       style={{
         background: isDark
           ? "linear-gradient(180deg, var(--brand-ink) 0%, var(--brand-navy) 100%)"
-          : "linear-gradient(180deg, #ffffff 0%, color-mix(in oklab, var(--brand-sky) 25%, white) 100%)",
+          : "linear-gradient(180deg, #ffffff 0%, color-mix(in oklab, var(--brand-sky) 30%, white) 100%)",
       }}
     >
-      <div className="mx-auto w-[min(1280px,calc(100%-2rem))]">
+      {/* Decorative blobs */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-32 top-10 h-80 w-80 rounded-full opacity-30 blur-3xl"
+        style={{ background: "var(--brand-lime)" }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-40 bottom-10 h-96 w-96 rounded-full opacity-25 blur-3xl"
+        style={{ background: isDark ? "var(--brand-teal)" : "var(--brand-sky)" }}
+      />
+
+      <div className="relative mx-auto w-[min(1320px,calc(100%-2rem))]">
         <div data-reveal className="max-w-3xl space-y-4">
           <p
-            className="text-[0.7rem] font-bold uppercase tracking-[0.2em]"
+            className="inline-flex items-center gap-3 text-[0.72rem] font-bold uppercase tracking-[0.22em]"
             style={{ color: isDark ? "var(--brand-lime)" : "var(--brand-teal)" }}
           >
-            <span className="mr-2 inline-block h-px w-8 align-middle" style={{ background: isDark ? "var(--brand-lime)" : "var(--brand-teal)" }} />
+            <span className="inline-block h-px w-10" style={{ background: isDark ? "var(--brand-lime)" : "var(--brand-teal)" }} />
             {eyebrow}
           </p>
           <h2
@@ -40,38 +53,75 @@ export function PartnersStrip({
           </h2>
           <p
             className="max-w-2xl text-base leading-7"
-            style={{ color: isDark ? "rgba(255,255,255,0.75)" : "color-mix(in oklab, var(--brand-navy) 70%, white)" }}
+            style={{ color: isDark ? "rgba(255,255,255,0.78)" : "color-mix(in oklab, var(--brand-navy) 72%, white)" }}
           >
             {description}
           </p>
+          <div className="flex flex-wrap items-center gap-6 pt-2">
+            <Stat number={`${partners.length}+`} label="Marcas aliadas" dark={isDark} />
+            <span className="h-8 w-px" style={{ background: isDark ? "rgba(255,255,255,0.18)" : "rgba(18,82,106,0.18)" }} />
+            <Stat number="23" label="Años de relaciones" dark={isDark} />
+            <span className="h-8 w-px" style={{ background: isDark ? "rgba(255,255,255,0.18)" : "rgba(18,82,106,0.18)" }} />
+            <Stat number="100%" label="Trazabilidad documentada" dark={isDark} />
+          </div>
         </div>
 
-        {/* Marquee row */}
+        {/* Marquee — fila 1 (logos grandes) */}
         <div
           data-reveal
-          className="marquee-pause relative mt-14 overflow-hidden"
+          className="marquee-pause relative mt-16 overflow-hidden"
           style={{
             maskImage:
-              "linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%)",
+              "linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%)",
             WebkitMaskImage:
-              "linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%)",
+              "linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%)",
           }}
         >
-          <div className="marquee-track flex w-max gap-4">
-            {loop.map((p, i) => (
-              <LogoTile key={i} name={p.name} url={p.url} dark={isDark} />
+          <div className="marquee-track flex w-max gap-6">
+            {loopA.map((p, i) => (
+              <LogoTile key={`a-${i}`} name={p.name} url={p.url} dark={isDark} />
             ))}
           </div>
         </div>
 
-        {/* Static grid below for SEO + accessibility */}
-        <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5">
-          {partners.map((p) => (
-            <LogoTile key={p.name} name={p.name} url={p.url} dark={isDark} compact />
-          ))}
+        {/* Marquee — fila 2 (dirección inversa) */}
+        <div
+          data-reveal
+          className="marquee-pause relative mt-6 overflow-hidden"
+          style={{
+            maskImage:
+              "linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%)",
+            WebkitMaskImage:
+              "linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%)",
+          }}
+        >
+          <div className="marquee-track-reverse flex w-max gap-6">
+            {loopB.map((p, i) => (
+              <LogoTile key={`b-${i}`} name={p.name} url={p.url} dark={isDark} accent />
+            ))}
+          </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function Stat({ number, label, dark }: { number: string; label: string; dark: boolean }) {
+  return (
+    <div className="flex flex-col">
+      <span
+        className="text-2xl font-black tracking-tight md:text-3xl"
+        style={{ color: dark ? "var(--brand-lime)" : "var(--brand-teal)" }}
+      >
+        {number}
+      </span>
+      <span
+        className="text-[0.7rem] font-semibold uppercase tracking-[0.18em]"
+        style={{ color: dark ? "rgba(255,255,255,0.7)" : "color-mix(in oklab, var(--brand-navy) 65%, white)" }}
+      >
+        {label}
+      </span>
+    </div>
   );
 }
 
@@ -79,34 +129,47 @@ function LogoTile({
   name,
   url,
   dark,
-  compact,
+  accent,
 }: {
   name: string;
   url: string;
   dark: boolean;
-  compact?: boolean;
+  accent?: boolean;
 }) {
   return (
     <div
       className={[
-        "group relative flex shrink-0 items-center justify-center overflow-hidden rounded-2xl border transition-all duration-500",
-        compact ? "h-24" : "h-28 min-w-[200px] md:h-32 md:min-w-[240px]",
+        "group relative flex h-44 w-72 shrink-0 items-center justify-center overflow-hidden rounded-3xl border transition-all duration-500 md:h-52 md:w-80",
         dark
-          ? "border-white/10 bg-white/95 hover:bg-white"
-          : "border-[var(--brand-navy)]/10 bg-white hover:border-[var(--brand-teal)]/40",
-        "hover:-translate-y-1 hover:shadow-[0_18px_40px_-18px_rgba(18,82,106,0.45)]",
+          ? "border-white/10 bg-white"
+          : accent
+            ? "border-[var(--brand-navy)]/10 bg-gradient-to-br from-white to-[color-mix(in_oklab,var(--brand-sky)_45%,white)]"
+            : "border-[var(--brand-navy)]/10 bg-white",
+        "hover:-translate-y-2 hover:shadow-[0_28px_60px_-22px_rgba(18,82,106,0.55)] hover:border-[var(--brand-teal)]/50",
       ].join(" ")}
     >
+      {/* corner accent */}
       <span
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 -bottom-px h-[3px] origin-left scale-x-0 bg-gradient-to-r from-[var(--brand-teal)] via-[var(--brand-lime)] to-[var(--brand-sky)] transition-transform duration-500 group-hover:scale-x-100"
+        className="pointer-events-none absolute right-3 top-3 h-2.5 w-2.5 rounded-full transition-transform duration-500 group-hover:scale-150"
+        style={{ background: "var(--brand-lime)" }}
+      />
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-x-6 -bottom-px h-[3px] origin-left scale-x-0 rounded-full bg-gradient-to-r from-[var(--brand-teal)] via-[var(--brand-lime)] to-[var(--brand-sky)] transition-transform duration-500 group-hover:scale-x-100"
       />
       <img
         src={url}
         alt={`Logo ${name}`}
         loading="lazy"
-        className="max-h-[64%] max-w-[78%] object-contain transition-transform duration-500 group-hover:scale-[1.05]"
+        className="max-h-[72%] max-w-[78%] object-contain transition-transform duration-500 group-hover:scale-[1.08]"
       />
+      <span
+        aria-hidden
+        className="pointer-events-none absolute bottom-3 left-5 text-[0.6rem] font-bold uppercase tracking-[0.18em] text-[var(--brand-navy)]/45"
+      >
+        {name}
+      </span>
     </div>
   );
 }
