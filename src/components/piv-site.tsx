@@ -156,10 +156,12 @@ function PageShell({ children }: { children: ReactNode }) {
       <main ref={pageRef}>{children}</main>
       <SiteFooter />
       <WhatsAppBubble />
+      <ReciclinHelper />
       <ConversionPopup />
     </div>
   );
 }
+
 
 function SiteHeader() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
