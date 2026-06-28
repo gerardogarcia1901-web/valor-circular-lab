@@ -445,7 +445,7 @@ function HeroStatCard({
     <div
       ref={ref}
       data-hero-stat
-      className="group relative isolate min-h-[12rem] overflow-hidden rounded-[1.35rem] border p-5 opacity-100 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] md:p-6 xl:min-h-[13rem] 2xl:min-h-[16rem]"
+      className="group relative isolate min-h-[11rem] overflow-hidden rounded-[1.35rem] border p-4 opacity-100 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] md:min-h-[11.5rem] md:p-5 xl:min-h-[12rem] 2xl:min-h-[16rem] 2xl:p-6"
       style={{
         background: tone.bg,
         color: tone.fg,
@@ -487,7 +487,7 @@ function HeroStatCard({
           {item.prefix}
         </span>
         <span
-          className="whitespace-nowrap tabular-nums text-5xl leading-none md:text-6xl xl:text-7xl 2xl:text-8xl"
+          className="whitespace-nowrap tabular-nums text-5xl leading-none md:text-6xl 2xl:text-8xl"
           style={{ color: tone.fg }}
         >
           {formatMetric(value)}
@@ -883,10 +883,10 @@ export function HomePage() {
           />
         </div>
         <div className="relative mx-auto flex min-h-screen w-[min(1280px,calc(100%-2rem))] items-end pb-12 pt-28 md:pb-20 md:pt-32">
-          <div className="grid w-full gap-8 2xl:grid-cols-[1.05fr_0.95fr] 2xl:items-end">
+          <div className="grid w-full gap-6 2xl:grid-cols-[1.05fr_0.95fr] 2xl:items-end">
             <div className="space-y-6">
               <p data-hero-kicker className="eyebrow eyebrow--light">Economía circular con escala industrial</p>
-              <h1 data-hero-title className="max-w-4xl text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-7xl lg:text-[5.2rem]">
+              <h1 data-hero-title className="max-w-4xl text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-6xl xl:text-7xl 2xl:text-[5.2rem]">
                 Transformamos residuos en oportunidades.
               </h1>
             </div>
