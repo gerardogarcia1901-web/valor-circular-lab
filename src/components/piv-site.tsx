@@ -10,6 +10,9 @@ import logoAsset from "@/assets/piv-logo.png.asset.json";
 import reciclinAsset from "@/assets/reciclin.png.asset.json";
 import { ReciclinMascot } from "@/components/reciclin-mascot";
 import { ConversionPopup } from "@/components/conversion-popup";
+import { ReciclinHelper } from "@/components/reciclin-helper";
+import { PartnersStrip } from "@/components/partners-strip";
+
 
 import operationsAsset from "@/assets/piv-operations.jpg.asset.json";
 import metalsAsset from "@/assets/piv-metals.jpg.asset.json";
