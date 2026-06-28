@@ -16,6 +16,8 @@ import { PartnersStrip } from "@/components/partners-strip";
 
 import operationsAsset from "@/assets/piv-operations.jpg.asset.json";
 import metalsAsset from "@/assets/piv-metals.jpg.asset.json";
+import materialsHeroAsset from "@/assets/materiales-hero.jpg.asset.json";
+import materialsMetalsPhotoAsset from "@/assets/materiales-metales-photo.png.asset.json";
 import beachAsset from "@/assets/piv-beach.jpg.asset.json";
 import communityAsset from "@/assets/piv-community.jpg.asset.json";
 import alliesAsset from "@/assets/piv-allies.jpg.asset.json";
@@ -23,7 +25,6 @@ import kidsAsset from "@/assets/piv-kids.jpg.asset.json";
 import impactGraphicAsset from "@/assets/piv-impact-graphic.jpg.asset.json";
 import teamAsset from "@/assets/piv-team.png.asset.json";
 import materialPlasticImg from "@/assets/materiales-plasticos.jpg";
-import materialMetalImg from "@/assets/materiales-metales.jpg";
 import materialPaperImg from "@/assets/materiales-papel-carton.jpg";
 import materialRaeeImg from "@/assets/materiales-raee.jpg";
 import reciclaGana1 from "@/assets/rse/recicla-y-gana-1.jpg.asset.json";
