@@ -12,10 +12,11 @@ type ReciclinMascotProps = {
 };
 
 const sizeMap = {
-  sm: "h-24 md:h-28",
-  md: "h-36 md:h-44",
-  lg: "h-48 md:h-60",
+  sm: "h-20 md:h-28",
+  md: "h-24 md:h-44",
+  lg: "h-32 md:h-60",
 };
+
 
 const toneMap = {
   lime: "bg-[var(--brand-lime)] text-[var(--brand-ink)] border-[var(--brand-ink)]/10",
@@ -34,7 +35,7 @@ export function ReciclinMascot({
   return (
     <div
       className={cn(
-        "flex items-end gap-3 md:gap-4",
+        "flex w-full min-w-0 items-end gap-3 md:gap-4",
         side === "right" && "flex-row-reverse",
         className,
       )}
@@ -50,7 +51,7 @@ export function ReciclinMascot({
       />
       <div
         className={cn(
-          "relative max-w-xs rounded-2xl border px-4 py-3 text-sm font-medium leading-6 shadow-lg",
+          "relative min-w-0 flex-1 max-w-xs break-words [overflow-wrap:anywhere] rounded-2xl border px-4 py-3 text-sm font-medium leading-6 shadow-lg",
           toneMap[tone],
         )}
       >
