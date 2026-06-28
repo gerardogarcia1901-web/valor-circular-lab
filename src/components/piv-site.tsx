@@ -152,6 +152,7 @@ function PageShell({ children }: { children: ReactNode }) {
       <main ref={pageRef}>{children}</main>
       <SiteFooter />
       <WhatsAppBubble />
+      <ConversionPopup />
     </div>
   );
 }
