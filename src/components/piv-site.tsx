@@ -589,10 +589,15 @@ function FAQSection() {
       description="Respuestas rápidas para empresas, campañas y personas que buscan una gestión responsable de sus materiales."
     >
       <div className="mt-12 grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-        <div data-reveal className="space-y-4">
+        <div data-reveal className="space-y-6">
           <p className="text-sm leading-7 text-muted-foreground">
             Si necesitas una ruta de recolección, certificación o validación de materiales, el equipo de PIV puede estructurar una propuesta según tu operación.
           </p>
+          <ReciclinMascot
+            size="md"
+            tone="lime"
+            message={<><strong>¡Hola!</strong> ¿Tenés dudas? Yo te pongo en contacto con el equipo.</>}
+          />
           <a href={whatsappHref} target="_blank" rel="noreferrer">
             <Button variant="primary" size="lg">Hablar por WhatsApp</Button>
           </a>
