@@ -10,6 +10,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import faviconAsset from "@/assets/favicon.png.asset.json";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { organizationSchema, siteDescription, siteName } from "@/lib/piv-seo";
 
@@ -94,9 +95,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:image", content: "https://parqueindustrialverde.com/images/piv-logo.png" },
     ],
     links: [
-      { rel: "icon", type: "image/png", href: "/images/piv-logo.png" },
-      { rel: "shortcut icon", type: "image/png", href: "/images/piv-logo.png" },
-      { rel: "apple-touch-icon", href: "/images/piv-logo.png" },
+      { rel: "icon", type: "image/png", href: faviconAsset.url },
+      { rel: "shortcut icon", type: "image/png", href: faviconAsset.url },
+      { rel: "apple-touch-icon", href: faviconAsset.url },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
