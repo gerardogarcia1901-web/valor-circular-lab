@@ -1650,7 +1650,12 @@ export function RsePage() {
                 role="tab"
                 aria-selected={selected}
                 aria-controls={`panel-${campaign.id}`}
-                onClick={() => setActiveSection(campaign.id)}
+                onClick={() => {
+                  setActiveSection(campaign.id);
+                  requestAnimationFrame(() => {
+                    document.getElementById(`panel-${campaign.id}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  });
+                }}
                 data-reveal
                 className={cn(
                   "group overflow-hidden rounded-3xl border p-0 text-left shadow-[var(--shadow-elevated)] transition-all duration-500 hover:-translate-y-1",
