@@ -1687,19 +1687,19 @@ export function RsePage() {
                 <X className="h-3.5 w-3.5" /> Cerrar
               </button>
             </article>
-            <div data-reveal className="grid auto-rows-[15rem] gap-4 md:grid-cols-2">
-              {selectedSection.photos.map((photo, index) => (
-                <img
+            <div data-reveal className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {selectedSection.photos.map((photo) => (
+                <div
                   key={photo.url}
-                  src={photo.url}
-                  alt={photo.alt}
-                  loading="lazy"
-                  className={cn(
-                    "h-full w-full rounded-3xl object-cover shadow-[var(--shadow-elevated)]",
-                    index === 0 && "md:row-span-2",
-                    selectedSection.photos.length === 2 && index === 1 && "md:row-span-2",
-                  )}
-                />
+                  className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-[var(--shadow-elevated)]"
+                >
+                  <img
+                    src={photo.url}
+                    alt={photo.alt}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                </div>
               ))}
             </div>
           </div>
