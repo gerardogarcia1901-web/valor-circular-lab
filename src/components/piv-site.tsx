@@ -1080,7 +1080,7 @@ export function HomePage() {
       <Section
         eyebrow="Para quién"
         title="Trabajamos junto a quienes necesitan gestionar sus residuos con criterio operativo y responsabilidad real."
-        description="Recolectores base, empresas, corporaciones, industrias y centros comerciales encuentran en PIV una red con capacidad para acompañar desde la recolección hasta la valorización final."
+        description="Trabajamos con recolectores base, empresas, instituciones, industrias y comercios que buscan implementar prácticas más responsables en el manejo de materiales reciclables. Acompañamos a quienes desean mejorar sus procesos y fortalecer su compromiso con el medioambiente."
       >
         <AudienceStrip />
         <div data-reveal className="mt-10 flex justify-center md:justify-start">
