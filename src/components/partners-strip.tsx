@@ -3,7 +3,6 @@ import { partners } from "@/lib/piv-partners";
 export function PartnersStrip({
   eyebrow = "Aliados estratégicos",
   title = "Empresas que confían en Parque Industrial Verde",
-  description = "Más de dos décadas operando junto a marcas líderes que han elegido la trazabilidad, la escala industrial y la economía circular real.",
   variant = "light",
 }: {
   eyebrow?: string;
