@@ -873,8 +873,10 @@ function TimelineRail() {
     <section className="overflow-hidden py-20 md:py-28">
       <div className="mx-auto w-[min(1280px,calc(100%-2rem))]">
         <div data-reveal className="max-w-3xl space-y-5">
-          <p className="eyebrow">Evolución</p>
-          <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl">Una plataforma industrial construida por etapas, visión y escala.</h2>
+          <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl">Nuestra evolución</h2>
+          <p className="max-w-2xl text-lg leading-8 text-muted-foreground">
+            A lo largo del tiempo hemos evolucionado, desarrollando una operación más organizada y eficiente en el manejo de materiales reciclables, lo que nos ha permitido consolidar un crecimiento constante, mayor capacidad operativa y convertirnos en la recicladora más grande de El Salvador.
+          </p>
         </div>
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {timeline.map((item) => (
