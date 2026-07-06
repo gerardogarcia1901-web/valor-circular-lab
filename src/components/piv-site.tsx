@@ -1202,20 +1202,9 @@ export function AboutPage() {
         <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] pb-16 md:pb-24">
           <div data-reveal className="max-w-4xl space-y-6 text-white">
             <p className="eyebrow eyebrow--light">Sobre nosotros</p>
-            <h1 className="text-balance text-5xl font-semibold tracking-tight md:text-7xl">
-              <span className="text-[var(--brand-lime)]">+23 años</span> transformando residuos en oportunidades.
+            <h1 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl">
+              Trabajamos por un futuro más sostenible a través del <span className="text-[var(--brand-lime)]">reciclaje y la valorización</span> de materiales.
             </h1>
-            <p className="max-w-2xl text-lg leading-8 text-white/85">
-              Desde INSEMA y ZARTEX hasta Parque Industrial Verde, hemos construido la red de reciclaje más grande de El Salvador: economía circular con respaldo industrial.
-            </p>
-            <div className="grid gap-3 sm:grid-cols-3 pt-4 max-w-2xl">
-              {pivStats.map((s) => (
-                <div key={s.label} className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-md">
-                  <p className="text-3xl font-bold text-[var(--brand-lime)]">{s.prefix}{formatMetric(s.value)}</p>
-                  <p className="text-[0.65rem] font-bold uppercase tracking-[0.16em] text-white/85">{s.suffix}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
