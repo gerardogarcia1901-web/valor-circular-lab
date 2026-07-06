@@ -473,22 +473,33 @@ function Section({ eyebrow, title, description, children, className }: { eyebrow
   );
 }
 
-function MetricCard({ value, prefix, suffix, description }: { value: number; prefix?: string; suffix?: string; description: string; }) {
+function MetricCard({ value, prefix, suffix, description, tone }: { value: number; prefix?: string; suffix?: string; description: string; tone?: { bg: string; fg: string; accent: string; muted: string; }; }) {
   const { ref, value: liveValue } = useCountUp(value);
+  const t = tone ?? {
+    bg: "var(--brand-sky)",
+    fg: "var(--brand-navy)",
+    accent: "var(--brand-teal)",
+    muted: "color-mix(in oklab, var(--brand-navy) 70%, white)",
+  };
   return (
-    <article ref={ref} data-reveal className="metric-card">
+    <article
+      ref={ref}
+      data-reveal
+      className="metric-card"
+      style={{ background: t.bg, color: t.fg, borderColor: "transparent" }}
+    >
       <div className="flex flex-col gap-1">
-        <span className="text-4xl font-semibold leading-none tracking-tight text-foreground md:text-5xl">
+        <span className="text-4xl font-semibold leading-none tracking-tight md:text-5xl" style={{ color: t.fg }}>
           {prefix}
           {formatMetric(liveValue)}
         </span>
         {suffix && (
-          <span className="text-base font-medium leading-tight tracking-tight text-foreground/80 md:text-lg">
+          <span className="text-base font-medium leading-tight tracking-tight md:text-lg" style={{ color: t.accent }}>
             {suffix.trim()}
           </span>
         )}
       </div>
-      <p className="max-w-sm text-sm leading-7 text-muted-foreground">{description}</p>
+      <p className="max-w-sm text-sm leading-7" style={{ color: t.muted }}>{description}</p>
     </article>
   );
 }
@@ -873,8 +884,10 @@ function TimelineRail() {
     <section className="overflow-hidden py-20 md:py-28">
       <div className="mx-auto w-[min(1280px,calc(100%-2rem))]">
         <div data-reveal className="max-w-3xl space-y-5">
-          <p className="eyebrow">Evolución</p>
-          <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl">Una plataforma industrial construida por etapas, visión y escala.</h2>
+          <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl">Nuestra evolución</h2>
+          <p className="max-w-2xl text-lg leading-8 text-muted-foreground">
+            A lo largo del tiempo hemos evolucionado, desarrollando una operación más organizada y eficiente en el manejo de materiales reciclables, lo que nos ha permitido consolidar un crecimiento constante, mayor capacidad operativa y convertirnos en la recicladora más grande de El Salvador.
+          </p>
         </div>
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {timeline.map((item) => (
@@ -1080,7 +1093,7 @@ export function HomePage() {
       <Section
         eyebrow="Para quién"
         title="Trabajamos junto a quienes necesitan gestionar sus residuos con criterio operativo y responsabilidad real."
-        description="Recolectores base, empresas, corporaciones, industrias y centros comerciales encuentran en PIV una red con capacidad para acompañar desde la recolección hasta la valorización final."
+        description="Trabajamos con recolectores base, empresas, instituciones, industrias y comercios que buscan implementar prácticas más responsables en el manejo de materiales reciclables. Acompañamos a quienes desean mejorar sus procesos y fortalecer su compromiso con el medioambiente."
       >
         <AudienceStrip />
         <div data-reveal className="mt-10 flex justify-center md:justify-start">
@@ -1104,12 +1117,15 @@ export function HomePage() {
         <ServicesGrid />
       </Section>
 
-      <section className="relative h-[420px] w-full overflow-hidden md:h-[520px]">
-        <img src={beachAsset.url} alt="Jornada de recuperación de materiales en zona costera de El Salvador" className="h-full w-full object-cover object-[center_65%]" loading="lazy" />
+      <section className="relative h-[520px] w-full overflow-hidden md:h-[620px]">
+        <img src={beachAsset.url} alt="Jornada de recuperación de materiales en zona costera de El Salvador" className="h-full w-full object-cover object-[center_35%] md:object-[center_40%]" loading="lazy" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(110deg, color-mix(in oklab, var(--brand-navy) 80%, transparent) 0%, color-mix(in oklab, var(--brand-navy) 20%, transparent) 60%, transparent 100%)" }} />
         <div className="absolute inset-0 mx-auto flex w-[min(1280px,calc(100%-2rem))] flex-col justify-end pb-12 md:pb-16">
           <p className="eyebrow eyebrow--light">Territorio</p>
-          <h3 className="mt-3 max-w-2xl text-balance text-3xl font-semibold tracking-tight text-white md:text-5xl">Operamos desde la ciudad hasta la costa.</h3>
+          <h3 className="mt-3 max-w-2xl text-balance text-3xl font-semibold tracking-tight text-white md:text-5xl">Brindamos cobertura en diferentes zonas del país.</h3>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-white/85 md:text-lg">
+            Nuestros servicios de recuperación y manejo de materiales llegan de forma oportuna a quienes desean disponer de sus materiales de manera responsable y eficiente.
+          </p>
         </div>
       </section>
 
@@ -1117,31 +1133,32 @@ export function HomePage() {
 
 
 
+
       <Section
         eyebrow="Alcance"
-        title="Recuperamos materiales que vuelven a la economía con escala internacional."
-        description="Clasificamos, procesamos y exportamos materiales a cinco regiones del mundo."
+        title="Nuestro trabajo trasciende fronteras."
+        description="Llevamos materiales reciclables a diferentes regiones del mundo, donde continúan su aprovechamiento, contribuyendo a su incorporación en cadenas globales de valor."
+
       >
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {exportRegions.map((region, i) => {
-            const tones = [
-              "bg-[var(--brand-teal)] text-white",
-              "bg-[var(--brand-lime)] text-[var(--brand-ink)]",
-              "bg-[var(--brand-navy)] text-white",
-              "bg-[var(--brand-sky)] text-[var(--brand-navy)]",
-              "bg-[var(--brand-ink)] text-[var(--brand-lime)]",
-            ];
-            return (
-              <div key={region} data-reveal className={cn("flex items-center justify-between gap-3 rounded-2xl p-5 shadow-[var(--shadow-elevated)] transition-transform duration-300 hover:-translate-y-1", tones[i % tones.length])}>
-                <span className="text-sm font-bold uppercase tracking-[0.12em]">{region}</span>
-                <ArrowUpRight className="h-5 w-5" />
-              </div>
-            );
-          })}
+        <div className="mt-12 flex flex-wrap items-baseline gap-x-10 gap-y-4 md:gap-x-14">
+          {exportRegions.map((region, i) => (
+            <span
+              key={region}
+              data-reveal
+              className="text-xl font-semibold tracking-tight text-[var(--brand-navy)] md:text-3xl"
+            >
+              {region}
+              {i < exportRegions.length - 1 ? (
+                <span aria-hidden className="ml-10 hidden text-[var(--brand-teal)] md:ml-14 md:inline">·</span>
+              ) : null}
+            </span>
+          ))}
         </div>
       </Section>
 
       <TimelineRail />
+
+
 
       <section className="relative h-[380px] w-full overflow-hidden md:h-[460px]">
         <img src={teamAsset.url} alt="Equipo de Parque Industrial Verde en planta" className="h-full w-full object-cover object-[center_top]" loading="lazy" />
@@ -1196,20 +1213,9 @@ export function AboutPage() {
         <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] pb-16 md:pb-24">
           <div data-reveal className="max-w-4xl space-y-6 text-white">
             <p className="eyebrow eyebrow--light">Sobre nosotros</p>
-            <h1 className="text-balance text-5xl font-semibold tracking-tight md:text-7xl">
-              <span className="text-[var(--brand-lime)]">+23 años</span> transformando residuos en oportunidades.
+            <h1 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl">
+              Trabajamos por un futuro más sostenible a través del <span className="text-[var(--brand-lime)]">reciclaje y la valorización</span> de materiales.
             </h1>
-            <p className="max-w-2xl text-lg leading-8 text-white/85">
-              Desde INSEMA y ZARTEX hasta Parque Industrial Verde, hemos construido la red de reciclaje más grande de El Salvador: economía circular con respaldo industrial.
-            </p>
-            <div className="grid gap-3 sm:grid-cols-3 pt-4 max-w-2xl">
-              {pivStats.map((s) => (
-                <div key={s.label} className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-md">
-                  <p className="text-3xl font-bold text-[var(--brand-lime)]">{s.prefix}{formatMetric(s.value)}</p>
-                  <p className="text-[0.65rem] font-bold uppercase tracking-[0.16em] text-white/85">{s.suffix}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
@@ -1253,8 +1259,8 @@ export function AboutPage() {
               kicker: "Evolución",
               title: "La recicladora más grande de El Salvador.",
               body: "Crecimiento constante, mayor capacidad operativa y una operación más eficiente.",
-              tone: "bg-[var(--brand-ink)] text-white",
-              chip: "bg-[var(--brand-lime)] text-[var(--brand-ink)]",
+              tone: "bg-[var(--brand-lime)] text-[var(--brand-ink)]",
+              chip: "bg-[var(--brand-ink)] text-[var(--brand-lime)]",
             },
           ].map((card, i) => {
             const Icon = card.Icon;
@@ -1280,17 +1286,17 @@ export function AboutPage() {
           })}
         </div>
         <div data-reveal className="mt-10 overflow-hidden rounded-[1.75rem] bg-gradient-to-r from-[var(--brand-navy)] via-[var(--brand-teal)] to-[var(--brand-lime)] p-[1px] shadow-[var(--shadow-elevated)]">
-          <div className="flex flex-col items-center gap-3 rounded-[1.65rem] bg-white px-8 py-10 text-center">
-            <Sparkles className="h-6 w-6 text-[var(--brand-teal)]" />
-            <p className="text-balance text-2xl font-semibold tracking-tight text-[var(--brand-navy)] md:text-3xl">
-              El reciclaje se construye desde pequeñas acciones que, juntas, generan un <span className="text-[var(--brand-teal)]">impacto positivo.</span>
+          <div className="flex flex-col items-center gap-4 rounded-[1.65rem] bg-white px-8 py-14 text-center md:py-16">
+            <Sparkles className="h-8 w-8 text-[var(--brand-teal)]" />
+            <p className="text-balance text-2xl font-black uppercase leading-tight tracking-[0.02em] text-[var(--brand-navy)] md:text-4xl lg:text-5xl">
+              EL RECICLAJE SE CONSTRUYE DESDE PEQUEÑAS ACCIONES QUE, JUNTAS, GENERAN UN <span className="text-[var(--brand-teal)]">IMPACTO POSITIVO.</span>
             </p>
           </div>
         </div>
       </Section>
       <Section
         eyebrow="Propósito"
-        title="Operar con escala industrial y convicción ambiental no son caminos separados."
+        title="Convertir cada material reciclable en una oportunidad para generar un impacto positivo."
         description="PIV articula tecnología, experiencia y una red de recuperación para convertir desechos en valor verificable."
       >
         <div className="mt-14 grid gap-6 lg:grid-cols-2">
@@ -1311,9 +1317,14 @@ export function AboutPage() {
         className="bg-panel-subtle"
       >
         <div className="mt-12 grid gap-4 md:grid-cols-3">
-          {impactMetrics.map((metric) => (
-            <MetricCard key={metric.description} {...metric} />
-          ))}
+          {impactMetrics.map((metric, i) => {
+            const tones = [
+              { bg: "color-mix(in oklab, var(--brand-sky) 55%, white)", fg: "var(--brand-navy)", accent: "var(--brand-teal)", muted: "color-mix(in oklab, var(--brand-navy) 72%, white)" },
+              { bg: "var(--brand-lime)", fg: "var(--brand-ink)", accent: "var(--brand-teal)", muted: "color-mix(in oklab, var(--brand-ink) 78%, white)" },
+              { bg: "var(--brand-teal)", fg: "#ffffff", accent: "var(--brand-lime)", muted: "rgba(255,255,255,0.82)" },
+            ];
+            return <MetricCard key={metric.description} {...metric} tone={tones[i % tones.length]} />;
+          })}
         </div>
       </Section>
       <section className="bg-panel-subtle pb-20 md:pb-28">

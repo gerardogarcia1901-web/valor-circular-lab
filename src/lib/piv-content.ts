@@ -5,7 +5,6 @@ export const pivStats = [
 ];
 
 export const trustPillars = [
-  "Más de 23 años de experiencia operativa",
   "Procesos transparentes con trazabilidad",
   "Infraestructura industrial de escala nacional",
   "Liderazgo en recuperación y exportación",
