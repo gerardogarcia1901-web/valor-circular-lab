@@ -1124,28 +1124,30 @@ export function HomePage() {
       <Section
         eyebrow="Alcance"
         title="Recuperamos materiales que vuelven a la economía con escala internacional."
-        description="Clasificamos, procesamos y exportamos materiales a cinco regiones del mundo."
+      <Section
+        eyebrow="Alcance"
+        title="Nuestro trabajo trasciende fronteras."
+        description="Llevamos materiales reciclables a diferentes regiones del mundo, donde continúan su aprovechamiento, contribuyendo a su incorporación en cadenas globales de valor."
       >
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {exportRegions.map((region, i) => {
-            const tones = [
-              "bg-[var(--brand-teal)] text-white",
-              "bg-[var(--brand-lime)] text-[var(--brand-ink)]",
-              "bg-[var(--brand-navy)] text-white",
-              "bg-[var(--brand-sky)] text-[var(--brand-navy)]",
-              "bg-[var(--brand-ink)] text-[var(--brand-lime)]",
-            ];
-            return (
-              <div key={region} data-reveal className={cn("flex items-center justify-between gap-3 rounded-2xl p-5 shadow-[var(--shadow-elevated)] transition-transform duration-300 hover:-translate-y-1", tones[i % tones.length])}>
-                <span className="text-sm font-bold uppercase tracking-[0.12em]">{region}</span>
-                <ArrowUpRight className="h-5 w-5" />
-              </div>
-            );
-          })}
+        <div className="mt-12 flex flex-wrap items-baseline gap-x-10 gap-y-4 md:gap-x-14">
+          {exportRegions.map((region, i) => (
+            <span
+              key={region}
+              data-reveal
+              className="text-xl font-semibold tracking-tight text-[var(--brand-navy)] md:text-3xl"
+            >
+              {region}
+              {i < exportRegions.length - 1 ? (
+                <span aria-hidden className="ml-10 hidden text-[var(--brand-teal)] md:ml-14 md:inline">·</span>
+              ) : null}
+            </span>
+          ))}
         </div>
       </Section>
 
       <TimelineRail />
+
+
 
       <section className="relative h-[380px] w-full overflow-hidden md:h-[460px]">
         <img src={teamAsset.url} alt="Equipo de Parque Industrial Verde en planta" className="h-full w-full object-cover object-[center_top]" loading="lazy" />
