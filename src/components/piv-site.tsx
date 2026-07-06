@@ -1248,8 +1248,8 @@ export function AboutPage() {
               kicker: "Evolución",
               title: "La recicladora más grande de El Salvador.",
               body: "Crecimiento constante, mayor capacidad operativa y una operación más eficiente.",
-              tone: "bg-[var(--brand-ink)] text-white",
-              chip: "bg-[var(--brand-lime)] text-[var(--brand-ink)]",
+              tone: "bg-[var(--brand-lime)] text-[var(--brand-ink)]",
+              chip: "bg-[var(--brand-ink)] text-[var(--brand-lime)]",
             },
           ].map((card, i) => {
             const Icon = card.Icon;
