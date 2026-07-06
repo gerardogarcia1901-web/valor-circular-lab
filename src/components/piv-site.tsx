@@ -1317,9 +1317,14 @@ export function AboutPage() {
         className="bg-panel-subtle"
       >
         <div className="mt-12 grid gap-4 md:grid-cols-3">
-          {impactMetrics.map((metric) => (
-            <MetricCard key={metric.description} {...metric} />
-          ))}
+          {impactMetrics.map((metric, i) => {
+            const tones = [
+              { bg: "color-mix(in oklab, var(--brand-sky) 55%, white)", fg: "var(--brand-navy)", accent: "var(--brand-teal)", muted: "color-mix(in oklab, var(--brand-navy) 72%, white)" },
+              { bg: "var(--brand-lime)", fg: "var(--brand-ink)", accent: "var(--brand-teal)", muted: "color-mix(in oklab, var(--brand-ink) 78%, white)" },
+              { bg: "var(--brand-teal)", fg: "#ffffff", accent: "var(--brand-lime)", muted: "rgba(255,255,255,0.82)" },
+            ];
+            return <MetricCard key={metric.description} {...metric} tone={tones[i % tones.length]} />;
+          })}
         </div>
       </Section>
       <section className="bg-panel-subtle pb-20 md:pb-28">
