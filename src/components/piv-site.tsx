@@ -473,22 +473,33 @@ function Section({ eyebrow, title, description, children, className }: { eyebrow
   );
 }
 
-function MetricCard({ value, prefix, suffix, description }: { value: number; prefix?: string; suffix?: string; description: string; }) {
+function MetricCard({ value, prefix, suffix, description, tone }: { value: number; prefix?: string; suffix?: string; description: string; tone?: { bg: string; fg: string; accent: string; muted: string; }; }) {
   const { ref, value: liveValue } = useCountUp(value);
+  const t = tone ?? {
+    bg: "var(--brand-sky)",
+    fg: "var(--brand-navy)",
+    accent: "var(--brand-teal)",
+    muted: "color-mix(in oklab, var(--brand-navy) 70%, white)",
+  };
   return (
-    <article ref={ref} data-reveal className="metric-card">
+    <article
+      ref={ref}
+      data-reveal
+      className="metric-card"
+      style={{ background: t.bg, color: t.fg, borderColor: "transparent" }}
+    >
       <div className="flex flex-col gap-1">
-        <span className="text-4xl font-semibold leading-none tracking-tight text-foreground md:text-5xl">
+        <span className="text-4xl font-semibold leading-none tracking-tight md:text-5xl" style={{ color: t.fg }}>
           {prefix}
           {formatMetric(liveValue)}
         </span>
         {suffix && (
-          <span className="text-base font-medium leading-tight tracking-tight text-foreground/80 md:text-lg">
+          <span className="text-base font-medium leading-tight tracking-tight md:text-lg" style={{ color: t.accent }}>
             {suffix.trim()}
           </span>
         )}
       </div>
-      <p className="max-w-sm text-sm leading-7 text-muted-foreground">{description}</p>
+      <p className="max-w-sm text-sm leading-7" style={{ color: t.muted }}>{description}</p>
     </article>
   );
 }
