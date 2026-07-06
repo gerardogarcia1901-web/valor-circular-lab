@@ -1123,11 +1123,9 @@ export function HomePage() {
 
       <Section
         eyebrow="Alcance"
-        title="Recuperamos materiales que vuelven a la economía con escala internacional."
-      <Section
-        eyebrow="Alcance"
         title="Nuestro trabajo trasciende fronteras."
         description="Llevamos materiales reciclables a diferentes regiones del mundo, donde continúan su aprovechamiento, contribuyendo a su incorporación en cadenas globales de valor."
+
       >
         <div className="mt-12 flex flex-wrap items-baseline gap-x-10 gap-y-4 md:gap-x-14">
           {exportRegions.map((region, i) => (
