@@ -639,31 +639,24 @@ function HeroStatCard({
 
 
 function AudienceStrip() {
-  const palette = [
-    { bg: "var(--brand-teal)", fg: "#FFFFFF" },
-    { bg: "var(--brand-lime)", fg: "var(--brand-ink)" },
-    { bg: "var(--brand-navy)", fg: "#FFFFFF" },
-    { bg: "var(--brand-sky)", fg: "var(--brand-navy)" },
-    { bg: "var(--brand-ink)", fg: "var(--brand-lime)" },
-  ];
   return (
-    <div className="mt-10 grid gap-3 md:grid-cols-5">
-      {audience.map((item, i) => {
-        const c = palette[i % palette.length];
-        return (
-          <div
-            key={item}
-            data-reveal
-            className="rounded-full px-5 py-4 text-center text-sm font-semibold uppercase tracking-[0.1em] shadow-[var(--shadow-elevated)] transition-transform duration-300 hover:-translate-y-1"
-            style={{ background: c.bg, color: c.fg }}
-          >
-            {item}
-          </div>
-        );
-      })}
+    <div className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-4 md:gap-x-14">
+      {audience.map((item, i) => (
+        <span
+          key={item}
+          data-reveal
+          className="text-lg font-medium tracking-tight text-foreground md:text-2xl"
+        >
+          {item}
+          {i < audience.length - 1 ? (
+            <span aria-hidden className="ml-10 hidden text-[var(--brand-teal)] md:inline md:ml-14">·</span>
+          ) : null}
+        </span>
+      ))}
     </div>
   );
 }
+
 
 const SERVICE_ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   "Recuperación de materiales": Recycle,
