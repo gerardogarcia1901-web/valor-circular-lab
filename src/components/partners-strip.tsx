@@ -52,7 +52,7 @@ export function PartnersStrip({
           </h2>
         </div>
 
-        </div>
+
 
         {/* Marquee — fila 1 (logos grandes) */}
         <div
