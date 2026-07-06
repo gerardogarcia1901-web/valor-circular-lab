@@ -50,19 +50,8 @@ export function PartnersStrip({
           >
             {title}
           </h2>
-          <p
-            className="max-w-2xl text-base leading-7"
-            style={{ color: isDark ? "rgba(255,255,255,0.78)" : "color-mix(in oklab, var(--brand-navy) 72%, white)" }}
-          >
-            {description}
-          </p>
-          <div className="flex flex-wrap items-center gap-6 pt-2">
-            <Stat number={`${partners.length}+`} label="Marcas aliadas" dark={isDark} />
-            <span className="h-8 w-px" style={{ background: isDark ? "rgba(255,255,255,0.18)" : "rgba(18,82,106,0.18)" }} />
-            <Stat number="23" label="Años de relaciones" dark={isDark} />
-            <span className="h-8 w-px" style={{ background: isDark ? "rgba(255,255,255,0.18)" : "rgba(18,82,106,0.18)" }} />
-            <Stat number="100%" label="Trazabilidad documentada" dark={isDark} />
-          </div>
+        </div>
+
         </div>
 
         {/* Marquee — fila 1 (logos grandes) */}
