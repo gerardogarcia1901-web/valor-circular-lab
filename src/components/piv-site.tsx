@@ -458,7 +458,7 @@ function WhatsAppBubble() {
   );
 }
 
-function Section({ eyebrow, title, description, children, className }: { eyebrow?: string; title: string; description?: string; children?: ReactNode; className?: string; }) {
+function Section({ eyebrow, title, description, children, className }: { eyebrow?: string; title: string; description?: ReactNode; children?: ReactNode; className?: string; }) {
   return (
     <section className={cn("py-20 md:py-28", className)}>
       <div className="mx-auto w-[min(1280px,calc(100%-2rem))]">
