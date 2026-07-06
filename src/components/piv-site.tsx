@@ -458,7 +458,7 @@ function WhatsAppBubble() {
   );
 }
 
-function Section({ eyebrow, title, description, children, className }: { eyebrow?: string; title: string; description?: string; children?: ReactNode; className?: string; }) {
+function Section({ eyebrow, title, description, children, className }: { eyebrow?: string; title: string; description?: ReactNode; children?: ReactNode; className?: string; }) {
   return (
     <section className={cn("py-20 md:py-28", className)}>
       <div className="mx-auto w-[min(1280px,calc(100%-2rem))]">
@@ -639,31 +639,24 @@ function HeroStatCard({
 
 
 function AudienceStrip() {
-  const palette = [
-    { bg: "var(--brand-teal)", fg: "#FFFFFF" },
-    { bg: "var(--brand-lime)", fg: "var(--brand-ink)" },
-    { bg: "var(--brand-navy)", fg: "#FFFFFF" },
-    { bg: "var(--brand-sky)", fg: "var(--brand-navy)" },
-    { bg: "var(--brand-ink)", fg: "var(--brand-lime)" },
-  ];
   return (
-    <div className="mt-10 grid gap-3 md:grid-cols-5">
-      {audience.map((item, i) => {
-        const c = palette[i % palette.length];
-        return (
-          <div
-            key={item}
-            data-reveal
-            className="rounded-full px-5 py-4 text-center text-sm font-semibold uppercase tracking-[0.1em] shadow-[var(--shadow-elevated)] transition-transform duration-300 hover:-translate-y-1"
-            style={{ background: c.bg, color: c.fg }}
-          >
-            {item}
-          </div>
-        );
-      })}
+    <div className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-4 md:gap-x-14">
+      {audience.map((item, i) => (
+        <span
+          key={item}
+          data-reveal
+          className="text-lg font-medium tracking-tight text-foreground md:text-2xl"
+        >
+          {item}
+          {i < audience.length - 1 ? (
+            <span aria-hidden className="ml-10 hidden text-[var(--brand-teal)] md:inline md:ml-14">·</span>
+          ) : null}
+        </span>
+      ))}
     </div>
   );
 }
+
 
 const SERVICE_ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   "Recuperación de materiales": Recycle,
@@ -1077,32 +1070,16 @@ export function HomePage() {
       <Section
         eyebrow="Qué hacemos"
         title="La recuperación de materiales puede ser precisa, rentable y medible."
-        description="Transformamos residuos en oportunidades. Gestionamos materiales reciclables para darles un nuevo valor, reduciendo el impacto ambiental y generando beneficios económicos."
+        description={<>Transformamos materiales reciclables en nuevas oportunidades de aprovechamiento.<br /><br />A través de procesos especializados de recuperación y gestión, contribuimos a reducir el impacto ambiental, promover la economía circular y fortalecer una cultura de reciclaje más sostenible en El Salvador.</>}
       >
-        <div className="mt-14 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-          <article data-reveal className="surface-panel space-y-6">
-            <p className="text-xl leading-9 text-foreground">
-              PIV integra infraestructura, clasificación, procesamiento y exportación para reincorporar materiales a la cadena productiva con una lógica industrial y trazable.
-            </p>
-            <div className="grid gap-4 sm:grid-cols-3">
-              {pivStats.map((item) => (
-                <div key={item.label} className="border-l border-border pl-4">
-                  <p className="text-2xl font-semibold tracking-tight text-foreground">{item.prefix}{formatMetric(item.value)}{item.suffix}</p>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.label}</p>
-                </div>
-              ))}
-            </div>
-          </article>
-          <div data-reveal className="grid gap-4 md:grid-cols-2">
-            <img src={operationsAsset.url} alt="Trabajador clasificando plásticos dentro de una línea de proceso industrial" className="image-tile image-tile--tall" loading="lazy" />
-            <img src={metalsAsset.url} alt="Línea industrial de clasificación de aluminio y metales en Parque Industrial Verde" className="image-tile image-tile--short md:mt-12" loading="lazy" />
-          </div>
+        <div data-reveal className="mt-14">
+          <img src={metalsAsset.url} alt="Línea industrial de clasificación de aluminio y metales en Parque Industrial Verde" className="image-tile h-auto max-h-[560px] w-full object-cover" loading="lazy" />
         </div>
       </Section>
 
       <Section
         eyebrow="Para quién"
-        title="Trabajamos junto a quienes necesitan gestionar residuos con criterio operativo y responsabilidad real."
+        title="Trabajamos junto a quienes necesitan gestionar sus residuos con criterio operativo y responsabilidad real."
         description="Recolectores base, empresas, corporaciones, industrias y centros comerciales encuentran en PIV una red con capacidad para acompañar desde la recolección hasta la valorización final."
       >
         <AudienceStrip />
