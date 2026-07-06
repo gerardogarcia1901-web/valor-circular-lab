@@ -1077,32 +1077,16 @@ export function HomePage() {
       <Section
         eyebrow="Qué hacemos"
         title="La recuperación de materiales puede ser precisa, rentable y medible."
-        description="Transformamos residuos en oportunidades. Gestionamos materiales reciclables para darles un nuevo valor, reduciendo el impacto ambiental y generando beneficios económicos."
+        description={<>Transformamos materiales reciclables en nuevas oportunidades de aprovechamiento.<br /><br />A través de procesos especializados de recuperación y gestión, contribuimos a reducir el impacto ambiental, promover la economía circular y fortalecer una cultura de reciclaje más sostenible en El Salvador.</>}
       >
-        <div className="mt-14 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-          <article data-reveal className="surface-panel space-y-6">
-            <p className="text-xl leading-9 text-foreground">
-              PIV integra infraestructura, clasificación, procesamiento y exportación para reincorporar materiales a la cadena productiva con una lógica industrial y trazable.
-            </p>
-            <div className="grid gap-4 sm:grid-cols-3">
-              {pivStats.map((item) => (
-                <div key={item.label} className="border-l border-border pl-4">
-                  <p className="text-2xl font-semibold tracking-tight text-foreground">{item.prefix}{formatMetric(item.value)}{item.suffix}</p>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.label}</p>
-                </div>
-              ))}
-            </div>
-          </article>
-          <div data-reveal className="grid gap-4 md:grid-cols-2">
-            <img src={operationsAsset.url} alt="Trabajador clasificando plásticos dentro de una línea de proceso industrial" className="image-tile image-tile--tall" loading="lazy" />
-            <img src={metalsAsset.url} alt="Línea industrial de clasificación de aluminio y metales en Parque Industrial Verde" className="image-tile image-tile--short md:mt-12" loading="lazy" />
-          </div>
+        <div data-reveal className="mt-14">
+          <img src={metalsAsset.url} alt="Línea industrial de clasificación de aluminio y metales en Parque Industrial Verde" className="image-tile h-auto max-h-[560px] w-full object-cover" loading="lazy" />
         </div>
       </Section>
 
       <Section
         eyebrow="Para quién"
-        title="Trabajamos junto a quienes necesitan gestionar residuos con criterio operativo y responsabilidad real."
+        title="Trabajamos junto a quienes necesitan gestionar sus residuos con criterio operativo y responsabilidad real."
         description="Recolectores base, empresas, corporaciones, industrias y centros comerciales encuentran en PIV una red con capacidad para acompañar desde la recolección hasta la valorización final."
       >
         <AudienceStrip />
