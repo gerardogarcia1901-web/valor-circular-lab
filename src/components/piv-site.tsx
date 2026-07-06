@@ -1285,7 +1285,7 @@ export function AboutPage() {
       </Section>
       <Section
         eyebrow="Propósito"
-        title="Operar con escala industrial y convicción ambiental no son caminos separados."
+        title="Convertir cada material reciclable en una oportunidad para generar un impacto positivo."
         description="PIV articula tecnología, experiencia y una red de recuperación para convertir desechos en valor verificable."
       >
         <div className="mt-14 grid gap-6 lg:grid-cols-2">
