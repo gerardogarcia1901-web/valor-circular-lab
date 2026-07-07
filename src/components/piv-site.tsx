@@ -1379,7 +1379,7 @@ export function ServicesPage() {
           <div data-reveal className="text-white">
             <p className="text-[0.7rem] font-black uppercase tracking-[0.22em] text-[var(--brand-lime)]">Campañas empresariales</p>
             <h2 className="mt-4 text-balance text-4xl font-semibold tracking-tight md:text-5xl">
-              Jornadas que <span className="text-[var(--brand-lime)]">activan a tu equipo</span> y dan disposición responsable a equipos en desuso.
+              Creamos espacios que <span className="text-[var(--brand-lime)]">inspiran a las personas</span> a participar y actuar a favor del reciclaje.
             </h2>
             <p className="mt-6 text-base leading-7 text-white/80">
               Coordinamos la logística, el montaje y la trazabilidad para que tu empresa recolecte RAEE, equipos y materiales reciclables con respaldo documental y participación real de colaboradores.
