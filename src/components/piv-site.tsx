@@ -42,7 +42,7 @@ import prepLimpiosAsset from "@/assets/preparacion/preparacion-limpios.jpg.asset
 import prepSecosAsset from "@/assets/preparacion/preparacion-secos.jpg.asset.json";
 import prepSeparadosAsset from "@/assets/preparacion/preparacion-separados.jpg.asset.json";
 import {
-  activeCampaigns,
+  
   audience,
   communityActions,
   disposalMaterials,
@@ -834,7 +834,7 @@ function ServicesGrid() {
 function EnterpriseCommunity() {
   return (
     <section className="border-y border-border/70 bg-panel-subtle py-20 md:py-28">
-      <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-8 lg:grid-cols-2">
+      <div className="mx-auto w-[min(1280px,calc(100%-2rem))]">
         <article data-reveal className="editorial-panel editorial-panel--teal">
           <p className="eyebrow">Empresas</p>
           <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-5xl">Soluciones ambientales para empresas.</h2>
@@ -846,31 +846,6 @@ function EnterpriseCommunity() {
           <div className="mt-8 flex flex-wrap gap-2">
             {enterpriseBenefits.map((item) => (
               <span key={item} className="rounded-full bg-[var(--brand-lime)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--brand-ink)]">{item}</span>
-            ))}
-          </div>
-        </article>
-        <article data-reveal className="editorial-panel editorial-panel--accent">
-          <p className="eyebrow">Comunidad</p>
-          <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl" style={{ color: "var(--brand-navy)" }}>Reciclar también transforma vidas.</h2>
-          <p className="mt-4 text-base leading-7 text-[var(--brand-navy)]/80">
-            Activamos campañas, espacios y rutas para que comunidades, familias y empresas participen en una economía circular real.
-          </p>
-          <div className="mt-6 grid gap-2 sm:grid-cols-2">
-            {communityActions.map((item) => (
-              <div key={item} className="list-line">{item}</div>
-            ))}
-          </div>
-          <div className="mt-6 flex flex-wrap gap-2">
-            {activeCampaigns.map((c) => (
-              <span key={c} className="rounded-full bg-[var(--brand-navy)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-white">{c}</span>
-            ))}
-          </div>
-          <div className="mt-8 grid grid-cols-3 gap-3 border-t border-[var(--brand-navy)]/15 pt-6">
-            {["+50", "100%", "23"].map((v, i) => (
-              <div key={i} className="text-center">
-                <p className="text-2xl font-bold text-[var(--brand-navy)] md:text-3xl">{v}</p>
-                <p className="mt-1 text-[0.65rem] font-bold uppercase tracking-[0.14em] text-[var(--brand-navy)]/70">{["campañas activas", "trazabilidad", "años"][i]}</p>
-              </div>
             ))}
           </div>
         </article>
@@ -1083,7 +1058,7 @@ export function HomePage() {
       <Section
         eyebrow="Qué hacemos"
         title="La recuperación de materiales puede ser precisa, rentable y medible."
-        description={<>Transformamos materiales reciclables en nuevas oportunidades de aprovechamiento.<br /><br />A través de procesos especializados de recuperación y gestión, contribuimos a reducir el impacto ambiental, promover la economía circular y fortalecer una cultura de reciclaje más sostenible en El Salvador.</>}
+        description="Transformamos materiales reciclables en nuevas oportunidades de aprovechamiento."
       >
         <div data-reveal className="mt-14">
           <img src={metalsAsset.url} alt="Línea industrial de clasificación de aluminio y metales en Parque Industrial Verde" className="image-tile h-auto max-h-[560px] w-full object-cover" loading="lazy" />
@@ -1093,7 +1068,7 @@ export function HomePage() {
       <Section
         eyebrow="Para quién"
         title="Trabajamos junto a quienes necesitan gestionar sus residuos con criterio operativo y responsabilidad real."
-        description="Trabajamos con recolectores base, empresas, instituciones, industrias y comercios que buscan implementar prácticas más responsables en el manejo de materiales reciclables. Acompañamos a quienes desean mejorar sus procesos y fortalecer su compromiso con el medioambiente."
+        description="Trabajamos con recolectores base, empresas, instituciones, industrias y comercios que buscan implementar prácticas más responsables en el manejo de materiales reciclables."
       >
         <AudienceStrip />
         <div data-reveal className="mt-10 flex justify-center md:justify-start">
@@ -1119,11 +1094,11 @@ export function HomePage() {
 
       <section className="relative h-[520px] w-full overflow-hidden md:h-[620px]">
         <img src={beachAsset.url} alt="Jornada de recuperación de materiales en zona costera de El Salvador" className="h-full w-full object-cover object-[center_35%] md:object-[center_40%]" loading="lazy" />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(110deg, color-mix(in oklab, var(--brand-navy) 80%, transparent) 0%, color-mix(in oklab, var(--brand-navy) 20%, transparent) 60%, transparent 100%)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, color-mix(in oklab, var(--brand-ink) 25%, transparent) 0%, color-mix(in oklab, var(--brand-ink) 55%, transparent) 45%, color-mix(in oklab, var(--brand-ink) 88%, transparent) 100%)" }} />
         <div className="absolute inset-0 mx-auto flex w-[min(1280px,calc(100%-2rem))] flex-col justify-end pb-12 md:pb-16">
           <p className="eyebrow eyebrow--light">Territorio</p>
-          <h3 className="mt-3 max-w-2xl text-balance text-3xl font-semibold tracking-tight text-white md:text-5xl">Brindamos cobertura en diferentes zonas del país.</h3>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-white/85 md:text-lg">
+          <h3 className="mt-3 max-w-2xl text-balance text-3xl font-semibold tracking-tight text-white md:text-5xl" style={{ textShadow: "0 2px 18px rgba(0,0,0,0.55)" }}>Brindamos cobertura en diferentes zonas del país.</h3>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-white md:text-lg" style={{ textShadow: "0 2px 14px rgba(0,0,0,0.6)" }}>
             Nuestros servicios de recuperación y manejo de materiales llegan de forma oportuna a quienes desean disponer de sus materiales de manera responsable y eficiente.
           </p>
         </div>
@@ -1404,7 +1379,7 @@ export function ServicesPage() {
           <div data-reveal className="text-white">
             <p className="text-[0.7rem] font-black uppercase tracking-[0.22em] text-[var(--brand-lime)]">Campañas empresariales</p>
             <h2 className="mt-4 text-balance text-4xl font-semibold tracking-tight md:text-5xl">
-              Jornadas que <span className="text-[var(--brand-lime)]">activan a tu equipo</span> y dan disposición responsable a equipos en desuso.
+              Creamos espacios que <span className="text-[var(--brand-lime)]">inspiran a las personas</span> a participar y actuar a favor del reciclaje.
             </h2>
             <p className="mt-6 text-base leading-7 text-white/80">
               Coordinamos la logística, el montaje y la trazabilidad para que tu empresa recolecte RAEE, equipos y materiales reciclables con respaldo documental y participación real de colaboradores.
@@ -1429,12 +1404,7 @@ export function ServicesPage() {
         </div>
       </section>
       <EnterpriseCommunity />
-      <PartnersStrip
-        variant="dark"
-        eyebrow="Quienes confían"
-        title="Marcas líderes que ya operan con PIV."
-        description="Industrias, retail, banca, energía y consumo masivo eligen nuestra infraestructura para gestionar sus residuos con trazabilidad."
-      />
+
 
     </PageShell>
   );
