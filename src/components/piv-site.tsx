@@ -1404,12 +1404,7 @@ export function ServicesPage() {
         </div>
       </section>
       <EnterpriseCommunity />
-      <PartnersStrip
-        variant="dark"
-        eyebrow="Quienes confían"
-        title="Marcas líderes que ya operan con PIV."
-        description="Industrias, retail, banca, energía y consumo masivo eligen nuestra infraestructura para gestionar sus residuos con trazabilidad."
-      />
+
 
     </PageShell>
   );
