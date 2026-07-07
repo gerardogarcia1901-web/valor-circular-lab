@@ -705,137 +705,119 @@ const SERVICE_TAGLINES: Record<string, string> = {
   "Destrucción de maquinaria": "Disposición segura de equipos.",
 };
 
+const SERVICE_IMAGES: string[] = [
+  servicio1Asset.url,
+  servicio2Asset.url,
+  servicio3Asset.url,
+  servicio4Asset.url,
+  servicio5Asset.url,
+  servicio6Asset.url,
+  servicio7Asset.url,
+  servicio8Asset.url,
+  servicio9Asset.url,
+  servicio10Asset.url,
+];
+
 function ServicesGrid() {
-  const tones = [
-    { bg: "var(--brand-navy)", fg: "#ffffff", chip: "var(--brand-lime)", chipFg: "var(--brand-ink)", glow: "var(--brand-teal)" },
-    { bg: "var(--brand-lime)", fg: "var(--brand-ink)", chip: "var(--brand-ink)", chipFg: "var(--brand-lime)", glow: "var(--brand-lime)" },
-    { bg: "var(--brand-teal)", fg: "#ffffff", chip: "#ffffff", chipFg: "var(--brand-teal)", glow: "var(--brand-sky)" },
-    { bg: "#ffffff", fg: "var(--brand-navy)", chip: "var(--brand-navy)", chipFg: "#ffffff", glow: "var(--brand-sky)" },
-    { bg: "var(--brand-ink)", fg: "#ffffff", chip: "var(--brand-lime)", chipFg: "var(--brand-ink)", glow: "var(--brand-lime)" },
-  ];
-  // bento spans: vary card sizes so the grid breathes and feels editorial
-  const spans = [
-    "sm:col-span-2 lg:col-span-2 xl:col-span-2 xl:row-span-2",
-    "",
-    "",
-    "lg:col-span-2 xl:col-span-2",
-    "",
-    "",
-    "lg:col-span-2 xl:col-span-2",
-    "",
-    "",
-    "sm:col-span-2 lg:col-span-3 xl:col-span-2",
-  ];
+  const [index, setIndex] = useState(0);
+  const total = featuredServices.length;
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused) return;
+    const id = window.setInterval(() => {
+      setIndex((prev) => (prev + 1) % total);
+    }, 4500);
+    return () => window.clearInterval(id);
+  }, [paused, total]);
+
+  const go = (dir: number) => setIndex((prev) => (prev + dir + total) % total);
+  const service = featuredServices[index];
+  const tagline = SERVICE_TAGLINES[service.title] ?? "";
+
   return (
-    <div className="mt-14 grid auto-rows-[15rem] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      {featuredServices.map((service, i) => {
-        const Icon = SERVICE_ICON_MAP[service.title] ?? Recycle;
-        const tagline = SERVICE_TAGLINES[service.title] ?? "";
-        const tone = tones[i % tones.length];
-        const span = spans[i] ?? "";
-        const isFeature = i === 0;
-        return (
-          <article
-            key={service.title}
-            data-reveal
-            className={cn(
-              "group relative isolate flex flex-col justify-between overflow-hidden rounded-[1.5rem] p-6 shadow-[var(--shadow-elevated)] transition-all duration-500 hover:-translate-y-1.5 hover:scale-[1.015]",
-              span,
-            )}
-            style={{
-              background: tone.bg,
-              color: tone.fg,
-              border:
-                tone.bg === "#ffffff"
-                  ? "1px solid color-mix(in oklab, var(--brand-navy) 12%, white)"
-                  : undefined,
-            }}
-          >
-            {/* dot pattern */}
-            <span
-              aria-hidden
-              className="pointer-events-none absolute inset-0 opacity-[0.06] transition-opacity duration-500 group-hover:opacity-[0.12]"
-              style={{
-                backgroundImage: `radial-gradient(circle, ${tone.fg} 1px, transparent 1.2px)`,
-                backgroundSize: "14px 14px",
-              }}
-            />
-            {/* glow */}
-            <span
-              aria-hidden
-              className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full opacity-25 blur-3xl transition-all duration-700 group-hover:opacity-70 group-hover:scale-125"
-              style={{ background: tone.glow }}
-            />
-            {/* diagonal stripe */}
-            <span
-              aria-hidden
-              className="pointer-events-none absolute -left-10 bottom-0 h-1 w-32 rotate-[-35deg] origin-left transition-all duration-500 group-hover:w-64"
-              style={{ background: tone.chip, opacity: 0.4 }}
-            />
-            {/* index number */}
-            <span
-              aria-hidden
+    <div
+      className="mt-14"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      <div className="relative overflow-hidden rounded-[2rem] shadow-[var(--shadow-elevated)]" style={{ background: "var(--brand-ink)" }}>
+        <div className="relative aspect-[16/9] w-full sm:aspect-[21/9]">
+          {SERVICE_IMAGES.map((src, i) => (
+            <img
+              key={src}
+              src={src}
+              alt={featuredServices[i].title}
               className={cn(
-                "pointer-events-none absolute -bottom-6 -right-3 font-black leading-none tracking-tighter opacity-[0.08] transition-transform duration-700 group-hover:scale-110 group-hover:opacity-[0.14]",
-                isFeature ? "text-[12rem]" : "text-[7rem]",
+                "absolute inset-0 h-full w-full object-cover transition-opacity duration-[900ms] ease-out",
+                i === index ? "opacity-100" : "opacity-0",
               )}
-              style={{ color: tone.fg }}
+              loading={i === 0 ? "eager" : "lazy"}
+            />
+          ))}
+          <div
+            aria-hidden
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(13,13,13,0.15) 0%, rgba(13,13,13,0.35) 45%, rgba(13,13,13,0.85) 100%)",
+            }}
+          />
+
+          <div className="absolute inset-x-0 bottom-0 flex flex-col gap-4 p-6 text-white sm:p-10 md:p-14">
+            <span
+              className="w-fit rounded-full px-3 py-1 text-[0.6rem] font-black uppercase tracking-[0.24em]"
+              style={{ background: "var(--brand-lime)", color: "var(--brand-ink)" }}
             >
-              {String(i + 1).padStart(2, "0")}
+              Servicio · {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
             </span>
+            <h3 className="max-w-3xl text-balance text-3xl font-black leading-tight tracking-tight sm:text-4xl md:text-5xl">
+              {service.title}
+            </h3>
+            {tagline ? (
+              <p className="max-w-2xl text-sm font-semibold uppercase tracking-[0.18em] opacity-90 sm:text-base">
+                {tagline}
+              </p>
+            ) : null}
+          </div>
 
-            <div className="relative flex items-start justify-between">
-              <span
-                className={cn(
-                  "grid place-items-center rounded-2xl shadow-lg transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110",
-                  isFeature ? "h-16 w-16" : "h-12 w-12",
-                )}
-                style={{ background: tone.chip, color: tone.chipFg }}
-              >
-                <Icon className={isFeature ? "h-8 w-8" : "h-6 w-6"} />
-              </span>
-              <span
-                className="rounded-full px-2.5 py-1 text-[0.58rem] font-black uppercase tracking-[0.18em] opacity-80"
-                style={{ background: `color-mix(in oklab, ${tone.fg} 10%, transparent)` }}
-              >
-                Servicio · {String(i + 1).padStart(2, "0")}
-              </span>
-            </div>
+          <button
+            type="button"
+            onClick={() => go(-1)}
+            aria-label="Servicio anterior"
+            className="absolute left-3 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-white/15 text-white backdrop-blur transition hover:bg-white/30 sm:left-6 sm:h-12 sm:w-12"
+          >
+            <MoveRight className="h-5 w-5 rotate-180" />
+          </button>
+          <button
+            type="button"
+            onClick={() => go(1)}
+            aria-label="Siguiente servicio"
+            className="absolute right-3 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-white/15 text-white backdrop-blur transition hover:bg-white/30 sm:right-6 sm:h-12 sm:w-12"
+          >
+            <MoveRight className="h-5 w-5" />
+          </button>
+        </div>
 
-            <div className="relative">
-              <h3
-                className={cn(
-                  "text-balance font-bold leading-tight tracking-tight",
-                  isFeature ? "text-3xl md:text-4xl" : "text-lg md:text-xl",
-                )}
-              >
-                {service.title}
-              </h3>
-              {tagline ? (
-                <p
-                  className={cn(
-                    "mt-2 font-semibold opacity-85",
-                    isFeature ? "text-sm leading-6" : "text-[0.74rem] uppercase tracking-[0.12em]",
-                  )}
-                >
-                  {tagline}
-                </p>
-              ) : null}
-              <div className="mt-4 flex items-center gap-2">
-                <span
-                  aria-hidden
-                  className="block h-[2px] w-8 origin-left rounded-full transition-all duration-500 group-hover:w-20"
-                  style={{ background: tone.chip }}
-                />
-                <span className="flex items-center gap-1 text-[0.65rem] font-black uppercase tracking-[0.18em] opacity-0 transition-all duration-500 group-hover:opacity-90">
-                  Ver más
-                  <ArrowUpRight className="h-3 w-3" />
-                </span>
-              </div>
-            </div>
-          </article>
-        );
-      })}
+        <div className="flex items-center gap-2 overflow-x-auto px-4 py-4 sm:px-6" style={{ background: "color-mix(in oklab, var(--brand-ink) 92%, black)" }}>
+          {featuredServices.map((s, i) => (
+            <button
+              key={s.title}
+              type="button"
+              onClick={() => setIndex(i)}
+              className={cn(
+                "shrink-0 rounded-full border px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.14em] transition",
+                i === index
+                  ? "border-transparent text-[var(--brand-ink)]"
+                  : "border-white/20 text-white/70 hover:text-white",
+              )}
+              style={i === index ? { background: "var(--brand-lime)" } : undefined}
+            >
+              {String(i + 1).padStart(2, "0")} · {s.title}
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
