@@ -2,7 +2,7 @@ import { partners } from "@/lib/piv-partners";
 
 export function PartnersStrip({
   eyebrow = "Aliados estratégicos",
-  title = "Empresas que confían en Parque Industrial Verde",
+  title = "El respaldo de empresas e instituciones que se suman a la construcción de un futuro más verde.",
   variant = "light",
 }: {
   eyebrow?: string;
