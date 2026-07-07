@@ -42,7 +42,7 @@ import prepLimpiosAsset from "@/assets/preparacion/preparacion-limpios.jpg.asset
 import prepSecosAsset from "@/assets/preparacion/preparacion-secos.jpg.asset.json";
 import prepSeparadosAsset from "@/assets/preparacion/preparacion-separados.jpg.asset.json";
 import {
-  audience as _audience_unused_placeholder_removed,
+  
   audience,
   communityActions,
   disposalMaterials,
