@@ -1094,11 +1094,11 @@ export function HomePage() {
 
       <section className="relative h-[520px] w-full overflow-hidden md:h-[620px]">
         <img src={beachAsset.url} alt="Jornada de recuperación de materiales en zona costera de El Salvador" className="h-full w-full object-cover object-[center_35%] md:object-[center_40%]" loading="lazy" />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(110deg, color-mix(in oklab, var(--brand-navy) 80%, transparent) 0%, color-mix(in oklab, var(--brand-navy) 20%, transparent) 60%, transparent 100%)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, color-mix(in oklab, var(--brand-ink) 25%, transparent) 0%, color-mix(in oklab, var(--brand-ink) 55%, transparent) 45%, color-mix(in oklab, var(--brand-ink) 88%, transparent) 100%)" }} />
         <div className="absolute inset-0 mx-auto flex w-[min(1280px,calc(100%-2rem))] flex-col justify-end pb-12 md:pb-16">
           <p className="eyebrow eyebrow--light">Territorio</p>
-          <h3 className="mt-3 max-w-2xl text-balance text-3xl font-semibold tracking-tight text-white md:text-5xl">Brindamos cobertura en diferentes zonas del país.</h3>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-white/85 md:text-lg">
+          <h3 className="mt-3 max-w-2xl text-balance text-3xl font-semibold tracking-tight text-white md:text-5xl" style={{ textShadow: "0 2px 18px rgba(0,0,0,0.55)" }}>Brindamos cobertura en diferentes zonas del país.</h3>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-white md:text-lg" style={{ textShadow: "0 2px 14px rgba(0,0,0,0.6)" }}>
             Nuestros servicios de recuperación y manejo de materiales llegan de forma oportuna a quienes desean disponer de sus materiales de manera responsable y eficiente.
           </p>
         </div>
