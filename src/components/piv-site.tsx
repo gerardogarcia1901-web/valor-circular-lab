@@ -41,6 +41,16 @@ import campanasEmpresarialesServiciosAsset from "@/assets/campanas-empresariales
 import prepLimpiosAsset from "@/assets/preparacion/preparacion-limpios.jpg.asset.json";
 import prepSecosAsset from "@/assets/preparacion/preparacion-secos.jpg.asset.json";
 import prepSeparadosAsset from "@/assets/preparacion/preparacion-separados.jpg.asset.json";
+import servicio1Asset from "@/assets/services/servicio-1.jpg.asset.json";
+import servicio2Asset from "@/assets/services/servicio-2.jpg.asset.json";
+import servicio3Asset from "@/assets/services/servicio-3.jpg.asset.json";
+import servicio4Asset from "@/assets/services/servicio-4.jpg.asset.json";
+import servicio5Asset from "@/assets/services/servicio-5.jpg.asset.json";
+import servicio6Asset from "@/assets/services/servicio-6.jpg.asset.json";
+import servicio7Asset from "@/assets/services/servicio-7.jpg.asset.json";
+import servicio8Asset from "@/assets/services/servicio-8.jpg.asset.json";
+import servicio9Asset from "@/assets/services/servicio-9.jpg.asset.json";
+import servicio10Asset from "@/assets/services/servicio-10.jpg.asset.json";
 import {
   
   audience,
