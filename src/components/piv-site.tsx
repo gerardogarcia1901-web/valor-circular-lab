@@ -834,7 +834,7 @@ function ServicesGrid() {
 function EnterpriseCommunity() {
   return (
     <section className="border-y border-border/70 bg-panel-subtle py-20 md:py-28">
-      <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-8 lg:grid-cols-2">
+      <div className="mx-auto w-[min(1280px,calc(100%-2rem))]">
         <article data-reveal className="editorial-panel editorial-panel--teal">
           <p className="eyebrow">Empresas</p>
           <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-5xl">Soluciones ambientales para empresas.</h2>
@@ -846,31 +846,6 @@ function EnterpriseCommunity() {
           <div className="mt-8 flex flex-wrap gap-2">
             {enterpriseBenefits.map((item) => (
               <span key={item} className="rounded-full bg-[var(--brand-lime)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--brand-ink)]">{item}</span>
-            ))}
-          </div>
-        </article>
-        <article data-reveal className="editorial-panel editorial-panel--accent">
-          <p className="eyebrow">Comunidad</p>
-          <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl" style={{ color: "var(--brand-navy)" }}>Reciclar también transforma vidas.</h2>
-          <p className="mt-4 text-base leading-7 text-[var(--brand-navy)]/80">
-            Activamos campañas, espacios y rutas para que comunidades, familias y empresas participen en una economía circular real.
-          </p>
-          <div className="mt-6 grid gap-2 sm:grid-cols-2">
-            {communityActions.map((item) => (
-              <div key={item} className="list-line">{item}</div>
-            ))}
-          </div>
-          <div className="mt-6 flex flex-wrap gap-2">
-            {activeCampaigns.map((c) => (
-              <span key={c} className="rounded-full bg-[var(--brand-navy)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-white">{c}</span>
-            ))}
-          </div>
-          <div className="mt-8 grid grid-cols-3 gap-3 border-t border-[var(--brand-navy)]/15 pt-6">
-            {["+50", "100%", "23"].map((v, i) => (
-              <div key={i} className="text-center">
-                <p className="text-2xl font-bold text-[var(--brand-navy)] md:text-3xl">{v}</p>
-                <p className="mt-1 text-[0.65rem] font-bold uppercase tracking-[0.14em] text-[var(--brand-navy)]/70">{["campañas activas", "trazabilidad", "años"][i]}</p>
-              </div>
             ))}
           </div>
         </article>
