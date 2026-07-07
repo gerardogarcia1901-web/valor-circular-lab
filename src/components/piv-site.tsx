@@ -1058,7 +1058,7 @@ export function HomePage() {
       <Section
         eyebrow="Qué hacemos"
         title="La recuperación de materiales puede ser precisa, rentable y medible."
-        description={<>Transformamos materiales reciclables en nuevas oportunidades de aprovechamiento.<br /><br />A través de procesos especializados de recuperación y gestión, contribuimos a reducir el impacto ambiental, promover la economía circular y fortalecer una cultura de reciclaje más sostenible en El Salvador.</>}
+        description="Transformamos materiales reciclables en nuevas oportunidades de aprovechamiento."
       >
         <div data-reveal className="mt-14">
           <img src={metalsAsset.url} alt="Línea industrial de clasificación de aluminio y metales en Parque Industrial Verde" className="image-tile h-auto max-h-[560px] w-full object-cover" loading="lazy" />
