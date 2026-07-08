@@ -722,10 +722,10 @@ function ServicesGrid() {
               src={src}
               alt={featuredServices[i].title}
               className={cn(
-                "absolute inset-0 h-full w-full object-cover transition-opacity duration-[900ms] ease-out",
+                "absolute inset-0 h-full w-full transition-opacity duration-[900ms] ease-out",
+                i === 1 ? "object-contain" : "object-cover",
                 i === index ? "opacity-100" : "opacity-0",
               )}
-              style={i === 1 ? { objectPosition: "center 20%" } : undefined}
               loading={i === 0 ? "eager" : "lazy"}
             />
           ))}
