@@ -856,91 +856,174 @@ function EnterpriseCommunity() {
 }
 
 const TIMELINE_MEDIA = [
-  { logo: insemaLogo.url, images: [insema1.url, insema2.url] },
-  { logo: zartexLogo.url, images: [zartex1.url, zartex2.url] },
-  { logo: pivLogoFull.url, images: [piv1.url] },
+  {
+    logo: insemaLogo.url,
+    images: [insema1.url, insema2.url],
+    tag: "Origen · Materiales ferrosos",
+    accent: "#B6CDFF",
+  },
+  {
+    logo: zartexLogo.url,
+    images: [zartex1.url, zartex2.url],
+    tag: "Especialización · RAEE",
+    accent: "#C3EB57",
+  },
+  {
+    logo: pivLogoFull.url,
+    images: [piv1.url],
+    tag: "Consolidación · Plataforma nacional",
+    accent: "#C3EB57",
+    logoScale: 4,
+  },
 ];
 
 function TimelineRail() {
   return (
-    <section className="overflow-hidden py-20 md:py-28">
-      <div className="mx-auto w-[min(1280px,calc(100%-2rem))]">
+    <section
+      className="relative overflow-hidden py-24 md:py-32"
+      style={{
+        background:
+          "radial-gradient(1200px 600px at 15% 10%, color-mix(in oklab, var(--brand-lime) 10%, transparent) 0%, transparent 60%), radial-gradient(1000px 500px at 90% 90%, color-mix(in oklab, var(--brand-navy) 14%, transparent) 0%, transparent 60%)",
+      }}
+    >
+      {/* Grid backdrop */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.05]"
+        style={{
+          backgroundImage:
+            "linear-gradient(var(--brand-ink) 1px, transparent 1px), linear-gradient(90deg, var(--brand-ink) 1px, transparent 1px)",
+          backgroundSize: "64px 64px",
+        }}
+      />
+
+      <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))]">
         <div data-reveal className="max-w-3xl space-y-5">
-          <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl">Nuestra evolución</h2>
+          <span
+            className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[0.65rem] font-black uppercase tracking-[0.28em]"
+            style={{ background: "var(--brand-lime)", color: "var(--brand-ink)" }}
+          >
+            <Clock3 className="h-3.5 w-3.5" /> 2003 — Hoy
+          </span>
+          <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl">
+            Nuestra evolución
+          </h2>
           <p className="max-w-2xl text-lg leading-8 text-muted-foreground">
             A lo largo del tiempo hemos evolucionado, desarrollando una operación más organizada y eficiente en el manejo de materiales reciclables, lo que nos ha permitido consolidar un crecimiento constante, mayor capacidad operativa y convertirnos en la recicladora más grande de El Salvador.
           </p>
         </div>
 
-        <div className="relative mt-16">
-          {/* Vertical spine */}
+        <div className="relative mt-20">
+          {/* Vertical spine with animated shimmer */}
           <div
             aria-hidden
-            className="pointer-events-none absolute left-4 top-0 bottom-0 w-px md:left-1/2 md:-translate-x-1/2"
-            style={{ background: "linear-gradient(180deg, transparent 0%, var(--brand-lime) 12%, var(--brand-lime) 88%, transparent 100%)" }}
+            className="pointer-events-none absolute left-4 top-0 bottom-0 w-[2px] md:left-1/2 md:-translate-x-1/2"
+            style={{
+              background:
+                "linear-gradient(180deg, transparent 0%, var(--brand-lime) 8%, var(--brand-navy) 50%, var(--brand-lime) 92%, transparent 100%)",
+            }}
           />
 
-          <div className="space-y-16 md:space-y-24">
+          <div className="space-y-24 md:space-y-32">
             {timeline.map((item, i) => {
               const media = TIMELINE_MEDIA[i];
               const isRight = i % 2 === 1;
+              const stepNumber = String(i + 1).padStart(2, "0");
+              const logoScale = media.logoScale ?? 1;
               return (
                 <article
                   key={item.year}
                   data-reveal
-                  className={cn(
-                    "relative grid gap-8 md:grid-cols-2 md:items-center md:gap-14",
-                  )}
+                  className="relative grid gap-10 md:grid-cols-2 md:items-center md:gap-16"
                 >
                   {/* Node on spine */}
                   <div
                     aria-hidden
-                    className="absolute left-4 top-6 z-10 -translate-x-1/2 md:left-1/2 md:top-1/2 md:-translate-y-1/2"
+                    className="absolute left-4 top-4 z-10 -translate-x-1/2 md:left-1/2 md:top-1/2 md:-translate-y-1/2"
                   >
-                    <div
-                      className="h-4 w-4 rounded-full ring-4 ring-background"
-                      style={{ background: "var(--brand-lime)" }}
-                    />
+                    <div className="relative">
+                      <div
+                        className="absolute inset-0 animate-ping rounded-full opacity-30"
+                        style={{ background: media.accent }}
+                      />
+                      <div
+                        className="relative grid h-10 w-10 place-items-center rounded-full text-[0.65rem] font-black ring-4 ring-background"
+                        style={{ background: media.accent, color: "var(--brand-ink)" }}
+                      >
+                        {stepNumber}
+                      </div>
+                    </div>
                   </div>
 
                   {/* Text side */}
                   <div
                     className={cn(
-                      "pl-12 md:pl-0",
-                      isRight ? "md:order-2 md:pl-14" : "md:order-1 md:pr-14 md:text-right",
+                      "pl-14 md:pl-0",
+                      isRight ? "md:order-2 md:pl-16" : "md:order-1 md:pr-16 md:text-right",
                     )}
                   >
                     <div
                       className={cn(
-                        "inline-flex h-20 w-56 items-center",
-                        isRight ? "justify-start" : "md:justify-end",
+                        "flex flex-col gap-5 rounded-3xl border border-border/60 bg-background/80 p-6 backdrop-blur md:p-8 shadow-[var(--shadow-elevated)]",
+                        isRight ? "" : "md:items-end",
                       )}
                     >
-                      <img
-                        src={media.logo}
-                        alt={`${item.title} logo`}
-                        className="max-h-16 w-auto object-contain"
-                      />
+                      <div className="flex items-center gap-3">
+                        <span
+                          className="rounded-full px-2.5 py-0.5 text-[0.6rem] font-black uppercase tracking-[0.24em]"
+                          style={{ background: media.accent, color: "var(--brand-ink)" }}
+                        >
+                          Etapa {stepNumber}
+                        </span>
+                        <span
+                          className="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground"
+                        >
+                          {media.tag}
+                        </span>
+                      </div>
+
+                      <div
+                        className={cn(
+                          "flex items-center",
+                          isRight ? "justify-start" : "md:justify-end",
+                        )}
+                        style={{ minHeight: `${64 * Math.min(logoScale, 2)}px` }}
+                      >
+                        <img
+                          src={media.logo}
+                          alt={`${item.title} logo`}
+                          className="w-auto object-contain"
+                          style={{ maxHeight: `${64 * logoScale}px` }}
+                        />
+                      </div>
+
+                      <div className="flex items-baseline gap-3">
+                        <span
+                          className="text-5xl font-black leading-none tracking-tight md:text-6xl"
+                          style={{ color: "var(--brand-navy)" }}
+                        >
+                          {item.year}
+                        </span>
+                        <span
+                          className="h-[2px] flex-1"
+                          style={{ background: media.accent }}
+                        />
+                      </div>
+
+                      <h3 className="text-2xl font-bold tracking-tight md:text-3xl">
+                        {item.title}
+                      </h3>
+                      <p className="max-w-md text-base leading-7 text-muted-foreground">
+                        {item.description}
+                      </p>
                     </div>
-                    <p
-                      className="mt-4 text-sm font-black uppercase tracking-[0.3em]"
-                      style={{ color: "var(--brand-lime)" }}
-                    >
-                      {item.year}
-                    </p>
-                    <h3 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
-                      {item.title}
-                    </h3>
-                    <p className="mt-4 max-w-md text-base leading-7 text-muted-foreground md:ml-auto md:max-w-md">
-                      {item.description}
-                    </p>
                   </div>
 
                   {/* Image side */}
                   <div
                     className={cn(
-                      "pl-12 md:pl-0",
-                      isRight ? "md:order-1 md:pr-14" : "md:order-2 md:pl-14",
+                      "pl-14 md:pl-0",
+                      isRight ? "md:order-1 md:pr-16" : "md:order-2 md:pl-16",
                     )}
                   >
                     <div
@@ -949,16 +1032,27 @@ function TimelineRail() {
                         media.images.length === 2 ? "grid-cols-2" : "grid-cols-1",
                       )}
                     >
-                      {media.images.map((src) => (
+                      {media.images.map((src, idx) => (
                         <div
                           key={src}
-                          className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-panel-subtle shadow-[var(--shadow-elevated)]"
+                          className={cn(
+                            "group relative overflow-hidden rounded-2xl bg-panel-subtle shadow-[var(--shadow-elevated)]",
+                            media.images.length === 2 ? "aspect-[4/5]" : "aspect-[4/3]",
+                            idx === 1 ? "translate-y-6" : "",
+                          )}
                         >
                           <img
                             src={src}
                             alt={item.title}
                             loading="lazy"
-                            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          />
+                          <div
+                            aria-hidden
+                            className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                            style={{
+                              background: `linear-gradient(180deg, transparent 40%, color-mix(in oklab, ${media.accent} 60%, black) 100%)`,
+                            }}
                           />
                         </div>
                       ))}
