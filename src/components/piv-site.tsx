@@ -262,43 +262,6 @@ function PageShell({ children }: { children: ReactNode }) {
   );
 }
 
-function NewsletterSection() {
-  const [email, setEmail] = useState("");
-
-  const newsletterHref = `mailto:${emailLink.label}?subject=${encodeURIComponent("Suscripción al Newsletter")}&body=${encodeURIComponent(
-    `Hola Parque Industrial Verde, quiero suscribirme al newsletter con este correo: ${email || "-"}`,
-  )}`;
-
-  return (
-    <section className="relative overflow-hidden border-t border-[var(--brand-navy)]/10 bg-white py-14 md:py-20">
-      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[var(--brand-teal)] via-[var(--brand-lime)] to-[var(--brand-sky)]" />
-      <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-center">
-        <div data-reveal className="space-y-3">
-          <p className="eyebrow">Suscríbete a nuestro Newsletter</p>
-          <h2 className="text-balance text-3xl font-semibold tracking-tight text-[var(--brand-navy)] md:text-5xl">
-            Y mantente al tanto
-          </h2>
-        </div>
-        <form data-reveal className="flex flex-col gap-3 rounded-3xl border border-[var(--brand-navy)]/10 bg-[var(--brand-sky)]/25 p-3 shadow-[var(--shadow-elevated)] sm:flex-row">
-          <Input
-            type="email"
-            required
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            placeholder="Tu correo electrónico"
-            aria-label="Correo para newsletter"
-            className="h-12 flex-1 rounded-2xl border-[var(--brand-navy)]/15 bg-white px-5 text-[var(--brand-navy)]"
-          />
-          <a href={newsletterHref} className="shrink-0">
-            <Button variant="hero" size="lg" className="h-12 w-full sm:w-auto">
-              <Mail className="h-4 w-4" /> Suscribirme
-            </Button>
-          </a>
-        </form>
-      </div>
-    </section>
-  );
-}
 
 
 function SiteHeader() {
