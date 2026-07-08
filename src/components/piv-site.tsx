@@ -51,6 +51,14 @@ import servicio7Asset from "@/assets/services/servicio-7.jpg.asset.json";
 import servicio8Asset from "@/assets/services/servicio-8.jpg.asset.json";
 import servicio9Asset from "@/assets/services/servicio-9.jpg.asset.json";
 import servicio10Asset from "@/assets/services/servicio-10.jpg.asset.json";
+import insemaLogo from "@/assets/timeline/insema-logo.png.asset.json";
+import zartexLogo from "@/assets/timeline/zartex-logo.png.asset.json";
+import pivLogoFull from "@/assets/timeline/piv-logo-full.png.asset.json";
+import insema1 from "@/assets/timeline/insema-1.jpg.asset.json";
+import insema2 from "@/assets/timeline/insema-2.jpg.asset.json";
+import zartex1 from "@/assets/timeline/zartex-1.jpg.asset.json";
+import zartex2 from "@/assets/timeline/zartex-2.jpg.asset.json";
+import piv1 from "@/assets/timeline/piv-1.jpg.asset.json";
 import {
   
   audience,
@@ -752,6 +760,7 @@ function ServicesGrid() {
                 "absolute inset-0 h-full w-full object-cover transition-opacity duration-[900ms] ease-out",
                 i === index ? "opacity-100" : "opacity-0",
               )}
+              style={i === 1 ? { objectPosition: "center 20%" } : undefined}
               loading={i === 0 ? "eager" : "lazy"}
             />
           ))}
@@ -846,6 +855,12 @@ function EnterpriseCommunity() {
   );
 }
 
+const TIMELINE_MEDIA = [
+  { logo: insemaLogo.url, images: [insema1.url, insema2.url] },
+  { logo: zartexLogo.url, images: [zartex1.url, zartex2.url] },
+  { logo: pivLogoFull.url, images: [piv1.url] },
+];
+
 function TimelineRail() {
   return (
     <section className="overflow-hidden py-20 md:py-28">
@@ -856,14 +871,103 @@ function TimelineRail() {
             A lo largo del tiempo hemos evolucionado, desarrollando una operación más organizada y eficiente en el manejo de materiales reciclables, lo que nos ha permitido consolidar un crecimiento constante, mayor capacidad operativa y convertirnos en la recicladora más grande de El Salvador.
           </p>
         </div>
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {timeline.map((item) => (
-            <article key={item.year} data-reveal className="timeline-card">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">{item.year}</p>
-              <h3 className="mt-8 text-3xl font-semibold tracking-tight">{item.title}</h3>
-              <p className="mt-4 text-sm leading-7 text-muted-foreground">{item.description}</p>
-            </article>
-          ))}
+
+        <div className="relative mt-16">
+          {/* Vertical spine */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute left-4 top-0 bottom-0 w-px md:left-1/2 md:-translate-x-1/2"
+            style={{ background: "linear-gradient(180deg, transparent 0%, var(--brand-lime) 12%, var(--brand-lime) 88%, transparent 100%)" }}
+          />
+
+          <div className="space-y-16 md:space-y-24">
+            {timeline.map((item, i) => {
+              const media = TIMELINE_MEDIA[i];
+              const isRight = i % 2 === 1;
+              return (
+                <article
+                  key={item.year}
+                  data-reveal
+                  className={cn(
+                    "relative grid gap-8 md:grid-cols-2 md:items-center md:gap-14",
+                  )}
+                >
+                  {/* Node on spine */}
+                  <div
+                    aria-hidden
+                    className="absolute left-4 top-6 z-10 -translate-x-1/2 md:left-1/2 md:top-1/2 md:-translate-y-1/2"
+                  >
+                    <div
+                      className="h-4 w-4 rounded-full ring-4 ring-background"
+                      style={{ background: "var(--brand-lime)" }}
+                    />
+                  </div>
+
+                  {/* Text side */}
+                  <div
+                    className={cn(
+                      "pl-12 md:pl-0",
+                      isRight ? "md:order-2 md:pl-14" : "md:order-1 md:pr-14 md:text-right",
+                    )}
+                  >
+                    <div
+                      className={cn(
+                        "inline-flex h-20 w-56 items-center",
+                        isRight ? "justify-start" : "md:justify-end",
+                      )}
+                    >
+                      <img
+                        src={media.logo}
+                        alt={`${item.title} logo`}
+                        className="max-h-16 w-auto object-contain"
+                      />
+                    </div>
+                    <p
+                      className="mt-4 text-sm font-black uppercase tracking-[0.3em]"
+                      style={{ color: "var(--brand-lime)" }}
+                    >
+                      {item.year}
+                    </p>
+                    <h3 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
+                      {item.title}
+                    </h3>
+                    <p className="mt-4 max-w-md text-base leading-7 text-muted-foreground md:ml-auto md:max-w-md">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  {/* Image side */}
+                  <div
+                    className={cn(
+                      "pl-12 md:pl-0",
+                      isRight ? "md:order-1 md:pr-14" : "md:order-2 md:pl-14",
+                    )}
+                  >
+                    <div
+                      className={cn(
+                        "grid gap-3",
+                        media.images.length === 2 ? "grid-cols-2" : "grid-cols-1",
+                      )}
+                    >
+                      {media.images.map((src) => (
+                        <div
+                          key={src}
+                          className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-panel-subtle shadow-[var(--shadow-elevated)]"
+                        >
+                          <img
+                            src={src}
+                            alt={item.title}
+                            loading="lazy"
+                            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

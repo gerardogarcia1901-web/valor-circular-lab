@@ -164,12 +164,12 @@ export const timeline = [
   {
     year: "2007",
     title: "ZARTEX",
-    description: "Soluciones especializadas para residuos electrónicos y manejo responsable de tecnología.",
+    description: "Inicio sus labores con la misión de brindar soluciones a la creciente acumulación de equipos electrónicos.",
   },
   {
     year: "2012",
     title: "Parque Industrial Verde",
-    description: "La planta de reciclaje de materiales más grande del país y una plataforma nacional de economía circular.",
+    description: "Nace con el fin de brindar instalaciones seguras, adecuadas, amplias, necesarias y funcionales para que las empresas puedan desarrollar sus actividades encaminadas a contribuir con la protección del medio ambiente.",
   },
 ];
 
