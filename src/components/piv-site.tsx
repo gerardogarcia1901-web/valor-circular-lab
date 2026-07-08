@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { AlertTriangle, ArrowUpRight, Award, Clock3, Droplets, Factory, Globe2, Layers3, Mail, MapPinned, Menu as MenuIcon, MessageCircle, MoveRight, Phone, Recycle, ShieldCheck, Sparkles, Sun, TrendingUp, Users, X } from "lucide-react";
+import { AlertTriangle, ArrowUpRight, Award, Clock3, Droplets, Factory, Globe2, Layers3, MapPinned, Menu as MenuIcon, MessageCircle, MoveRight, Phone, Recycle, ShieldCheck, Sparkles, Sun, TrendingUp, Users, X } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -18,15 +18,14 @@ import operationsAsset from "@/assets/piv-operations.jpg.asset.json";
 import metalsAsset from "@/assets/piv-metals.jpg.asset.json";
 import materialsHeroAsset from "@/assets/materiales-hero.jpg.asset.json";
 import materialsMetalsPhotoAsset from "@/assets/materiales-metales-photo.png.asset.json";
-import beachAsset from "@/assets/piv-beach.jpg.asset.json";
-import communityAsset from "@/assets/piv-community.jpg.asset.json";
-import alliesAsset from "@/assets/piv-allies.jpg.asset.json";
 import kidsAsset from "@/assets/piv-kids.jpg.asset.json";
 import impactGraphicAsset from "@/assets/piv-impact-graphic.jpg.asset.json";
 import teamAsset from "@/assets/piv-team.png.asset.json";
-import materialPlasticImg from "@/assets/materiales-plasticos.jpg";
-import materialPaperImg from "@/assets/materiales-papel-carton.jpg";
-import materialRaeeImg from "@/assets/materiales-raee.jpg";
+import materialPlasticAsset from "@/assets/materiales-plasticos.jpg.asset.json";
+import materialPaperAsset from "@/assets/materiales-papel.jpg.asset.json";
+import materialRaeeAsset from "@/assets/materiales-raee.jpg.asset.json";
+import alcanceAsset from "@/assets/alcance.jpg.asset.json";
+import rseHeroAsset from "@/assets/rse-hero.jpg.asset.json";
 import reciclaGana1 from "@/assets/rse/recicla-y-gana-1.jpg.asset.json";
 import reciclaGana2 from "@/assets/rse/recicla-y-gana-2.jpg.asset.json";
 import reciclaGana3 from "@/assets/rse/recicla-y-gana-3.jpg.asset.json";
@@ -62,7 +61,7 @@ import piv1 from "@/assets/timeline/piv-1.jpg.asset.json";
 import {
   
   audience,
-  communityActions,
+  
   disposalMaterials,
   emailLink,
   enterpriseBenefits,
@@ -100,7 +99,7 @@ const navigation = [
 
 const materialVisuals: Record<string, { image: string; alt: string; summary: string }> = {
   Plásticos: {
-    image: materialPlasticImg,
+    image: materialPlasticAsset.url,
     alt: "Plásticos PET y HDPE clasificados para reciclaje industrial",
     summary: "Envases y resinas listas para clasificación.",
   },
@@ -110,12 +109,12 @@ const materialVisuals: Record<string, { image: string; alt: string; summary: str
     summary: "Aluminio, cobre y ferrosos con ruta de valorización.",
   },
   Papel: {
-    image: materialPaperImg,
+    image: materialPaperAsset.url,
     alt: "Papel y cartón limpio agrupado para recuperación",
     summary: "Cartón y papel limpio para reincorporar a la cadena.",
   },
   RAEE: {
-    image: materialRaeeImg,
+    image: materialRaeeAsset.url,
     alt: "Residuos electrónicos organizados para disposición responsable",
     summary: "Electrónicos y componentes con manejo especializado.",
   },
@@ -251,7 +250,7 @@ function PageShell({ children }: { children: ReactNode }) {
     <div className="bg-background text-foreground">
       <SiteHeader />
       <main ref={pageRef}>{children}</main>
-      <NewsletterSection />
+      
       <SiteFooter />
       <WhatsAppBubble />
       <ReciclinHelper />
@@ -260,43 +259,6 @@ function PageShell({ children }: { children: ReactNode }) {
   );
 }
 
-function NewsletterSection() {
-  const [email, setEmail] = useState("");
-
-  const newsletterHref = `mailto:${emailLink.label}?subject=${encodeURIComponent("Suscripción al Newsletter")}&body=${encodeURIComponent(
-    `Hola Parque Industrial Verde, quiero suscribirme al newsletter con este correo: ${email || "-"}`,
-  )}`;
-
-  return (
-    <section className="relative overflow-hidden border-t border-[var(--brand-navy)]/10 bg-white py-14 md:py-20">
-      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[var(--brand-teal)] via-[var(--brand-lime)] to-[var(--brand-sky)]" />
-      <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-center">
-        <div data-reveal className="space-y-3">
-          <p className="eyebrow">Suscríbete a nuestro Newsletter</p>
-          <h2 className="text-balance text-3xl font-semibold tracking-tight text-[var(--brand-navy)] md:text-5xl">
-            Y mantente al tanto
-          </h2>
-        </div>
-        <form data-reveal className="flex flex-col gap-3 rounded-3xl border border-[var(--brand-navy)]/10 bg-[var(--brand-sky)]/25 p-3 shadow-[var(--shadow-elevated)] sm:flex-row">
-          <Input
-            type="email"
-            required
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            placeholder="Tu correo electrónico"
-            aria-label="Correo para newsletter"
-            className="h-12 flex-1 rounded-2xl border-[var(--brand-navy)]/15 bg-white px-5 text-[var(--brand-navy)]"
-          />
-          <a href={newsletterHref} className="shrink-0">
-            <Button variant="hero" size="lg" className="h-12 w-full sm:w-auto">
-              <Mail className="h-4 w-4" /> Suscribirme
-            </Button>
-          </a>
-        </form>
-      </div>
-    </section>
-  );
-}
 
 
 function SiteHeader() {
@@ -757,10 +719,10 @@ function ServicesGrid() {
               src={src}
               alt={featuredServices[i].title}
               className={cn(
-                "absolute inset-0 h-full w-full object-cover transition-opacity duration-[900ms] ease-out",
+                "absolute inset-0 h-full w-full transition-opacity duration-[900ms] ease-out",
+                i === 1 ? "object-contain" : "object-cover",
                 i === index ? "opacity-100" : "opacity-0",
               )}
-              style={i === 1 ? { objectPosition: "center 20%" } : undefined}
               loading={i === 0 ? "eager" : "lazy"}
             />
           ))}
@@ -878,8 +840,89 @@ const TIMELINE_MEDIA = [
 ];
 
 function TimelineRail() {
+  const rootRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const scope = rootRef.current;
+    if (!scope || typeof window === "undefined") return;
+
+    const ctx = gsap.context(() => {
+      // Draw the spine as user scrolls
+      const spine = scope.querySelector<HTMLDivElement>("[data-tl-spine]");
+      if (spine) {
+        gsap.fromTo(
+          spine,
+          { scaleY: 0, transformOrigin: "top center" },
+          {
+            scaleY: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: scope,
+              start: "top 70%",
+              end: "bottom 80%",
+              scrub: 0.6,
+            },
+          },
+        );
+      }
+
+      // Animate each timeline article: card + image side + node pop
+      scope.querySelectorAll<HTMLElement>("[data-tl-item]").forEach((el) => {
+        const card = el.querySelector<HTMLElement>("[data-tl-card]");
+        const media = el.querySelector<HTMLElement>("[data-tl-media]");
+        const node = el.querySelector<HTMLElement>("[data-tl-node]");
+        const images = el.querySelectorAll<HTMLElement>("[data-tl-img]");
+        const isRight = el.dataset.tlSide === "right";
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: el,
+            start: "top 78%",
+            once: true,
+          },
+        });
+
+        if (node) {
+          tl.fromTo(
+            node,
+            { scale: 0, rotate: -90, opacity: 0 },
+            { scale: 1, rotate: 0, opacity: 1, duration: 0.7, ease: "back.out(2)" },
+            0,
+          );
+        }
+        if (card) {
+          tl.fromTo(
+            card,
+            { x: isRight ? 60 : -60, y: 30, opacity: 0 },
+            { x: 0, y: 0, opacity: 1, duration: 0.9, ease: "power3.out" },
+            0.1,
+          );
+        }
+        if (media) {
+          tl.fromTo(
+            media,
+            { x: isRight ? -60 : 60, y: 30, opacity: 0 },
+            { x: 0, y: 0, opacity: 1, duration: 0.9, ease: "power3.out" },
+            0.15,
+          );
+        }
+        if (images.length) {
+          tl.fromTo(
+            images,
+            { scale: 1.15, opacity: 0 },
+            { scale: 1, opacity: 1, duration: 1, ease: "power2.out", stagger: 0.12 },
+            0.25,
+          );
+        }
+      });
+    }, scope);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
+      ref={rootRef}
       className="relative overflow-hidden py-24 md:py-32"
       style={{
         background:
@@ -917,6 +960,7 @@ function TimelineRail() {
           {/* Vertical spine with animated shimmer */}
           <div
             aria-hidden
+            data-tl-spine
             className="pointer-events-none absolute left-4 top-0 bottom-0 w-[2px] md:left-1/2 md:-translate-x-1/2"
             style={{
               background:
@@ -933,12 +977,14 @@ function TimelineRail() {
               return (
                 <article
                   key={item.year}
-                  data-reveal
+                  data-tl-item
+                  data-tl-side={isRight ? "right" : "left"}
                   className="relative grid gap-10 md:grid-cols-2 md:items-center md:gap-16"
                 >
                   {/* Node on spine */}
                   <div
                     aria-hidden
+                    data-tl-node
                     className="absolute left-4 top-4 z-10 -translate-x-1/2 md:left-1/2 md:top-1/2 md:-translate-y-1/2"
                   >
                     <div className="relative">
@@ -963,6 +1009,7 @@ function TimelineRail() {
                     )}
                   >
                     <div
+                      data-tl-card
                       className={cn(
                         "flex flex-col gap-5 rounded-3xl border border-border/60 bg-background/80 p-6 backdrop-blur md:p-8 shadow-[var(--shadow-elevated)]",
                         isRight ? "" : "md:items-end",
@@ -1027,6 +1074,7 @@ function TimelineRail() {
                     )}
                   >
                     <div
+                      data-tl-media
                       className={cn(
                         "grid gap-3",
                         media.images.length === 2 ? "grid-cols-2" : "grid-cols-1",
@@ -1034,6 +1082,7 @@ function TimelineRail() {
                     >
                       {media.images.map((src, idx) => (
                         <div
+                          data-tl-img
                           key={src}
                           className={cn(
                             "group relative overflow-hidden rounded-2xl bg-panel-subtle shadow-[var(--shadow-elevated)]",
@@ -1268,9 +1317,6 @@ export function HomePage() {
             message={<>¿No sabés en qué grupo entrás? <strong>Yo te oriento</strong> en segundos.</>}
           />
         </div>
-        <div data-reveal className="mt-12">
-          <img src={communityAsset.url} alt="Familia y comunidad junto a materiales recuperados" className="image-tile h-auto max-h-[640px] w-full object-contain bg-[var(--brand-ink)]" loading="lazy" />
-        </div>
       </Section>
 
 
@@ -1282,44 +1328,81 @@ export function HomePage() {
         <ServicesGrid />
       </Section>
 
-      <section className="relative h-[520px] w-full overflow-hidden md:h-[620px]">
-        <img src={beachAsset.url} alt="Jornada de recuperación de materiales en zona costera de El Salvador" className="h-full w-full object-cover object-[center_35%] md:object-[center_40%]" loading="lazy" />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, color-mix(in oklab, var(--brand-ink) 25%, transparent) 0%, color-mix(in oklab, var(--brand-ink) 55%, transparent) 45%, color-mix(in oklab, var(--brand-ink) 88%, transparent) 100%)" }} />
-        <div className="absolute inset-0 mx-auto flex w-[min(1280px,calc(100%-2rem))] flex-col justify-end pb-12 md:pb-16">
+      <section
+        className="relative overflow-hidden py-20 md:py-28"
+        style={{
+          background:
+            "linear-gradient(135deg, var(--brand-navy) 0%, color-mix(in oklab, var(--brand-teal) 70%, var(--brand-navy)) 100%)",
+        }}
+      >
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-25"
+          style={{
+            background:
+              "radial-gradient(600px 300px at 15% 20%, var(--brand-lime) 0%, transparent 60%), radial-gradient(700px 350px at 85% 85%, var(--brand-sky) 0%, transparent 60%)",
+          }}
+        />
+        <div className="relative mx-auto flex w-[min(1280px,calc(100%-2rem))] flex-col">
           <p className="eyebrow eyebrow--light">Territorio</p>
-          <h3 className="mt-3 max-w-2xl text-balance text-3xl font-semibold tracking-tight text-white md:text-5xl" style={{ textShadow: "0 2px 18px rgba(0,0,0,0.55)" }}>Brindamos cobertura en diferentes zonas del país.</h3>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-white md:text-lg" style={{ textShadow: "0 2px 14px rgba(0,0,0,0.6)" }}>
+          <h3 className="mt-3 max-w-2xl text-balance text-3xl font-semibold tracking-tight text-white md:text-5xl">
+            Brindamos cobertura en diferentes zonas del país.
+          </h3>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-white/85 md:text-lg">
             Nuestros servicios de recuperación y manejo de materiales llegan de forma oportuna a quienes desean disponer de sus materiales de manera responsable y eficiente.
           </p>
         </div>
       </section>
 
 
+      <section className="relative overflow-hidden py-24 md:py-32">
+        <img
+          src={alcanceAsset.url}
+          alt="Alcance internacional de Parque Industrial Verde: fardos de aluminio compactado listos para exportación"
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="lazy"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(120deg, color-mix(in oklab, var(--brand-ink) 82%, transparent) 0%, color-mix(in oklab, var(--brand-navy) 65%, transparent) 55%, color-mix(in oklab, var(--brand-ink) 40%, transparent) 100%)",
+          }}
+        />
+        <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] text-white">
+          <div data-reveal className="max-w-3xl space-y-6">
+            <p className="eyebrow eyebrow--light">Alcance</p>
+            <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl" style={{ textShadow: "0 2px 24px rgba(0,0,0,0.55)" }}>
+              Nuestro trabajo trasciende fronteras.
+            </h2>
+            <p className="max-w-2xl text-base leading-8 text-white/90 md:text-lg" style={{ textShadow: "0 2px 14px rgba(0,0,0,0.55)" }}>
+              Llevamos materiales reciclables a diferentes regiones del mundo, donde continúan su aprovechamiento, contribuyendo a su incorporación en cadenas globales de valor.
+            </p>
+          </div>
 
-
-
-
-      <Section
-        eyebrow="Alcance"
-        title="Nuestro trabajo trasciende fronteras."
-        description="Llevamos materiales reciclables a diferentes regiones del mundo, donde continúan su aprovechamiento, contribuyendo a su incorporación en cadenas globales de valor."
-
-      >
-        <div className="mt-12 flex flex-wrap items-baseline gap-x-10 gap-y-4 md:gap-x-14">
-          {exportRegions.map((region, i) => (
-            <span
-              key={region}
-              data-reveal
-              className="text-xl font-semibold tracking-tight text-[var(--brand-navy)] md:text-3xl"
-            >
-              {region}
-              {i < exportRegions.length - 1 ? (
-                <span aria-hidden className="ml-10 hidden text-[var(--brand-teal)] md:ml-14 md:inline">·</span>
-              ) : null}
-            </span>
-          ))}
+          <div className="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-3 md:mt-20 md:grid-cols-5">
+            {exportRegions.map((region, i) => (
+              <div
+                key={region}
+                data-reveal
+                className="group relative overflow-hidden rounded-2xl border border-white/15 bg-white/[0.06] p-5 backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-[var(--brand-lime)]/60 hover:bg-white/[0.14]"
+              >
+                <span className="block text-[0.65rem] font-black uppercase tracking-[0.28em] text-[var(--brand-lime)]">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="mt-3 block text-lg font-semibold tracking-tight text-white md:text-xl">
+                  {region}
+                </span>
+                <span
+                  aria-hidden
+                  className="absolute inset-x-5 bottom-4 h-[2px] origin-left scale-x-0 bg-[var(--brand-lime)] transition-transform duration-500 group-hover:scale-x-100"
+                />
+              </div>
+            ))}
+          </div>
         </div>
-      </Section>
+      </section>
 
       <TimelineRail />
 
@@ -1780,7 +1863,7 @@ export function RsePage() {
               Educación ambiental, campañas, activaciones comunitarias y acompañamiento empresarial forman parte de una estrategia de impacto que va más allá de la recuperación de materiales.
             </p>
           </div>
-          <img data-reveal src={communityAsset.url} alt="Programa comunitario de reciclaje y recuperación de materiales" className="image-tile h-[520px]" loading="eager" />
+          <img data-reveal src={rseHeroAsset.url} alt="Jornada comunitaria de recolección de materiales reciclables organizada por Parque Industrial Verde" className="image-tile h-[520px] object-cover" loading="eager" />
         </div>
       </section>
       <Section
@@ -1861,23 +1944,6 @@ export function RsePage() {
             Selecciona una campaña arriba para ver fotos y detalles.
           </p>
         )}
-      </Section>
-      <Section
-        eyebrow="Impacto social"
-        title="La economía circular también se construye desde la calle, la escuela y la costa."
-        description="PIV trabaja con comunidades, empresas y territorios para activar hábitos, infraestructura y alianzas que multipliquen el efecto del reciclaje."
-        className="bg-panel-subtle"
-      >
-        <div className="mt-14 grid gap-6 lg:grid-cols-[1fr_0.9fr]">
-          <img data-reveal src={alliesAsset.url} alt="Personas colaboradoras y aliadas participando en una iniciativa de Parque Industrial Verde" className="image-tile h-[460px]" loading="lazy" />
-          <div className="grid gap-4">
-            {communityActions.map((item) => (
-              <article key={item} data-reveal className="surface-panel">
-                <p className="text-lg font-medium text-foreground">{item}</p>
-              </article>
-            ))}
-          </div>
-        </div>
       </Section>
     </PageShell>
   );
