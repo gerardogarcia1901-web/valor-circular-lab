@@ -632,18 +632,30 @@ function HeroStatCard({
 
 function AudienceStrip() {
   return (
-    <div className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-4 md:gap-x-14">
+    <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
       {audience.map((item, i) => (
-        <span
+        <article
           key={item}
           data-reveal
-          className="text-lg font-medium tracking-tight text-foreground md:text-2xl"
+          className="group relative isolate overflow-hidden rounded-2xl border border-[var(--brand-navy)]/10 bg-white p-5 shadow-[var(--shadow-elevated)] transition-all duration-500 hover:-translate-y-1 hover:border-[var(--brand-lime)]"
         >
-          {item}
-          {i < audience.length - 1 ? (
-            <span aria-hidden className="ml-10 hidden text-[var(--brand-teal)] md:inline md:ml-14">·</span>
-          ) : null}
-        </span>
+          <span
+            aria-hidden
+            className="pointer-events-none absolute -right-2 -top-4 text-[4.5rem] font-black leading-none tracking-tighter text-[var(--brand-navy)]/[0.06]"
+          >
+            {String(i + 1).padStart(2, "0")}
+          </span>
+          <span className="text-[0.62rem] font-black uppercase tracking-[0.22em] text-[var(--brand-teal)]">
+            Perfil · {String(i + 1).padStart(2, "0")}
+          </span>
+          <p className="mt-3 text-lg font-semibold leading-snug tracking-tight text-[var(--brand-navy)] md:text-xl">
+            {item}
+          </p>
+          <span
+            aria-hidden
+            className="mt-4 block h-[3px] w-10 origin-left rounded-full bg-[var(--brand-lime)] transition-all duration-500 group-hover:w-20"
+          />
+        </article>
       ))}
     </div>
   );
