@@ -1085,6 +1085,7 @@ function TimelineRail() {
                     >
                       {media.images.map((src, idx) => (
                         <div
+                          data-tl-img
                           key={src}
                           className={cn(
                             "group relative overflow-hidden rounded-2xl bg-panel-subtle shadow-[var(--shadow-elevated)]",
