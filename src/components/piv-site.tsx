@@ -1779,7 +1779,7 @@ export function RsePage() {
               Educación ambiental, campañas, activaciones comunitarias y acompañamiento empresarial forman parte de una estrategia de impacto que va más allá de la recuperación de materiales.
             </p>
           </div>
-          <img data-reveal src={communityAsset.url} alt="Programa comunitario de reciclaje y recuperación de materiales" className="image-tile h-[520px]" loading="eager" />
+          <img data-reveal src={rseHeroAsset.url} alt="Jornada comunitaria de recolección de materiales reciclables organizada por Parque Industrial Verde" className="image-tile h-[520px] object-cover" loading="eager" />
         </div>
       </section>
       <Section
