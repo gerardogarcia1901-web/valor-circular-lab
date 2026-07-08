@@ -4,8 +4,9 @@ import { AlertTriangle, ArrowUpRight, Award, Clock3, Droplets, Factory, Globe2, 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import heroAsset from "@/assets/piv-hero-v3.png.asset.json";
+import heroAsset from "@/assets/hero-1.png.asset.json";
 import heroAboutAsset from "@/assets/piv-hero-v2.png.asset.json";
+import propositoAsset from "@/assets/proposito.png.asset.json";
 import logoAsset from "@/assets/piv-logo.png.asset.json";
 import reciclinAsset from "@/assets/reciclin.png.asset.json";
 import { ReciclinMascot } from "@/components/reciclin-mascot";
