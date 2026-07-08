@@ -1271,40 +1271,92 @@ function LocationsPanel() {
 export function HomePage() {
   return (
     <PageShell>
-      <section className="relative min-h-screen overflow-hidden">
+      <section className="relative min-h-[100svh] overflow-hidden bg-[var(--brand-ink)]">
         <div className="absolute inset-0">
           <img
             src={heroAsset.url}
-            alt="Operación real de Parque Industrial Verde dentro de una planta de reciclaje"
-            className="h-full w-full object-cover md:hidden"
-            style={{ objectPosition: "100% center" }}
+            alt="Recolectores base sonriendo con bolsas de PET y aluminio recuperados"
+            className="h-full w-full object-cover object-[68%_center] sm:object-[center_35%] md:object-[center_30%]"
             loading="eager"
           />
-          <img
-            src={heroAsset.url}
-            alt="Operación real de Parque Industrial Verde dentro de una planta de reciclaje"
-            className="hidden h-full w-full object-cover object-[center_30%] md:block"
-            loading="eager"
-          />
-          <div className="hero-overlay" />
           <div
             aria-hidden
-            className="absolute inset-x-0 top-0 h-44 md:h-56"
-            style={{ background: "linear-gradient(to bottom, rgba(13,13,13,0.7) 0%, rgba(13,13,13,0.3) 55%, transparent 100%)" }}
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(13,13,13,0.85) 0%, rgba(13,13,13,0.45) 35%, rgba(13,13,13,0.55) 70%, rgba(13,13,13,0.92) 100%)",
+            }}
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 hidden md:block"
+            style={{
+              background:
+                "linear-gradient(100deg, rgba(13,13,13,0.85) 0%, rgba(13,13,13,0.55) 45%, rgba(13,13,13,0.15) 75%, transparent 100%)",
+            }}
           />
         </div>
-        <div className="relative mx-auto flex min-h-screen w-[min(1280px,calc(100%-2rem))] items-end pb-12 pt-28 md:pb-20 md:pt-32">
-          <div className="grid w-full gap-6 2xl:grid-cols-[1.05fr_0.95fr] 2xl:items-end">
-            <div className="space-y-6">
-              <p data-hero-kicker className="eyebrow eyebrow--light">Economía circular con escala industrial</p>
-              <h1 data-hero-title className="max-w-4xl text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-6xl xl:text-7xl 2xl:text-[5.2rem]">
-                Transformamos residuos en oportunidades.
-              </h1>
+
+        <div className="relative mx-auto flex min-h-[100svh] w-[min(1280px,calc(100%-2rem))] flex-col justify-end pb-10 pt-28 md:justify-between md:pb-16 md:pt-36">
+          <div data-hero-kicker className="hidden items-center gap-3 md:flex">
+            <span className="h-[2px] w-10 bg-[var(--brand-lime)]" />
+            <span className="text-[0.7rem] font-black uppercase tracking-[0.32em] text-[var(--brand-lime)]">
+              Economía circular · Escala industrial
+            </span>
+          </div>
+
+          <div className="max-w-3xl space-y-6 md:mt-auto md:pb-10">
+            <span
+              data-hero-kicker
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.08] px-3 py-1.5 text-[0.62rem] font-black uppercase tracking-[0.22em] text-[var(--brand-lime)] backdrop-blur md:hidden"
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-lime)]" /> Economía circular
+            </span>
+            <h1
+              data-hero-title
+              className="text-balance text-[2.5rem] font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl xl:text-[5.5rem]"
+              style={{ textShadow: "0 2px 30px rgba(0,0,0,0.55)" }}
+            >
+              Transformamos residuos en{" "}
+              <span className="italic text-[var(--brand-lime)]">oportunidades</span>.
+            </h1>
+            <p
+              data-hero-copy
+              className="max-w-xl text-base leading-7 text-white/85 md:text-lg md:leading-8"
+              style={{ textShadow: "0 2px 14px rgba(0,0,0,0.55)" }}
+            >
+              Recuperamos, procesamos y valorizamos materiales junto a recolectores, empresas y comunidades para reincorporarlos a la economía.
+            </p>
+            <div data-hero-actions className="flex flex-wrap gap-3 pt-2">
+              <a href={whatsappHref} target="_blank" rel="noreferrer">
+                <Button variant="hero" size="lg">Cotizar por WhatsApp</Button>
+              </a>
+              <Link to="/servicios">
+                <Button variant="heroSecondary" size="lg">Ver servicios</Button>
+              </Link>
             </div>
-            <HeroStats />
+          </div>
+
+          <div
+            data-hero-stat
+            className="mt-10 grid grid-cols-1 divide-y divide-white/15 overflow-hidden rounded-2xl border border-white/15 bg-white/[0.06] backdrop-blur-md sm:grid-cols-3 sm:divide-x sm:divide-y-0"
+          >
+            {pivStats.map((item, i) => (
+              <div key={item.label} className="flex flex-col gap-2 p-5 md:p-6">
+                <span className="text-[0.6rem] font-black uppercase tracking-[0.22em] text-[var(--brand-lime)]">
+                  {String(i + 1).padStart(2, "0")} · {item.suffix.trim()}
+                </span>
+                <span className="text-4xl font-semibold leading-none tracking-tight text-white md:text-5xl">
+                  {item.prefix}
+                  {formatMetric(item.value)}
+                </span>
+                <span className="text-sm leading-6 text-white/75">{item.label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
+
 
 
       <Section
