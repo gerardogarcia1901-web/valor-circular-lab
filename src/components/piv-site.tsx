@@ -1543,22 +1543,53 @@ export function AboutPage() {
           </div>
         </div>
       </Section>
-      <Section
-        eyebrow="Propósito"
-        title="Convertir cada material reciclable en una oportunidad para generar un impacto positivo."
-        description="PIV articula tecnología, experiencia y una red de recuperación para convertir desechos en valor verificable."
-      >
-        <div className="mt-14 grid gap-6 lg:grid-cols-2">
-          <article data-reveal className="editorial-panel editorial-panel--teal">
-            <p className="eyebrow">Misión</p>
-            <p className="mt-6 text-xl leading-9">Ser una empresa líder en el mercado nacional del reciclaje de materiales, haciendo de los desechos una fuente de protección ambiental e incentivando prácticas responsables.</p>
-          </article>
-          <article data-reveal className="editorial-panel editorial-panel--lime">
-            <p className="eyebrow">Visión</p>
-            <p className="mt-6 text-xl leading-9">Ser reconocidos como la empresa de reciclaje más grande y confiable de El Salvador.</p>
-          </article>
+      <section className="relative overflow-hidden py-24 md:py-32">
+        <img
+          src={propositoAsset.url}
+          alt="Propósito de Parque Industrial Verde: intercambio de un equipo electrónico por una planta como símbolo del ciclo de valor"
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="lazy"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(115deg, color-mix(in oklab, var(--brand-ink) 88%, transparent) 0%, color-mix(in oklab, var(--brand-navy) 78%, transparent) 45%, color-mix(in oklab, var(--brand-ink) 35%, transparent) 100%)",
+          }}
+        />
+        <div className="relative mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div data-reveal className="max-w-2xl text-white">
+            <p className="eyebrow eyebrow--light">Propósito</p>
+            <h2
+              className="mt-4 text-balance text-4xl font-semibold tracking-tight md:text-6xl"
+              style={{ textShadow: "0 2px 24px rgba(0,0,0,0.6)" }}
+            >
+              Convertir cada material reciclable en una oportunidad para generar un impacto positivo.
+            </h2>
+            <p
+              className="mt-6 max-w-xl text-base leading-8 text-white/90 md:text-lg"
+              style={{ textShadow: "0 2px 14px rgba(0,0,0,0.55)" }}
+            >
+              PIV articula tecnología, experiencia y una red de recuperación para convertir desechos en valor verificable.
+            </p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <article data-reveal className="rounded-2xl border border-white/15 bg-white/[0.08] p-6 text-white backdrop-blur-md">
+              <p className="text-[0.62rem] font-black uppercase tracking-[0.22em] text-[var(--brand-lime)]">Misión</p>
+              <p className="mt-4 text-sm leading-7 md:text-base">
+                Ser una empresa líder en el mercado nacional del reciclaje de materiales, haciendo de los desechos una fuente de protección ambiental e incentivando prácticas responsables.
+              </p>
+            </article>
+            <article data-reveal className="rounded-2xl border border-white/15 bg-white/[0.08] p-6 text-white backdrop-blur-md">
+              <p className="text-[0.62rem] font-black uppercase tracking-[0.22em] text-[var(--brand-lime)]">Visión</p>
+              <p className="mt-4 text-sm leading-7 md:text-base">
+                Ser reconocidos como la empresa de reciclaje más grande y confiable de El Salvador.
+              </p>
+            </article>
+          </div>
         </div>
-      </Section>
+      </section>
       <Section
         eyebrow="Escala"
         title="Recuperación con impacto medible."
@@ -1588,23 +1619,7 @@ export function AboutPage() {
           </div>
         </div>
       </section>
-      <Section
-        eyebrow="Confianza"
-        title="El liderazgo se construye con capacidad real de respuesta."
-        description="Procesos transparentes, cobertura nacional e infraestructura hacen posible una ejecución constante."
-      >
-        <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {trustPillars.map((item, i) => {
-            const tones = ["bg-[var(--brand-teal)] text-white", "bg-[var(--brand-lime)] text-[var(--brand-ink)]", "bg-[var(--brand-navy)] text-white", "bg-[var(--brand-sky)] text-[var(--brand-navy)]"];
-            return (
-              <article key={item} data-reveal className={cn("rounded-3xl p-6 shadow-[var(--shadow-elevated)]", tones[i % tones.length])}>
-                <ShieldCheck className="h-6 w-6" />
-                <p className="mt-6 text-base font-semibold leading-7">{item}</p>
-              </article>
-            );
-          })}
-        </div>
-      </Section>
+
     </PageShell>
   );
 }
