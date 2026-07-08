@@ -1012,6 +1012,7 @@ function TimelineRail() {
                     )}
                   >
                     <div
+                      data-tl-card
                       className={cn(
                         "flex flex-col gap-5 rounded-3xl border border-border/60 bg-background/80 p-6 backdrop-blur md:p-8 shadow-[var(--shadow-elevated)]",
                         isRight ? "" : "md:items-end",
