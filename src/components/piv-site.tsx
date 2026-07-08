@@ -78,7 +78,6 @@ import {
   preparationSteps,
   socialLinks,
   timeline,
-  trustPillars,
   whatsappHref,
 } from "@/lib/piv-content";
 import { cn } from "@/lib/utils";
