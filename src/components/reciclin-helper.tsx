@@ -50,15 +50,14 @@ export function ReciclinHelper() {
 
   return (
     <div
-      className="pointer-events-none fixed left-5 z-40 flex items-center gap-2 md:left-6"
-      style={{ top: "45vh" }}
+      className="pointer-events-none fixed bottom-24 left-3 z-40 flex items-center gap-2 md:bottom-auto md:left-6 md:top-[45vh]"
     >
       <a
         href={whatsappHref}
         target="_blank"
         rel="noreferrer"
         aria-label="Chatea con Reciclin por WhatsApp"
-        className="pointer-events-auto group relative grid h-16 w-16 place-items-center rounded-full bg-[var(--brand-lime)] shadow-[0_14px_30px_-10px_rgba(0,0,0,0.45)] transition-transform duration-300 hover:-translate-y-1 hover:scale-105 md:h-20 md:w-20"
+        className="pointer-events-auto group relative grid h-14 w-14 place-items-center rounded-full bg-[var(--brand-lime)] shadow-[0_14px_30px_-10px_rgba(0,0,0,0.45)] transition-transform duration-300 hover:-translate-y-1 hover:scale-105 md:h-20 md:w-20"
       >
         <span
           aria-hidden
