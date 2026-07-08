@@ -33,7 +33,7 @@ const messagesByRoute: Record<string, { title: string; body: string }> = {
 
 export function ReciclinHelper() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const [bubble, setBubble] = useState(true);
+  const [bubble, setBubble] = useState(false);
 
   const msg = useMemo(
     () => messagesByRoute[pathname] ?? messagesByRoute["/"],
@@ -41,8 +41,12 @@ export function ReciclinHelper() {
   );
 
   useEffect(() => {
-    setBubble(true);
+    // Open bubble by default on desktop; keep closed on mobile so it never blocks CTAs.
+    if (typeof window === "undefined") return;
+    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+    setBubble(isDesktop);
   }, [pathname]);
+
 
   return (
     <div
