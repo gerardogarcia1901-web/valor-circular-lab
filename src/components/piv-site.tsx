@@ -102,7 +102,7 @@ const navigation = [
 
 const materialVisuals: Record<string, { image: string; alt: string; summary: string }> = {
   Plásticos: {
-    image: materialPlasticImg,
+    image: materialPlasticAsset.url,
     alt: "Plásticos PET y HDPE clasificados para reciclaje industrial",
     summary: "Envases y resinas listas para clasificación.",
   },
@@ -112,12 +112,12 @@ const materialVisuals: Record<string, { image: string; alt: string; summary: str
     summary: "Aluminio, cobre y ferrosos con ruta de valorización.",
   },
   Papel: {
-    image: materialPaperImg,
+    image: materialPaperAsset.url,
     alt: "Papel y cartón limpio agrupado para recuperación",
     summary: "Cartón y papel limpio para reincorporar a la cadena.",
   },
   RAEE: {
-    image: materialRaeeImg,
+    image: materialRaeeAsset.url,
     alt: "Residuos electrónicos organizados para disposición responsable",
     summary: "Electrónicos y componentes con manejo especializado.",
   },
