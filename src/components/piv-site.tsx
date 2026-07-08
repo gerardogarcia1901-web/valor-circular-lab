@@ -963,6 +963,7 @@ function TimelineRail() {
           {/* Vertical spine with animated shimmer */}
           <div
             aria-hidden
+            data-tl-spine
             className="pointer-events-none absolute left-4 top-0 bottom-0 w-[2px] md:left-1/2 md:-translate-x-1/2"
             style={{
               background:
