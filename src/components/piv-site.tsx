@@ -4,8 +4,9 @@ import { AlertTriangle, ArrowUpRight, Award, Clock3, Droplets, Factory, Globe2, 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import heroAsset from "@/assets/piv-hero-v3.png.asset.json";
+import heroAsset from "@/assets/hero-1.png.asset.json";
 import heroAboutAsset from "@/assets/piv-hero-v2.png.asset.json";
+import propositoAsset from "@/assets/proposito.png.asset.json";
 import logoAsset from "@/assets/piv-logo.png.asset.json";
 import reciclinAsset from "@/assets/reciclin.png.asset.json";
 import { ReciclinMascot } from "@/components/reciclin-mascot";
@@ -77,7 +78,6 @@ import {
   preparationSteps,
   socialLinks,
   timeline,
-  trustPillars,
   whatsappHref,
 } from "@/lib/piv-content";
 import { cn } from "@/lib/utils";
@@ -631,18 +631,30 @@ function HeroStatCard({
 
 function AudienceStrip() {
   return (
-    <div className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-4 md:gap-x-14">
+    <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
       {audience.map((item, i) => (
-        <span
+        <article
           key={item}
           data-reveal
-          className="text-lg font-medium tracking-tight text-foreground md:text-2xl"
+          className="group relative isolate overflow-hidden rounded-2xl border border-[var(--brand-navy)]/10 bg-white p-5 shadow-[var(--shadow-elevated)] transition-all duration-500 hover:-translate-y-1 hover:border-[var(--brand-lime)]"
         >
-          {item}
-          {i < audience.length - 1 ? (
-            <span aria-hidden className="ml-10 hidden text-[var(--brand-teal)] md:inline md:ml-14">·</span>
-          ) : null}
-        </span>
+          <span
+            aria-hidden
+            className="pointer-events-none absolute -right-2 -top-4 text-[4.5rem] font-black leading-none tracking-tighter text-[var(--brand-navy)]/[0.06]"
+          >
+            {String(i + 1).padStart(2, "0")}
+          </span>
+          <span className="text-[0.62rem] font-black uppercase tracking-[0.22em] text-[var(--brand-teal)]">
+            Perfil · {String(i + 1).padStart(2, "0")}
+          </span>
+          <p className="mt-3 text-lg font-semibold leading-snug tracking-tight text-[var(--brand-navy)] md:text-xl">
+            {item}
+          </p>
+          <span
+            aria-hidden
+            className="mt-4 block h-[3px] w-10 origin-left rounded-full bg-[var(--brand-lime)] transition-all duration-500 group-hover:w-20"
+          />
+        </article>
       ))}
     </div>
   );
@@ -1258,40 +1270,92 @@ function LocationsPanel() {
 export function HomePage() {
   return (
     <PageShell>
-      <section className="relative min-h-screen overflow-hidden">
+      <section className="relative min-h-[100svh] overflow-hidden bg-[var(--brand-ink)]">
         <div className="absolute inset-0">
           <img
             src={heroAsset.url}
-            alt="Operación real de Parque Industrial Verde dentro de una planta de reciclaje"
-            className="h-full w-full object-cover md:hidden"
-            style={{ objectPosition: "100% center" }}
+            alt="Recolectores base sonriendo con bolsas de PET y aluminio recuperados"
+            className="h-full w-full object-cover object-[68%_center] sm:object-[center_35%] md:object-[center_30%]"
             loading="eager"
           />
-          <img
-            src={heroAsset.url}
-            alt="Operación real de Parque Industrial Verde dentro de una planta de reciclaje"
-            className="hidden h-full w-full object-cover object-[center_30%] md:block"
-            loading="eager"
-          />
-          <div className="hero-overlay" />
           <div
             aria-hidden
-            className="absolute inset-x-0 top-0 h-44 md:h-56"
-            style={{ background: "linear-gradient(to bottom, rgba(13,13,13,0.7) 0%, rgba(13,13,13,0.3) 55%, transparent 100%)" }}
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(13,13,13,0.85) 0%, rgba(13,13,13,0.45) 35%, rgba(13,13,13,0.55) 70%, rgba(13,13,13,0.92) 100%)",
+            }}
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 hidden md:block"
+            style={{
+              background:
+                "linear-gradient(100deg, rgba(13,13,13,0.85) 0%, rgba(13,13,13,0.55) 45%, rgba(13,13,13,0.15) 75%, transparent 100%)",
+            }}
           />
         </div>
-        <div className="relative mx-auto flex min-h-screen w-[min(1280px,calc(100%-2rem))] items-end pb-12 pt-28 md:pb-20 md:pt-32">
-          <div className="grid w-full gap-6 2xl:grid-cols-[1.05fr_0.95fr] 2xl:items-end">
-            <div className="space-y-6">
-              <p data-hero-kicker className="eyebrow eyebrow--light">Economía circular con escala industrial</p>
-              <h1 data-hero-title className="max-w-4xl text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-6xl xl:text-7xl 2xl:text-[5.2rem]">
-                Transformamos residuos en oportunidades.
-              </h1>
+
+        <div className="relative mx-auto flex min-h-[100svh] w-[min(1280px,calc(100%-2rem))] flex-col justify-end pb-10 pt-28 md:justify-between md:pb-16 md:pt-36">
+          <div data-hero-kicker className="hidden items-center gap-3 md:flex">
+            <span className="h-[2px] w-10 bg-[var(--brand-lime)]" />
+            <span className="text-[0.7rem] font-black uppercase tracking-[0.32em] text-[var(--brand-lime)]">
+              Economía circular · Escala industrial
+            </span>
+          </div>
+
+          <div className="max-w-3xl space-y-6 md:mt-auto md:pb-10">
+            <span
+              data-hero-kicker
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.08] px-3 py-1.5 text-[0.62rem] font-black uppercase tracking-[0.22em] text-[var(--brand-lime)] backdrop-blur md:hidden"
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-lime)]" /> Economía circular
+            </span>
+            <h1
+              data-hero-title
+              className="text-balance text-[2.5rem] font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl xl:text-[5.5rem]"
+              style={{ textShadow: "0 2px 30px rgba(0,0,0,0.55)" }}
+            >
+              Transformamos residuos en{" "}
+              <span className="italic text-[var(--brand-lime)]">oportunidades</span>.
+            </h1>
+            <p
+              data-hero-copy
+              className="max-w-xl text-base leading-7 text-white/85 md:text-lg md:leading-8"
+              style={{ textShadow: "0 2px 14px rgba(0,0,0,0.55)" }}
+            >
+              Recuperamos, procesamos y valorizamos materiales junto a recolectores, empresas y comunidades para reincorporarlos a la economía.
+            </p>
+            <div data-hero-actions className="flex flex-wrap gap-3 pt-2">
+              <a href={whatsappHref} target="_blank" rel="noreferrer">
+                <Button variant="hero" size="lg">Cotizar por WhatsApp</Button>
+              </a>
+              <Link to="/servicios">
+                <Button variant="heroSecondary" size="lg">Ver servicios</Button>
+              </Link>
             </div>
-            <HeroStats />
+          </div>
+
+          <div
+            data-hero-stat
+            className="mt-10 grid grid-cols-1 divide-y divide-white/15 overflow-hidden rounded-2xl border border-white/15 bg-white/[0.06] backdrop-blur-md sm:grid-cols-3 sm:divide-x sm:divide-y-0"
+          >
+            {pivStats.map((item, i) => (
+              <div key={item.label} className="flex flex-col gap-2 p-5 md:p-6">
+                <span className="text-[0.6rem] font-black uppercase tracking-[0.22em] text-[var(--brand-lime)]">
+                  {String(i + 1).padStart(2, "0")} · {item.suffix.trim()}
+                </span>
+                <span className="text-4xl font-semibold leading-none tracking-tight text-white md:text-5xl">
+                  {item.prefix}
+                  {formatMetric(item.value)}
+                </span>
+                <span className="text-sm leading-6 text-white/75">{item.label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
+
 
 
       <Section
@@ -1310,13 +1374,6 @@ export function HomePage() {
         description="Trabajamos con recolectores base, empresas, instituciones, industrias y comercios que buscan implementar prácticas más responsables en el manejo de materiales reciclables."
       >
         <AudienceStrip />
-        <div data-reveal className="mt-10 flex justify-center md:justify-start">
-          <ReciclinMascot
-            size="md"
-            tone="white"
-            message={<>¿No sabés en qué grupo entrás? <strong>Yo te oriento</strong> en segundos.</>}
-          />
-        </div>
       </Section>
 
 
@@ -1328,31 +1385,26 @@ export function HomePage() {
         <ServicesGrid />
       </Section>
 
-      <section
-        className="relative overflow-hidden py-20 md:py-28"
-        style={{
-          background:
-            "linear-gradient(135deg, var(--brand-navy) 0%, color-mix(in oklab, var(--brand-teal) 70%, var(--brand-navy)) 100%)",
-        }}
-      >
+      <section className="relative overflow-hidden bg-white py-20 md:py-28">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-25"
+          className="pointer-events-none absolute inset-0 opacity-40"
           style={{
             background:
-              "radial-gradient(600px 300px at 15% 20%, var(--brand-lime) 0%, transparent 60%), radial-gradient(700px 350px at 85% 85%, var(--brand-sky) 0%, transparent 60%)",
+              "radial-gradient(600px 320px at 12% 15%, color-mix(in oklab, var(--brand-lime) 35%, transparent) 0%, transparent 65%), radial-gradient(700px 380px at 88% 90%, color-mix(in oklab, var(--brand-sky) 45%, transparent) 0%, transparent 65%)",
           }}
         />
         <div className="relative mx-auto flex w-[min(1280px,calc(100%-2rem))] flex-col">
-          <p className="eyebrow eyebrow--light">Territorio</p>
-          <h3 className="mt-3 max-w-2xl text-balance text-3xl font-semibold tracking-tight text-white md:text-5xl">
+          <p className="eyebrow">Territorio</p>
+          <h3 className="mt-3 max-w-2xl text-balance text-3xl font-semibold tracking-tight text-[var(--brand-navy)] md:text-5xl">
             Brindamos cobertura en diferentes zonas del país.
           </h3>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-white/85 md:text-lg">
+          <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
             Nuestros servicios de recuperación y manejo de materiales llegan de forma oportuna a quienes desean disponer de sus materiales de manera responsable y eficiente.
           </p>
         </div>
       </section>
+
 
 
       <section className="relative overflow-hidden py-24 md:py-32">
@@ -1542,22 +1594,53 @@ export function AboutPage() {
           </div>
         </div>
       </Section>
-      <Section
-        eyebrow="Propósito"
-        title="Convertir cada material reciclable en una oportunidad para generar un impacto positivo."
-        description="PIV articula tecnología, experiencia y una red de recuperación para convertir desechos en valor verificable."
-      >
-        <div className="mt-14 grid gap-6 lg:grid-cols-2">
-          <article data-reveal className="editorial-panel editorial-panel--teal">
-            <p className="eyebrow">Misión</p>
-            <p className="mt-6 text-xl leading-9">Ser una empresa líder en el mercado nacional del reciclaje de materiales, haciendo de los desechos una fuente de protección ambiental e incentivando prácticas responsables.</p>
-          </article>
-          <article data-reveal className="editorial-panel editorial-panel--lime">
-            <p className="eyebrow">Visión</p>
-            <p className="mt-6 text-xl leading-9">Ser reconocidos como la empresa de reciclaje más grande y confiable de El Salvador.</p>
-          </article>
+      <section className="relative overflow-hidden py-24 md:py-32">
+        <img
+          src={propositoAsset.url}
+          alt="Propósito de Parque Industrial Verde: intercambio de un equipo electrónico por una planta como símbolo del ciclo de valor"
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="lazy"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(115deg, color-mix(in oklab, var(--brand-ink) 88%, transparent) 0%, color-mix(in oklab, var(--brand-navy) 78%, transparent) 45%, color-mix(in oklab, var(--brand-ink) 35%, transparent) 100%)",
+          }}
+        />
+        <div className="relative mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div data-reveal className="max-w-2xl text-white">
+            <p className="eyebrow eyebrow--light">Propósito</p>
+            <h2
+              className="mt-4 text-balance text-4xl font-semibold tracking-tight md:text-6xl"
+              style={{ textShadow: "0 2px 24px rgba(0,0,0,0.6)" }}
+            >
+              Convertir cada material reciclable en una oportunidad para generar un impacto positivo.
+            </h2>
+            <p
+              className="mt-6 max-w-xl text-base leading-8 text-white/90 md:text-lg"
+              style={{ textShadow: "0 2px 14px rgba(0,0,0,0.55)" }}
+            >
+              PIV articula tecnología, experiencia y una red de recuperación para convertir desechos en valor verificable.
+            </p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <article data-reveal className="rounded-2xl border border-white/15 bg-white/[0.08] p-6 text-white backdrop-blur-md">
+              <p className="text-[0.62rem] font-black uppercase tracking-[0.22em] text-[var(--brand-lime)]">Misión</p>
+              <p className="mt-4 text-sm leading-7 md:text-base">
+                Ser una empresa líder en el mercado nacional del reciclaje de materiales, haciendo de los desechos una fuente de protección ambiental e incentivando prácticas responsables.
+              </p>
+            </article>
+            <article data-reveal className="rounded-2xl border border-white/15 bg-white/[0.08] p-6 text-white backdrop-blur-md">
+              <p className="text-[0.62rem] font-black uppercase tracking-[0.22em] text-[var(--brand-lime)]">Visión</p>
+              <p className="mt-4 text-sm leading-7 md:text-base">
+                Ser reconocidos como la empresa de reciclaje más grande y confiable de El Salvador.
+              </p>
+            </article>
+          </div>
         </div>
-      </Section>
+      </section>
       <Section
         eyebrow="Escala"
         title="Recuperación con impacto medible."
@@ -1587,23 +1670,7 @@ export function AboutPage() {
           </div>
         </div>
       </section>
-      <Section
-        eyebrow="Confianza"
-        title="El liderazgo se construye con capacidad real de respuesta."
-        description="Procesos transparentes, cobertura nacional e infraestructura hacen posible una ejecución constante."
-      >
-        <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {trustPillars.map((item, i) => {
-            const tones = ["bg-[var(--brand-teal)] text-white", "bg-[var(--brand-lime)] text-[var(--brand-ink)]", "bg-[var(--brand-navy)] text-white", "bg-[var(--brand-sky)] text-[var(--brand-navy)]"];
-            return (
-              <article key={item} data-reveal className={cn("rounded-3xl p-6 shadow-[var(--shadow-elevated)]", tones[i % tones.length])}>
-                <ShieldCheck className="h-6 w-6" />
-                <p className="mt-6 text-base font-semibold leading-7">{item}</p>
-              </article>
-            );
-          })}
-        </div>
-      </Section>
+
     </PageShell>
   );
 }
