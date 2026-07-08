@@ -1077,6 +1077,7 @@ function TimelineRail() {
                     )}
                   >
                     <div
+                      data-tl-media
                       className={cn(
                         "grid gap-3",
                         media.images.length === 2 ? "grid-cols-2" : "grid-cols-1",
