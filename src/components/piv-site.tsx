@@ -980,12 +980,14 @@ function TimelineRail() {
               return (
                 <article
                   key={item.year}
-                  data-reveal
+                  data-tl-item
+                  data-tl-side={isRight ? "right" : "left"}
                   className="relative grid gap-10 md:grid-cols-2 md:items-center md:gap-16"
                 >
                   {/* Node on spine */}
                   <div
                     aria-hidden
+                    data-tl-node
                     className="absolute left-4 top-4 z-10 -translate-x-1/2 md:left-1/2 md:top-1/2 md:-translate-y-1/2"
                   >
                     <div className="relative">
