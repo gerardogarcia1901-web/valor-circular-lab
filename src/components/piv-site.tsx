@@ -843,6 +843,86 @@ const TIMELINE_MEDIA = [
 ];
 
 function TimelineRail() {
+  const rootRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const scope = rootRef.current;
+    if (!scope || typeof window === "undefined") return;
+
+    const ctx = gsap.context(() => {
+      // Draw the spine as user scrolls
+      const spine = scope.querySelector<HTMLDivElement>("[data-tl-spine]");
+      if (spine) {
+        gsap.fromTo(
+          spine,
+          { scaleY: 0, transformOrigin: "top center" },
+          {
+            scaleY: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: scope,
+              start: "top 70%",
+              end: "bottom 80%",
+              scrub: 0.6,
+            },
+          },
+        );
+      }
+
+      // Animate each timeline article: card + image side + node pop
+      scope.querySelectorAll<HTMLElement>("[data-tl-item]").forEach((el) => {
+        const card = el.querySelector<HTMLElement>("[data-tl-card]");
+        const media = el.querySelector<HTMLElement>("[data-tl-media]");
+        const node = el.querySelector<HTMLElement>("[data-tl-node]");
+        const images = el.querySelectorAll<HTMLElement>("[data-tl-img]");
+        const isRight = el.dataset.tlSide === "right";
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: el,
+            start: "top 78%",
+            once: true,
+          },
+        });
+
+        if (node) {
+          tl.fromTo(
+            node,
+            { scale: 0, rotate: -90, opacity: 0 },
+            { scale: 1, rotate: 0, opacity: 1, duration: 0.7, ease: "back.out(2)" },
+            0,
+          );
+        }
+        if (card) {
+          tl.fromTo(
+            card,
+            { x: isRight ? 60 : -60, y: 30, opacity: 0 },
+            { x: 0, y: 0, opacity: 1, duration: 0.9, ease: "power3.out" },
+            0.1,
+          );
+        }
+        if (media) {
+          tl.fromTo(
+            media,
+            { x: isRight ? -60 : 60, y: 30, opacity: 0 },
+            { x: 0, y: 0, opacity: 1, duration: 0.9, ease: "power3.out" },
+            0.15,
+          );
+        }
+        if (images.length) {
+          tl.fromTo(
+            images,
+            { scale: 1.15, opacity: 0 },
+            { scale: 1, opacity: 1, duration: 1, ease: "power2.out", stagger: 0.12 },
+            0.25,
+          );
+        }
+      });
+    }, scope);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
       className="relative overflow-hidden py-24 md:py-32"
