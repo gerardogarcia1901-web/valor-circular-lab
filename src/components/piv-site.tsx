@@ -1861,23 +1861,6 @@ export function RsePage() {
           </p>
         )}
       </Section>
-      <Section
-        eyebrow="Impacto social"
-        title="La economía circular también se construye desde la calle, la escuela y la costa."
-        description="PIV trabaja con comunidades, empresas y territorios para activar hábitos, infraestructura y alianzas que multipliquen el efecto del reciclaje."
-        className="bg-panel-subtle"
-      >
-        <div className="mt-14 grid gap-6 lg:grid-cols-[1fr_0.9fr]">
-          <img data-reveal src={alliesAsset.url} alt="Personas colaboradoras y aliadas participando en una iniciativa de Parque Industrial Verde" className="image-tile h-[460px]" loading="lazy" />
-          <div className="grid gap-4">
-            {communityActions.map((item) => (
-              <article key={item} data-reveal className="surface-panel">
-                <p className="text-lg font-medium text-foreground">{item}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </Section>
     </PageShell>
   );
 }
