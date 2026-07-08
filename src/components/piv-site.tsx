@@ -253,7 +253,7 @@ function PageShell({ children }: { children: ReactNode }) {
     <div className="bg-background text-foreground">
       <SiteHeader />
       <main ref={pageRef}>{children}</main>
-      <NewsletterSection />
+      
       <SiteFooter />
       <WhatsAppBubble />
       <ReciclinHelper />
