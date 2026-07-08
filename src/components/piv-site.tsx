@@ -1334,31 +1334,26 @@ export function HomePage() {
         <ServicesGrid />
       </Section>
 
-      <section
-        className="relative overflow-hidden py-20 md:py-28"
-        style={{
-          background:
-            "linear-gradient(135deg, var(--brand-navy) 0%, color-mix(in oklab, var(--brand-teal) 70%, var(--brand-navy)) 100%)",
-        }}
-      >
+      <section className="relative overflow-hidden bg-white py-20 md:py-28">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-25"
+          className="pointer-events-none absolute inset-0 opacity-40"
           style={{
             background:
-              "radial-gradient(600px 300px at 15% 20%, var(--brand-lime) 0%, transparent 60%), radial-gradient(700px 350px at 85% 85%, var(--brand-sky) 0%, transparent 60%)",
+              "radial-gradient(600px 320px at 12% 15%, color-mix(in oklab, var(--brand-lime) 35%, transparent) 0%, transparent 65%), radial-gradient(700px 380px at 88% 90%, color-mix(in oklab, var(--brand-sky) 45%, transparent) 0%, transparent 65%)",
           }}
         />
         <div className="relative mx-auto flex w-[min(1280px,calc(100%-2rem))] flex-col">
-          <p className="eyebrow eyebrow--light">Territorio</p>
-          <h3 className="mt-3 max-w-2xl text-balance text-3xl font-semibold tracking-tight text-white md:text-5xl">
+          <p className="eyebrow">Territorio</p>
+          <h3 className="mt-3 max-w-2xl text-balance text-3xl font-semibold tracking-tight text-[var(--brand-navy)] md:text-5xl">
             Brindamos cobertura en diferentes zonas del país.
           </h3>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-white/85 md:text-lg">
+          <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
             Nuestros servicios de recuperación y manejo de materiales llegan de forma oportuna a quienes desean disponer de sus materiales de manera responsable y eficiente.
           </p>
         </div>
       </section>
+
 
 
       <section className="relative overflow-hidden py-24 md:py-32">
