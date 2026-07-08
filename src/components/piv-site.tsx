@@ -925,6 +925,7 @@ function TimelineRail() {
 
   return (
     <section
+      ref={rootRef}
       className="relative overflow-hidden py-24 md:py-32"
       style={{
         background:
