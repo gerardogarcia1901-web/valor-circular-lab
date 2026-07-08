@@ -1323,13 +1323,6 @@ export function HomePage() {
         description="Trabajamos con recolectores base, empresas, instituciones, industrias y comercios que buscan implementar prácticas más responsables en el manejo de materiales reciclables."
       >
         <AudienceStrip />
-        <div data-reveal className="mt-10 flex justify-center md:justify-start">
-          <ReciclinMascot
-            size="md"
-            tone="white"
-            message={<>¿No sabés en qué grupo entrás? <strong>Yo te oriento</strong> en segundos.</>}
-          />
-        </div>
       </Section>
 
 
