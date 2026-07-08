@@ -335,12 +335,7 @@ function SiteHeader() {
             onClick={() => setMobileOpen((v) => !v)}
             aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={mobileOpen}
-            className={cn(
-              "lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border transition-colors",
-              scrolled || mobileOpen
-                ? "border-[var(--brand-navy)]/20 bg-white text-[var(--brand-navy)]"
-                : "border-white/30 bg-white/15 text-white backdrop-blur",
-            )}
+            className="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--brand-navy)]/20 bg-white text-[var(--brand-navy)] shadow-[0_6px_18px_-6px_rgba(0,0,0,0.35)] transition-colors hover:bg-[var(--brand-lime)]"
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
           </button>
