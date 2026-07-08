@@ -1244,44 +1244,81 @@ export function HomePage() {
         <ServicesGrid />
       </Section>
 
-      <section className="relative h-[520px] w-full overflow-hidden md:h-[620px]">
-        <img src={beachAsset.url} alt="Jornada de recuperación de materiales en zona costera de El Salvador" className="h-full w-full object-cover object-[center_35%] md:object-[center_40%]" loading="lazy" />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, color-mix(in oklab, var(--brand-ink) 25%, transparent) 0%, color-mix(in oklab, var(--brand-ink) 55%, transparent) 45%, color-mix(in oklab, var(--brand-ink) 88%, transparent) 100%)" }} />
-        <div className="absolute inset-0 mx-auto flex w-[min(1280px,calc(100%-2rem))] flex-col justify-end pb-12 md:pb-16">
+      <section
+        className="relative overflow-hidden py-20 md:py-28"
+        style={{
+          background:
+            "linear-gradient(135deg, var(--brand-navy) 0%, color-mix(in oklab, var(--brand-teal) 70%, var(--brand-navy)) 100%)",
+        }}
+      >
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-25"
+          style={{
+            background:
+              "radial-gradient(600px 300px at 15% 20%, var(--brand-lime) 0%, transparent 60%), radial-gradient(700px 350px at 85% 85%, var(--brand-sky) 0%, transparent 60%)",
+          }}
+        />
+        <div className="relative mx-auto flex w-[min(1280px,calc(100%-2rem))] flex-col">
           <p className="eyebrow eyebrow--light">Territorio</p>
-          <h3 className="mt-3 max-w-2xl text-balance text-3xl font-semibold tracking-tight text-white md:text-5xl" style={{ textShadow: "0 2px 18px rgba(0,0,0,0.55)" }}>Brindamos cobertura en diferentes zonas del país.</h3>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-white md:text-lg" style={{ textShadow: "0 2px 14px rgba(0,0,0,0.6)" }}>
+          <h3 className="mt-3 max-w-2xl text-balance text-3xl font-semibold tracking-tight text-white md:text-5xl">
+            Brindamos cobertura en diferentes zonas del país.
+          </h3>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-white/85 md:text-lg">
             Nuestros servicios de recuperación y manejo de materiales llegan de forma oportuna a quienes desean disponer de sus materiales de manera responsable y eficiente.
           </p>
         </div>
       </section>
 
 
+      <section className="relative overflow-hidden py-24 md:py-32">
+        <img
+          src={alcanceAsset.url}
+          alt="Alcance internacional de Parque Industrial Verde: fardos de aluminio compactado listos para exportación"
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="lazy"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(120deg, color-mix(in oklab, var(--brand-ink) 82%, transparent) 0%, color-mix(in oklab, var(--brand-navy) 65%, transparent) 55%, color-mix(in oklab, var(--brand-ink) 40%, transparent) 100%)",
+          }}
+        />
+        <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] text-white">
+          <div data-reveal className="max-w-3xl space-y-6">
+            <p className="eyebrow eyebrow--light">Alcance</p>
+            <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl" style={{ textShadow: "0 2px 24px rgba(0,0,0,0.55)" }}>
+              Nuestro trabajo trasciende fronteras.
+            </h2>
+            <p className="max-w-2xl text-base leading-8 text-white/90 md:text-lg" style={{ textShadow: "0 2px 14px rgba(0,0,0,0.55)" }}>
+              Llevamos materiales reciclables a diferentes regiones del mundo, donde continúan su aprovechamiento, contribuyendo a su incorporación en cadenas globales de valor.
+            </p>
+          </div>
 
-
-
-
-      <Section
-        eyebrow="Alcance"
-        title="Nuestro trabajo trasciende fronteras."
-        description="Llevamos materiales reciclables a diferentes regiones del mundo, donde continúan su aprovechamiento, contribuyendo a su incorporación en cadenas globales de valor."
-
-      >
-        <div className="mt-12 flex flex-wrap items-baseline gap-x-10 gap-y-4 md:gap-x-14">
-          {exportRegions.map((region, i) => (
-            <span
-              key={region}
-              data-reveal
-              className="text-xl font-semibold tracking-tight text-[var(--brand-navy)] md:text-3xl"
-            >
-              {region}
-              {i < exportRegions.length - 1 ? (
-                <span aria-hidden className="ml-10 hidden text-[var(--brand-teal)] md:ml-14 md:inline">·</span>
-              ) : null}
-            </span>
-          ))}
+          <div className="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-3 md:mt-20 md:grid-cols-5">
+            {exportRegions.map((region, i) => (
+              <div
+                key={region}
+                data-reveal
+                className="group relative overflow-hidden rounded-2xl border border-white/15 bg-white/[0.06] p-5 backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-[var(--brand-lime)]/60 hover:bg-white/[0.14]"
+              >
+                <span className="block text-[0.65rem] font-black uppercase tracking-[0.28em] text-[var(--brand-lime)]">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="mt-3 block text-lg font-semibold tracking-tight text-white md:text-xl">
+                  {region}
+                </span>
+                <span
+                  aria-hidden
+                  className="absolute inset-x-5 bottom-4 h-[2px] origin-left scale-x-0 bg-[var(--brand-lime)] transition-transform duration-500 group-hover:scale-x-100"
+                />
+              </div>
+            ))}
+          </div>
         </div>
-      </Section>
+      </section>
 
       <TimelineRail />
 
