@@ -51,6 +51,14 @@ import servicio7Asset from "@/assets/services/servicio-7.jpg.asset.json";
 import servicio8Asset from "@/assets/services/servicio-8.jpg.asset.json";
 import servicio9Asset from "@/assets/services/servicio-9.jpg.asset.json";
 import servicio10Asset from "@/assets/services/servicio-10.jpg.asset.json";
+import insemaLogo from "@/assets/timeline/insema-logo.png.asset.json";
+import zartexLogo from "@/assets/timeline/zartex-logo.png.asset.json";
+import pivLogoFull from "@/assets/timeline/piv-logo-full.png.asset.json";
+import insema1 from "@/assets/timeline/insema-1.jpg.asset.json";
+import insema2 from "@/assets/timeline/insema-2.jpg.asset.json";
+import zartex1 from "@/assets/timeline/zartex-1.jpg.asset.json";
+import zartex2 from "@/assets/timeline/zartex-2.jpg.asset.json";
+import piv1 from "@/assets/timeline/piv-1.jpg.asset.json";
 import {
   
   audience,
