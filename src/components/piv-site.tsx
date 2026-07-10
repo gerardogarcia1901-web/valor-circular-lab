@@ -1363,7 +1363,7 @@ export function HomePage() {
       <Section
         eyebrow="Para quién"
         title="Trabajamos con recolectores base, empresas, instituciones, industrias, comercios que buscan implementar prácticas más responsables en el manejo de materiales reciclables."
-        titleClassName="text-2xl leading-snug md:text-4xl"
+        titleClassName="text-3xl leading-snug md:text-5xl"
         containerClassName="max-w-4xl"
       >
         <AudienceStrip />
