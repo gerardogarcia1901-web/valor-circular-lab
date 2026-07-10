@@ -1479,7 +1479,7 @@ export function HomePage() {
           <div data-reveal className="mx-auto max-w-3xl space-y-6 text-white">
             <p className="eyebrow eyebrow--light justify-center">Hablemos</p>
             <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl">
-              Diseñemos la ruta circular de tu operación.
+              Encuentra una solución integral para el manejo de tus residuos.
             </h2>
             <div className="flex flex-wrap justify-center gap-3 pt-2">
               <a href={whatsappHref} target="_blank" rel="noreferrer">
