@@ -1128,8 +1128,8 @@ function FAQSection() {
   return (
     <Section
       eyebrow="FAQ"
-      title="La claridad operativa también construye confianza."
-      description="Respuestas rápidas para empresas, campañas y personas que buscan una gestión responsable de sus materiales."
+      title="Detrás de cada material recuperado hay un servicio que responde, acompaña y genera confianza."
+      description="Trabajamos para ofrecer soluciones ágiles a empresas y personas comprometidas con el reciclaje."
     >
       <div className="mt-12 grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
         <div data-reveal className="space-y-6">
