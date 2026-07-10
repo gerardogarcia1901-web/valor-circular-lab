@@ -1750,10 +1750,10 @@ export function MaterialsPage() {
           <div data-reveal className="space-y-6 text-white">
             <p className="eyebrow eyebrow--light">Materiales</p>
             <h1 className="text-balance text-5xl font-semibold tracking-tight md:text-7xl">
-              Cada material recuperado <span className="text-[var(--brand-lime)]">vuelve a la economía.</span>
+              Cada material recuperado <span className="text-[var(--brand-lime)]">vuelve a ser parte de nuevos procesos.</span>
             </h1>
             <p className="max-w-xl text-base leading-7 text-white/85">
-              Clasificamos materiales según tipología, condición y ruta de valorización. Cuando corresponde, gestionamos disposición responsable por cobro.
+              Clasificamos cada material de acuerdo con sus características para darle el manejo adecuado, ya sea mediante aprovechamiento o disposición final responsable.
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
               <a href={whatsappHref} target="_blank" rel="noreferrer"><Button variant="hero" size="xl">Cotizar</Button></a>
