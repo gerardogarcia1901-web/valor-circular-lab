@@ -1128,8 +1128,8 @@ function FAQSection() {
   return (
     <Section
       eyebrow="FAQ"
-      title="La claridad operativa también construye confianza."
-      description="Respuestas rápidas para empresas, campañas y personas que buscan una gestión responsable de sus materiales."
+      title="Detrás de cada material recuperado hay un servicio que responde, acompaña y genera confianza."
+      description="Trabajamos para ofrecer soluciones ágiles a empresas y personas comprometidas con el reciclaje."
     >
       <div className="mt-12 grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
         <div data-reveal className="space-y-6">
@@ -1319,12 +1319,9 @@ export function HomePage() {
               className="max-w-xl text-base leading-7 text-white/85 md:text-lg md:leading-8"
               style={{ textShadow: "0 2px 14px rgba(0,0,0,0.55)" }}
             >
-              Recuperamos, procesamos y valorizamos materiales junto a recolectores, empresas y comunidades para reincorporarlos a la economía.
+              Impulsamos el aprovechamiento de materiales reciclables mediante su recuperación, procesamiento y valorización, en alianza con recolectores, empresas y comunidades.
             </p>
             <div data-hero-actions className="flex flex-wrap gap-3 pt-2">
-              <a href={whatsappHref} target="_blank" rel="noreferrer">
-                <Button variant="hero" size="lg">Cotizar por WhatsApp</Button>
-              </a>
               <Link to="/servicios">
                 <Button variant="heroSecondary" size="lg">Ver servicios</Button>
               </Link>
@@ -1365,8 +1362,7 @@ export function HomePage() {
 
       <Section
         eyebrow="Para quién"
-        title="Trabajamos junto a quienes necesitan gestionar sus residuos con criterio operativo y responsabilidad real."
-        description="Trabajamos con recolectores base, empresas, instituciones, industrias y comercios que buscan implementar prácticas más responsables en el manejo de materiales reciclables."
+        title="Trabajamos con recolectores base, empresas, instituciones, industrias, comercios que buscan implementar prácticas más responsables en el manejo de materiales reciclables."
       >
         <AudienceStrip />
       </Section>
@@ -1374,7 +1370,7 @@ export function HomePage() {
 
       <Section
         eyebrow="Servicios destacados"
-        title="Soluciones ambientales diseñadas para generar impacto."
+        title="Soluciones integrales que facilitan la recuperación, clasificación y valorización de materiales."
         description="Desde recuperación de materiales hasta destrucción certificada y trazabilidad digital, cada servicio está pensado para integrarse a operaciones reales."
       >
         <ServicesGrid />
@@ -1483,7 +1479,7 @@ export function HomePage() {
           <div data-reveal className="mx-auto max-w-3xl space-y-6 text-white">
             <p className="eyebrow eyebrow--light justify-center">Hablemos</p>
             <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl">
-              Diseñemos la ruta circular de tu operación.
+              Encuentra una solución integral para el manejo de tus residuos.
             </h2>
             <div className="flex flex-wrap justify-center gap-3 pt-2">
               <a href={whatsappHref} target="_blank" rel="noreferrer">
@@ -1677,9 +1673,9 @@ export function ServicesPage() {
         <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div data-reveal className="space-y-6">
             <p className="eyebrow">Servicios</p>
-            <h1 className="text-balance text-5xl font-semibold tracking-tight md:text-7xl">Soluciones ambientales diseñadas para generar impacto.</h1>
+            <h1 className="text-balance text-5xl font-semibold tracking-tight md:text-7xl">Soluciones integrales que facilitan la recuperación, clasificación y valorización de materiales.</h1>
             <p className="max-w-2xl text-lg leading-8 text-muted-foreground">
-              Diseñamos operaciones para recuperar valor, asegurar trazabilidad y facilitar decisiones ambientales con respaldo documental y capacidad industrial.
+              Brindamos soluciones que garantizan la recuperación de materiales, la trazabilidad de los procesos y el respaldo necesario para una gestión responsable.
             </p>
             <div className="flex flex-wrap gap-3">
               <a href={whatsappHref} target="_blank" rel="noreferrer"><Button variant="primary" size="lg">Cotizar</Button></a>
@@ -1754,10 +1750,10 @@ export function MaterialsPage() {
           <div data-reveal className="space-y-6 text-white">
             <p className="eyebrow eyebrow--light">Materiales</p>
             <h1 className="text-balance text-5xl font-semibold tracking-tight md:text-7xl">
-              Cada material recuperado <span className="text-[var(--brand-lime)]">vuelve a la economía.</span>
+              Cada material recuperado <span className="text-[var(--brand-lime)]">vuelve a ser parte de nuevos procesos.</span>
             </h1>
             <p className="max-w-xl text-base leading-7 text-white/85">
-              Clasificamos materiales según tipología, condición y ruta de valorización. Cuando corresponde, gestionamos disposición responsable por cobro.
+              Clasificamos cada material de acuerdo con sus características para darle el manejo adecuado, ya sea mediante aprovechamiento o disposición final responsable.
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
               <a href={whatsappHref} target="_blank" rel="noreferrer"><Button variant="hero" size="xl">Cotizar</Button></a>
