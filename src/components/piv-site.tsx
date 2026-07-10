@@ -1673,9 +1673,9 @@ export function ServicesPage() {
         <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div data-reveal className="space-y-6">
             <p className="eyebrow">Servicios</p>
-            <h1 className="text-balance text-5xl font-semibold tracking-tight md:text-7xl">Soluciones ambientales diseñadas para generar impacto.</h1>
+            <h1 className="text-balance text-5xl font-semibold tracking-tight md:text-7xl">Soluciones integrales que facilitan la recuperación, clasificación y valorización de materiales.</h1>
             <p className="max-w-2xl text-lg leading-8 text-muted-foreground">
-              Diseñamos operaciones para recuperar valor, asegurar trazabilidad y facilitar decisiones ambientales con respaldo documental y capacidad industrial.
+              Brindamos soluciones que garantizan la recuperación de materiales, la trazabilidad de los procesos y el respaldo necesario para una gestión responsable.
             </p>
             <div className="flex flex-wrap gap-3">
               <a href={whatsappHref} target="_blank" rel="noreferrer"><Button variant="primary" size="lg">Cotizar</Button></a>
