@@ -1319,12 +1319,9 @@ export function HomePage() {
               className="max-w-xl text-base leading-7 text-white/85 md:text-lg md:leading-8"
               style={{ textShadow: "0 2px 14px rgba(0,0,0,0.55)" }}
             >
-              Recuperamos, procesamos y valorizamos materiales junto a recolectores, empresas y comunidades para reincorporarlos a la economía.
+              Impulsamos el aprovechamiento de materiales reciclables mediante su recuperación, procesamiento y valorización, en alianza con recolectores, empresas y comunidades.
             </p>
             <div data-hero-actions className="flex flex-wrap gap-3 pt-2">
-              <a href={whatsappHref} target="_blank" rel="noreferrer">
-                <Button variant="hero" size="lg">Cotizar por WhatsApp</Button>
-              </a>
               <Link to="/servicios">
                 <Button variant="heroSecondary" size="lg">Ver servicios</Button>
               </Link>
