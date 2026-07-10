@@ -1373,7 +1373,7 @@ export function HomePage() {
       <Section
         eyebrow="Servicios destacados"
         title="Soluciones integrales que facilitan la recuperación, clasificación y valorización de materiales."
-        titleClassName="text-2xl leading-snug md:text-4xl"
+        titleClassName="text-3xl leading-snug md:text-5xl"
         containerClassName="max-w-4xl"
         description="Desde recuperación de materiales hasta destrucción certificada y trazabilidad digital, cada servicio está pensado para integrarse a operaciones reales."
       >
