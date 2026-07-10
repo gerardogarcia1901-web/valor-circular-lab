@@ -1363,6 +1363,8 @@ export function HomePage() {
       <Section
         eyebrow="Para quién"
         title="Trabajamos con recolectores base, empresas, instituciones, industrias, comercios que buscan implementar prácticas más responsables en el manejo de materiales reciclables."
+        titleClassName="text-2xl leading-snug md:text-4xl"
+        containerClassName="max-w-4xl"
       >
         <AudienceStrip />
       </Section>
@@ -1371,6 +1373,8 @@ export function HomePage() {
       <Section
         eyebrow="Servicios destacados"
         title="Soluciones integrales que facilitan la recuperación, clasificación y valorización de materiales."
+        titleClassName="text-2xl leading-snug md:text-4xl"
+        containerClassName="max-w-4xl"
         description="Desde recuperación de materiales hasta destrucción certificada y trazabilidad digital, cada servicio está pensado para integrarse a operaciones reales."
       >
         <ServicesGrid />
