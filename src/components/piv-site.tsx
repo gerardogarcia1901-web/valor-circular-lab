@@ -433,13 +433,13 @@ function WhatsAppBubble() {
   );
 }
 
-function Section({ eyebrow, title, description, children, className }: { eyebrow?: string; title: string; description?: ReactNode; children?: ReactNode; className?: string; }) {
+function Section({ eyebrow, title, description, children, className, titleClassName, containerClassName }: { eyebrow?: string; title: string; description?: ReactNode; children?: ReactNode; className?: string; titleClassName?: string; containerClassName?: string; }) {
   return (
     <section className={cn("py-20 md:py-28", className)}>
       <div className="mx-auto w-[min(1280px,calc(100%-2rem))]">
-        <div data-reveal className="max-w-3xl space-y-5">
+        <div data-reveal className={cn("max-w-3xl space-y-5", containerClassName)}>
           {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
-          <h2 className="text-balance text-4xl font-semibold tracking-tight text-foreground md:text-6xl">{title}</h2>
+          <h2 className={cn("text-balance text-4xl font-semibold tracking-tight text-foreground md:text-6xl", titleClassName)}>{title}</h2>
           {description ? <p className="max-w-2xl text-lg leading-8 text-muted-foreground">{description}</p> : null}
         </div>
         {children}
@@ -1363,6 +1363,8 @@ export function HomePage() {
       <Section
         eyebrow="Para quién"
         title="Trabajamos con recolectores base, empresas, instituciones, industrias, comercios que buscan implementar prácticas más responsables en el manejo de materiales reciclables."
+        titleClassName="text-2xl leading-snug md:text-4xl"
+        containerClassName="max-w-4xl"
       >
         <AudienceStrip />
       </Section>
@@ -1371,6 +1373,8 @@ export function HomePage() {
       <Section
         eyebrow="Servicios destacados"
         title="Soluciones integrales que facilitan la recuperación, clasificación y valorización de materiales."
+        titleClassName="text-2xl leading-snug md:text-4xl"
+        containerClassName="max-w-4xl"
         description="Desde recuperación de materiales hasta destrucción certificada y trazabilidad digital, cada servicio está pensado para integrarse a operaciones reales."
       >
         <ServicesGrid />
@@ -1673,7 +1677,7 @@ export function ServicesPage() {
         <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div data-reveal className="space-y-6">
             <p className="eyebrow">Servicios</p>
-            <h1 className="text-balance text-5xl font-semibold tracking-tight md:text-7xl">Soluciones integrales que facilitan la recuperación, clasificación y valorización de materiales.</h1>
+            <h1 className="text-balance text-3xl font-semibold leading-tight tracking-tight md:text-5xl">Soluciones integrales que facilitan la recuperación, clasificación y valorización de materiales.</h1>
             <p className="max-w-2xl text-lg leading-8 text-muted-foreground">
               Brindamos soluciones que garantizan la recuperación de materiales, la trazabilidad de los procesos y el respaldo necesario para una gestión responsable.
             </p>
