@@ -1362,8 +1362,7 @@ export function HomePage() {
 
       <Section
         eyebrow="Para quién"
-        title="Trabajamos junto a quienes necesitan gestionar sus residuos con criterio operativo y responsabilidad real."
-        description="Trabajamos con recolectores base, empresas, instituciones, industrias y comercios que buscan implementar prácticas más responsables en el manejo de materiales reciclables."
+        title="Trabajamos con recolectores base, empresas, instituciones, industrias, comercios que buscan implementar prácticas más responsables en el manejo de materiales reciclables."
       >
         <AudienceStrip />
       </Section>
