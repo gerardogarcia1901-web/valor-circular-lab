@@ -1370,7 +1370,7 @@ export function HomePage() {
 
       <Section
         eyebrow="Servicios destacados"
-        title="Soluciones ambientales diseñadas para generar impacto."
+        title="Soluciones integrales que facilitan la recuperación, clasificación y valorización de materiales."
         description="Desde recuperación de materiales hasta destrucción certificada y trazabilidad digital, cada servicio está pensado para integrarse a operaciones reales."
       >
         <ServicesGrid />
