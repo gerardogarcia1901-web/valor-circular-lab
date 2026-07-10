@@ -1363,7 +1363,7 @@ export function HomePage() {
       <Section
         eyebrow="Para quién"
         title="Trabajamos con recolectores base, empresas, instituciones, industrias, comercios que buscan implementar prácticas más responsables en el manejo de materiales reciclables."
-        titleClassName="text-2xl leading-snug md:text-4xl"
+        titleClassName="text-3xl leading-snug md:text-5xl"
         containerClassName="max-w-4xl"
       >
         <AudienceStrip />
@@ -1373,7 +1373,7 @@ export function HomePage() {
       <Section
         eyebrow="Servicios destacados"
         title="Soluciones integrales que facilitan la recuperación, clasificación y valorización de materiales."
-        titleClassName="text-2xl leading-snug md:text-4xl"
+        titleClassName="text-3xl leading-snug md:text-5xl"
         containerClassName="max-w-4xl"
         description="Desde recuperación de materiales hasta destrucción certificada y trazabilidad digital, cada servicio está pensado para integrarse a operaciones reales."
       >
@@ -1677,7 +1677,7 @@ export function ServicesPage() {
         <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div data-reveal className="space-y-6">
             <p className="eyebrow">Servicios</p>
-            <h1 className="text-balance text-3xl font-semibold leading-tight tracking-tight md:text-5xl">Soluciones integrales que facilitan la recuperación, clasificación y valorización de materiales.</h1>
+            <h1 className="text-balance text-4xl font-semibold leading-tight tracking-tight md:text-6xl">Soluciones integrales que facilitan la recuperación, clasificación y valorización de materiales.</h1>
             <p className="max-w-2xl text-lg leading-8 text-muted-foreground">
               Brindamos soluciones que garantizan la recuperación de materiales, la trazabilidad de los procesos y el respaldo necesario para una gestión responsable.
             </p>
