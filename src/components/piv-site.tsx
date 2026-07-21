@@ -1029,20 +1029,6 @@ function TimelineRail() {
                         isRight ? "" : "md:items-end",
                       )}
                     >
-                      <div className="flex items-center gap-3">
-                        <span
-                          className="rounded-full px-2.5 py-0.5 text-[0.6rem] font-black uppercase tracking-[0.24em]"
-                          style={{ background: media.accent, color: "var(--brand-ink)" }}
-                        >
-                          Etapa {stepNumber}
-                        </span>
-                        <span
-                          className="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground"
-                        >
-                          {media.tag}
-                        </span>
-                      </div>
-
                       <div
                         className={cn(
                           "flex items-center",
@@ -1071,9 +1057,6 @@ function TimelineRail() {
                         />
                       </div>
 
-                      <h3 className="text-2xl font-bold tracking-tight md:text-3xl">
-                        {item.title}
-                      </h3>
                       <p className="max-w-md text-base leading-7 text-muted-foreground">
                         {item.description}
                       </p>
