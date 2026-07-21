@@ -1535,31 +1535,45 @@ export function HomePage() {
       <FAQSection />
 
 
-      <section className="relative overflow-hidden py-20 md:py-28" style={{ background: "var(--gradient-accent)" }}>
+      <section
+        className="relative overflow-hidden py-20 md:py-28"
+        style={{
+          background:
+            "linear-gradient(120deg, #C3EB57 0%, #DCF97D 40%, #B6CDFF 100%)",
+        }}
+      >
         <img
           src={reciclinAsset.url}
           alt=""
           aria-hidden
-          className="pointer-events-none absolute -bottom-6 left-4 z-10 hidden h-48 w-auto drop-shadow-[0_12px_28px_rgba(0,0,0,0.35)] animate-[reciclin-float_4.5s_ease-in-out_infinite] md:block lg:left-10 lg:h-64"
+          className="pointer-events-none absolute -bottom-6 left-4 z-10 hidden h-48 w-auto drop-shadow-[0_12px_28px_rgba(0,0,0,0.25)] animate-[reciclin-float_4.5s_ease-in-out_infinite] md:block lg:left-10 lg:h-64"
         />
-        <div className="absolute inset-0 opacity-30" style={{ background: "radial-gradient(circle at 20% 20%, var(--brand-lime) 0%, transparent 45%), radial-gradient(circle at 80% 80%, var(--brand-sky) 0%, transparent 50%)" }} />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-70"
+          style={{
+            background:
+              "radial-gradient(45% 55% at 90% 10%, rgba(255,255,255,0.6) 0%, transparent 60%), radial-gradient(50% 50% at 8% 90%, rgba(18,82,106,0.18) 0%, transparent 65%)",
+          }}
+        />
         <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] text-center">
-          <div data-reveal className="mx-auto max-w-3xl space-y-6 text-white">
-            <p className="eyebrow eyebrow--light justify-center">Hablemos</p>
+          <div data-reveal className="mx-auto max-w-3xl space-y-6 text-[var(--brand-ink)]">
+            <p className="eyebrow justify-center" style={{ color: "var(--brand-teal)" }}>Hablemos</p>
             <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl">
               Encuentra una solución integral para el manejo de tus residuos.
             </h2>
             <div className="flex flex-wrap justify-center gap-3 pt-2">
               <a href={whatsappHref} target="_blank" rel="noreferrer">
-                <Button variant="hero" size="xl">Cotizar por WhatsApp</Button>
+                <Button variant="primary" size="xl">Cotizar por WhatsApp</Button>
               </a>
               <Link to="/contacto">
-                <Button variant="heroSecondary" size="xl">Ir a contacto</Button>
+                <Button variant="outline" size="xl">Ir a contacto</Button>
               </Link>
             </div>
           </div>
         </div>
       </section>
+
     </PageShell>
   );
 }
