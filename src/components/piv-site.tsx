@@ -404,9 +404,9 @@ function SiteFooter() {
             "radial-gradient(50% 40% at 10% 15%, rgba(195,235,87,0.14) 0%, transparent 60%), radial-gradient(45% 40% at 90% 90%, rgba(182,205,255,0.14) 0%, transparent 65%)",
         }}
       />
-      <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-8 md:grid-cols-4 md:items-center">
+      <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-8 md:grid-cols-[1.15fr_1fr_1fr_1fr] md:items-center">
         <div className="flex items-center md:justify-start">
-          <img src={logoAsset.url} alt="Parque Industrial Verde" className="h-28 w-auto object-contain md:h-40 lg:h-48" loading="lazy" />
+          <img src={logoAsset.url} alt="Parque Industrial Verde" className="h-36 w-auto object-contain md:h-56 lg:h-72" loading="lazy" />
         </div>
         <div className="space-y-3">
           <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Navegación</p>
