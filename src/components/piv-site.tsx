@@ -105,8 +105,8 @@ const materialVisuals: Record<string, { image: string; alt: string; summary: str
     summary: "Envases y resinas listas para clasificación.",
   },
   "No Ferrosos": {
-    image: materialsMetalsPhotoAsset.url,
-    alt: "Latas, aluminio, cobre y bronce clasificados en Parque Industrial Verde",
+    image: noFerrososAsset.url,
+    alt: "No ferrosos: aluminio, cobre y bronce clasificados en Parque Industrial Verde",
     summary: "Aluminio, cobre y bronce con ruta de valorización.",
   },
   Ferrosos: {
