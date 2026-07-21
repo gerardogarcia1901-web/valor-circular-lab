@@ -103,12 +103,17 @@ const materialVisuals: Record<string, { image: string; alt: string; summary: str
     alt: "Plásticos PET y HDPE clasificados para reciclaje industrial",
     summary: "Envases y resinas listas para clasificación.",
   },
-  Metales: {
+  "No Ferrosos": {
     image: materialsMetalsPhotoAsset.url,
-    alt: "Latas y metales clasificados en planta de reciclaje de Parque Industrial Verde",
-    summary: "Aluminio, cobre y ferrosos con ruta de valorización.",
+    alt: "Latas, aluminio, cobre y bronce clasificados en Parque Industrial Verde",
+    summary: "Aluminio, cobre y bronce con ruta de valorización.",
   },
-  Papel: {
+  Ferrosos: {
+    image: metalsAsset.url,
+    alt: "Materiales ferrosos: hierro lata y hierro sólido en planta de recuperación",
+    summary: "Hierro lata y hierro sólido listos para valorización.",
+  },
+  "Papel y Cartón": {
     image: materialPaperAsset.url,
     alt: "Papel y cartón limpio agrupado para recuperación",
     summary: "Cartón y papel limpio para reincorporar a la cadena.",
