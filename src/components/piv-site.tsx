@@ -1696,35 +1696,6 @@ export function AboutPage() {
           </div>
         </div>
       </section>
-      <Section
-        eyebrow="Escala"
-        title="Recuperación con impacto medible."
-        description="En 2025 superamos los 75 millones de libras recuperadas, equivalentes a múltiples campos de fútbol llenos de material reincorporado a la economía."
-        className="bg-panel-subtle"
-      >
-        <div className="mt-12 grid gap-4 md:grid-cols-3">
-          {impactMetrics.map((metric, i) => {
-            const tones = [
-              { bg: "color-mix(in oklab, var(--brand-sky) 55%, white)", fg: "var(--brand-navy)", accent: "var(--brand-teal)", muted: "color-mix(in oklab, var(--brand-navy) 72%, white)" },
-              { bg: "var(--brand-lime)", fg: "var(--brand-ink)", accent: "var(--brand-teal)", muted: "color-mix(in oklab, var(--brand-ink) 78%, white)" },
-              { bg: "var(--brand-teal)", fg: "#ffffff", accent: "var(--brand-lime)", muted: "rgba(255,255,255,0.82)" },
-            ];
-            return <MetricCard key={metric.description} {...metric} tone={tones[i % tones.length]} />;
-          })}
-        </div>
-      </Section>
-      <section className="bg-panel-subtle pb-20 md:pb-28">
-        <div data-reveal className="mx-auto w-[min(1280px,calc(100%-2rem))]">
-          <div className="overflow-hidden rounded-[1.75rem] bg-white shadow-[var(--shadow-elevated)]">
-            <img
-              src={impactGraphicAsset.url}
-              alt="Visual de impacto con equivalencias de material recuperado en 2025"
-              className="block h-auto w-full object-contain"
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </section>
 
     </PageShell>
   );
