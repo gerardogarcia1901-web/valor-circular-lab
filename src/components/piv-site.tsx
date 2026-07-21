@@ -1693,9 +1693,6 @@ export function ServicesPage() {
           <div data-reveal className="space-y-6">
             <p className="eyebrow">Servicios</p>
             <p className="max-w-2xl text-2xl leading-snug font-semibold tracking-tight text-[var(--brand-navy)] md:text-3xl">
-              Cada servicio se integra a una operación que busca orden, evidencia y resultados.
-            </p>
-            <p className="max-w-2xl text-lg leading-8 text-muted-foreground">
               Trabajamos con empresas, corporaciones e industrias que necesitan una solución ambiental alineada con cumplimiento, reputación e impacto medible.
             </p>
             <div className="flex flex-wrap gap-3">
