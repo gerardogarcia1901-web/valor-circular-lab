@@ -578,74 +578,65 @@ function HeroStatCard({
     <div
       ref={ref}
       data-hero-stat
-      className="group relative isolate grid min-h-[10.5rem] content-between overflow-hidden rounded-[1.35rem] border p-4 opacity-100 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] md:min-h-[11rem] xl:min-h-[11.5rem]"
+      className="group relative isolate overflow-hidden rounded-[1.5rem] border p-6 transition-all duration-500 hover:-translate-y-2 md:p-7"
       style={{
         background: tone.bg,
         color: tone.fg,
         borderColor: tone.border,
-        opacity: 1,
         boxShadow:
-          "0 28px 70px -22px rgba(0,0,0,0.68), 0 0 0 1px rgba(255,255,255,0.28) inset, inset 0 1px 0 rgba(255,255,255,0.55)",
+          "0 32px 80px -24px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.35)",
       }}
     >
+      {/* Ambient glow */}
       <span
         aria-hidden
-        className="pointer-events-none absolute -right-5 -top-8 -z-10 text-[6rem] font-black leading-none text-current opacity-[0.14] transition-transform duration-500 group-hover:scale-110"
+        className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full opacity-40 blur-3xl transition-opacity duration-700 group-hover:opacity-70"
+        style={{ background: tone.accent }}
+      />
+      {/* Watermark index */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute -right-2 -bottom-6 text-[7.5rem] font-black leading-none tracking-tighter text-current opacity-[0.09] md:text-[9rem]"
       >
         {String(index + 1).padStart(2, "0")}
       </span>
-      <span
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-1.5 origin-left scale-x-75 rounded-full transition-transform duration-500 group-hover:scale-x-100"
-        style={{ background: tone.accent }}
-      />
 
-      <div className="relative flex items-center justify-between">
+      <div className="relative flex items-center gap-2">
         <span
-          className="grid h-10 w-10 place-items-center rounded-2xl shadow-lg transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110"
+          className="grid h-9 w-9 place-items-center rounded-xl"
           style={{ background: tone.chip, color: tone.chipFg }}
         >
           <Icon className="h-4 w-4" />
         </span>
         <span
-          className="rounded-full px-3 py-1.5 text-[0.62rem] font-black uppercase tracking-[0.18em] shadow-sm"
-          style={{ background: tone.chip, color: tone.chipFg }}
-        >
-          {String(index + 1).padStart(2, "0")}
-        </span>
+          className="h-px flex-1 origin-left scale-x-0 transition-transform duration-700 group-hover:scale-x-100"
+          style={{ background: tone.accent }}
+        />
       </div>
 
-      <div>
-      <p className="relative mt-4 flex items-baseline gap-1 font-black tracking-tight">
-        <span className="text-2xl md:text-3xl" style={{ color: tone.accent }}>
+      <p className="relative mt-6 flex items-baseline gap-1 font-black tracking-tighter leading-none">
+        <span className="text-3xl md:text-4xl" style={{ color: tone.accent }}>
           {item.prefix}
         </span>
         <span
-          className="whitespace-nowrap tabular-nums text-4xl leading-none md:text-5xl xl:text-6xl"
-          style={{ color: tone.fg }}
+          className="whitespace-nowrap tabular-nums text-6xl md:text-7xl xl:text-[5.5rem]"
+          style={{ color: tone.fg, textShadow: "0 4px 30px rgba(0,0,0,0.25)" }}
         >
           {formatMetric(value)}
         </span>
       </p>
       <p
-        className="relative mt-1 text-xs font-black uppercase tracking-[0.14em] md:text-sm"
+        className="relative mt-2 text-sm font-black uppercase tracking-[0.18em] md:text-base"
         style={{ color: tone.accent }}
       >
         {item.suffix}
       </p>
-
-      <span
-        aria-hidden
-        className="relative mt-3 block h-[3px] w-14 origin-left rounded-full transition-all duration-500 group-hover:w-24"
-        style={{ background: tone.accent }}
-      />
       <p
-        className="relative mt-3 text-xs font-bold leading-5 md:text-[0.82rem] xl:text-sm"
-        style={{ color: tone.fg }}
+        className="relative mt-4 text-sm font-semibold leading-6 md:text-base"
+        style={{ color: tone.fg, opacity: 0.9 }}
       >
         {item.label}
       </p>
-      </div>
     </div>
   );
 }
