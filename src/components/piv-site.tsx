@@ -386,7 +386,7 @@ function SiteHeader() {
 function SiteFooter() {
   return (
     <footer
-      className="relative overflow-hidden border-t border-white/10 py-14 text-white"
+      className="relative overflow-hidden border-t border-white/10 py-10 text-white"
       style={{
         background:
           "linear-gradient(120deg, #0f3d3a 0%, #12526A 40%, #1e3a5f 75%, #273655 100%)",
@@ -394,45 +394,51 @@ function SiteFooter() {
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-60"
+        className="pointer-events-none absolute inset-0 opacity-50"
         style={{
           background:
-            "radial-gradient(60% 45% at 15% 20%, rgba(195,235,87,0.16) 0%, transparent 60%), radial-gradient(55% 45% at 85% 85%, rgba(182,205,255,0.18) 0%, transparent 65%)",
+            "radial-gradient(50% 40% at 10% 15%, rgba(195,235,87,0.14) 0%, transparent 60%), radial-gradient(45% 40% at 90% 90%, rgba(182,205,255,0.14) 0%, transparent 65%)",
         }}
       />
-      <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.2fr_1fr] lg:items-start">
-        <div className="space-y-4">
-          <img src={logoAsset.url} alt="Parque Industrial Verde" className="h-72 w-auto object-contain md:h-96 lg:h-[28rem]" loading="lazy" />
+      <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-8 md:grid-cols-4 md:items-start">
+        <div className="space-y-3">
+          <img src={logoAsset.url} alt="Parque Industrial Verde" className="h-16 w-auto object-contain md:h-20" loading="lazy" />
+          <p className="text-xs leading-6 text-white/70 max-w-[16rem]">
+            Economía circular con escala industrial en El Salvador.
+          </p>
         </div>
-        <div className="space-y-4">
-          <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Navegación</p>
-          <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-[0.78rem]">
+        <div className="space-y-3">
+          <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Navegación</p>
+          <div className="grid gap-1.5 text-[0.78rem]">
             {navigation.map((item) => (
-              <Link key={item.to} to={item.to} className="story-link w-fit font-bold uppercase tracking-[0.14em] text-white">
+              <Link key={item.to} to={item.to} className="story-link w-fit font-semibold uppercase tracking-[0.12em] text-white/90">
                 {item.label}
               </Link>
             ))}
           </div>
         </div>
-        <div className="space-y-4">
-          <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Contacto</p>
-          <div className="flex flex-col gap-2 text-sm text-white/80">
+        <div className="space-y-3">
+          <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Contacto</p>
+          <div className="flex flex-col gap-1.5 text-[0.85rem] text-white/85">
             {phoneLinks.map((item) => (
               <a key={item.href} href={item.href} className="story-link w-fit">{item.label}</a>
             ))}
-            <a href={emailLink.href} className="story-link w-fit break-all">{emailLink.label}</a>
+            <a href={emailLink.href} className="story-link w-fit break-all text-[0.78rem]">{emailLink.label}</a>
           </div>
         </div>
-        <div className="space-y-4">
-          <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Redes</p>
-          <div className="grid gap-2 text-[0.78rem]">
+        <div className="space-y-3">
+          <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Redes</p>
+          <div className="grid gap-1.5 text-[0.78rem]">
             {socialLinks.map((item) => (
-              <a key={item.href} href={item.href} target="_blank" rel="noreferrer" className="story-link w-fit font-bold uppercase tracking-[0.14em] text-white">
+              <a key={item.href} href={item.href} target="_blank" rel="noreferrer" className="story-link w-fit font-semibold uppercase tracking-[0.12em] text-white/90">
                 {item.label}
               </a>
             ))}
           </div>
         </div>
+      </div>
+      <div className="relative mx-auto mt-8 w-[min(1280px,calc(100%-2rem))] border-t border-white/10 pt-4 text-[0.7rem] text-white/60">
+        © {new Date().getFullYear()} Parque Industrial Verde. Todos los derechos reservados.
       </div>
     </footer>
   );
