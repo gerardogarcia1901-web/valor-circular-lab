@@ -175,12 +175,15 @@ function usePremiumMotion(scopeRef: React.RefObject<HTMLElement | null>) {
       gsap.from("[data-hero-copy]", { y: 32, opacity: 0, duration: 1, delay: 0.22, ease: "power2.out" });
       gsap.from("[data-hero-actions]", { y: 28, opacity: 0, duration: 0.9, delay: 0.3, ease: "power2.out" });
       gsap.from("[data-hero-stat]", {
-        y: 18,
-        scale: 0.98,
-        stagger: 0.06,
-        duration: 0.65,
-        delay: 0.3,
-        ease: "power2.out",
+        y: 60,
+        scale: 0.85,
+        opacity: 0,
+        rotationX: -25,
+        stagger: 0.14,
+        duration: 1.1,
+        delay: 0.35,
+        ease: "expo.out",
+        transformOrigin: "50% 100%",
       });
 
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((element) => {
