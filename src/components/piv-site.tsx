@@ -103,12 +103,17 @@ const materialVisuals: Record<string, { image: string; alt: string; summary: str
     alt: "Plásticos PET y HDPE clasificados para reciclaje industrial",
     summary: "Envases y resinas listas para clasificación.",
   },
-  Metales: {
+  "No Ferrosos": {
     image: materialsMetalsPhotoAsset.url,
-    alt: "Latas y metales clasificados en planta de reciclaje de Parque Industrial Verde",
-    summary: "Aluminio, cobre y ferrosos con ruta de valorización.",
+    alt: "Latas, aluminio, cobre y bronce clasificados en Parque Industrial Verde",
+    summary: "Aluminio, cobre y bronce con ruta de valorización.",
   },
-  Papel: {
+  Ferrosos: {
+    image: metalsAsset.url,
+    alt: "Materiales ferrosos: hierro lata y hierro sólido en planta de recuperación",
+    summary: "Hierro lata y hierro sólido listos para valorización.",
+  },
+  "Papel y Cartón": {
     image: materialPaperAsset.url,
     alt: "Papel y cartón limpio agrupado para recuperación",
     summary: "Cartón y papel limpio para reincorporar a la cadena.",
@@ -380,16 +385,30 @@ function SiteHeader() {
 
 function SiteFooter() {
   return (
-    <footer className="border-t border-border/70 bg-ink py-14 text-ink-foreground">
-      <div className="mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-10 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1.2fr_1fr] lg:items-start">
+    <footer
+      className="relative overflow-hidden border-t border-white/10 py-14 text-white"
+      style={{
+        background:
+          "linear-gradient(120deg, #0f3d3a 0%, #12526A 40%, #1e3a5f 75%, #273655 100%)",
+      }}
+    >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-60"
+        style={{
+          background:
+            "radial-gradient(60% 45% at 15% 20%, rgba(195,235,87,0.16) 0%, transparent 60%), radial-gradient(55% 45% at 85% 85%, rgba(182,205,255,0.18) 0%, transparent 65%)",
+        }}
+      />
+      <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.2fr_1fr] lg:items-start">
         <div className="space-y-4">
-          <img src={logoAsset.url} alt="Parque Industrial Verde" className="h-56 w-auto object-contain md:h-72 lg:h-80" loading="lazy" />
+          <img src={logoAsset.url} alt="Parque Industrial Verde" className="h-72 w-auto object-contain md:h-96 lg:h-[28rem]" loading="lazy" />
         </div>
         <div className="space-y-4">
           <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Navegación</p>
           <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-[0.78rem]">
             {navigation.map((item) => (
-              <Link key={item.to} to={item.to} className="story-link w-fit font-bold uppercase tracking-[0.14em] text-ink-foreground">
+              <Link key={item.to} to={item.to} className="story-link w-fit font-bold uppercase tracking-[0.14em] text-white">
                 {item.label}
               </Link>
             ))}
@@ -397,7 +416,7 @@ function SiteFooter() {
         </div>
         <div className="space-y-4">
           <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Contacto</p>
-          <div className="flex flex-col gap-2 text-sm text-ink-muted">
+          <div className="flex flex-col gap-2 text-sm text-white/80">
             {phoneLinks.map((item) => (
               <a key={item.href} href={item.href} className="story-link w-fit">{item.label}</a>
             ))}
@@ -408,7 +427,7 @@ function SiteFooter() {
           <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Redes</p>
           <div className="grid gap-2 text-[0.78rem]">
             {socialLinks.map((item) => (
-              <a key={item.href} href={item.href} target="_blank" rel="noreferrer" className="story-link w-fit font-bold uppercase tracking-[0.14em] text-ink-foreground">
+              <a key={item.href} href={item.href} target="_blank" rel="noreferrer" className="story-link w-fit font-bold uppercase tracking-[0.14em] text-white">
                 {item.label}
               </a>
             ))}
@@ -624,6 +643,73 @@ function HeroStatCard({
 
 
 
+function ElSalvadorMap() {
+  // Approximate coordinates on the viewBox (0-800 x 0-500) for key coverage zones.
+  const pins = [
+    { name: "Santa Ana", x: 165, y: 195 },
+    { name: "Sonsonate", x: 195, y: 285 },
+    { name: "La Libertad", x: 355, y: 305 },
+    { name: "San Salvador", x: 385, y: 245 },
+    { name: "La Paz", x: 470, y: 320 },
+    { name: "San Miguel", x: 605, y: 260 },
+  ];
+  return (
+    <div className="relative">
+      <div
+        aria-hidden
+        className="absolute -inset-6 rounded-[2.5rem] opacity-70 blur-2xl"
+        style={{
+          background:
+            "radial-gradient(60% 60% at 50% 50%, color-mix(in oklab, var(--brand-lime) 30%, transparent) 0%, transparent 70%)",
+        }}
+      />
+      <div className="relative overflow-hidden rounded-[2rem] border border-border/60 bg-white/80 p-4 shadow-[var(--shadow-elevated)] backdrop-blur md:p-6">
+        <div className="mb-3 flex items-center justify-between text-[0.65rem] font-black uppercase tracking-[0.24em] text-[var(--brand-navy)]">
+          <span>El Salvador</span>
+          <span className="rounded-full bg-[var(--brand-lime)] px-2.5 py-1 text-[var(--brand-ink)]">Cobertura activa</span>
+        </div>
+        <svg viewBox="0 0 800 500" className="h-auto w-full" role="img" aria-label="Mapa de cobertura en El Salvador">
+          <defs>
+            <linearGradient id="es-fill" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#12526A" stopOpacity="0.18" />
+              <stop offset="100%" stopColor="#273655" stopOpacity="0.28" />
+            </linearGradient>
+            <filter id="es-glow">
+              <feGaussianBlur stdDeviation="3" result="b" />
+              <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+            </filter>
+          </defs>
+          {/* Stylized silhouette of El Salvador */}
+          <path
+            d="M60,240 C120,170 200,140 290,150 C360,158 410,140 470,150 C540,160 610,150 680,180 C730,200 760,225 750,270 C735,320 690,345 620,345 C560,345 520,360 470,360 C410,360 360,370 300,360 C240,352 180,360 130,340 C85,320 45,285 60,240 Z"
+            fill="url(#es-fill)"
+            stroke="#12526A"
+            strokeWidth="2"
+            strokeOpacity="0.6"
+          />
+          {pins.map((p) => (
+            <g key={p.name} filter="url(#es-glow)">
+              <circle cx={p.x} cy={p.y} r="14" fill="#C3EB57" fillOpacity="0.25" />
+              <circle cx={p.x} cy={p.y} r="7" fill="#C3EB57" stroke="#273655" strokeWidth="2" />
+              <text
+                x={p.x + 14}
+                y={p.y + 4}
+                fontSize="16"
+                fontWeight="700"
+                fill="#273655"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                {p.name}
+              </text>
+            </g>
+          ))}
+        </svg>
+      </div>
+    </div>
+  );
+}
+
+
 function AudienceStrip() {
   return (
     <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
@@ -640,7 +726,7 @@ function AudienceStrip() {
             {String(i + 1).padStart(2, "0")}
           </span>
           <span className="text-[0.62rem] font-black uppercase tracking-[0.22em] text-[var(--brand-teal)]">
-            Perfil · {String(i + 1).padStart(2, "0")}
+            {String(i + 1).padStart(2, "0")}
           </span>
           <p className="mt-3 text-lg font-semibold leading-snug tracking-tight text-[var(--brand-navy)] md:text-xl">
             {item}
@@ -743,12 +829,6 @@ function ServicesGrid() {
           />
 
           <div className="absolute inset-x-0 bottom-0 flex flex-col gap-4 p-6 text-white sm:p-10 md:p-14">
-            <span
-              className="w-fit rounded-full px-3 py-1 text-[0.6rem] font-black uppercase tracking-[0.24em]"
-              style={{ background: "var(--brand-lime)", color: "var(--brand-ink)" }}
-            >
-              Servicio · {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
-            </span>
             <h3 className="max-w-3xl text-balance text-3xl font-black leading-tight tracking-tight sm:text-4xl md:text-5xl">
               {service.title}
             </h3>
@@ -949,17 +1029,11 @@ function TimelineRail() {
 
       <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))]">
         <div data-reveal className="max-w-3xl space-y-5">
-          <span
-            className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[0.65rem] font-black uppercase tracking-[0.28em]"
-            style={{ background: "var(--brand-lime)", color: "var(--brand-ink)" }}
-          >
-            <Clock3 className="h-3.5 w-3.5" /> 2003 — Hoy
-          </span>
           <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl">
             Nuestra evolución
           </h2>
           <p className="max-w-2xl text-lg leading-8 text-muted-foreground">
-            A lo largo del tiempo hemos evolucionado, desarrollando una operación más organizada y eficiente en el manejo de materiales reciclables, lo que nos ha permitido consolidar un crecimiento constante, mayor capacidad operativa y convertirnos en la recicladora más grande de El Salvador.
+            Contamos con un centro integral para el acopio y gestión de residuos valorizables, donde personas, empresas e instituciones encuentran una alternativa eficiente para su correcta disposición y aprovechamiento.
           </p>
         </div>
 
@@ -1022,20 +1096,6 @@ function TimelineRail() {
                         isRight ? "" : "md:items-end",
                       )}
                     >
-                      <div className="flex items-center gap-3">
-                        <span
-                          className="rounded-full px-2.5 py-0.5 text-[0.6rem] font-black uppercase tracking-[0.24em]"
-                          style={{ background: media.accent, color: "var(--brand-ink)" }}
-                        >
-                          Etapa {stepNumber}
-                        </span>
-                        <span
-                          className="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground"
-                        >
-                          {media.tag}
-                        </span>
-                      </div>
-
                       <div
                         className={cn(
                           "flex items-center",
@@ -1064,9 +1124,6 @@ function TimelineRail() {
                         />
                       </div>
 
-                      <h3 className="text-2xl font-bold tracking-tight md:text-3xl">
-                        {item.title}
-                      </h3>
                       <p className="max-w-md text-base leading-7 text-muted-foreground">
                         {item.description}
                       </p>
@@ -1346,21 +1403,13 @@ export function HomePage() {
       <Section
         eyebrow="Qué hacemos"
         title="La recuperación de materiales puede ser precisa, rentable y medible."
-        description="Transformamos materiales reciclables en nuevas oportunidades de aprovechamiento."
-      >
-        <div data-reveal className="mt-14">
-          <img src={metalsAsset.url} alt="Línea industrial de clasificación de aluminio y metales en Parque Industrial Verde" className="image-tile h-auto max-h-[560px] w-full object-cover" loading="lazy" />
-        </div>
-      </Section>
+      />
 
-      <Section
-        eyebrow="Para quién"
-        title="Trabajamos con recolectores base, empresas, instituciones, industrias, comercios que buscan implementar prácticas más responsables en el manejo de materiales reciclables."
-        titleClassName="text-3xl leading-snug md:text-5xl"
-        containerClassName="max-w-4xl"
-      >
-        <AudienceStrip />
-      </Section>
+      <section className="relative overflow-hidden py-20 md:py-28">
+        <div className="mx-auto w-[min(1280px,calc(100%-2rem))]">
+          <AudienceStrip />
+        </div>
+      </section>
 
 
       <Section
@@ -1382,14 +1431,32 @@ export function HomePage() {
               "radial-gradient(600px 320px at 12% 15%, color-mix(in oklab, var(--brand-lime) 35%, transparent) 0%, transparent 65%), radial-gradient(700px 380px at 88% 90%, color-mix(in oklab, var(--brand-sky) 45%, transparent) 0%, transparent 65%)",
           }}
         />
-        <div className="relative mx-auto flex w-[min(1280px,calc(100%-2rem))] flex-col">
-          <p className="eyebrow">Territorio</p>
-          <h3 className="mt-3 max-w-2xl text-balance text-3xl font-semibold tracking-tight text-[var(--brand-navy)] md:text-5xl">
-            Brindamos cobertura en diferentes zonas del país.
-          </h3>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
-            Nuestros servicios de recuperación y manejo de materiales llegan de forma oportuna a quienes desean disponer de sus materiales de manera responsable y eficiente.
-          </p>
+        <div className="relative mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-12 lg:grid-cols-[1.05fr_1fr] lg:items-center">
+          <div>
+            <p className="eyebrow">Territorio</p>
+            <h3 className="mt-3 max-w-xl text-balance text-3xl font-semibold tracking-tight text-[var(--brand-navy)] md:text-5xl">
+              Brindamos cobertura en diferentes zonas del país.
+            </h3>
+            <p className="mt-4 max-w-xl text-base leading-7 text-muted-foreground md:text-lg">
+              Nuestros servicios de recuperación y manejo de materiales llegan de forma oportuna a quienes desean disponer de sus materiales de manera responsable y eficiente.
+            </p>
+            <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+              {[
+                "San Salvador",
+                "La Libertad",
+                "Santa Ana",
+                "San Miguel",
+                "Sonsonate",
+                "La Paz",
+              ].map((z) => (
+                <li key={z} className="flex items-center gap-3 rounded-2xl border border-border/60 bg-white/80 px-4 py-3 text-sm font-semibold text-[var(--brand-navy)] backdrop-blur">
+                  <span className="grid h-2.5 w-2.5 place-items-center rounded-full bg-[var(--brand-lime)] ring-4 ring-[var(--brand-lime)]/25" />
+                  {z}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <ElSalvadorMap />
         </div>
       </section>
 
@@ -1629,35 +1696,6 @@ export function AboutPage() {
           </div>
         </div>
       </section>
-      <Section
-        eyebrow="Escala"
-        title="Recuperación con impacto medible."
-        description="En 2025 superamos los 75 millones de libras recuperadas, equivalentes a múltiples campos de fútbol llenos de material reincorporado a la economía."
-        className="bg-panel-subtle"
-      >
-        <div className="mt-12 grid gap-4 md:grid-cols-3">
-          {impactMetrics.map((metric, i) => {
-            const tones = [
-              { bg: "color-mix(in oklab, var(--brand-sky) 55%, white)", fg: "var(--brand-navy)", accent: "var(--brand-teal)", muted: "color-mix(in oklab, var(--brand-navy) 72%, white)" },
-              { bg: "var(--brand-lime)", fg: "var(--brand-ink)", accent: "var(--brand-teal)", muted: "color-mix(in oklab, var(--brand-ink) 78%, white)" },
-              { bg: "var(--brand-teal)", fg: "#ffffff", accent: "var(--brand-lime)", muted: "rgba(255,255,255,0.82)" },
-            ];
-            return <MetricCard key={metric.description} {...metric} tone={tones[i % tones.length]} />;
-          })}
-        </div>
-      </Section>
-      <section className="bg-panel-subtle pb-20 md:pb-28">
-        <div data-reveal className="mx-auto w-[min(1280px,calc(100%-2rem))]">
-          <div className="overflow-hidden rounded-[1.75rem] bg-white shadow-[var(--shadow-elevated)]">
-            <img
-              src={impactGraphicAsset.url}
-              alt="Visual de impacto con equivalencias de material recuperado en 2025"
-              className="block h-auto w-full object-contain"
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </section>
 
     </PageShell>
   );
@@ -1670,9 +1708,11 @@ export function ServicesPage() {
         <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div data-reveal className="space-y-6">
             <p className="eyebrow">Servicios</p>
-            <h1 className="text-balance text-4xl font-semibold leading-tight tracking-tight md:text-6xl">Soluciones integrales que facilitan la recuperación, clasificación y valorización de materiales.</h1>
+            <p className="max-w-2xl text-2xl leading-snug font-semibold tracking-tight text-[var(--brand-navy)] md:text-3xl">
+              Cada servicio se integra a una operación que busca orden, evidencia y resultados.
+            </p>
             <p className="max-w-2xl text-lg leading-8 text-muted-foreground">
-              Brindamos soluciones que garantizan la recuperación de materiales, la trazabilidad de los procesos y el respaldo necesario para una gestión responsable.
+              Trabajamos con empresas, corporaciones e industrias que necesitan una solución ambiental alineada con cumplimiento, reputación e impacto medible.
             </p>
             <div className="flex flex-wrap gap-3">
               <a href={whatsappHref} target="_blank" rel="noreferrer"><Button variant="primary" size="lg">Cotizar</Button></a>
@@ -1684,51 +1724,33 @@ export function ServicesPage() {
       </section>
       <Section
         eyebrow="Capacidades"
-        title="Cada servicio se integra a una operación que busca orden, evidencia y resultados."
-        description="Trabajamos con empresas, corporaciones e industrias que necesitan una solución ambiental alineada con cumplimiento, reputación e impacto medible."
+        title="Soluciones integrales que facilitan la recuperación, clasificación y valorización de materiales."
+        titleClassName="text-3xl leading-snug md:text-5xl"
+        containerClassName="max-w-4xl"
+        description="Brindamos soluciones que garantizan la recuperación de materiales, la trazabilidad de los procesos y el respaldo necesario para una gestión responsable."
       >
         <ServicesGrid />
       </Section>
-      <section className="relative overflow-hidden bg-[var(--brand-ink)] py-20 md:py-28">
-        <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-          <div data-reveal className="relative overflow-hidden rounded-[2rem] shadow-[var(--shadow-elevated)]">
-            <img
-              src={campanasEmpresarialesServiciosAsset.url}
-              alt="Jornada empresarial de recolección de residuos electrónicos con Parque Industrial Verde"
-              loading="lazy"
-              className="block h-[420px] w-full object-cover md:h-[560px]"
-            />
-            <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[var(--brand-ink)]/55 via-transparent to-transparent" />
-            <div className="absolute bottom-5 left-5 flex flex-wrap gap-2">
-              <span className="rounded-full bg-[var(--brand-lime)] px-3 py-1.5 text-[0.65rem] font-black uppercase tracking-[0.18em] text-[var(--brand-ink)]">RAEE</span>
-              <span className="rounded-full bg-white/90 px-3 py-1.5 text-[0.65rem] font-black uppercase tracking-[0.18em] text-[var(--brand-navy)]">Jornada in-situ</span>
-            </div>
-          </div>
-          <div data-reveal className="text-white">
-            <p className="text-[0.7rem] font-black uppercase tracking-[0.22em] text-[var(--brand-lime)]">Campañas empresariales</p>
-            <h2 className="mt-4 text-balance text-4xl font-semibold tracking-tight md:text-5xl">
-              Creamos espacios que <span className="text-[var(--brand-lime)]">inspiran a las personas</span> a participar y actuar a favor del reciclaje.
-            </h2>
-            <p className="mt-6 text-base leading-7 text-white/80">
-              Coordinamos la logística, el montaje y la trazabilidad para que tu empresa recolecte RAEE, equipos y materiales reciclables con respaldo documental y participación real de colaboradores.
-            </p>
-            <div className="mt-8 grid gap-3 sm:grid-cols-3">
-              {[
-                { k: "Montaje", v: "Activación completa" },
-                { k: "Cobertura", v: "Nacional" },
-                { k: "Evidencia", v: "Certificada" },
-              ].map((b) => (
-                <div key={b.k} className="rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur">
-                  <p className="text-[0.62rem] font-black uppercase tracking-[0.18em] text-[var(--brand-lime)]">{b.k}</p>
-                  <p className="mt-1 text-sm font-semibold">{b.v}</p>
-                </div>
-              ))}
-            </div>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href={whatsappHref} target="_blank" rel="noreferrer"><Button variant="hero" size="lg">Coordinar jornada</Button></a>
-              <Link to="/rse"><Button variant="heroSecondary" size="lg">Ver campañas RSE</Button></Link>
-            </div>
-          </div>
+      <section
+        className="relative overflow-hidden py-20 md:py-28"
+        style={{
+          background:
+            "linear-gradient(120deg, #0f3d3a 0%, #12526A 45%, #1e3a5f 80%, #273655 100%)",
+        }}
+      >
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-60"
+          style={{
+            background:
+              "radial-gradient(50% 40% at 10% 20%, rgba(195,235,87,0.18) 0%, transparent 60%), radial-gradient(50% 40% at 90% 85%, rgba(182,205,255,0.18) 0%, transparent 60%)",
+          }}
+        />
+        <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] text-center text-white" data-reveal>
+          <p className="text-[0.7rem] font-black uppercase tracking-[0.24em] text-[var(--brand-lime)]">Campañas empresariales</p>
+          <h2 className="mx-auto mt-5 max-w-4xl text-balance text-4xl font-semibold tracking-tight md:text-6xl">
+            Creamos espacios que <span className="text-[var(--brand-lime)]">inspiran a las personas</span> a participar y actuar a favor del reciclaje.
+          </h2>
         </div>
       </section>
       <EnterpriseCommunity />
