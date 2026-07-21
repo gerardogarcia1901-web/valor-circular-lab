@@ -1336,21 +1336,13 @@ export function HomePage() {
       <Section
         eyebrow="Qué hacemos"
         title="La recuperación de materiales puede ser precisa, rentable y medible."
-        description="Transformamos materiales reciclables en nuevas oportunidades de aprovechamiento."
-      >
-        <div data-reveal className="mt-14">
-          <img src={metalsAsset.url} alt="Línea industrial de clasificación de aluminio y metales en Parque Industrial Verde" className="image-tile h-auto max-h-[560px] w-full object-cover" loading="lazy" />
-        </div>
-      </Section>
+      />
 
-      <Section
-        eyebrow="Para quién"
-        title="Trabajamos con recolectores base, empresas, instituciones, industrias, comercios que buscan implementar prácticas más responsables en el manejo de materiales reciclables."
-        titleClassName="text-3xl leading-snug md:text-5xl"
-        containerClassName="max-w-4xl"
-      >
-        <AudienceStrip />
-      </Section>
+      <section className="relative overflow-hidden py-20 md:py-28">
+        <div className="mx-auto w-[min(1280px,calc(100%-2rem))]">
+          <AudienceStrip />
+        </div>
+      </section>
 
 
       <Section
