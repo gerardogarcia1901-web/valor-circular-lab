@@ -19,6 +19,7 @@ import operationsAsset from "@/assets/piv-operations.jpg.asset.json";
 import metalsAsset from "@/assets/piv-metals.jpg.asset.json";
 import materialsHeroAsset from "@/assets/materiales-hero.jpg.asset.json";
 import materialsMetalsPhotoAsset from "@/assets/materiales-metales-photo.png.asset.json";
+import noFerrososAsset from "@/assets/no-ferrosos.jpg.asset.json";
 import kidsAsset from "@/assets/piv-kids.jpg.asset.json";
 import impactGraphicAsset from "@/assets/piv-impact-graphic.jpg.asset.json";
 import teamAsset from "@/assets/piv-team.png.asset.json";
@@ -104,8 +105,8 @@ const materialVisuals: Record<string, { image: string; alt: string; summary: str
     summary: "Envases y resinas listas para clasificación.",
   },
   "No Ferrosos": {
-    image: materialsMetalsPhotoAsset.url,
-    alt: "Latas, aluminio, cobre y bronce clasificados en Parque Industrial Verde",
+    image: noFerrososAsset.url,
+    alt: "No ferrosos: aluminio, cobre y bronce clasificados en Parque Industrial Verde",
     summary: "Aluminio, cobre y bronce con ruta de valorización.",
   },
   Ferrosos: {
@@ -174,12 +175,15 @@ function usePremiumMotion(scopeRef: React.RefObject<HTMLElement | null>) {
       gsap.from("[data-hero-copy]", { y: 32, opacity: 0, duration: 1, delay: 0.22, ease: "power2.out" });
       gsap.from("[data-hero-actions]", { y: 28, opacity: 0, duration: 0.9, delay: 0.3, ease: "power2.out" });
       gsap.from("[data-hero-stat]", {
-        y: 18,
-        scale: 0.98,
-        stagger: 0.06,
-        duration: 0.65,
-        delay: 0.3,
-        ease: "power2.out",
+        y: 60,
+        scale: 0.85,
+        opacity: 0,
+        rotationX: -25,
+        stagger: 0.14,
+        duration: 1.1,
+        delay: 0.35,
+        ease: "expo.out",
+        transformOrigin: "50% 100%",
       });
 
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((element) => {
@@ -386,7 +390,7 @@ function SiteHeader() {
 function SiteFooter() {
   return (
     <footer
-      className="relative overflow-hidden border-t border-white/10 py-14 text-white"
+      className="relative overflow-hidden border-t border-white/10 py-10 text-white"
       style={{
         background:
           "linear-gradient(120deg, #0f3d3a 0%, #12526A 40%, #1e3a5f 75%, #273655 100%)",
@@ -394,45 +398,51 @@ function SiteFooter() {
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-60"
+        className="pointer-events-none absolute inset-0 opacity-50"
         style={{
           background:
-            "radial-gradient(60% 45% at 15% 20%, rgba(195,235,87,0.16) 0%, transparent 60%), radial-gradient(55% 45% at 85% 85%, rgba(182,205,255,0.18) 0%, transparent 65%)",
+            "radial-gradient(50% 40% at 10% 15%, rgba(195,235,87,0.14) 0%, transparent 60%), radial-gradient(45% 40% at 90% 90%, rgba(182,205,255,0.14) 0%, transparent 65%)",
         }}
       />
-      <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.2fr_1fr] lg:items-start">
-        <div className="space-y-4">
-          <img src={logoAsset.url} alt="Parque Industrial Verde" className="h-72 w-auto object-contain md:h-96 lg:h-[28rem]" loading="lazy" />
+      <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-8 md:grid-cols-4 md:items-start">
+        <div className="space-y-3">
+          <img src={logoAsset.url} alt="Parque Industrial Verde" className="h-16 w-auto object-contain md:h-20" loading="lazy" />
+          <p className="text-xs leading-6 text-white/70 max-w-[16rem]">
+            Economía circular con escala industrial en El Salvador.
+          </p>
         </div>
-        <div className="space-y-4">
-          <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Navegación</p>
-          <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-[0.78rem]">
+        <div className="space-y-3">
+          <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Navegación</p>
+          <div className="grid gap-1.5 text-[0.78rem]">
             {navigation.map((item) => (
-              <Link key={item.to} to={item.to} className="story-link w-fit font-bold uppercase tracking-[0.14em] text-white">
+              <Link key={item.to} to={item.to} className="story-link w-fit font-semibold uppercase tracking-[0.12em] text-white/90">
                 {item.label}
               </Link>
             ))}
           </div>
         </div>
-        <div className="space-y-4">
-          <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Contacto</p>
-          <div className="flex flex-col gap-2 text-sm text-white/80">
+        <div className="space-y-3">
+          <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Contacto</p>
+          <div className="flex flex-col gap-1.5 text-[0.85rem] text-white/85">
             {phoneLinks.map((item) => (
               <a key={item.href} href={item.href} className="story-link w-fit">{item.label}</a>
             ))}
-            <a href={emailLink.href} className="story-link w-fit break-all">{emailLink.label}</a>
+            <a href={emailLink.href} className="story-link w-fit break-all text-[0.78rem]">{emailLink.label}</a>
           </div>
         </div>
-        <div className="space-y-4">
-          <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Redes</p>
-          <div className="grid gap-2 text-[0.78rem]">
+        <div className="space-y-3">
+          <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Redes</p>
+          <div className="grid gap-1.5 text-[0.78rem]">
             {socialLinks.map((item) => (
-              <a key={item.href} href={item.href} target="_blank" rel="noreferrer" className="story-link w-fit font-bold uppercase tracking-[0.14em] text-white">
+              <a key={item.href} href={item.href} target="_blank" rel="noreferrer" className="story-link w-fit font-semibold uppercase tracking-[0.12em] text-white/90">
                 {item.label}
               </a>
             ))}
           </div>
         </div>
+      </div>
+      <div className="relative mx-auto mt-8 w-[min(1280px,calc(100%-2rem))] border-t border-white/10 pt-4 text-[0.7rem] text-white/60">
+        © {new Date().getFullYear()} Parque Industrial Verde. Todos los derechos reservados.
       </div>
     </footer>
   );
@@ -568,74 +578,65 @@ function HeroStatCard({
     <div
       ref={ref}
       data-hero-stat
-      className="group relative isolate grid min-h-[10.5rem] content-between overflow-hidden rounded-[1.35rem] border p-4 opacity-100 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] md:min-h-[11rem] xl:min-h-[11.5rem]"
+      className="group relative isolate overflow-hidden rounded-[1.5rem] border p-6 transition-all duration-500 hover:-translate-y-2 md:p-7"
       style={{
         background: tone.bg,
         color: tone.fg,
         borderColor: tone.border,
-        opacity: 1,
         boxShadow:
-          "0 28px 70px -22px rgba(0,0,0,0.68), 0 0 0 1px rgba(255,255,255,0.28) inset, inset 0 1px 0 rgba(255,255,255,0.55)",
+          "0 32px 80px -24px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.35)",
       }}
     >
+      {/* Ambient glow */}
       <span
         aria-hidden
-        className="pointer-events-none absolute -right-5 -top-8 -z-10 text-[6rem] font-black leading-none text-current opacity-[0.14] transition-transform duration-500 group-hover:scale-110"
+        className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full opacity-40 blur-3xl transition-opacity duration-700 group-hover:opacity-70"
+        style={{ background: tone.accent }}
+      />
+      {/* Watermark index */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute -right-2 -bottom-6 text-[7.5rem] font-black leading-none tracking-tighter text-current opacity-[0.09] md:text-[9rem]"
       >
         {String(index + 1).padStart(2, "0")}
       </span>
-      <span
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-1.5 origin-left scale-x-75 rounded-full transition-transform duration-500 group-hover:scale-x-100"
-        style={{ background: tone.accent }}
-      />
 
-      <div className="relative flex items-center justify-between">
+      <div className="relative flex items-center gap-2">
         <span
-          className="grid h-10 w-10 place-items-center rounded-2xl shadow-lg transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110"
+          className="grid h-9 w-9 place-items-center rounded-xl"
           style={{ background: tone.chip, color: tone.chipFg }}
         >
           <Icon className="h-4 w-4" />
         </span>
         <span
-          className="rounded-full px-3 py-1.5 text-[0.62rem] font-black uppercase tracking-[0.18em] shadow-sm"
-          style={{ background: tone.chip, color: tone.chipFg }}
-        >
-          {String(index + 1).padStart(2, "0")}
-        </span>
+          className="h-px flex-1 origin-left scale-x-0 transition-transform duration-700 group-hover:scale-x-100"
+          style={{ background: tone.accent }}
+        />
       </div>
 
-      <div>
-      <p className="relative mt-4 flex items-baseline gap-1 font-black tracking-tight">
-        <span className="text-2xl md:text-3xl" style={{ color: tone.accent }}>
+      <p className="relative mt-6 flex items-baseline gap-1 font-black tracking-tighter leading-none">
+        <span className="text-3xl md:text-4xl" style={{ color: tone.accent }}>
           {item.prefix}
         </span>
         <span
-          className="whitespace-nowrap tabular-nums text-4xl leading-none md:text-5xl xl:text-6xl"
-          style={{ color: tone.fg }}
+          className="whitespace-nowrap tabular-nums text-6xl md:text-7xl xl:text-[5.5rem]"
+          style={{ color: tone.fg, textShadow: "0 4px 30px rgba(0,0,0,0.25)" }}
         >
           {formatMetric(value)}
         </span>
       </p>
       <p
-        className="relative mt-1 text-xs font-black uppercase tracking-[0.14em] md:text-sm"
+        className="relative mt-2 text-sm font-black uppercase tracking-[0.18em] md:text-base"
         style={{ color: tone.accent }}
       >
         {item.suffix}
       </p>
-
-      <span
-        aria-hidden
-        className="relative mt-3 block h-[3px] w-14 origin-left rounded-full transition-all duration-500 group-hover:w-24"
-        style={{ background: tone.accent }}
-      />
       <p
-        className="relative mt-3 text-xs font-bold leading-5 md:text-[0.82rem] xl:text-sm"
-        style={{ color: tone.fg }}
+        className="relative mt-4 text-sm font-semibold leading-6 md:text-base"
+        style={{ color: tone.fg, opacity: 0.9 }}
       >
         {item.label}
       </p>
-      </div>
     </div>
   );
 }
@@ -644,15 +645,15 @@ function HeroStatCard({
 
 
 function ElSalvadorMap() {
-  // Approximate coordinates on the viewBox (0-800 x 0-500) for key coverage zones.
+  // Simplified but recognizable El Salvador silhouette (viewBox 0 0 1000 420).
+  // Coordinates approximated so pins align with real departments (west→east).
   const pins = [
-    { name: "Santa Ana", x: 165, y: 195 },
-    { name: "Sonsonate", x: 195, y: 285 },
-    { name: "La Libertad", x: 355, y: 305 },
-    { name: "San Salvador", x: 385, y: 245 },
-    { name: "La Paz", x: 470, y: 320 },
-    { name: "San Miguel", x: 605, y: 260 },
+    { name: "Santa Ana", x: 205, y: 175, sub: "Occidente" },
+    { name: "San Salvador", x: 495, y: 210, sub: "Sede central" },
+    { name: "La Paz", x: 615, y: 290, sub: "Costa del Sol" },
   ];
+  const countryPath =
+    "M40,205 C90,150 170,120 260,118 C330,116 380,145 430,140 C500,132 560,110 640,115 C720,120 800,140 870,175 C925,200 965,225 960,265 C950,315 895,345 820,355 C755,363 705,345 640,340 C560,335 500,360 430,362 C355,363 295,345 235,345 C175,345 115,335 75,300 C45,275 25,240 40,205 Z";
   return (
     <div className="relative">
       <div
@@ -660,47 +661,35 @@ function ElSalvadorMap() {
         className="absolute -inset-6 rounded-[2.5rem] opacity-70 blur-2xl"
         style={{
           background:
-            "radial-gradient(60% 60% at 50% 50%, color-mix(in oklab, var(--brand-lime) 30%, transparent) 0%, transparent 70%)",
+            "radial-gradient(60% 60% at 50% 50%, color-mix(in oklab, var(--brand-lime) 25%, transparent) 0%, transparent 70%)",
         }}
       />
-      <div className="relative overflow-hidden rounded-[2rem] border border-border/60 bg-white/80 p-4 shadow-[var(--shadow-elevated)] backdrop-blur md:p-6">
+      <div className="relative overflow-hidden rounded-[2rem] border border-border/60 bg-white/90 p-4 shadow-[var(--shadow-elevated)] backdrop-blur md:p-6">
         <div className="mb-3 flex items-center justify-between text-[0.65rem] font-black uppercase tracking-[0.24em] text-[var(--brand-navy)]">
           <span>El Salvador</span>
           <span className="rounded-full bg-[var(--brand-lime)] px-2.5 py-1 text-[var(--brand-ink)]">Cobertura activa</span>
         </div>
-        <svg viewBox="0 0 800 500" className="h-auto w-full" role="img" aria-label="Mapa de cobertura en El Salvador">
+        <svg viewBox="0 0 1000 420" className="h-auto w-full" role="img" aria-label="Mapa de cobertura en El Salvador">
           <defs>
             <linearGradient id="es-fill" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#12526A" stopOpacity="0.18" />
-              <stop offset="100%" stopColor="#273655" stopOpacity="0.28" />
+              <stop offset="0%" stopColor="#12526A" stopOpacity="0.14" />
+              <stop offset="100%" stopColor="#273655" stopOpacity="0.24" />
             </linearGradient>
-            <filter id="es-glow">
-              <feGaussianBlur stdDeviation="3" result="b" />
-              <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
-            </filter>
+            <radialGradient id="pin-glow">
+              <stop offset="0%" stopColor="#C3EB57" stopOpacity="0.55" />
+              <stop offset="100%" stopColor="#C3EB57" stopOpacity="0" />
+            </radialGradient>
           </defs>
-          {/* Stylized silhouette of El Salvador */}
-          <path
-            d="M60,240 C120,170 200,140 290,150 C360,158 410,140 470,150 C540,160 610,150 680,180 C730,200 760,225 750,270 C735,320 690,345 620,345 C560,345 520,360 470,360 C410,360 360,370 300,360 C240,352 180,360 130,340 C85,320 45,285 60,240 Z"
-            fill="url(#es-fill)"
-            stroke="#12526A"
-            strokeWidth="2"
-            strokeOpacity="0.6"
-          />
+          <path d={countryPath} fill="url(#es-fill)" stroke="#12526A" strokeWidth="2.5" strokeOpacity="0.7" strokeLinejoin="round" />
           {pins.map((p) => (
-            <g key={p.name} filter="url(#es-glow)">
-              <circle cx={p.x} cy={p.y} r="14" fill="#C3EB57" fillOpacity="0.25" />
-              <circle cx={p.x} cy={p.y} r="7" fill="#C3EB57" stroke="#273655" strokeWidth="2" />
-              <text
-                x={p.x + 14}
-                y={p.y + 4}
-                fontSize="16"
-                fontWeight="700"
-                fill="#273655"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                {p.name}
-              </text>
+            <g key={p.name}>
+              <circle cx={p.x} cy={p.y} r="34" fill="url(#pin-glow)">
+                <animate attributeName="r" values="20;40;20" dur="2.6s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.9;0.2;0.9" dur="2.6s" repeatCount="indefinite" />
+              </circle>
+              <circle cx={p.x} cy={p.y} r="9" fill="#C3EB57" stroke="#273655" strokeWidth="2.5" />
+              <text x={p.x + 16} y={p.y - 2} fontSize="18" fontWeight="800" fill="#273655" style={{ fontFamily: "var(--font-display)" }}>{p.name}</text>
+              <text x={p.x + 16} y={p.y + 16} fontSize="12" fontWeight="600" fill="#12526A" style={{ fontFamily: "var(--font-display)" }}>{p.sub}</text>
             </g>
           ))}
         </svg>
@@ -712,29 +701,25 @@ function ElSalvadorMap() {
 
 function AudienceStrip() {
   return (
-    <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+    <div className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-5">
       {audience.map((item, i) => (
         <article
           key={item}
           data-reveal
-          className="group relative isolate overflow-hidden rounded-2xl border border-[var(--brand-navy)]/10 bg-white p-5 shadow-[var(--shadow-elevated)] transition-all duration-500 hover:-translate-y-1 hover:border-[var(--brand-lime)]"
+          className="group relative"
         >
-          <span
-            aria-hidden
-            className="pointer-events-none absolute -right-2 -top-4 text-[4.5rem] font-black leading-none tracking-tighter text-[var(--brand-navy)]/[0.06]"
-          >
-            {String(i + 1).padStart(2, "0")}
-          </span>
-          <span className="text-[0.62rem] font-black uppercase tracking-[0.22em] text-[var(--brand-teal)]">
-            {String(i + 1).padStart(2, "0")}
-          </span>
-          <p className="mt-3 text-lg font-semibold leading-snug tracking-tight text-[var(--brand-navy)] md:text-xl">
+          <div className="flex items-baseline gap-3">
+            <span className="text-[0.7rem] font-black uppercase tracking-[0.24em] text-[var(--brand-teal)]">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <span
+              aria-hidden
+              className="h-px flex-1 origin-left scale-x-[0.4] bg-gradient-to-r from-[var(--brand-lime)] to-transparent transition-transform duration-500 group-hover:scale-x-100"
+            />
+          </div>
+          <p className="mt-3 text-2xl font-semibold leading-tight tracking-tight text-[var(--brand-navy)] md:text-[1.6rem]">
             {item}
           </p>
-          <span
-            aria-hidden
-            className="mt-4 block h-[3px] w-10 origin-left rounded-full bg-[var(--brand-lime)] transition-all duration-500 group-hover:w-20"
-          />
         </article>
       ))}
     </div>
@@ -1442,11 +1427,8 @@ export function HomePage() {
             </p>
             <ul className="mt-8 grid gap-3 sm:grid-cols-2">
               {[
-                "San Salvador",
-                "La Libertad",
                 "Santa Ana",
-                "San Miguel",
-                "Sonsonate",
+                "San Salvador",
                 "La Paz",
               ].map((z) => (
                 <li key={z} className="flex items-center gap-3 rounded-2xl border border-border/60 bg-white/80 px-4 py-3 text-sm font-semibold text-[var(--brand-navy)] backdrop-blur">
@@ -1640,14 +1622,6 @@ export function AboutPage() {
             );
           })}
         </div>
-        <div data-reveal className="mt-10 overflow-hidden rounded-[1.75rem] bg-gradient-to-r from-[var(--brand-navy)] via-[var(--brand-teal)] to-[var(--brand-lime)] p-[1px] shadow-[var(--shadow-elevated)]">
-          <div className="flex flex-col items-center gap-4 rounded-[1.65rem] bg-white px-8 py-14 text-center md:py-16">
-            <Sparkles className="h-8 w-8 text-[var(--brand-teal)]" />
-            <p className="text-balance text-2xl font-black uppercase leading-tight tracking-[0.02em] text-[var(--brand-navy)] md:text-4xl lg:text-5xl">
-              EL RECICLAJE SE CONSTRUYE DESDE PEQUEÑAS ACCIONES QUE, JUNTAS, GENERAN UN <span className="text-[var(--brand-teal)]">IMPACTO POSITIVO.</span>
-            </p>
-          </div>
-        </div>
       </Section>
       <section className="relative overflow-hidden py-24 md:py-32">
         <img
@@ -1709,9 +1683,6 @@ export function ServicesPage() {
           <div data-reveal className="space-y-6">
             <p className="eyebrow">Servicios</p>
             <p className="max-w-2xl text-2xl leading-snug font-semibold tracking-tight text-[var(--brand-navy)] md:text-3xl">
-              Cada servicio se integra a una operación que busca orden, evidencia y resultados.
-            </p>
-            <p className="max-w-2xl text-lg leading-8 text-muted-foreground">
               Trabajamos con empresas, corporaciones e industrias que necesitan una solución ambiental alineada con cumplimiento, reputación e impacto medible.
             </p>
             <div className="flex flex-wrap gap-3">
@@ -1888,7 +1859,14 @@ export function MaterialsPage() {
             );
           })}
         </div>
-        <div className="mt-10 overflow-hidden rounded-3xl bg-[var(--brand-ink)] shadow-[var(--shadow-elevated)]" data-reveal>
+        <div
+          className="mt-10 overflow-hidden rounded-3xl shadow-[var(--shadow-elevated)]"
+          style={{
+            background:
+              "linear-gradient(120deg, #0f3d3a 0%, #12526A 45%, #1e3a5f 80%, #273655 100%)",
+          }}
+          data-reveal
+        >
           <div className="grid gap-0 md:grid-cols-[0.9fr_1.1fr]">
             <div className="relative flex flex-col justify-between gap-6 p-8 text-white">
               <div className="flex items-center gap-3">
