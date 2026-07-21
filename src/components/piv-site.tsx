@@ -714,7 +714,7 @@ function AudienceStrip() {
             </span>
             <span
               aria-hidden
-              className="h-px flex-1 origin-left scale-x-40 bg-gradient-to-r from-[var(--brand-lime)] to-transparent transition-transform duration-500 group-hover:scale-x-100"
+              className="h-px flex-1 origin-left scale-x-[0.4] bg-gradient-to-r from-[var(--brand-lime)] to-transparent transition-transform duration-500 group-hover:scale-x-100"
             />
           </div>
           <p className="mt-3 text-2xl font-semibold leading-tight tracking-tight text-[var(--brand-navy)] md:text-[1.6rem]">
