@@ -90,11 +90,15 @@ export const materialGroups = [
     items: ["PET", "HDPE", "PP"],
   },
   {
-    title: "Metales",
-    items: ["Aluminio", "UBC", "Hierro", "Bronce", "Cobre"],
+    title: "No Ferrosos",
+    items: ["Lata", "Aluminio", "Cobre", "Bronce"],
   },
   {
-    title: "Papel",
+    title: "Ferrosos",
+    items: ["Hierro lata", "Hierro sólido"],
+  },
+  {
+    title: "Papel y Cartón",
     items: ["Papel oficina", "Papel mezclado", "Cartón", "Litografía"],
   },
   {
