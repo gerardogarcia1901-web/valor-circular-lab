@@ -659,7 +659,7 @@ function AudienceStrip() {
             {String(i + 1).padStart(2, "0")}
           </span>
           <span className="text-[0.62rem] font-black uppercase tracking-[0.22em] text-[var(--brand-teal)]">
-            Perfil · {String(i + 1).padStart(2, "0")}
+            {String(i + 1).padStart(2, "0")}
           </span>
           <p className="mt-3 text-lg font-semibold leading-snug tracking-tight text-[var(--brand-navy)] md:text-xl">
             {item}
