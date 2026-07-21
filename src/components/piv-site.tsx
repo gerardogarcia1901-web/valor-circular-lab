@@ -1437,11 +1437,8 @@ export function HomePage() {
             </p>
             <ul className="mt-8 grid gap-3 sm:grid-cols-2">
               {[
-                "San Salvador",
-                "La Libertad",
                 "Santa Ana",
-                "San Miguel",
-                "Sonsonate",
+                "San Salvador",
                 "La Paz",
               ].map((z) => (
                 <li key={z} className="flex items-center gap-3 rounded-2xl border border-border/60 bg-white/80 px-4 py-3 text-sm font-semibold text-[var(--brand-navy)] backdrop-blur">
