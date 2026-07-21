@@ -385,16 +385,30 @@ function SiteHeader() {
 
 function SiteFooter() {
   return (
-    <footer className="border-t border-border/70 bg-ink py-14 text-ink-foreground">
-      <div className="mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-10 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1.2fr_1fr] lg:items-start">
+    <footer
+      className="relative overflow-hidden border-t border-white/10 py-14 text-white"
+      style={{
+        background:
+          "linear-gradient(120deg, #0f3d3a 0%, #12526A 40%, #1e3a5f 75%, #273655 100%)",
+      }}
+    >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-60"
+        style={{
+          background:
+            "radial-gradient(60% 45% at 15% 20%, rgba(195,235,87,0.16) 0%, transparent 60%), radial-gradient(55% 45% at 85% 85%, rgba(182,205,255,0.18) 0%, transparent 65%)",
+        }}
+      />
+      <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.2fr_1fr] lg:items-start">
         <div className="space-y-4">
-          <img src={logoAsset.url} alt="Parque Industrial Verde" className="h-56 w-auto object-contain md:h-72 lg:h-80" loading="lazy" />
+          <img src={logoAsset.url} alt="Parque Industrial Verde" className="h-72 w-auto object-contain md:h-96 lg:h-[28rem]" loading="lazy" />
         </div>
         <div className="space-y-4">
           <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Navegación</p>
           <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-[0.78rem]">
             {navigation.map((item) => (
-              <Link key={item.to} to={item.to} className="story-link w-fit font-bold uppercase tracking-[0.14em] text-ink-foreground">
+              <Link key={item.to} to={item.to} className="story-link w-fit font-bold uppercase tracking-[0.14em] text-white">
                 {item.label}
               </Link>
             ))}
@@ -402,7 +416,7 @@ function SiteFooter() {
         </div>
         <div className="space-y-4">
           <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Contacto</p>
-          <div className="flex flex-col gap-2 text-sm text-ink-muted">
+          <div className="flex flex-col gap-2 text-sm text-white/80">
             {phoneLinks.map((item) => (
               <a key={item.href} href={item.href} className="story-link w-fit">{item.label}</a>
             ))}
@@ -413,7 +427,7 @@ function SiteFooter() {
           <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Redes</p>
           <div className="grid gap-2 text-[0.78rem]">
             {socialLinks.map((item) => (
-              <a key={item.href} href={item.href} target="_blank" rel="noreferrer" className="story-link w-fit font-bold uppercase tracking-[0.14em] text-ink-foreground">
+              <a key={item.href} href={item.href} target="_blank" rel="noreferrer" className="story-link w-fit font-bold uppercase tracking-[0.14em] text-white">
                 {item.label}
               </a>
             ))}
