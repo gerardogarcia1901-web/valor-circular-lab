@@ -643,6 +643,73 @@ function HeroStatCard({
 
 
 
+function ElSalvadorMap() {
+  // Approximate coordinates on the viewBox (0-800 x 0-500) for key coverage zones.
+  const pins = [
+    { name: "Santa Ana", x: 165, y: 195 },
+    { name: "Sonsonate", x: 195, y: 285 },
+    { name: "La Libertad", x: 355, y: 305 },
+    { name: "San Salvador", x: 385, y: 245 },
+    { name: "La Paz", x: 470, y: 320 },
+    { name: "San Miguel", x: 605, y: 260 },
+  ];
+  return (
+    <div className="relative">
+      <div
+        aria-hidden
+        className="absolute -inset-6 rounded-[2.5rem] opacity-70 blur-2xl"
+        style={{
+          background:
+            "radial-gradient(60% 60% at 50% 50%, color-mix(in oklab, var(--brand-lime) 30%, transparent) 0%, transparent 70%)",
+        }}
+      />
+      <div className="relative overflow-hidden rounded-[2rem] border border-border/60 bg-white/80 p-4 shadow-[var(--shadow-elevated)] backdrop-blur md:p-6">
+        <div className="mb-3 flex items-center justify-between text-[0.65rem] font-black uppercase tracking-[0.24em] text-[var(--brand-navy)]">
+          <span>El Salvador</span>
+          <span className="rounded-full bg-[var(--brand-lime)] px-2.5 py-1 text-[var(--brand-ink)]">Cobertura activa</span>
+        </div>
+        <svg viewBox="0 0 800 500" className="h-auto w-full" role="img" aria-label="Mapa de cobertura en El Salvador">
+          <defs>
+            <linearGradient id="es-fill" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#12526A" stopOpacity="0.18" />
+              <stop offset="100%" stopColor="#273655" stopOpacity="0.28" />
+            </linearGradient>
+            <filter id="es-glow">
+              <feGaussianBlur stdDeviation="3" result="b" />
+              <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+            </filter>
+          </defs>
+          {/* Stylized silhouette of El Salvador */}
+          <path
+            d="M60,240 C120,170 200,140 290,150 C360,158 410,140 470,150 C540,160 610,150 680,180 C730,200 760,225 750,270 C735,320 690,345 620,345 C560,345 520,360 470,360 C410,360 360,370 300,360 C240,352 180,360 130,340 C85,320 45,285 60,240 Z"
+            fill="url(#es-fill)"
+            stroke="#12526A"
+            strokeWidth="2"
+            strokeOpacity="0.6"
+          />
+          {pins.map((p) => (
+            <g key={p.name} filter="url(#es-glow)">
+              <circle cx={p.x} cy={p.y} r="14" fill="#C3EB57" fillOpacity="0.25" />
+              <circle cx={p.x} cy={p.y} r="7" fill="#C3EB57" stroke="#273655" strokeWidth="2" />
+              <text
+                x={p.x + 14}
+                y={p.y + 4}
+                fontSize="16"
+                fontWeight="700"
+                fill="#273655"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                {p.name}
+              </text>
+            </g>
+          ))}
+        </svg>
+      </div>
+    </div>
+  );
+}
+
+
 function AudienceStrip() {
   return (
     <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
