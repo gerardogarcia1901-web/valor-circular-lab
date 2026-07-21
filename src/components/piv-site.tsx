@@ -1985,14 +1985,29 @@ export function RsePage() {
         </div>
         {selectedSection ? (
           <div id={`panel-${selectedSection.id}`} role="tabpanel" className="mt-8 grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
-            <article data-reveal className="rounded-3xl bg-[var(--brand-ink)] p-7 text-white shadow-[var(--shadow-elevated)]">
-              <p className="text-[0.7rem] font-black uppercase tracking-[0.2em] text-[var(--brand-lime)]">{selectedSection.kicker}</p>
-              <h3 className="mt-5 text-balance text-4xl font-semibold tracking-tight">{selectedSection.title}</h3>
-              <p className="mt-4 text-base leading-7 text-white/78">{selectedSection.description}</p>
+            <article
+              data-reveal
+              className="relative overflow-hidden rounded-3xl p-7 text-white shadow-[var(--shadow-elevated)]"
+              style={{
+                background:
+                  "linear-gradient(135deg, #0f3d3a 0%, #12526A 45%, #1e3a5f 80%, #273655 100%)",
+              }}
+            >
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-0 opacity-60"
+                style={{
+                  background:
+                    "radial-gradient(50% 40% at 15% 15%, rgba(195,235,87,0.18) 0%, transparent 60%), radial-gradient(50% 40% at 90% 90%, rgba(182,205,255,0.16) 0%, transparent 60%)",
+                }}
+              />
+              <p className="relative text-[0.7rem] font-black uppercase tracking-[0.2em] text-[var(--brand-lime)]">{selectedSection.kicker}</p>
+              <h3 className="relative mt-5 text-balance text-4xl font-semibold tracking-tight">{selectedSection.title}</h3>
+              <p className="relative mt-4 text-base leading-7 text-white/85">{selectedSection.description}</p>
               <button
                 type="button"
                 onClick={() => setActiveSection(null)}
-                className="mt-8 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-white transition-colors hover:bg-[var(--brand-lime)] hover:text-[var(--brand-ink)]"
+                className="relative mt-8 inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-white transition-colors hover:bg-[var(--brand-lime)] hover:text-[var(--brand-ink)]"
               >
                 <X className="h-3.5 w-3.5" /> Cerrar
               </button>
