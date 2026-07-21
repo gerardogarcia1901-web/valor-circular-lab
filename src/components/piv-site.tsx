@@ -517,10 +517,27 @@ function HeroStats() {
         aria-hidden
         className="pointer-events-none absolute -top-32 right-0 z-10 hidden h-44 w-auto drop-shadow-[0_14px_30px_rgba(0,0,0,0.5)] animate-[reciclin-float_4s_ease-in-out_infinite] md:block lg:-top-40 lg:h-56"
       />
-      <div className="grid divide-y divide-white/15 border-y border-white/15 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-        {pivStats.map((item, i) => (
-          <HeroStatCard key={item.label} item={item} index={i} />
-        ))}
+      <div
+        className="relative overflow-hidden rounded-2xl border border-white/10 backdrop-blur-md"
+        style={{
+          background:
+            "linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)",
+          boxShadow: "0 30px 80px -30px rgba(0,0,0,0.6)",
+        }}
+      >
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 h-px"
+          style={{
+            background:
+              "linear-gradient(90deg, transparent 0%, rgba(195,235,87,0.6) 50%, transparent 100%)",
+          }}
+        />
+        <div className="grid sm:grid-cols-3">
+          {pivStats.map((item, i) => (
+            <HeroStatCard key={item.label} item={item} index={i} isLast={i === pivStats.length - 1} />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -529,37 +546,62 @@ function HeroStats() {
 function HeroStatCard({
   item,
   index,
+  isLast,
 }: {
   item: (typeof pivStats)[number];
   index: number;
+  isLast: boolean;
 }) {
   const { ref, value } = useCountUp(item.value);
   return (
     <div
       ref={ref}
       data-hero-stat
-      className="group relative px-2 py-6 sm:px-5 sm:py-4"
+      className={`group relative px-5 py-6 md:px-7 md:py-8 ${!isLast ? "border-b border-white/10 sm:border-b-0 sm:border-r" : ""}`}
       style={{
         animation: `hero-stat-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) ${index * 160}ms both`,
       }}
     >
-      <p className="flex items-baseline gap-0.5 font-black leading-none tracking-tighter text-white">
+      {/* Numbered tick */}
+      <div className="flex items-center gap-2">
+        <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-lime)]" />
+        <span className="text-[0.65rem] font-black uppercase tracking-[0.3em] text-white/60">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+      </div>
+
+      {/* Massive number */}
+      <p className="mt-4 flex items-baseline gap-0.5 font-black leading-[0.9] tracking-tighter text-white">
         <span className="text-2xl md:text-3xl text-[var(--brand-lime)]">
           {item.prefix}
         </span>
-        <span className="whitespace-nowrap tabular-nums text-[3.75rem] md:text-[4.5rem] xl:text-[5.5rem] transition-transform duration-500 group-hover:translate-y-[-2px]">
+        <span
+          className="whitespace-nowrap tabular-nums transition-transform duration-500 group-hover:-translate-y-1"
+          style={{ fontSize: "clamp(3rem, 6vw, 5.25rem)" }}
+        >
           {formatMetric(value)}
         </span>
-        <span className="ml-1 text-base md:text-lg font-bold uppercase tracking-[0.14em] text-white/70">
-          {item.suffix.trim()}
-        </span>
       </p>
-      <p className="mt-3 max-w-[26ch] text-[0.85rem] font-medium leading-6 text-white/70">
+
+      {/* Suffix */}
+      <p className="mt-2 text-sm font-bold uppercase tracking-[0.16em] text-[var(--brand-lime)]/90">
+        {item.suffix.trim()}
+      </p>
+
+      {/* Divider */}
+      <div
+        aria-hidden
+        className="mt-4 h-px w-10 origin-left bg-white/20 transition-all duration-500 group-hover:w-16 group-hover:bg-[var(--brand-lime)]"
+      />
+
+      {/* Label */}
+      <p className="mt-3 max-w-[24ch] text-[0.85rem] font-medium leading-6 text-white/70">
         {item.label}
       </p>
     </div>
   );
 }
+
 
 
 
@@ -1331,9 +1373,10 @@ export function HomePage() {
               className="flex flex-wrap gap-3 pt-2"
               style={{ animation: "hero-word-in 0.8s ease-out 0.75s both" }}
             >
-              <a href={whatsappHref} target="_blank" rel="noreferrer">
-                <Button variant="hero" size="lg">Cotizar por WhatsApp</Button>
-              </a>
+              <Link to="/contacto">
+                <Button variant="hero" size="lg">Ir a contacto</Button>
+              </Link>
+
               <Link to="/servicios">
                 <Button variant="heroSecondary" size="lg">Ver servicios</Button>
               </Link>
