@@ -1364,14 +1364,32 @@ export function HomePage() {
               "radial-gradient(600px 320px at 12% 15%, color-mix(in oklab, var(--brand-lime) 35%, transparent) 0%, transparent 65%), radial-gradient(700px 380px at 88% 90%, color-mix(in oklab, var(--brand-sky) 45%, transparent) 0%, transparent 65%)",
           }}
         />
-        <div className="relative mx-auto flex w-[min(1280px,calc(100%-2rem))] flex-col">
-          <p className="eyebrow">Territorio</p>
-          <h3 className="mt-3 max-w-2xl text-balance text-3xl font-semibold tracking-tight text-[var(--brand-navy)] md:text-5xl">
-            Brindamos cobertura en diferentes zonas del país.
-          </h3>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
-            Nuestros servicios de recuperación y manejo de materiales llegan de forma oportuna a quienes desean disponer de sus materiales de manera responsable y eficiente.
-          </p>
+        <div className="relative mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-12 lg:grid-cols-[1.05fr_1fr] lg:items-center">
+          <div>
+            <p className="eyebrow">Territorio</p>
+            <h3 className="mt-3 max-w-xl text-balance text-3xl font-semibold tracking-tight text-[var(--brand-navy)] md:text-5xl">
+              Brindamos cobertura en diferentes zonas del país.
+            </h3>
+            <p className="mt-4 max-w-xl text-base leading-7 text-muted-foreground md:text-lg">
+              Nuestros servicios de recuperación y manejo de materiales llegan de forma oportuna a quienes desean disponer de sus materiales de manera responsable y eficiente.
+            </p>
+            <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+              {[
+                "San Salvador",
+                "La Libertad",
+                "Santa Ana",
+                "San Miguel",
+                "Sonsonate",
+                "La Paz",
+              ].map((z) => (
+                <li key={z} className="flex items-center gap-3 rounded-2xl border border-border/60 bg-white/80 px-4 py-3 text-sm font-semibold text-[var(--brand-navy)] backdrop-blur">
+                  <span className="grid h-2.5 w-2.5 place-items-center rounded-full bg-[var(--brand-lime)] ring-4 ring-[var(--brand-lime)]/25" />
+                  {z}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <ElSalvadorMap />
         </div>
       </section>
 
