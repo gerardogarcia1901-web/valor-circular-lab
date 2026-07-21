@@ -1704,6 +1704,9 @@ export function ServicesPage() {
             <p className="max-w-2xl text-2xl leading-snug font-semibold tracking-tight text-[var(--brand-navy)] md:text-3xl">
               Trabajamos con empresas, corporaciones e industrias que necesitan una solución ambiental alineada con cumplimiento, reputación e impacto medible.
             </p>
+            <p className="max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
+              Cada servicio se integra a una operación que busca orden, evidencia y resultados.
+            </p>
             <div className="flex flex-wrap gap-3">
               <a href={whatsappHref} target="_blank" rel="noreferrer"><Button variant="primary" size="lg">Cotizar</Button></a>
               <Link to="/contacto"><Button variant="outline" size="lg">Hablar con un asesor</Button></Link>
@@ -1712,13 +1715,7 @@ export function ServicesPage() {
           <img data-reveal src={operationsAsset.url} alt="Operación industrial de clasificación de plásticos y materiales recuperables" className="image-tile h-[520px]" loading="eager" />
         </div>
       </section>
-      <Section
-        eyebrow="Capacidades"
-        title="Soluciones integrales que facilitan la recuperación, clasificación y valorización de materiales."
-        titleClassName="text-3xl leading-snug md:text-5xl"
-        containerClassName="max-w-4xl"
-        description="Brindamos soluciones que garantizan la recuperación de materiales, la trazabilidad de los procesos y el respaldo necesario para una gestión responsable."
-      >
+      <Section eyebrow="Capacidades">
         <ServicesGrid />
       </Section>
       <section
@@ -1736,13 +1733,23 @@ export function ServicesPage() {
               "radial-gradient(50% 40% at 10% 20%, rgba(195,235,87,0.18) 0%, transparent 60%), radial-gradient(50% 40% at 90% 85%, rgba(182,205,255,0.18) 0%, transparent 60%)",
           }}
         />
-        <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] text-center text-white" data-reveal>
-          <p className="text-[0.7rem] font-black uppercase tracking-[0.24em] text-[var(--brand-lime)]">Campañas empresariales</p>
-          <h2 className="mx-auto mt-5 max-w-4xl text-balance text-4xl font-semibold tracking-tight md:text-6xl">
-            Creamos espacios que <span className="text-[var(--brand-lime)]">inspiran a las personas</span> a participar y actuar a favor del reciclaje.
-          </h2>
+        <div className="relative mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-center">
+          <img
+            data-reveal
+            src={campanasEmpresarialesServiciosAsset.url}
+            alt="Campaña empresarial de recolección con colaboradores clasificando materiales"
+            loading="lazy"
+            className="image-tile h-[360px] w-full object-cover md:h-[460px]"
+          />
+          <div data-reveal className="text-white">
+            <p className="text-[0.7rem] font-black uppercase tracking-[0.24em] text-[var(--brand-lime)]">Campañas empresariales</p>
+            <h2 className="mt-5 text-balance text-4xl font-semibold tracking-tight md:text-6xl">
+              Creamos espacios que <span className="text-[var(--brand-lime)]">inspiran a las personas</span> a participar y actuar a favor del reciclaje.
+            </h2>
+          </div>
         </div>
       </section>
+
       <EnterpriseCommunity />
 
 
