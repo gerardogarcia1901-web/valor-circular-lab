@@ -1574,23 +1574,24 @@ export function HomePage() {
         className="relative overflow-hidden py-20 md:py-28"
         style={{
           background:
-            "linear-gradient(120deg, #C3EB57 0%, #DCF97D 40%, #B6CDFF 100%)",
+            "radial-gradient(120% 90% at 0% 0%, #F4F7FC 0%, #FFFFFF 55%), linear-gradient(180deg, #FFFFFF 0%, #EEF3FB 100%)",
         }}
       >
         <img
           src={reciclinAsset.url}
           alt=""
           aria-hidden
-          className="pointer-events-none absolute -bottom-6 left-4 z-10 hidden h-48 w-auto drop-shadow-[0_12px_28px_rgba(0,0,0,0.25)] animate-[reciclin-float_4.5s_ease-in-out_infinite] md:block lg:left-10 lg:h-64"
+          className="pointer-events-none absolute -bottom-6 left-4 z-10 hidden h-48 w-auto drop-shadow-[0_12px_28px_rgba(0,0,0,0.15)] animate-[reciclin-float_4.5s_ease-in-out_infinite] md:block lg:left-10 lg:h-64"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-70"
+          className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(45% 55% at 90% 10%, rgba(255,255,255,0.6) 0%, transparent 60%), radial-gradient(50% 50% at 8% 90%, rgba(18,82,106,0.18) 0%, transparent 65%)",
+              "radial-gradient(38% 50% at 88% 12%, color-mix(in oklab, var(--brand-lime) 35%, transparent) 0%, transparent 65%), radial-gradient(45% 55% at 10% 92%, color-mix(in oklab, var(--brand-sky) 55%, transparent) 0%, transparent 70%)",
           }}
         />
+
         <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] text-center">
           <div data-reveal className="mx-auto max-w-3xl space-y-6 text-[var(--brand-ink)]">
             <p className="eyebrow justify-center" style={{ color: "var(--brand-teal)" }}>Hablemos</p>
