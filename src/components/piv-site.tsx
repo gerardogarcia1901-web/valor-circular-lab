@@ -383,7 +383,7 @@ function SiteFooter() {
     <footer className="border-t border-border/70 bg-ink py-14 text-ink-foreground">
       <div className="mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-10 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1.2fr_1fr] lg:items-start">
         <div className="space-y-4">
-          <img src={logoAsset.url} alt="Parque Industrial Verde" className="h-32 w-auto object-contain md:h-40 lg:h-44" loading="lazy" />
+          <img src={logoAsset.url} alt="Parque Industrial Verde" className="h-56 w-auto object-contain md:h-72 lg:h-80" loading="lazy" />
         </div>
         <div className="space-y-4">
           <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Navegación</p>
