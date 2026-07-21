@@ -1335,75 +1335,116 @@ export function HomePage() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(125deg, #0f3d3a 0%, #12526A 40%, #1e3a5f 75%, #273655 100%)",
+              "linear-gradient(125deg, #0a2f2d 0%, #0f3d3a 25%, #12526A 55%, #1e3a5f 80%, #273655 100%)",
           }}
         />
+        {/* Ambient orbs */}
         <div
           aria-hidden
-          className="absolute inset-0 opacity-60"
+          className="absolute inset-0 opacity-70"
           style={{
             background:
-              "radial-gradient(60% 45% at 15% 20%, rgba(195,235,87,0.18) 0%, transparent 60%), radial-gradient(55% 45% at 85% 85%, rgba(182,205,255,0.20) 0%, transparent 65%)",
+              "radial-gradient(55% 45% at 12% 18%, rgba(195,235,87,0.22) 0%, transparent 60%), radial-gradient(50% 45% at 88% 82%, rgba(182,205,255,0.22) 0%, transparent 65%), radial-gradient(35% 30% at 65% 15%, rgba(255,255,255,0.10) 0%, transparent 65%)",
+          }}
+        />
+        {/* Fine grid overlay */}
+        <div
+          aria-hidden
+          className="absolute inset-0 opacity-[0.08] mix-blend-overlay"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.6) 1px, transparent 1px)",
+            backgroundSize: "72px 72px",
+            maskImage:
+              "radial-gradient(ellipse at center, black 40%, transparent 85%)",
+          }}
+        />
+        {/* Animated floating orb */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-24 top-1/3 h-[26rem] w-[26rem] rounded-full opacity-40 blur-3xl"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(195,235,87,0.55) 0%, transparent 65%)",
+            animation: "hero-orb-drift 14s ease-in-out infinite",
           }}
         />
 
-
         <div className="relative mx-auto flex min-h-[100svh] w-[min(1280px,calc(100%-2rem))] flex-col justify-end pb-10 pt-28 md:justify-between md:pb-16 md:pt-36">
-          <div data-hero-kicker className="hidden items-center gap-3 md:flex">
+          <div className="hidden items-center gap-3 md:flex" style={{ animation: "hero-word-in 0.7s cubic-bezier(0.22,1,0.36,1) 0.1s both" }}>
             <span className="h-[2px] w-10 bg-[var(--brand-lime)]" />
             <span className="text-[0.7rem] font-black uppercase tracking-[0.32em] text-[var(--brand-lime)]">
-              Economía circular · Escala industrial
+              Economía circular · Escala industrial · El Salvador
             </span>
           </div>
 
-          <div className="max-w-3xl space-y-6 md:mt-auto md:pb-10">
+          <div className="max-w-4xl space-y-6 md:mt-auto md:pb-10">
             <span
-              data-hero-kicker
               className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.08] px-3 py-1.5 text-[0.62rem] font-black uppercase tracking-[0.22em] text-[var(--brand-lime)] backdrop-blur md:hidden"
+              style={{ animation: "hero-word-in 0.6s ease-out both" }}
             >
               <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-lime)]" /> Economía circular
             </span>
+
             <h1
-              data-hero-title
-              className="text-balance text-[2.5rem] font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl xl:text-[5.5rem]"
+              className="text-balance text-[2.6rem] font-semibold leading-[1.02] tracking-tight text-white sm:text-6xl md:text-7xl xl:text-[6rem]"
               style={{ textShadow: "0 2px 30px rgba(0,0,0,0.55)" }}
             >
-              Transformamos residuos en{" "}
-              <span className="italic text-[var(--brand-lime)]">oportunidades</span>.
+              <span className="block overflow-hidden">
+                <span className="inline-block" style={{ animation: "hero-word-in 0.85s cubic-bezier(0.22,1,0.36,1) 0.15s both" }}>
+                  Transformamos
+                </span>
+              </span>
+              <span className="block overflow-hidden">
+                <span className="inline-block" style={{ animation: "hero-word-in 0.85s cubic-bezier(0.22,1,0.36,1) 0.32s both" }}>
+                  residuos en{" "}
+                  <span className="relative italic text-[var(--brand-lime)]">
+                    oportunidades
+                    <span
+                      aria-hidden
+                      className="absolute -bottom-1 left-0 h-[6px] w-full rounded-full"
+                      style={{
+                        background:
+                          "linear-gradient(90deg, transparent 0%, var(--brand-lime) 20%, var(--brand-lime) 80%, transparent 100%)",
+                        transformOrigin: "left",
+                        animation: "hero-underline 0.9s cubic-bezier(0.22,1,0.36,1) 1s both",
+                      }}
+                    />
+                  </span>
+                  .
+                </span>
+              </span>
             </h1>
+
             <p
-              data-hero-copy
               className="max-w-xl text-base leading-7 text-white/85 md:text-lg md:leading-8"
-              style={{ textShadow: "0 2px 14px rgba(0,0,0,0.55)" }}
+              style={{
+                textShadow: "0 2px 14px rgba(0,0,0,0.55)",
+                animation: "hero-word-in 0.85s cubic-bezier(0.22,1,0.36,1) 0.55s both",
+              }}
             >
               Impulsamos el aprovechamiento de materiales reciclables mediante su recuperación, procesamiento y valorización, en alianza con recolectores, empresas y comunidades.
             </p>
-            <div data-hero-actions className="flex flex-wrap gap-3 pt-2">
+
+            <div
+              className="flex flex-wrap gap-3 pt-2"
+              style={{ animation: "hero-word-in 0.8s ease-out 0.75s both" }}
+            >
+              <a href={whatsappHref} target="_blank" rel="noreferrer">
+                <Button variant="hero" size="lg">Cotizar por WhatsApp</Button>
+              </a>
               <Link to="/servicios">
                 <Button variant="heroSecondary" size="lg">Ver servicios</Button>
               </Link>
             </div>
           </div>
 
-          <div
-            data-hero-stat
-            className="mt-10 grid grid-cols-1 divide-y divide-white/15 overflow-hidden rounded-2xl border border-white/15 bg-white/[0.06] backdrop-blur-md sm:grid-cols-3 sm:divide-x sm:divide-y-0"
-          >
-            {pivStats.map((item, i) => (
-              <div key={item.label} className="flex flex-col gap-2 p-5 md:p-6">
-                <span className="text-[0.6rem] font-black uppercase tracking-[0.22em] text-[var(--brand-lime)]">
-                  {String(i + 1).padStart(2, "0")} · {item.suffix.trim()}
-                </span>
-                <span className="text-4xl font-semibold leading-none tracking-tight text-white md:text-5xl">
-                  {item.prefix}
-                  {formatMetric(item.value)}
-                </span>
-                <span className="text-sm leading-6 text-white/75">{item.label}</span>
-              </div>
-            ))}
+          <div className="mt-10">
+            <HeroStats />
           </div>
         </div>
       </section>
+
 
 
 
