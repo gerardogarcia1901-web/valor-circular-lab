@@ -511,96 +511,132 @@ function MetricCard({ value, prefix, suffix, description, tone }: { value: numbe
 function HeroStats() {
   return (
     <div className="relative lg:self-end">
-      <img
-        src={reciclinAsset.url}
-        alt="Reciclin, mascota de Parque Industrial Verde"
-        aria-hidden
-        className="pointer-events-none absolute -top-32 right-0 z-10 hidden h-44 w-auto drop-shadow-[0_14px_30px_rgba(0,0,0,0.5)] animate-[reciclin-float_4s_ease-in-out_infinite] md:block lg:-top-40 lg:h-56"
-      />
-      <div
-        className="relative overflow-hidden rounded-2xl border border-white/10 backdrop-blur-md"
-        style={{
-          background:
-            "linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)",
-          boxShadow: "0 30px 80px -30px rgba(0,0,0,0.6)",
-        }}
-      >
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 h-px"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent 0%, rgba(195,235,87,0.6) 50%, transparent 100%)",
-          }}
-        />
-        <div className="grid sm:grid-cols-3">
-          {pivStats.map((item, i) => (
-            <HeroStatCard key={item.label} item={item} index={i} isLast={i === pivStats.length - 1} />
-          ))}
-        </div>
+      <div className="grid gap-4 sm:grid-cols-3">
+        {pivStats.map((item, i) => (
+          <HeroStatCard key={item.label} item={item} index={i} />
+        ))}
       </div>
     </div>
   );
 }
 
+const heroStatThemes = [
+  {
+    bg: "linear-gradient(150deg, #C3EB57 0%, #9FD42E 100%)",
+    fg: "#0D0D0D",
+    accent: "#12526A",
+    soft: "rgba(13,13,13,0.65)",
+    glow: "rgba(255,255,255,0.55)",
+    border: "rgba(13,13,13,0.12)",
+    dot: "#0D0D0D",
+  },
+  {
+    bg: "linear-gradient(150deg, #B6CDFF 0%, #7FA4E6 100%)",
+    fg: "#0D1B3A",
+    accent: "#12526A",
+    soft: "rgba(13,27,58,0.7)",
+    glow: "rgba(255,255,255,0.55)",
+    border: "rgba(13,27,58,0.15)",
+    dot: "#12526A",
+  },
+  {
+    bg: "linear-gradient(150deg, #12526A 0%, #0B3A4D 100%)",
+    fg: "#FFFFFF",
+    accent: "#C3EB57",
+    soft: "rgba(255,255,255,0.75)",
+    glow: "rgba(195,235,87,0.35)",
+    border: "rgba(255,255,255,0.15)",
+    dot: "#C3EB57",
+  },
+];
+
 function HeroStatCard({
   item,
   index,
-  isLast,
 }: {
   item: (typeof pivStats)[number];
   index: number;
-  isLast: boolean;
 }) {
   const { ref, value } = useCountUp(item.value);
+  const t = heroStatThemes[index % heroStatThemes.length];
   return (
     <div
       ref={ref}
       data-hero-stat
-      className={`group relative px-5 py-6 md:px-7 md:py-8 ${!isLast ? "border-b border-white/10 sm:border-b-0 sm:border-r" : ""}`}
+      className="group relative isolate overflow-hidden rounded-2xl border p-6 md:p-7 transition-transform duration-500 hover:-translate-y-1.5"
       style={{
+        background: t.bg,
+        color: t.fg,
+        borderColor: t.border,
+        boxShadow: "0 30px 70px -28px rgba(0,0,0,0.55)",
         animation: `hero-stat-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) ${index * 160}ms both`,
       }}
     >
-      {/* Numbered tick */}
-      <div className="flex items-center gap-2">
-        <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-lime)]" />
-        <span className="text-[0.65rem] font-black uppercase tracking-[0.3em] text-white/60">
+      {/* Ambient glow */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute -right-14 -top-14 h-40 w-40 rounded-full opacity-70 blur-2xl transition-opacity duration-700 group-hover:opacity-100"
+        style={{ background: t.glow }}
+      />
+      {/* Watermark index */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute -right-2 -bottom-8 text-[7rem] font-black leading-none tracking-tighter opacity-[0.08]"
+        style={{ color: t.fg }}
+      >
+        {String(index + 1).padStart(2, "0")}
+      </span>
+
+      {/* Tick */}
+      <div className="relative flex items-center gap-2">
+        <span className="h-1.5 w-1.5 rounded-full" style={{ background: t.dot }} />
+        <span
+          className="text-[0.65rem] font-black uppercase tracking-[0.3em]"
+          style={{ color: t.soft }}
+        >
           {String(index + 1).padStart(2, "0")}
         </span>
       </div>
 
-      {/* Massive number */}
-      <p className="mt-4 flex items-baseline gap-0.5 font-black leading-[0.9] tracking-tighter text-white">
-        <span className="text-2xl md:text-3xl text-[var(--brand-lime)]">
+      {/* Number */}
+      <p className="relative mt-4 flex items-baseline gap-0.5 font-black leading-[0.9] tracking-tighter">
+        <span className="text-2xl md:text-3xl" style={{ color: t.accent }}>
           {item.prefix}
         </span>
         <span
           className="whitespace-nowrap tabular-nums transition-transform duration-500 group-hover:-translate-y-1"
-          style={{ fontSize: "clamp(3rem, 6vw, 5.25rem)" }}
+          style={{ fontSize: "clamp(3rem, 6vw, 5.25rem)", color: t.fg }}
         >
           {formatMetric(value)}
         </span>
       </p>
 
       {/* Suffix */}
-      <p className="mt-2 text-sm font-bold uppercase tracking-[0.16em] text-[var(--brand-lime)]/90">
+      <p
+        className="relative mt-2 text-sm font-bold uppercase tracking-[0.16em]"
+        style={{ color: t.accent }}
+      >
         {item.suffix.trim()}
       </p>
 
       {/* Divider */}
       <div
         aria-hidden
-        className="mt-4 h-px w-10 origin-left bg-white/20 transition-all duration-500 group-hover:w-16 group-hover:bg-[var(--brand-lime)]"
+        className="relative mt-4 h-px w-10 origin-left transition-all duration-500 group-hover:w-20"
+        style={{ background: t.accent }}
       />
 
       {/* Label */}
-      <p className="mt-3 max-w-[24ch] text-[0.85rem] font-medium leading-6 text-white/70">
+      <p
+        className="relative mt-3 max-w-[24ch] text-[0.9rem] font-medium leading-6"
+        style={{ color: t.soft }}
+      >
         {item.label}
       </p>
     </div>
   );
 }
+
 
 
 
@@ -1373,13 +1409,10 @@ export function HomePage() {
               className="flex flex-wrap gap-3 pt-2"
               style={{ animation: "hero-word-in 0.8s ease-out 0.75s both" }}
             >
-              <Link to="/contacto">
-                <Button variant="hero" size="lg">Ir a contacto</Button>
+              <Link to="/servicios">
+                <Button variant="hero" size="lg">Ver servicios</Button>
               </Link>
 
-              <Link to="/servicios">
-                <Button variant="heroSecondary" size="lg">Ver servicios</Button>
-              </Link>
             </div>
           </div>
 
