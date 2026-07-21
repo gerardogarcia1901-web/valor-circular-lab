@@ -1331,9 +1331,10 @@ export function HomePage() {
               className="flex flex-wrap gap-3 pt-2"
               style={{ animation: "hero-word-in 0.8s ease-out 0.75s both" }}
             >
-              <a href={whatsappHref} target="_blank" rel="noreferrer">
-                <Button variant="hero" size="lg">Cotizar por WhatsApp</Button>
-              </a>
+              <Link to="/contacto">
+                <Button variant="hero" size="lg">Ir a contacto</Button>
+              </Link>
+
               <Link to="/servicios">
                 <Button variant="heroSecondary" size="lg">Ver servicios</Button>
               </Link>
