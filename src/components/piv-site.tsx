@@ -575,68 +575,90 @@ function HeroStatCard({
     <div
       ref={ref}
       data-hero-stat
-      className="group relative isolate overflow-hidden rounded-[1.5rem] border p-6 transition-all duration-500 hover:-translate-y-2 md:p-7"
       style={{
-        background: tone.bg,
-        color: tone.fg,
-        borderColor: tone.border,
-        boxShadow:
-          "0 32px 80px -24px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.35)",
+        animation: `hero-stat-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) ${index * 180}ms both`,
       }}
     >
-      {/* Ambient glow */}
-      <span
-        aria-hidden
-        className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full opacity-40 blur-3xl transition-opacity duration-700 group-hover:opacity-70"
-        style={{ background: tone.accent }}
-      />
-      {/* Watermark index */}
-      <span
-        aria-hidden
-        className="pointer-events-none absolute -right-2 -bottom-6 text-[7.5rem] font-black leading-none tracking-tighter text-current opacity-[0.09] md:text-[9rem]"
+      <div
+        className="group relative isolate overflow-hidden rounded-[1.75rem] border p-7 transition-all duration-500 hover:-translate-y-2 hover:rotate-[-0.3deg] md:p-8"
+        style={{
+          background: tone.bg,
+          color: tone.fg,
+          borderColor: tone.border,
+          boxShadow:
+            "0 36px 90px -28px rgba(0,0,0,0.75), inset 0 1px 0 rgba(255,255,255,0.35)",
+        }}
       >
-        {String(index + 1).padStart(2, "0")}
-      </span>
-
-      <div className="relative flex items-center gap-2">
+        {/* Ambient glow */}
         <span
-          className="grid h-9 w-9 place-items-center rounded-xl"
-          style={{ background: tone.chip, color: tone.chipFg }}
-        >
-          <Icon className="h-4 w-4" />
-        </span>
-        <span
-          className="h-px flex-1 origin-left scale-x-0 transition-transform duration-700 group-hover:scale-x-100"
+          aria-hidden
+          className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full opacity-40 blur-3xl transition-all duration-700 group-hover:opacity-80 group-hover:scale-110"
           style={{ background: tone.accent }}
         />
-      </div>
-
-      <p className="relative mt-6 flex items-baseline gap-1 font-black tracking-tighter leading-none">
-        <span className="text-3xl md:text-4xl" style={{ color: tone.accent }}>
-          {item.prefix}
-        </span>
+        {/* Shine sweep */}
         <span
-          className="whitespace-nowrap tabular-nums text-6xl md:text-7xl xl:text-[5.5rem]"
-          style={{ color: tone.fg, textShadow: "0 4px 30px rgba(0,0,0,0.25)" }}
+          aria-hidden
+          className="pointer-events-none absolute -inset-y-4 -left-1/2 w-1/2 rotate-12 bg-gradient-to-r from-transparent via-white/25 to-transparent opacity-0 transition-all duration-1000 group-hover:left-[120%] group-hover:opacity-100"
+        />
+        {/* Watermark index */}
+        <span
+          aria-hidden
+          className="pointer-events-none absolute -right-3 -bottom-10 text-[9rem] font-black leading-none tracking-tighter text-current opacity-[0.08] md:text-[11rem]"
+          style={{ WebkitTextStroke: "1px currentColor" }}
         >
-          {formatMetric(value)}
+          {String(index + 1).padStart(2, "0")}
         </span>
-      </p>
-      <p
-        className="relative mt-2 text-sm font-black uppercase tracking-[0.18em] md:text-base"
-        style={{ color: tone.accent }}
-      >
-        {item.suffix}
-      </p>
-      <p
-        className="relative mt-4 text-sm font-semibold leading-6 md:text-base"
-        style={{ color: tone.fg, opacity: 0.9 }}
-      >
-        {item.label}
-      </p>
+
+        <div className="relative flex items-center gap-3">
+          <span
+            className="grid h-10 w-10 place-items-center rounded-xl"
+            style={{ background: tone.chip, color: tone.chipFg }}
+          >
+            <Icon className="h-4 w-4" />
+          </span>
+          <span
+            className="text-[0.65rem] font-black uppercase tracking-[0.28em]"
+            style={{ color: tone.accent }}
+          >
+            {String(index + 1).padStart(2, "0")} · {item.suffix.trim()}
+          </span>
+        </div>
+
+        <p className="relative mt-7 flex items-baseline gap-1 font-black tracking-tighter leading-[0.85]">
+          <span
+            className="text-3xl md:text-4xl"
+            style={{ color: tone.accent }}
+          >
+            {item.prefix}
+          </span>
+          <span
+            className="whitespace-nowrap tabular-nums text-7xl md:text-[5.5rem] xl:text-[6.5rem]"
+            style={{
+              color: tone.fg,
+              textShadow: "0 6px 40px rgba(0,0,0,0.35)",
+            }}
+          >
+            {formatMetric(value)}
+          </span>
+        </p>
+
+        <div
+          aria-hidden
+          className="relative mt-5 h-[3px] w-16 origin-left rounded-full transition-all duration-700 group-hover:w-24"
+          style={{ background: tone.accent }}
+        />
+
+        <p
+          className="relative mt-4 max-w-[22ch] text-[0.95rem] font-semibold leading-6 md:text-base"
+          style={{ color: tone.fg, opacity: 0.92 }}
+        >
+          {item.label}
+        </p>
+      </div>
     </div>
   );
 }
+
 
 
 
