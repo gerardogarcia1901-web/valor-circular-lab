@@ -647,15 +647,6 @@ function HeroStatCard({
 
 
 function ElSalvadorMap() {
-  // Simplified but recognizable El Salvador silhouette (viewBox 0 0 1000 420).
-  // Coordinates approximated so pins align with real departments (west→east).
-  const pins = [
-    { name: "Santa Ana", x: 205, y: 175, sub: "Occidente" },
-    { name: "San Salvador", x: 495, y: 210, sub: "Sede central" },
-    { name: "La Paz", x: 615, y: 290, sub: "Costa del Sol" },
-  ];
-  const countryPath =
-    "M40,205 C90,150 170,120 260,118 C330,116 380,145 430,140 C500,132 560,110 640,115 C720,120 800,140 870,175 C925,200 965,225 960,265 C950,315 895,345 820,355 C755,363 705,345 640,340 C560,335 500,360 430,362 C355,363 295,345 235,345 C175,345 115,335 75,300 C45,275 25,240 40,205 Z";
   return (
     <div className="relative">
       <div
@@ -667,34 +658,12 @@ function ElSalvadorMap() {
         }}
       />
       <div className="relative overflow-hidden rounded-[2rem] border border-border/60 bg-white/90 p-4 shadow-[var(--shadow-elevated)] backdrop-blur md:p-6">
-        <div className="mb-3 flex items-center justify-between text-[0.65rem] font-black uppercase tracking-[0.24em] text-[var(--brand-navy)]">
-          <span>El Salvador</span>
-          <span className="rounded-full bg-[var(--brand-lime)] px-2.5 py-1 text-[var(--brand-ink)]">Cobertura activa</span>
-        </div>
-        <svg viewBox="0 0 1000 420" className="h-auto w-full" role="img" aria-label="Mapa de cobertura en El Salvador">
-          <defs>
-            <linearGradient id="es-fill" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#12526A" stopOpacity="0.14" />
-              <stop offset="100%" stopColor="#273655" stopOpacity="0.24" />
-            </linearGradient>
-            <radialGradient id="pin-glow">
-              <stop offset="0%" stopColor="#C3EB57" stopOpacity="0.55" />
-              <stop offset="100%" stopColor="#C3EB57" stopOpacity="0" />
-            </radialGradient>
-          </defs>
-          <path d={countryPath} fill="url(#es-fill)" stroke="#12526A" strokeWidth="2.5" strokeOpacity="0.7" strokeLinejoin="round" />
-          {pins.map((p) => (
-            <g key={p.name}>
-              <circle cx={p.x} cy={p.y} r="34" fill="url(#pin-glow)">
-                <animate attributeName="r" values="20;40;20" dur="2.6s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values="0.9;0.2;0.9" dur="2.6s" repeatCount="indefinite" />
-              </circle>
-              <circle cx={p.x} cy={p.y} r="9" fill="#C3EB57" stroke="#273655" strokeWidth="2.5" />
-              <text x={p.x + 16} y={p.y - 2} fontSize="18" fontWeight="800" fill="#273655" style={{ fontFamily: "var(--font-display)" }}>{p.name}</text>
-              <text x={p.x + 16} y={p.y + 16} fontSize="12" fontWeight="600" fill="#12526A" style={{ fontFamily: "var(--font-display)" }}>{p.sub}</text>
-            </g>
-          ))}
-        </svg>
+        <img
+          src={mapaAsset.url}
+          alt="Mapa de cobertura en El Salvador: Santa Ana, San Salvador y La Paz"
+          className="h-auto w-full"
+          loading="lazy"
+        />
       </div>
     </div>
   );
