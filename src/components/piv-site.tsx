@@ -762,12 +762,6 @@ function ServicesGrid() {
           />
 
           <div className="absolute inset-x-0 bottom-0 flex flex-col gap-4 p-6 text-white sm:p-10 md:p-14">
-            <span
-              className="w-fit rounded-full px-3 py-1 text-[0.6rem] font-black uppercase tracking-[0.24em]"
-              style={{ background: "var(--brand-lime)", color: "var(--brand-ink)" }}
-            >
-              Servicio · {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
-            </span>
             <h3 className="max-w-3xl text-balance text-3xl font-black leading-tight tracking-tight sm:text-4xl md:text-5xl">
               {service.title}
             </h3>
