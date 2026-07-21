@@ -509,33 +509,6 @@ function MetricCard({ value, prefix, suffix, description, tone }: { value: numbe
 }
 
 function HeroStats() {
-  const icons = [Award, Recycle, Globe2];
-  const tones = [
-    {
-      bg: "linear-gradient(145deg, #C3EB57 0%, #DCF97D 100%)",
-      fg: "var(--brand-ink)",
-      chip: "var(--brand-ink)",
-      chipFg: "var(--brand-lime)",
-      accent: "var(--brand-teal)",
-      border: "rgba(195,235,87,0.9)",
-    },
-    {
-      bg: "linear-gradient(145deg, #FFFFFF 0%, #ECF3FF 100%)",
-      fg: "var(--brand-navy)",
-      chip: "var(--brand-teal)",
-      chipFg: "#ffffff",
-      accent: "var(--brand-teal)",
-      border: "rgba(255,255,255,0.92)",
-    },
-    {
-      bg: "linear-gradient(145deg, #273655 0%, #12526A 100%)",
-      fg: "#ffffff",
-      chip: "var(--brand-lime)",
-      chipFg: "var(--brand-ink)",
-      accent: "var(--brand-lime)",
-      border: "rgba(195,235,87,0.4)",
-    },
-  ];
   return (
     <div className="relative lg:self-end">
       <img
@@ -544,19 +517,10 @@ function HeroStats() {
         aria-hidden
         className="pointer-events-none absolute -top-32 right-0 z-10 hidden h-44 w-auto drop-shadow-[0_14px_30px_rgba(0,0,0,0.5)] animate-[reciclin-float_4s_ease-in-out_infinite] md:block lg:-top-40 lg:h-56"
       />
-      <div className="grid gap-3 sm:grid-cols-3 md:gap-4">
-        {pivStats.map((item, i) => {
-          const Icon = icons[i % icons.length];
-          return (
-            <HeroStatCard
-              key={item.label}
-              item={item}
-              Icon={Icon}
-              index={i}
-              tone={tones[i % tones.length]}
-            />
-          );
-        })}
+      <div className="grid divide-y divide-white/15 border-y border-white/15 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+        {pivStats.map((item, i) => (
+          <HeroStatCard key={item.label} item={item} index={i} />
+        ))}
       </div>
     </div>
   );
@@ -564,96 +528,39 @@ function HeroStats() {
 
 function HeroStatCard({
   item,
-  Icon,
   index,
-  tone,
 }: {
   item: (typeof pivStats)[number];
-  Icon: React.ComponentType<{ className?: string }>;
   index: number;
-  tone: { bg: string; fg: string; chip: string; chipFg: string; accent: string; border: string };
 }) {
   const { ref, value } = useCountUp(item.value);
   return (
     <div
       ref={ref}
       data-hero-stat
+      className="group relative px-2 py-6 sm:px-5 sm:py-4"
       style={{
         animation: `hero-stat-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) ${index * 160}ms both`,
       }}
     >
-      <div
-        className="group relative isolate overflow-hidden rounded-[1.5rem] border p-6 transition-all duration-500 hover:-translate-y-1.5 md:p-7"
-        style={{
-          background: tone.bg,
-          color: tone.fg,
-          borderColor: tone.border,
-          boxShadow:
-            "0 30px 70px -30px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.25)",
-        }}
-      >
-        {/* Ambient glow */}
-        <span
-          aria-hidden
-          className="pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full opacity-30 blur-3xl transition-opacity duration-700 group-hover:opacity-60"
-          style={{ background: tone.accent }}
-        />
-
-        {/* Header row: index + icon */}
-        <div className="relative flex items-center justify-between">
-          <span
-            className="text-[0.7rem] font-bold uppercase tracking-[0.32em] opacity-70"
-            style={{ color: tone.fg }}
-          >
-            {String(index + 1).padStart(2, "0")}
-          </span>
-          <span
-            className="grid h-9 w-9 place-items-center rounded-full"
-            style={{ background: tone.chip, color: tone.chipFg }}
-          >
-            <Icon className="h-4 w-4" />
-          </span>
-        </div>
-
-        {/* Big number */}
-        <p className="relative mt-8 flex items-baseline gap-0.5 font-black tracking-tighter leading-none">
-          <span className="text-3xl md:text-4xl" style={{ color: tone.accent }}>
-            {item.prefix}
-          </span>
-          <span
-            className="whitespace-nowrap tabular-nums text-[4.5rem] md:text-[6rem] xl:text-[7rem]"
-            style={{ color: tone.fg }}
-          >
-            {formatMetric(value)}
-          </span>
-        </p>
-
-        {/* Suffix label */}
-        <p
-          className="relative mt-1 text-sm font-bold uppercase tracking-[0.2em]"
-          style={{ color: tone.accent }}
-        >
+      <p className="flex items-baseline gap-0.5 font-black leading-none tracking-tighter text-white">
+        <span className="text-2xl md:text-3xl text-[var(--brand-lime)]">
+          {item.prefix}
+        </span>
+        <span className="whitespace-nowrap tabular-nums text-[3.75rem] md:text-[4.5rem] xl:text-[5.5rem] transition-transform duration-500 group-hover:translate-y-[-2px]">
+          {formatMetric(value)}
+        </span>
+        <span className="ml-1 text-base md:text-lg font-bold uppercase tracking-[0.14em] text-white/70">
           {item.suffix.trim()}
-        </p>
-
-        {/* Divider */}
-        <div
-          aria-hidden
-          className="relative mt-5 h-px w-full origin-left"
-          style={{ background: `color-mix(in oklab, ${tone.fg} 20%, transparent)` }}
-        />
-
-        {/* Description */}
-        <p
-          className="relative mt-4 max-w-[24ch] text-[0.9rem] font-medium leading-6"
-          style={{ color: tone.fg, opacity: 0.85 }}
-        >
-          {item.label}
-        </p>
-      </div>
+        </span>
+      </p>
+      <p className="mt-3 max-w-[26ch] text-[0.85rem] font-medium leading-6 text-white/70">
+        {item.label}
+      </p>
     </div>
   );
 }
+
 
 
 
