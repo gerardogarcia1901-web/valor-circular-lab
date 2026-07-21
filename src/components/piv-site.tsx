@@ -1632,14 +1632,6 @@ export function AboutPage() {
             );
           })}
         </div>
-        <div data-reveal className="mt-10 overflow-hidden rounded-[1.75rem] bg-gradient-to-r from-[var(--brand-navy)] via-[var(--brand-teal)] to-[var(--brand-lime)] p-[1px] shadow-[var(--shadow-elevated)]">
-          <div className="flex flex-col items-center gap-4 rounded-[1.65rem] bg-white px-8 py-14 text-center md:py-16">
-            <Sparkles className="h-8 w-8 text-[var(--brand-teal)]" />
-            <p className="text-balance text-2xl font-black uppercase leading-tight tracking-[0.02em] text-[var(--brand-navy)] md:text-4xl lg:text-5xl">
-              EL RECICLAJE SE CONSTRUYE DESDE PEQUEÑAS ACCIONES QUE, JUNTAS, GENERAN UN <span className="text-[var(--brand-teal)]">IMPACTO POSITIVO.</span>
-            </p>
-          </div>
-        </div>
       </Section>
       <section className="relative overflow-hidden py-24 md:py-32">
         <img
