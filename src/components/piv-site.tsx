@@ -1708,9 +1708,11 @@ export function ServicesPage() {
         <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div data-reveal className="space-y-6">
             <p className="eyebrow">Servicios</p>
-            <h1 className="text-balance text-4xl font-semibold leading-tight tracking-tight md:text-6xl">Soluciones integrales que facilitan la recuperación, clasificación y valorización de materiales.</h1>
+            <p className="max-w-2xl text-2xl leading-snug font-semibold tracking-tight text-[var(--brand-navy)] md:text-3xl">
+              Cada servicio se integra a una operación que busca orden, evidencia y resultados.
+            </p>
             <p className="max-w-2xl text-lg leading-8 text-muted-foreground">
-              Brindamos soluciones que garantizan la recuperación de materiales, la trazabilidad de los procesos y el respaldo necesario para una gestión responsable.
+              Trabajamos con empresas, corporaciones e industrias que necesitan una solución ambiental alineada con cumplimiento, reputación e impacto medible.
             </p>
             <div className="flex flex-wrap gap-3">
               <a href={whatsappHref} target="_blank" rel="noreferrer"><Button variant="primary" size="lg">Cotizar</Button></a>
@@ -1722,51 +1724,33 @@ export function ServicesPage() {
       </section>
       <Section
         eyebrow="Capacidades"
-        title="Cada servicio se integra a una operación que busca orden, evidencia y resultados."
-        description="Trabajamos con empresas, corporaciones e industrias que necesitan una solución ambiental alineada con cumplimiento, reputación e impacto medible."
+        title="Soluciones integrales que facilitan la recuperación, clasificación y valorización de materiales."
+        titleClassName="text-3xl leading-snug md:text-5xl"
+        containerClassName="max-w-4xl"
+        description="Brindamos soluciones que garantizan la recuperación de materiales, la trazabilidad de los procesos y el respaldo necesario para una gestión responsable."
       >
         <ServicesGrid />
       </Section>
-      <section className="relative overflow-hidden bg-[var(--brand-ink)] py-20 md:py-28">
-        <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-          <div data-reveal className="relative overflow-hidden rounded-[2rem] shadow-[var(--shadow-elevated)]">
-            <img
-              src={campanasEmpresarialesServiciosAsset.url}
-              alt="Jornada empresarial de recolección de residuos electrónicos con Parque Industrial Verde"
-              loading="lazy"
-              className="block h-[420px] w-full object-cover md:h-[560px]"
-            />
-            <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[var(--brand-ink)]/55 via-transparent to-transparent" />
-            <div className="absolute bottom-5 left-5 flex flex-wrap gap-2">
-              <span className="rounded-full bg-[var(--brand-lime)] px-3 py-1.5 text-[0.65rem] font-black uppercase tracking-[0.18em] text-[var(--brand-ink)]">RAEE</span>
-              <span className="rounded-full bg-white/90 px-3 py-1.5 text-[0.65rem] font-black uppercase tracking-[0.18em] text-[var(--brand-navy)]">Jornada in-situ</span>
-            </div>
-          </div>
-          <div data-reveal className="text-white">
-            <p className="text-[0.7rem] font-black uppercase tracking-[0.22em] text-[var(--brand-lime)]">Campañas empresariales</p>
-            <h2 className="mt-4 text-balance text-4xl font-semibold tracking-tight md:text-5xl">
-              Creamos espacios que <span className="text-[var(--brand-lime)]">inspiran a las personas</span> a participar y actuar a favor del reciclaje.
-            </h2>
-            <p className="mt-6 text-base leading-7 text-white/80">
-              Coordinamos la logística, el montaje y la trazabilidad para que tu empresa recolecte RAEE, equipos y materiales reciclables con respaldo documental y participación real de colaboradores.
-            </p>
-            <div className="mt-8 grid gap-3 sm:grid-cols-3">
-              {[
-                { k: "Montaje", v: "Activación completa" },
-                { k: "Cobertura", v: "Nacional" },
-                { k: "Evidencia", v: "Certificada" },
-              ].map((b) => (
-                <div key={b.k} className="rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur">
-                  <p className="text-[0.62rem] font-black uppercase tracking-[0.18em] text-[var(--brand-lime)]">{b.k}</p>
-                  <p className="mt-1 text-sm font-semibold">{b.v}</p>
-                </div>
-              ))}
-            </div>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href={whatsappHref} target="_blank" rel="noreferrer"><Button variant="hero" size="lg">Coordinar jornada</Button></a>
-              <Link to="/rse"><Button variant="heroSecondary" size="lg">Ver campañas RSE</Button></Link>
-            </div>
-          </div>
+      <section
+        className="relative overflow-hidden py-20 md:py-28"
+        style={{
+          background:
+            "linear-gradient(120deg, #0f3d3a 0%, #12526A 45%, #1e3a5f 80%, #273655 100%)",
+        }}
+      >
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-60"
+          style={{
+            background:
+              "radial-gradient(50% 40% at 10% 20%, rgba(195,235,87,0.18) 0%, transparent 60%), radial-gradient(50% 40% at 90% 85%, rgba(182,205,255,0.18) 0%, transparent 60%)",
+          }}
+        />
+        <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] text-center text-white" data-reveal>
+          <p className="text-[0.7rem] font-black uppercase tracking-[0.24em] text-[var(--brand-lime)]">Campañas empresariales</p>
+          <h2 className="mx-auto mt-5 max-w-4xl text-balance text-4xl font-semibold tracking-tight md:text-6xl">
+            Creamos espacios que <span className="text-[var(--brand-lime)]">inspiran a las personas</span> a participar y actuar a favor del reciclaje.
+          </h2>
         </div>
       </section>
       <EnterpriseCommunity />
