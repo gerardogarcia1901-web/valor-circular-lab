@@ -404,12 +404,9 @@ function SiteFooter() {
             "radial-gradient(50% 40% at 10% 15%, rgba(195,235,87,0.14) 0%, transparent 60%), radial-gradient(45% 40% at 90% 90%, rgba(182,205,255,0.14) 0%, transparent 65%)",
         }}
       />
-      <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-8 md:grid-cols-4 md:items-start">
-        <div className="space-y-3">
-          <img src={logoAsset.url} alt="Parque Industrial Verde" className="h-16 w-auto object-contain md:h-20" loading="lazy" />
-          <p className="text-xs leading-6 text-white/70 max-w-[16rem]">
-            Economía circular con escala industrial en El Salvador.
-          </p>
+      <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-8 md:grid-cols-4 md:items-center">
+        <div className="flex items-center md:justify-start">
+          <img src={logoAsset.url} alt="Parque Industrial Verde" className="h-28 w-auto object-contain md:h-40 lg:h-48" loading="lazy" />
         </div>
         <div className="space-y-3">
           <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Navegación</p>
