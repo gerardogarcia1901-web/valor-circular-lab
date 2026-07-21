@@ -962,17 +962,11 @@ function TimelineRail() {
 
       <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))]">
         <div data-reveal className="max-w-3xl space-y-5">
-          <span
-            className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[0.65rem] font-black uppercase tracking-[0.28em]"
-            style={{ background: "var(--brand-lime)", color: "var(--brand-ink)" }}
-          >
-            <Clock3 className="h-3.5 w-3.5" /> 2003 — Hoy
-          </span>
           <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl">
             Nuestra evolución
           </h2>
           <p className="max-w-2xl text-lg leading-8 text-muted-foreground">
-            A lo largo del tiempo hemos evolucionado, desarrollando una operación más organizada y eficiente en el manejo de materiales reciclables, lo que nos ha permitido consolidar un crecimiento constante, mayor capacidad operativa y convertirnos en la recicladora más grande de El Salvador.
+            Contamos con un centro integral para el acopio y gestión de residuos valorizables, donde personas, empresas e instituciones encuentran una alternativa eficiente para su correcta disposición y aprovechamiento.
           </p>
         </div>
 
