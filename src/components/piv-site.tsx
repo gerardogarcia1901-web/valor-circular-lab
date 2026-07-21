@@ -1869,7 +1869,14 @@ export function MaterialsPage() {
             );
           })}
         </div>
-        <div className="mt-10 overflow-hidden rounded-3xl bg-[var(--brand-ink)] shadow-[var(--shadow-elevated)]" data-reveal>
+        <div
+          className="mt-10 overflow-hidden rounded-3xl shadow-[var(--shadow-elevated)]"
+          style={{
+            background:
+              "linear-gradient(120deg, #0f3d3a 0%, #12526A 45%, #1e3a5f 80%, #273655 100%)",
+          }}
+          data-reveal
+        >
           <div className="grid gap-0 md:grid-cols-[0.9fr_1.1fr]">
             <div className="relative flex flex-col justify-between gap-6 p-8 text-white">
               <div className="flex items-center gap-3">
