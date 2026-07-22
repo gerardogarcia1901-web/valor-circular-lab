@@ -41,10 +41,8 @@ export function ReciclinHelper() {
   );
 
   useEffect(() => {
-    // Open bubble by default on desktop; keep closed on mobile so it never blocks CTAs.
-    if (typeof window === "undefined") return;
-    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
-    setBubble(isDesktop);
+    // Keep bubble closed by default across all viewports so it never blocks the hero.
+    setBubble(false);
   }, [pathname]);
 
 
