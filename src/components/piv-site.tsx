@@ -303,12 +303,12 @@ function SiteHeader() {
               : "bg-transparent",
           )}
         />
-        <Link to="/" className="shrink-0 -my-4 md:-my-10 lg:-my-12" aria-label="Parque Industrial Verde, ir al inicio">
+        <Link to="/" className="shrink-0 -my-8 md:-my-10 lg:-my-12" aria-label="Parque Industrial Verde, ir al inicio">
           <img
             src={logoAsset.url}
             alt="Parque Industrial Verde"
             className={cn(
-              "h-16 w-auto object-contain transition-all duration-500 md:h-36 lg:h-44",
+              "h-28 w-auto object-contain transition-all duration-500 md:h-36 lg:h-44",
               scrolled || mobileOpen ? "" : "drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)]",
             )}
           />
