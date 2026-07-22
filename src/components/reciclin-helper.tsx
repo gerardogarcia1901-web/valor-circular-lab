@@ -41,16 +41,14 @@ export function ReciclinHelper() {
   );
 
   useEffect(() => {
-    // Open bubble by default on desktop; keep closed on mobile so it never blocks CTAs.
-    if (typeof window === "undefined") return;
-    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
-    setBubble(isDesktop);
+    // Keep bubble closed by default across all viewports so it never blocks the hero.
+    setBubble(false);
   }, [pathname]);
 
 
   return (
     <div
-      className="pointer-events-none fixed bottom-5 left-3 z-40 flex items-center gap-2 md:bottom-auto md:left-6 md:top-[45vh]"
+      className="pointer-events-none fixed bottom-5 left-3 z-40 flex items-center gap-2 md:bottom-6 md:left-6"
     >
       <a
         href={whatsappHref}
