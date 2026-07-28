@@ -1278,7 +1278,7 @@ function LocationsPanel() {
 export function HomePage() {
   return (
     <PageShell>
-      <section className="relative min-h-[100svh] overflow-hidden">
+      <section className="relative min-h-[100svh] overflow-hidden lg:h-[100svh] lg:min-h-0">
         <div
           aria-hidden
           className="absolute inset-0"
