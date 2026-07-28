@@ -1319,7 +1319,7 @@ export function HomePage() {
           }}
         />
 
-        <div className="relative mx-auto flex min-h-[88svh] w-[min(1280px,calc(100%-2rem))] flex-col justify-between gap-10 pb-10 pt-24 md:min-h-[92svh] md:gap-14 md:pb-16 md:pt-32">
+        <div className="relative mx-auto flex min-h-[88svh] w-[min(1280px,calc(100%-2rem))] flex-col justify-between gap-10 pb-10 pt-24 md:min-h-[92svh] md:gap-14 md:pb-16 md:pt-32 lg:h-full lg:min-h-0 lg:gap-8 lg:pb-10 lg:pt-28">
           <div className="hidden items-center gap-3 md:flex" style={{ animation: "hero-word-in 0.7s cubic-bezier(0.22,1,0.36,1) 0.1s both" }}>
             <span className="h-[2px] w-10 bg-[var(--brand-lime)]" />
             <span className="text-[0.7rem] font-black uppercase tracking-[0.32em] text-[var(--brand-lime)]">
