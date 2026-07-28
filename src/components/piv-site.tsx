@@ -407,7 +407,7 @@ function SiteFooter() {
       />
       <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-8 md:grid-cols-[1.15fr_1fr_1fr_1fr] md:items-center">
         <div className="flex items-center md:justify-start">
-          <img src={logoAsset.url} alt="Parque Industrial Verde" className="h-36 w-auto object-contain md:h-56 lg:h-72" loading="lazy" />
+          <img src={logoAsset.url} alt="Parque Industrial Verde" className="h-44 w-auto object-contain md:h-64 lg:h-80" loading="lazy" />
         </div>
         <div className="space-y-3">
           <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Navegación</p>
