@@ -8,7 +8,7 @@ import heroAsset from "@/assets/hero-1.png.asset.json";
 import heroAboutAsset from "@/assets/piv-hero-v2.png.asset.json";
 import propositoAsset from "@/assets/proposito.png.asset.json";
 import logoAsset from "@/assets/piv-logo.png.asset.json";
-import mapaAsset from "@/assets/mapa-el-salvador-v3.png.asset.json";
+import mapaAsset from "@/assets/mapa-el-salvador-v4.png.asset.json";
 import reciclinAsset from "@/assets/reciclin.png.asset.json";
 import { ReciclinMascot } from "@/components/reciclin-mascot";
 import { ConversionPopup } from "@/components/conversion-popup";
@@ -303,12 +303,12 @@ function SiteHeader() {
               : "bg-transparent",
           )}
         />
-        <Link to="/" className="shrink-0 -my-10 md:-my-14 lg:-my-16" aria-label="Parque Industrial Verde, ir al inicio">
+        <Link to="/" className="shrink-0 -my-12 md:-my-16 lg:-my-20" aria-label="Parque Industrial Verde, ir al inicio">
           <img
             src={logoAsset.url}
             alt="Parque Industrial Verde"
             className={cn(
-              "h-32 w-auto object-contain transition-all duration-500 md:h-44 lg:h-52",
+              "h-36 w-auto object-contain transition-all duration-500 md:h-52 lg:h-60",
               scrolled || mobileOpen ? "" : "drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)]",
             )}
           />
@@ -407,7 +407,7 @@ function SiteFooter() {
       />
       <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-8 md:grid-cols-[1.15fr_1fr_1fr_1fr] md:items-center">
         <div className="flex items-center md:justify-start">
-          <img src={logoAsset.url} alt="Parque Industrial Verde" className="h-44 w-auto object-contain md:h-64 lg:h-80" loading="lazy" />
+          <img src={logoAsset.url} alt="Parque Industrial Verde" className="h-52 w-auto object-contain md:h-72 lg:h-96" loading="lazy" />
         </div>
         <div className="space-y-3">
           <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Navegación</p>
