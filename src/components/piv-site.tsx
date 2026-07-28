@@ -1997,10 +1997,10 @@ export function RsePage() {
           })}
         </div>
         {selectedSection ? (
-          <div id={`panel-${selectedSection.id}`} role="tabpanel" className="mt-8 grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+          <div id={`panel-${selectedSection.id}`} role="tabpanel" className="mt-8 grid items-start gap-6 lg:grid-cols-[0.8fr_1.2fr]">
             <article
               data-reveal
-              className="relative overflow-hidden rounded-3xl p-7 text-white shadow-[var(--shadow-elevated)]"
+              className="relative self-start overflow-hidden rounded-3xl p-7 text-white shadow-[var(--shadow-elevated)]"
               style={{
                 background:
                   "linear-gradient(135deg, #0f3d3a 0%, #12526A 45%, #1e3a5f 80%, #273655 100%)",
