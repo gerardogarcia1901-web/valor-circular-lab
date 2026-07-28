@@ -303,12 +303,12 @@ function SiteHeader() {
               : "bg-transparent",
           )}
         />
-        <Link to="/" className="shrink-0 -my-8 md:-my-10 lg:-my-12" aria-label="Parque Industrial Verde, ir al inicio">
+        <Link to="/" className="shrink-0 -my-10 md:-my-14 lg:-my-16" aria-label="Parque Industrial Verde, ir al inicio">
           <img
             src={logoAsset.url}
             alt="Parque Industrial Verde"
             className={cn(
-              "h-28 w-auto object-contain transition-all duration-500 md:h-36 lg:h-44",
+              "h-32 w-auto object-contain transition-all duration-500 md:h-44 lg:h-52",
               scrolled || mobileOpen ? "" : "drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)]",
             )}
           />
@@ -407,7 +407,7 @@ function SiteFooter() {
       />
       <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))] grid gap-8 md:grid-cols-[1.15fr_1fr_1fr_1fr] md:items-center">
         <div className="flex items-center md:justify-start">
-          <img src={logoAsset.url} alt="Parque Industrial Verde" className="h-36 w-auto object-contain md:h-56 lg:h-72" loading="lazy" />
+          <img src={logoAsset.url} alt="Parque Industrial Verde" className="h-44 w-auto object-contain md:h-64 lg:h-80" loading="lazy" />
         </div>
         <div className="space-y-3">
           <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Navegación</p>
@@ -1997,10 +1997,10 @@ export function RsePage() {
           })}
         </div>
         {selectedSection ? (
-          <div id={`panel-${selectedSection.id}`} role="tabpanel" className="mt-8 grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+          <div id={`panel-${selectedSection.id}`} role="tabpanel" className="mt-8 grid items-start gap-6 lg:grid-cols-[0.8fr_1.2fr]">
             <article
               data-reveal
-              className="relative overflow-hidden rounded-3xl p-7 text-white shadow-[var(--shadow-elevated)]"
+              className="relative self-start overflow-hidden rounded-3xl p-7 text-white shadow-[var(--shadow-elevated)]"
               style={{
                 background:
                   "linear-gradient(135deg, #0f3d3a 0%, #12526A 45%, #1e3a5f 80%, #273655 100%)",
