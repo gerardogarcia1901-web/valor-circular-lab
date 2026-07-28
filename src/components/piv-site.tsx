@@ -303,7 +303,7 @@ function SiteHeader() {
               : "bg-transparent",
           )}
         />
-        <Link to="/" className="shrink-0 -my-8 md:-my-10 lg:-my-12" aria-label="Parque Industrial Verde, ir al inicio">
+        <Link to="/" className="shrink-0 -my-10 md:-my-14 lg:-my-16" aria-label="Parque Industrial Verde, ir al inicio">
           <img
             src={logoAsset.url}
             alt="Parque Industrial Verde"
