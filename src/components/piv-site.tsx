@@ -308,7 +308,7 @@ function SiteHeader() {
             src={logoAsset.url}
             alt="Parque Industrial Verde"
             className={cn(
-              "h-28 w-auto object-contain transition-all duration-500 md:h-36 lg:h-44",
+              "h-32 w-auto object-contain transition-all duration-500 md:h-44 lg:h-52",
               scrolled || mobileOpen ? "" : "drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)]",
             )}
           />
