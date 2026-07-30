@@ -790,7 +790,7 @@ function ServicesGrid() {
               alt={featuredServices[i].title}
               className={cn(
                 "absolute inset-0 h-full w-full transition-opacity duration-[900ms] ease-out",
-                i === 1 ? "object-contain" : "object-cover",
+                i === 1 ? "object-contain" : "object-cover object-[center_30%]",
                 i === index ? "opacity-100" : "opacity-0",
               )}
               loading={i === 0 ? "eager" : "lazy"}
@@ -1980,7 +1980,7 @@ export function RsePage() {
               Educación ambiental, campañas, activaciones comunitarias y acompañamiento empresarial forman parte de una estrategia de impacto que va más allá de la recuperación de materiales.
             </p>
           </div>
-          <img data-reveal src={rseHeroAsset.url} alt="Jornada comunitaria de recolección de materiales reciclables organizada por Parque Industrial Verde" className="image-tile h-[520px] object-cover" loading="eager" />
+          <img data-reveal src={rseHeroAsset.url} alt="Jornada comunitaria de recolección de materiales reciclables organizada por Parque Industrial Verde" className="image-tile h-[520px] object-cover object-[center_25%]" loading="eager" />
         </div>
       </section>
       <Section
@@ -2016,7 +2016,7 @@ export function RsePage() {
                   src={campaign.photos[0].url}
                   alt={campaign.photos[0].alt}
                   loading="lazy"
-                  className="h-40 w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="h-40 w-full object-cover object-[center_30%] transition-transform duration-700 group-hover:scale-105"
                 />
                 <span className="block p-5">
                   <span className={cn("text-[0.65rem] font-black uppercase tracking-[0.18em]", selected ? "text-[var(--brand-lime)]" : "text-[var(--brand-teal)]")}>{campaign.kicker}</span>
@@ -2078,13 +2078,13 @@ export function RsePage() {
               {selectedSection.photos.map((photo) => (
                 <div
                   key={photo.url}
-                  className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-[var(--shadow-elevated)]"
+                  className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-[var(--brand-navy)]/5 shadow-[var(--shadow-elevated)]"
                 >
                   <img
                     src={photo.url}
                     alt={photo.alt}
                     loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover"
+                    className="absolute inset-0 h-full w-full object-contain"
                   />
                 </div>
               ))}
