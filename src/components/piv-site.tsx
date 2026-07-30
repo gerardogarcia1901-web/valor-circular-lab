@@ -1253,7 +1253,7 @@ function LocationsPanel() {
           <MapPinned className="mt-1 h-5 w-5 text-primary" />
           <div>
             <p className="text-sm font-medium text-foreground">Tres ubicaciones estratégicas</p>
-            <p className="mt-1 text-sm leading-7 text-muted-foreground">Soyapango, Chalchuapa y Costa del Sol.</p>
+            <p className="mt-1 text-sm leading-7 text-muted-foreground">San Salvador, Chalchuapa y Costa del Sol.</p>
           </div>
         </div>
         <div className="flex items-start gap-3">

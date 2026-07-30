@@ -226,7 +226,7 @@ export const faqs = [
   {
     question: "¿Dónde están ubicados?",
     answer:
-      "Operamos en Soyapango, Chalchuapa y Costa del Sol, con cobertura para distintos perfiles de clientes y campañas.",
+      "Operamos en San Salvador, Chalchuapa y Costa del Sol, con cobertura para distintos perfiles de clientes y campañas.",
   },
 ];
 
