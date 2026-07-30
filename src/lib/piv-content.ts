@@ -11,11 +11,31 @@ export const trustPillars = [
 ];
 
 export const audience = [
-  "Recolectores base",
-  "Empresas",
-  "Corporaciones",
-  "Industrias",
-  "Centros comerciales",
+  {
+    title: "Recolectores base",
+    kicker: "Aliados de origen",
+    body: "Acompañamiento y compra directa de material recuperado con precios justos.",
+  },
+  {
+    title: "Empresas",
+    kicker: "Operación diaria",
+    body: "Rutas, recolección y evidencia documental adaptadas a cada operación.",
+  },
+  {
+    title: "Corporaciones",
+    kicker: "Cumplimiento",
+    body: "Trazabilidad, reportes auditables y respaldo para metas ambientales.",
+  },
+  {
+    title: "Industrias",
+    kicker: "Escala productiva",
+    body: "Manejo de altos volúmenes, desalojos y destrucción controlada.",
+  },
+  {
+    title: "Centros comerciales",
+    kicker: "Alta afluencia",
+    body: "Gestión de residuos y campañas para inquilinos y visitantes.",
+  },
 ];
 
 export const featuredServices = [
@@ -91,7 +111,7 @@ export const materialGroups = [
   },
   {
     title: "No Ferrosos",
-    items: ["Lata", "Aluminio", "Cobre", "Bronce"],
+    items: ["Lata", "Aluminio", "Cobre", "Bronce", "Acero"],
   },
   {
     title: "Ferrosos",
@@ -212,19 +232,34 @@ export const faqs = [
 
 export const locations = [
   {
-    name: "Soyapango",
+    name: "San Salvador",
+    address: "Km 5 Calle Agua Caliente, San Salvador",
     description: "Nodo operativo principal para recepción, clasificación y gestión de materiales a escala industrial.",
-    mapQuery: "Soyapango, El Salvador",
+    hours: [
+      { days: "Lunes a viernes", time: "8:00 a.m. – 5:00 p.m." },
+      { days: "Sábados", time: "8:00 a.m. – 12:00 m." },
+    ],
+    mapQuery: "Km 5 Calle Agua Caliente, San Salvador, El Salvador",
   },
   {
     name: "Chalchuapa",
+    address: "Beneficio San Antonio, carretera a Santa Ana, Chalchuapa",
     description: "Cobertura estratégica para occidente y puntos de recuperación vinculados a industria y comercio.",
-    mapQuery: "Chalchuapa, El Salvador",
+    hours: [
+      { days: "Lunes a viernes", time: "7:30 a.m. – 4:30 p.m." },
+      { days: "Sábados", time: "7:30 a.m. – 11:30 a.m." },
+    ],
+    mapQuery: "Beneficio San Antonio, carretera a Santa Ana, Chalchuapa, El Salvador",
   },
   {
     name: "Costa del Sol",
+    address: "San Marcelino, Costa del Sol, La Paz",
     description: "Activaciones, campañas y gestión de materiales para zonas turísticas y comunidades costeras.",
-    mapQuery: "Costa del Sol, El Salvador",
+    hours: [
+      { days: "Lunes a viernes", time: "8:00 a.m. – 5:00 p.m." },
+      { days: "Sábados", time: "8:00 a.m. – 12:00 m." },
+    ],
+    mapQuery: "San Marcelino, Costa del Sol, La Paz, El Salvador",
   },
 ];
 
