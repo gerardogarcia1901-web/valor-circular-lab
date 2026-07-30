@@ -1293,7 +1293,7 @@ function LocationsPanel() {
             </dl>
             <iframe
               title={`Mapa de ${location.name}`}
-              src={`https://www.google.com/maps?q=${encodeURIComponent(location.mapQuery)}&output=embed`}
+              src={`https://www.google.com/maps?q=${encodeURIComponent(location.mapQuery)}&z=16&hl=es&output=embed`}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               className="h-56 w-full rounded-[1.25rem] border border-border/70"
