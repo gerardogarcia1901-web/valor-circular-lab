@@ -239,7 +239,7 @@ export const locations = [
       { days: "Lunes a viernes", time: "8:00 a.m. – 5:00 p.m." },
       { days: "Sábados", time: "8:00 a.m. – 12:00 m." },
     ],
-    mapQuery: "Km 5 Calle Agua Caliente, San Salvador, El Salvador",
+    mapQuery: "13.7051254,-89.1556134",
   },
   {
     name: "Chalchuapa",
