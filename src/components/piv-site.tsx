@@ -1260,7 +1260,7 @@ function LocationsPanel() {
           <Clock3 className="mt-1 h-5 w-5 text-primary" />
           <div>
             <p className="text-sm font-medium text-foreground">Horario de atención</p>
-            <p className="mt-1 text-sm leading-7 text-muted-foreground">Lunes a viernes, 8:00 a.m. a 5:00 p.m.</p>
+            <p className="mt-1 text-sm leading-7 text-muted-foreground">Lunes a sábado, según la sede.</p>
           </div>
         </div>
         <div className="flex items-start gap-3">
@@ -1275,13 +1275,22 @@ function LocationsPanel() {
       <div className="grid gap-4">
         {locations.map((location) => (
           <article key={location.name} className="surface-panel">
-            <div className="mb-4 flex items-center justify-between gap-4">
+            <div className="mb-4 flex items-start justify-between gap-4">
               <div>
                 <h3 className="text-xl font-semibold tracking-tight">{location.name}</h3>
+                <p className="mt-1 text-sm font-medium leading-6 text-[var(--brand-teal)]">{location.address}</p>
                 <p className="mt-2 text-sm leading-7 text-muted-foreground">{location.description}</p>
               </div>
-              <MapPinned className="h-5 w-5 text-primary" />
+              <MapPinned className="mt-1 h-5 w-5 shrink-0 text-primary" />
             </div>
+            <dl className="mb-4 grid gap-2 rounded-[1.25rem] border border-border/60 bg-muted/40 p-4">
+              {location.hours.map((slot) => (
+                <div key={slot.days} className="flex flex-wrap items-baseline justify-between gap-2">
+                  <dt className="text-[0.7rem] font-black uppercase tracking-[0.16em] text-[var(--brand-navy)]/70">{slot.days}</dt>
+                  <dd className="text-sm font-semibold tabular-nums text-foreground">{slot.time}</dd>
+                </div>
+              ))}
+            </dl>
             <iframe
               title={`Mapa de ${location.name}`}
               src={`https://www.google.com/maps?q=${encodeURIComponent(location.mapQuery)}&output=embed`}
