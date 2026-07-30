@@ -25,7 +25,7 @@ import kidsAsset from "@/assets/piv-kids.jpg.asset.json";
 import impactGraphicAsset from "@/assets/piv-impact-graphic.jpg.asset.json";
 import teamAsset from "@/assets/piv-team.png.asset.json";
 import materialPlasticAsset from "@/assets/materiales-plasticos.jpg.asset.json";
-import materialPaperAsset from "@/assets/materiales-papel.jpg.asset.json";
+import materialPaperAsset from "@/assets/materiales-papel-v2.jpg.asset.json";
 import materialRaeeAsset from "@/assets/materiales-raee.jpg.asset.json";
 import alcanceAsset from "@/assets/alcance.jpg.asset.json";
 import rseHeroAsset from "@/assets/rse-hero.jpg.asset.json";
@@ -37,8 +37,10 @@ import campanasEmpresariales2 from "@/assets/rse/campanas-empresariales-2.jpg.as
 import campanasEmpresariales3 from "@/assets/rse/campanas-empresariales-3.jpg.asset.json";
 import campanasEmpresariales4 from "@/assets/rse/campanas-empresariales-4.png.asset.json";
 import campanasEmpresariales5 from "@/assets/rse/campanas-empresariales-5.png.asset.json";
-import campanasEducativas1 from "@/assets/rse/campanas-educativas-1.jpg.asset.json";
-import campanasEducativas2 from "@/assets/rse/campanas-educativas-2.jpg.asset.json";
+import campanasEducativas1 from "@/assets/rse/campanas-educativas-n1.jpg.asset.json";
+import campanasEducativas2 from "@/assets/rse/campanas-educativas-n2.jpg.asset.json";
+import campanasEducativas3 from "@/assets/rse/campanas-educativas-n3.jpg.asset.json";
+import campanasEducativas4 from "@/assets/rse/campanas-educativas-n4.jpg.asset.json";
 import campanasEmpresarialesServiciosAsset from "@/assets/campanas-empresariales-servicios.png.asset.json";
 import prepLimpiosAsset from "@/assets/preparacion/preparacion-limpios.jpg.asset.json";
 import prepSecosAsset from "@/assets/preparacion/preparacion-secos.jpg.asset.json";
@@ -158,8 +160,10 @@ const rseCampaignSections = [
     kicker: "Aprendizaje ambiental",
     description: "Experiencias simples y memorables para convertir información en hábitos reales.",
     photos: [
-      { url: campanasEducativas1.url, alt: "Persona participando en campaña educativa ambiental" },
-      { url: campanasEducativas2.url, alt: "Participante con residuos electrónicos en campaña educativa" },
+      { url: campanasEducativas1.url, alt: "Voluntario clasificando papel y cartón en campaña educativa" },
+      { url: campanasEducativas2.url, alt: "Estudiantes voluntarios recolectando residuos en jornada educativa" },
+      { url: campanasEducativas3.url, alt: "Participantes con vasos reutilizables de Parque Industrial Verde" },
+      { url: campanasEducativas4.url, alt: "Equipo recolectando residuos en jornada de limpieza costera" },
     ],
   },
 ] as const;
@@ -715,7 +719,7 @@ const SERVICE_TAGLINES: Record<string, string> = {
   "Recuperación de materiales": "Plásticos, metales, papel y RAEE.",
   "Educación ambiental": "Programas y talleres a medida.",
   "Gestión integral de residuos": "Diagnóstico, rutas y reportes.",
-  "Trazabilidad digital": "Evidencia auditable end-to-end.",
+  "Trazabilidad digital": "Evidencia auditable de cada flujo.",
   "Apoyo en campañas": "Activaciones y jornadas operativas.",
   "Charlas ambientales": "Sesiones para equipos y aliados.",
   "Recolección a domicilio": "Rutas programadas a tu medida.",
