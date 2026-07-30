@@ -159,6 +159,7 @@ const rseCampaignSections = [
     title: "Campañas Educativas",
     kicker: "Aprendizaje ambiental",
     description: "Experiencias simples y memorables para convertir información en hábitos reales.",
+    backdrop: campanasEducativas2.url,
     photos: [
       { url: campanasEducativas1.url, alt: "Voluntario clasificando papel y cartón en campaña educativa" },
       { url: campanasEducativas2.url, alt: "Estudiantes voluntarios recolectando residuos en jornada educativa" },
