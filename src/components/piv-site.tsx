@@ -2011,6 +2011,25 @@ export function RsePage() {
                   "linear-gradient(135deg, #0f3d3a 0%, #12526A 45%, #1e3a5f 80%, #273655 100%)",
               }}
             >
+              {"backdrop" in selectedSection && selectedSection.backdrop ? (
+                <>
+                  <img
+                    src={selectedSection.backdrop}
+                    alt=""
+                    aria-hidden
+                    loading="lazy"
+                    className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[center_25%] opacity-40"
+                  />
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, color-mix(in oklab, #0f3d3a 88%, transparent) 0%, color-mix(in oklab, #12526A 82%, transparent) 45%, color-mix(in oklab, #273655 86%, transparent) 100%)",
+                    }}
+                  />
+                </>
+              ) : null}
               <span
                 aria-hidden
                 className="pointer-events-none absolute inset-0 opacity-60"
