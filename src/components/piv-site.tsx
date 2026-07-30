@@ -675,29 +675,45 @@ function ElSalvadorMap() {
 }
 
 
+const AUDIENCE_STYLES = [
+  { Icon: Users, tone: "bg-[var(--brand-navy)] text-white", chip: "bg-[var(--brand-lime)] text-[var(--brand-ink)]" },
+  { Icon: Factory, tone: "bg-[var(--brand-lime)] text-[var(--brand-ink)]", chip: "bg-[var(--brand-ink)] text-[var(--brand-lime)]" },
+  { Icon: ShieldCheck, tone: "bg-[var(--brand-teal)] text-white", chip: "bg-white text-[var(--brand-teal)]" },
+  { Icon: Layers3, tone: "bg-[var(--brand-lime)] text-[var(--brand-ink)]", chip: "bg-[var(--brand-ink)] text-[var(--brand-lime)]" },
+  { Icon: MapPinned, tone: "bg-[var(--brand-navy)] text-white", chip: "bg-[var(--brand-lime)] text-[var(--brand-ink)]" },
+];
+
 function AudienceStrip() {
   return (
-    <div className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-5">
-      {audience.map((item, i) => (
-        <article
-          key={item}
-          data-reveal
-          className="group relative"
-        >
-          <div className="flex items-baseline gap-3">
-            <span className="text-[0.7rem] font-black uppercase tracking-[0.24em] text-[var(--brand-teal)]">
-              {String(i + 1).padStart(2, "0")}
+    <div className="mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+      {audience.map((item, i) => {
+        const style = AUDIENCE_STYLES[i % AUDIENCE_STYLES.length];
+        const Icon = style.Icon;
+        return (
+          <article
+            key={item.title}
+            data-reveal
+            className={cn(
+              "group relative isolate flex flex-col gap-4 overflow-hidden rounded-2xl p-5 shadow-[var(--shadow-elevated)] transition-transform duration-500 hover:-translate-y-1.5",
+              style.tone,
+            )}
+          >
+            <span aria-hidden className="pointer-events-none absolute -bottom-3 -right-1 text-[5rem] font-black leading-none tracking-tighter opacity-[0.08]">
+              0{i + 1}
             </span>
-            <span
-              aria-hidden
-              className="h-px flex-1 origin-left scale-x-[0.4] bg-gradient-to-r from-[var(--brand-lime)] to-transparent transition-transform duration-500 group-hover:scale-x-100"
-            />
-          </div>
-          <p className="mt-3 text-2xl font-semibold leading-tight tracking-tight text-[var(--brand-navy)] md:text-[1.6rem]">
-            {item}
-          </p>
-        </article>
-      ))}
+            <div className="flex items-center justify-between">
+              <span className={cn("grid h-11 w-11 place-items-center rounded-xl shadow-md transition-transform duration-500 group-hover:-rotate-6", style.chip)}>
+                <Icon className="h-5 w-5" />
+              </span>
+              <span className="text-[0.58rem] font-black uppercase tracking-[0.2em] opacity-80">{item.kicker}</span>
+            </div>
+            <div>
+              <h3 className="text-balance text-base font-bold leading-snug tracking-tight md:text-lg">{item.title}</h3>
+              <p className="mt-2 text-[0.82rem] leading-5 opacity-85">{item.body}</p>
+            </div>
+          </article>
+        );
+      })}
     </div>
   );
 }
