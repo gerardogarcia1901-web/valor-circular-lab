@@ -74,7 +74,7 @@ export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: siteName,
-  areaServed: ["Soyapango", "Chalchuapa", "Costa del Sol", "El Salvador"],
+  areaServed: ["San Salvador", "Chalchuapa", "Costa del Sol", "El Salvador"],
   telephone: "+50321211400",
   email: "comunicaciones@parqueindustrialverde.com",
   url: "/contacto",

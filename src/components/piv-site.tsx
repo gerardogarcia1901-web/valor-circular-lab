@@ -25,7 +25,7 @@ import kidsAsset from "@/assets/piv-kids.jpg.asset.json";
 import impactGraphicAsset from "@/assets/piv-impact-graphic.jpg.asset.json";
 import teamAsset from "@/assets/piv-team.png.asset.json";
 import materialPlasticAsset from "@/assets/materiales-plasticos.jpg.asset.json";
-import materialPaperAsset from "@/assets/materiales-papel.jpg.asset.json";
+import materialPaperAsset from "@/assets/materiales-papel-v2.jpg.asset.json";
 import materialRaeeAsset from "@/assets/materiales-raee.jpg.asset.json";
 import alcanceAsset from "@/assets/alcance.jpg.asset.json";
 import rseHeroAsset from "@/assets/rse-hero.jpg.asset.json";
@@ -37,8 +37,10 @@ import campanasEmpresariales2 from "@/assets/rse/campanas-empresariales-2.jpg.as
 import campanasEmpresariales3 from "@/assets/rse/campanas-empresariales-3.jpg.asset.json";
 import campanasEmpresariales4 from "@/assets/rse/campanas-empresariales-4.png.asset.json";
 import campanasEmpresariales5 from "@/assets/rse/campanas-empresariales-5.png.asset.json";
-import campanasEducativas1 from "@/assets/rse/campanas-educativas-1.jpg.asset.json";
-import campanasEducativas2 from "@/assets/rse/campanas-educativas-2.jpg.asset.json";
+import campanasEducativas1 from "@/assets/rse/campanas-educativas-n1.jpg.asset.json";
+import campanasEducativas2 from "@/assets/rse/campanas-educativas-n2.jpg.asset.json";
+import campanasEducativas3 from "@/assets/rse/campanas-educativas-n3.jpg.asset.json";
+import campanasEducativas4 from "@/assets/rse/campanas-educativas-n4.jpg.asset.json";
 import campanasEmpresarialesServiciosAsset from "@/assets/campanas-empresariales-servicios.png.asset.json";
 import prepLimpiosAsset from "@/assets/preparacion/preparacion-limpios.jpg.asset.json";
 import prepSecosAsset from "@/assets/preparacion/preparacion-secos.jpg.asset.json";
@@ -157,9 +159,12 @@ const rseCampaignSections = [
     title: "Campañas Educativas",
     kicker: "Aprendizaje ambiental",
     description: "Experiencias simples y memorables para convertir información en hábitos reales.",
+    backdrop: campanasEducativas2.url,
     photos: [
-      { url: campanasEducativas1.url, alt: "Persona participando en campaña educativa ambiental" },
-      { url: campanasEducativas2.url, alt: "Participante con residuos electrónicos en campaña educativa" },
+      { url: campanasEducativas1.url, alt: "Voluntario clasificando papel y cartón en campaña educativa" },
+      { url: campanasEducativas2.url, alt: "Estudiantes voluntarios recolectando residuos en jornada educativa" },
+      { url: campanasEducativas3.url, alt: "Participantes con vasos reutilizables de Parque Industrial Verde" },
+      { url: campanasEducativas4.url, alt: "Equipo recolectando residuos en jornada de limpieza costera" },
     ],
   },
 ] as const;
@@ -670,29 +675,45 @@ function ElSalvadorMap() {
 }
 
 
+const AUDIENCE_STYLES = [
+  { Icon: Users, tone: "bg-[var(--brand-navy)] text-white", chip: "bg-[var(--brand-lime)] text-[var(--brand-ink)]" },
+  { Icon: Factory, tone: "bg-[var(--brand-lime)] text-[var(--brand-ink)]", chip: "bg-[var(--brand-ink)] text-[var(--brand-lime)]" },
+  { Icon: ShieldCheck, tone: "bg-[var(--brand-teal)] text-white", chip: "bg-white text-[var(--brand-teal)]" },
+  { Icon: Layers3, tone: "bg-[var(--brand-lime)] text-[var(--brand-ink)]", chip: "bg-[var(--brand-ink)] text-[var(--brand-lime)]" },
+  { Icon: MapPinned, tone: "bg-[var(--brand-navy)] text-white", chip: "bg-[var(--brand-lime)] text-[var(--brand-ink)]" },
+];
+
 function AudienceStrip() {
   return (
-    <div className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-5">
-      {audience.map((item, i) => (
-        <article
-          key={item}
-          data-reveal
-          className="group relative"
-        >
-          <div className="flex items-baseline gap-3">
-            <span className="text-[0.7rem] font-black uppercase tracking-[0.24em] text-[var(--brand-teal)]">
-              {String(i + 1).padStart(2, "0")}
+    <div className="mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+      {audience.map((item, i) => {
+        const style = AUDIENCE_STYLES[i % AUDIENCE_STYLES.length];
+        const Icon = style.Icon;
+        return (
+          <article
+            key={item.title}
+            data-reveal
+            className={cn(
+              "group relative isolate flex flex-col gap-4 overflow-hidden rounded-2xl p-5 shadow-[var(--shadow-elevated)] transition-transform duration-500 hover:-translate-y-1.5",
+              style.tone,
+            )}
+          >
+            <span aria-hidden className="pointer-events-none absolute -bottom-3 -right-1 text-[5rem] font-black leading-none tracking-tighter opacity-[0.08]">
+              0{i + 1}
             </span>
-            <span
-              aria-hidden
-              className="h-px flex-1 origin-left scale-x-[0.4] bg-gradient-to-r from-[var(--brand-lime)] to-transparent transition-transform duration-500 group-hover:scale-x-100"
-            />
-          </div>
-          <p className="mt-3 text-2xl font-semibold leading-tight tracking-tight text-[var(--brand-navy)] md:text-[1.6rem]">
-            {item}
-          </p>
-        </article>
-      ))}
+            <div className="flex items-center justify-between">
+              <span className={cn("grid h-11 w-11 place-items-center rounded-xl shadow-md transition-transform duration-500 group-hover:-rotate-6", style.chip)}>
+                <Icon className="h-5 w-5" />
+              </span>
+              <span className="text-[0.58rem] font-black uppercase tracking-[0.2em] opacity-80">{item.kicker}</span>
+            </div>
+            <div>
+              <h3 className="text-balance text-base font-bold leading-snug tracking-tight md:text-lg">{item.title}</h3>
+              <p className="mt-2 text-[0.82rem] leading-5 opacity-85">{item.body}</p>
+            </div>
+          </article>
+        );
+      })}
     </div>
   );
 }
@@ -715,7 +736,7 @@ const SERVICE_TAGLINES: Record<string, string> = {
   "Recuperación de materiales": "Plásticos, metales, papel y RAEE.",
   "Educación ambiental": "Programas y talleres a medida.",
   "Gestión integral de residuos": "Diagnóstico, rutas y reportes.",
-  "Trazabilidad digital": "Evidencia auditable end-to-end.",
+  "Trazabilidad digital": "Evidencia auditable de cada flujo.",
   "Apoyo en campañas": "Activaciones y jornadas operativas.",
   "Charlas ambientales": "Sesiones para equipos y aliados.",
   "Recolección a domicilio": "Rutas programadas a tu medida.",
@@ -1232,14 +1253,14 @@ function LocationsPanel() {
           <MapPinned className="mt-1 h-5 w-5 text-primary" />
           <div>
             <p className="text-sm font-medium text-foreground">Tres ubicaciones estratégicas</p>
-            <p className="mt-1 text-sm leading-7 text-muted-foreground">Soyapango, Chalchuapa y Costa del Sol.</p>
+            <p className="mt-1 text-sm leading-7 text-muted-foreground">San Salvador, Chalchuapa y Costa del Sol.</p>
           </div>
         </div>
         <div className="flex items-start gap-3">
           <Clock3 className="mt-1 h-5 w-5 text-primary" />
           <div>
             <p className="text-sm font-medium text-foreground">Horario de atención</p>
-            <p className="mt-1 text-sm leading-7 text-muted-foreground">Lunes a viernes, 8:00 a.m. a 5:00 p.m.</p>
+            <p className="mt-1 text-sm leading-7 text-muted-foreground">Lunes a sábado, según la sede.</p>
           </div>
         </div>
         <div className="flex items-start gap-3">
@@ -1254,13 +1275,22 @@ function LocationsPanel() {
       <div className="grid gap-4">
         {locations.map((location) => (
           <article key={location.name} className="surface-panel">
-            <div className="mb-4 flex items-center justify-between gap-4">
+            <div className="mb-4 flex items-start justify-between gap-4">
               <div>
                 <h3 className="text-xl font-semibold tracking-tight">{location.name}</h3>
+                <p className="mt-1 text-sm font-medium leading-6 text-[var(--brand-teal)]">{location.address}</p>
                 <p className="mt-2 text-sm leading-7 text-muted-foreground">{location.description}</p>
               </div>
-              <MapPinned className="h-5 w-5 text-primary" />
+              <MapPinned className="mt-1 h-5 w-5 shrink-0 text-primary" />
             </div>
+            <dl className="mb-4 grid gap-2 rounded-[1.25rem] border border-border/60 bg-muted/40 p-4">
+              {location.hours.map((slot) => (
+                <div key={slot.days} className="flex flex-wrap items-baseline justify-between gap-2">
+                  <dt className="text-[0.7rem] font-black uppercase tracking-[0.16em] text-[var(--brand-navy)]/70">{slot.days}</dt>
+                  <dd className="text-sm font-semibold tabular-nums text-foreground">{slot.time}</dd>
+                </div>
+              ))}
+            </dl>
             <iframe
               title={`Mapa de ${location.name}`}
               src={`https://www.google.com/maps?q=${encodeURIComponent(location.mapQuery)}&output=embed`}
@@ -2006,6 +2036,25 @@ export function RsePage() {
                   "linear-gradient(135deg, #0f3d3a 0%, #12526A 45%, #1e3a5f 80%, #273655 100%)",
               }}
             >
+              {"backdrop" in selectedSection && selectedSection.backdrop ? (
+                <>
+                  <img
+                    src={selectedSection.backdrop}
+                    alt=""
+                    aria-hidden
+                    loading="lazy"
+                    className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[center_25%] opacity-40"
+                  />
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, color-mix(in oklab, #0f3d3a 88%, transparent) 0%, color-mix(in oklab, #12526A 82%, transparent) 45%, color-mix(in oklab, #273655 86%, transparent) 100%)",
+                    }}
+                  />
+                </>
+              ) : null}
               <span
                 aria-hidden
                 className="pointer-events-none absolute inset-0 opacity-60"
