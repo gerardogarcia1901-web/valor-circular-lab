@@ -234,7 +234,7 @@ export const locations = [
   {
     name: "San Salvador",
     address: "Km 5 Calle Agua Caliente, San Salvador",
-    description: "Nodo operativo principal para recepción, clasificación y gestión de materiales a escala industrial.",
+    description: "Sede operativa principal para recepción, clasificación y gestión de materiales a escala industrial.",
     hours: [
       { days: "Lunes a viernes", time: "8:00 a.m. – 5:00 p.m." },
       { days: "Sábados", time: "8:00 a.m. – 12:00 m." },
