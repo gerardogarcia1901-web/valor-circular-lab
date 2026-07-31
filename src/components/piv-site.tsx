@@ -21,6 +21,7 @@ import metalsAsset from "@/assets/piv-metals.jpg.asset.json";
 import materialsHeroAsset from "@/assets/materiales-hero.jpg.asset.json";
 import materialsMetalsPhotoAsset from "@/assets/materiales-metales-photo.png.asset.json";
 import noFerrososAsset from "@/assets/no-ferrosos.jpg.asset.json";
+import ferrososAsset from "@/assets/ferrosos.jpg.asset.json";
 import kidsAsset from "@/assets/piv-kids.jpg.asset.json";
 import impactGraphicAsset from "@/assets/piv-impact-graphic.jpg.asset.json";
 import teamAsset from "@/assets/piv-team.png.asset.json";
@@ -113,7 +114,7 @@ const materialVisuals: Record<string, { image: string; alt: string; summary: str
     summary: "Aluminio, cobre y bronce con ruta de valorización.",
   },
   Ferrosos: {
-    image: metalsAsset.url,
+    image: ferrososAsset.url,
     alt: "Materiales ferrosos: hierro lata y hierro sólido en planta de recuperación",
     summary: "Hierro lata y hierro sólido listos para valorización.",
   },
