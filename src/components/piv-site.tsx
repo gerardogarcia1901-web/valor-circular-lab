@@ -1596,8 +1596,8 @@ export function AboutPage() {
         <img src={heroAboutAsset.url} alt="Operación real de Parque Industrial Verde, vista panorámica de planta" className="image-tile h-auto w-full object-contain md:h-[420px] md:object-cover md:object-[center_30%]" loading="eager" />
       </div>
       <TimelineRail />
-      <Section
-      >
+      <Section>
+
         <div className="mt-14 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {[
             {
