@@ -1034,11 +1034,10 @@ function TimelineRail() {
                         style={{ background: media.accent }}
                       />
                       <div
-                        className="relative grid h-10 w-10 place-items-center rounded-full text-[0.65rem] font-black ring-4 ring-background"
-                        style={{ background: media.accent, color: "var(--brand-ink)" }}
-                      >
-                        {stepNumber}
-                      </div>
+                        className="relative h-5 w-5 rounded-full ring-4 ring-background"
+                        style={{ background: media.accent }}
+                      />
+
                     </div>
                   </div>
 
