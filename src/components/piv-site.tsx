@@ -585,31 +585,13 @@ function HeroStatCard({
         className="pointer-events-none absolute -right-14 -top-14 h-40 w-40 rounded-full opacity-70 blur-2xl transition-opacity duration-700 group-hover:opacity-100"
         style={{ background: t.glow }}
       />
-      {/* Watermark index */}
-      <span
-        aria-hidden
-        className="pointer-events-none absolute -right-2 -bottom-8 text-[7rem] font-black leading-none tracking-tighter opacity-[0.08]"
-        style={{ color: t.fg }}
-      >
-        {String(index + 1).padStart(2, "0")}
-      </span>
-
-      {/* Tick */}
-      <div className="relative flex items-center gap-2">
-        <span className="h-1.5 w-1.5 rounded-full" style={{ background: t.dot }} />
-        <span
-          className="text-[0.65rem] font-black uppercase tracking-[0.3em]"
-          style={{ color: t.soft }}
-        >
-          {String(index + 1).padStart(2, "0")}
-        </span>
-      </div>
 
       {/* Number */}
-      <p className="relative mt-4 flex items-baseline gap-0.5 font-black leading-[0.9] tracking-tighter">
-        <span className="text-2xl md:text-3xl" style={{ color: t.accent }}>
+      <p className="relative mt-2 flex items-baseline gap-1 font-black leading-[0.9] tracking-tighter">
+        <span style={{ fontSize: "clamp(2.25rem, 4.5vw, 4rem)", color: t.accent }}>
           {item.prefix}
         </span>
+
         <span
           className="whitespace-nowrap tabular-nums transition-transform duration-500 group-hover:-translate-y-1"
           style={{ fontSize: "clamp(3rem, 6vw, 5.25rem)", color: t.fg }}
