@@ -1834,7 +1834,7 @@ export function MaterialsPage() {
         </div>
       </Section>
       <Section
-        eyebrow="Cómo preparar los materiales"
+        title="Cómo preparar los materiales"
         className="bg-panel-subtle"
       >
         <div className="mt-14 grid gap-5 md:grid-cols-3">
