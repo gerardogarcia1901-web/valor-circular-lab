@@ -1014,7 +1014,6 @@ function TimelineRail() {
             {timeline.map((item, i) => {
               const media = TIMELINE_MEDIA[i];
               const isRight = i % 2 === 1;
-              const stepNumber = String(i + 1).padStart(2, "0");
               const logoScale = media.logoScale ?? 1;
               return (
                 <article
@@ -1144,7 +1143,6 @@ function TimelineRail() {
 function FAQSection() {
   return (
     <Section
-      eyebrow="FAQ"
       title="Detrás de cada material recuperado hay un servicio que responde, acompaña y genera confianza."
       description="Trabajamos para ofrecer soluciones ágiles a empresas y personas comprometidas con el reciclaje."
     >
@@ -1599,9 +1597,6 @@ export function AboutPage() {
       </div>
       <TimelineRail />
       <Section
-        eyebrow="Nuestra identidad"
-        title="Reciclaje con escala industrial y propósito real."
-        description="Una operación pensada para que cada material recuperado vuelva a generar valor — local, regional y globalmente."
       >
         <div className="mt-14 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {[
@@ -1840,8 +1835,6 @@ export function MaterialsPage() {
       </Section>
       <Section
         eyebrow="Cómo preparar los materiales"
-        title="La eficiencia del proceso empieza antes de la recolección."
-        description="Preparar correctamente los materiales mejora la clasificación, reduce rechazos y acelera el aprovechamiento."
         className="bg-panel-subtle"
       >
         <div className="mt-14 grid gap-5 md:grid-cols-3">
@@ -1915,7 +1908,7 @@ export function MaterialsPage() {
                 <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Disposición responsable por cobro</p>
               </div>
               <h3 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
-                Materiales delicados que requieren <span className="text-[var(--brand-lime)]">manejo especializado.</span>
+                Materiales que requieren un <span className="text-[var(--brand-lime)]">manejo especializado.</span>
               </h3>
               <a href={whatsappHref} target="_blank" rel="noreferrer" className="w-fit">
                 <Button variant="hero" size="lg">Cotizar disposición</Button>
@@ -2088,9 +2081,6 @@ export function ContactPage() {
             <h1 className="text-balance text-5xl font-semibold tracking-tight md:text-7xl">
               Hablemos de tu <span className="text-[var(--brand-lime)]">próxima ruta circular.</span>
             </h1>
-            <p className="max-w-2xl text-lg leading-8 text-white/85">
-              Cotizaciones, recolecciones, campañas y alianzas. Te respondemos con una propuesta clara y operativa.
-            </p>
             <div className="flex flex-wrap gap-3 pt-2">
               <a href={whatsappHref} target="_blank" rel="noreferrer"><Button variant="hero" size="xl">WhatsApp</Button></a>
               <a href={emailLink.href}><Button variant="heroSecondary" size="xl">Escribir correo</Button></a>
