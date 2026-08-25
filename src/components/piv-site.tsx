@@ -585,31 +585,13 @@ function HeroStatCard({
         className="pointer-events-none absolute -right-14 -top-14 h-40 w-40 rounded-full opacity-70 blur-2xl transition-opacity duration-700 group-hover:opacity-100"
         style={{ background: t.glow }}
       />
-      {/* Watermark index */}
-      <span
-        aria-hidden
-        className="pointer-events-none absolute -right-2 -bottom-8 text-[7rem] font-black leading-none tracking-tighter opacity-[0.08]"
-        style={{ color: t.fg }}
-      >
-        {String(index + 1).padStart(2, "0")}
-      </span>
-
-      {/* Tick */}
-      <div className="relative flex items-center gap-2">
-        <span className="h-1.5 w-1.5 rounded-full" style={{ background: t.dot }} />
-        <span
-          className="text-[0.65rem] font-black uppercase tracking-[0.3em]"
-          style={{ color: t.soft }}
-        >
-          {String(index + 1).padStart(2, "0")}
-        </span>
-      </div>
 
       {/* Number */}
-      <p className="relative mt-4 flex items-baseline gap-0.5 font-black leading-[0.9] tracking-tighter">
-        <span className="text-2xl md:text-3xl" style={{ color: t.accent }}>
+      <p className="relative mt-2 flex items-baseline gap-1 font-black leading-[0.9] tracking-tighter">
+        <span style={{ fontSize: "clamp(2.25rem, 4.5vw, 4rem)", color: t.accent }}>
           {item.prefix}
         </span>
+
         <span
           className="whitespace-nowrap tabular-nums transition-transform duration-500 group-hover:-translate-y-1"
           style={{ fontSize: "clamp(3rem, 6vw, 5.25rem)", color: t.fg }}
@@ -1007,9 +989,10 @@ function TimelineRail() {
 
       <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))]">
         <div data-reveal className="max-w-3xl space-y-5">
-          <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl">
-            Nuestra evolución
+          <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl" style={{ color: "var(--brand-navy)" }}>
+            Nuestra <span style={{ color: "var(--brand-teal, var(--brand-navy))" }}>evolución</span>
           </h2>
+
           <p className="max-w-2xl text-lg leading-8 text-muted-foreground">
             Contamos con un centro integral para el acopio y gestión de residuos valorizables, donde personas, empresas e instituciones encuentran una alternativa eficiente para su correcta disposición y aprovechamiento.
           </p>
@@ -1031,7 +1014,6 @@ function TimelineRail() {
             {timeline.map((item, i) => {
               const media = TIMELINE_MEDIA[i];
               const isRight = i % 2 === 1;
-              const stepNumber = String(i + 1).padStart(2, "0");
               const logoScale = media.logoScale ?? 1;
               return (
                 <article
@@ -1052,11 +1034,10 @@ function TimelineRail() {
                         style={{ background: media.accent }}
                       />
                       <div
-                        className="relative grid h-10 w-10 place-items-center rounded-full text-[0.65rem] font-black ring-4 ring-background"
-                        style={{ background: media.accent, color: "var(--brand-ink)" }}
-                      >
-                        {stepNumber}
-                      </div>
+                        className="relative h-5 w-5 rounded-full ring-4 ring-background"
+                        style={{ background: media.accent }}
+                      />
+
                     </div>
                   </div>
 
@@ -1162,7 +1143,6 @@ function TimelineRail() {
 function FAQSection() {
   return (
     <Section
-      eyebrow="FAQ"
       title="Detrás de cada material recuperado hay un servicio que responde, acompaña y genera confianza."
       description="Trabajamos para ofrecer soluciones ágiles a empresas y personas comprometidas con el reciclaje."
     >
@@ -1616,11 +1596,8 @@ export function AboutPage() {
         <img src={heroAboutAsset.url} alt="Operación real de Parque Industrial Verde, vista panorámica de planta" className="image-tile h-auto w-full object-contain md:h-[420px] md:object-cover md:object-[center_30%]" loading="eager" />
       </div>
       <TimelineRail />
-      <Section
-        eyebrow="Nuestra identidad"
-        title="Reciclaje con escala industrial y propósito real."
-        description="Una operación pensada para que cada material recuperado vuelva a generar valor — local, regional y globalmente."
-      >
+      <Section>
+
         <div className="mt-14 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {[
             {
@@ -1857,9 +1834,7 @@ export function MaterialsPage() {
         </div>
       </Section>
       <Section
-        eyebrow="Cómo preparar los materiales"
-        title="La eficiencia del proceso empieza antes de la recolección."
-        description="Preparar correctamente los materiales mejora la clasificación, reduce rechazos y acelera el aprovechamiento."
+        title="Cómo preparar los materiales"
         className="bg-panel-subtle"
       >
         <div className="mt-14 grid gap-5 md:grid-cols-3">
@@ -1933,7 +1908,7 @@ export function MaterialsPage() {
                 <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--brand-lime)]">Disposición responsable por cobro</p>
               </div>
               <h3 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
-                Materiales delicados que requieren <span className="text-[var(--brand-lime)]">manejo especializado.</span>
+                Materiales que requieren un <span className="text-[var(--brand-lime)]">manejo especializado.</span>
               </h3>
               <a href={whatsappHref} target="_blank" rel="noreferrer" className="w-fit">
                 <Button variant="hero" size="lg">Cotizar disposición</Button>
@@ -2106,9 +2081,6 @@ export function ContactPage() {
             <h1 className="text-balance text-5xl font-semibold tracking-tight md:text-7xl">
               Hablemos de tu <span className="text-[var(--brand-lime)]">próxima ruta circular.</span>
             </h1>
-            <p className="max-w-2xl text-lg leading-8 text-white/85">
-              Cotizaciones, recolecciones, campañas y alianzas. Te respondemos con una propuesta clara y operativa.
-            </p>
             <div className="flex flex-wrap gap-3 pt-2">
               <a href={whatsappHref} target="_blank" rel="noreferrer"><Button variant="hero" size="xl">WhatsApp</Button></a>
               <a href={emailLink.href}><Button variant="heroSecondary" size="xl">Escribir correo</Button></a>
