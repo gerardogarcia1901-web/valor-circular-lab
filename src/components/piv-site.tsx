@@ -989,9 +989,10 @@ function TimelineRail() {
 
       <div className="relative mx-auto w-[min(1280px,calc(100%-2rem))]">
         <div data-reveal className="max-w-3xl space-y-5">
-          <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl">
-            Nuestra evolución
+          <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl" style={{ color: "var(--brand-navy)" }}>
+            Nuestra <span style={{ color: "var(--brand-teal, var(--brand-navy))" }}>evolución</span>
           </h2>
+
           <p className="max-w-2xl text-lg leading-8 text-muted-foreground">
             Contamos con un centro integral para el acopio y gestión de residuos valorizables, donde personas, empresas e instituciones encuentran una alternativa eficiente para su correcta disposición y aprovechamiento.
           </p>
