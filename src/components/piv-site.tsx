@@ -588,7 +588,7 @@ function HeroStatCard({
 
       {/* Number */}
       <p className="relative mt-2 flex items-baseline gap-1 font-black leading-[0.9] tracking-tighter">
-        <span style={{ fontSize: "clamp(2.25rem, 4.5vw, 4rem)", color: t.accent }}>
+        <span style={{ fontSize: "clamp(3rem, 6vw, 5.25rem)", color: t.accent }}>
           {item.prefix}
         </span>
 
@@ -681,9 +681,6 @@ function AudienceStrip() {
               style.tone,
             )}
           >
-            <span aria-hidden className="pointer-events-none absolute -bottom-3 -right-1 text-[5rem] font-black leading-none tracking-tighter opacity-[0.08]">
-              0{i + 1}
-            </span>
             <div className="flex items-center justify-between">
               <span className={cn("grid h-11 w-11 place-items-center rounded-xl shadow-md transition-transform duration-500 group-hover:-rotate-6", style.chip)}>
                 <Icon className="h-5 w-5" />
@@ -1144,6 +1141,7 @@ function FAQSection() {
   return (
     <Section
       title="Detrás de cada material recuperado hay un servicio que responde, acompaña y genera confianza."
+      titleClassName="text-[var(--brand-navy)]"
       description="Trabajamos para ofrecer soluciones ágiles a empresas y personas comprometidas con el reciclaje."
     >
       <div className="mt-12 grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
@@ -1421,7 +1419,7 @@ export function HomePage() {
       <Section
         eyebrow="Servicios destacados"
         title="Soluciones integrales que facilitan la recuperación, clasificación y valorización de materiales."
-        titleClassName="text-3xl leading-snug md:text-5xl"
+        titleClassName="text-3xl leading-snug text-[var(--brand-navy)] md:text-5xl"
         containerClassName="max-w-4xl"
         description="Desde recuperación de materiales hasta destrucción certificada y trazabilidad digital, cada servicio está pensado para integrarse a operaciones reales."
       >
@@ -1498,10 +1496,7 @@ export function HomePage() {
                 data-reveal
                 className="group relative overflow-hidden rounded-2xl border border-white/15 bg-white/[0.06] p-5 backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-[var(--brand-lime)]/60 hover:bg-white/[0.14]"
               >
-                <span className="block text-[0.65rem] font-black uppercase tracking-[0.28em] text-[var(--brand-lime)]">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span className="mt-3 block text-lg font-semibold tracking-tight text-white md:text-xl">
+                <span className="block text-lg font-semibold tracking-tight text-white md:text-xl">
                   {region}
                 </span>
                 <span
@@ -1640,7 +1635,6 @@ export function AboutPage() {
                 data-reveal
                 className={cn("group relative isolate flex flex-col gap-4 overflow-hidden rounded-2xl p-5 shadow-[var(--shadow-elevated)] transition-transform duration-500 hover:-translate-y-1.5", card.tone)}
               >
-                <span aria-hidden className="pointer-events-none absolute -bottom-3 -right-1 text-[5rem] font-black leading-none tracking-tighter opacity-[0.08]">0{i + 1}</span>
                 <div className="flex items-center justify-between">
                   <span className={cn("grid h-11 w-11 place-items-center rounded-xl shadow-md transition-transform duration-500 group-hover:-rotate-6", card.chip)}>
                     <Icon className="h-5 w-5" />
@@ -1789,6 +1783,7 @@ export function MaterialsPage() {
       <Section
         eyebrow="Categorías"
         title="Una estructura clara para preparar, separar y valorizar mejor."
+        titleClassName="text-[var(--brand-navy)]"
         description="Agrupamos materiales para facilitar su recolección, clasificación y reincorporación a la cadena productiva."
       >
         <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -1956,6 +1951,7 @@ export function RsePage() {
       <Section
         eyebrow="Campañas"
         title="Activaciones que conectan marca, territorio y cultura ambiental."
+        titleClassName="text-[var(--brand-navy)]"
         description="Desde jornadas educativas hasta campañas empresariales, cada acción busca convertir la sostenibilidad en participación y resultados medibles."
       >
         <div className="mt-14 grid gap-4 md:grid-cols-3" role="tablist" aria-label="Seleccionar campaña RSE">
