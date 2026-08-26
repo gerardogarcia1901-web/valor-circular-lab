@@ -588,7 +588,7 @@ function HeroStatCard({
 
       {/* Number */}
       <p className="relative mt-2 flex items-baseline gap-1 font-black leading-[0.9] tracking-tighter">
-        <span style={{ fontSize: "clamp(3rem, 6vw, 5.25rem)", color: t.accent }}>
+        <span style={{ fontSize: "clamp(4.5rem, 9vw, 7.5rem)", color: t.accent, lineHeight: 0.7 }}>
           {item.prefix}
         </span>
 
@@ -1202,7 +1202,7 @@ function ContactFormCard() {
     <div data-reveal className="surface-panel space-y-6">
       <div className="space-y-2">
         <p className="eyebrow">Contacto</p>
-        <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-5xl">Comencemos a generar impacto juntos.</h2>
+        <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-5xl" style={{ color: "var(--brand-navy)" }}>Comencemos a generar impacto juntos.</h2>
       </div>
       <div className="grid gap-4 md:grid-cols-2">
         <Input placeholder="Nombre" value={form.nombre} onChange={(event) => updateField("nombre", event.target.value)} />
@@ -1407,6 +1407,7 @@ export function HomePage() {
       <Section
         eyebrow="Qué hacemos"
         title="La recuperación de materiales puede ser precisa, rentable y medible."
+        titleClassName="text-[var(--brand-navy)]"
       />
 
       <section className="relative overflow-hidden py-20 md:py-28">
@@ -1496,7 +1497,7 @@ export function HomePage() {
                 data-reveal
                 className="group relative overflow-hidden rounded-2xl border border-white/15 bg-white/[0.06] p-5 backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-[var(--brand-lime)]/60 hover:bg-white/[0.14]"
               >
-                <span className="block text-lg font-semibold tracking-tight text-white md:text-xl">
+                <span className="block text-center text-lg font-semibold tracking-tight text-white md:text-xl">
                   {region}
                 </span>
                 <span
@@ -1831,6 +1832,7 @@ export function MaterialsPage() {
       <Section
         title="Cómo preparar los materiales"
         className="bg-panel-subtle"
+        titleClassName="text-[var(--brand-navy)]"
       >
         <div className="mt-14 grid gap-5 md:grid-cols-3">
           {preparationSteps.map((step, i) => {
@@ -1940,7 +1942,7 @@ export function RsePage() {
         <div className="mx-auto grid w-[min(1280px,calc(100%-2rem))] gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
           <div data-reveal className="space-y-6 pb-8">
             <p className="eyebrow">RSE</p>
-            <h1 className="text-balance text-5xl font-semibold tracking-tight md:text-7xl">El reciclaje también transforma comunidades.</h1>
+            <h1 className="text-balance text-5xl font-semibold tracking-tight md:text-7xl" style={{ color: "var(--brand-navy)" }}>El reciclaje también transforma comunidades.</h1>
             <p className="max-w-2xl text-lg leading-8 text-muted-foreground">
               Educación ambiental, campañas, activaciones comunitarias y acompañamiento empresarial forman parte de una estrategia de impacto que va más allá de la recuperación de materiales.
             </p>
